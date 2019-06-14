@@ -16,8 +16,10 @@
 	<!-- ///////////////분야 검색창/////////////// -->
 	<div>
 		<h2>분야 검색 부분</h2>
-		<input type = "text" name = "">
-		<input type = "submit" value = "검색">
+		<form action = "search.do" method = "post">
+			<input type = "text" name = "searchKey" size = "50">
+			<input type = "submit" value = "검색">
+		</form>
 	</div>
 	<br>
 	<!-- ///////////////대분류/////////////// -->

@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 import soomgosuta.action_categoryAction.MainAction;
+import soomgosuta.action_categoryAction.SearchAction;
 
 
-@WebServlet("/category3/*")
+@WebServlet("/main.do")
 public class CategoryController extends HttpServlet {
 private static final long serialVersionUID = 1L;
 	
@@ -30,7 +31,7 @@ private static final long serialVersionUID = 1L;
     	Action action=null;
     	ActionForward forward = null;
     	
-    	if(command.equals("/category3/main.do")){
+    	if(command.equals("main.do")){
     		action = new MainAction();
     		
     		try {
@@ -39,7 +40,15 @@ private static final long serialVersionUID = 1L;
 				e.printStackTrace();
 			}
     	}
+    	else if(command.equals("search.do")){
+    		action = new SearchAction();
     		
+    		try{
+    			forward = action.excute(request, response);
+    		}catch(Exception e){
+    			e.printStackTrace();
+    		}
+    	}
     	
     	
     	
