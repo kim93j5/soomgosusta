@@ -14,7 +14,7 @@ import soomgosusta.action_interface.ActionForward;
 import soomgosuta.action_categoryAction.MainAction;
 
 
-@WebServlet("/category3/*")
+@WebServlet("*.do")
 public class CategoryController extends HttpServlet {
 private static final long serialVersionUID = 1L;
 	
@@ -30,7 +30,7 @@ private static final long serialVersionUID = 1L;
     	Action action=null;
     	ActionForward forward = null;
     	
-    	if(command.equals("/category3/main.do")){
+    	if(command.equals("category.do")){
     		action = new MainAction();
     		
     		try {
@@ -40,7 +40,7 @@ private static final long serialVersionUID = 1L;
 			}
     	}
     		
-    	
+    	System.out.println(forward);
     	
     	
     	

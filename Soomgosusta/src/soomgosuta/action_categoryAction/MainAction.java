@@ -13,14 +13,10 @@ import soomgosusta.service.CategoryService;
 public class MainAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ActionForward forward = new ActionForward();
-		CategoryService service = CategoryService.getInstance();
-		
-		List<Category> list = service.listPopularService(request); //인기서비스
-		
+		ActionForward forward = new ActionForward();	
 		forward.setRedirect(false);
-		forward.setPath("/main.jsp");
-		
+		forward.setPath("main.jsp");
+		System.out.println(forward);
 		return forward;
 	}
 

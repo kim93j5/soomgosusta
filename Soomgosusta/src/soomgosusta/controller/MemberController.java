@@ -26,7 +26,7 @@ public class MemberController extends HttpServlet {
     	Action action=null;
     	ActionForward forward = null;
     	
-    	
+    	System.out.println("adad");
     }
 
 	
