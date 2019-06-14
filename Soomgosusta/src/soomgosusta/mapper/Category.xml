@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="soomgoWorkSpace.mapper.CategoryMapper">
+	<cache />
+	
+	<select id = "listPopular" resultType="Category">
+	<!-- 확정아님! -->
+	select c.category_group
+	FROM category c, category_log cl
+	WHERE c.category_code = cl.category_code
+	ORDER BY clog_search
+	</select>
+
+
+	
+</mapper>
