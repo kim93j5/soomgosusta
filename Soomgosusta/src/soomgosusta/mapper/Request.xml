@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="soomgosusta.mapper.RequestMapper">
+	<cache />
+	
+<!-- select * from question where question_code LIKE '%LI%' OR question_code like 'CQ%' -->	
+	<select id="listQuestion" parameterType="hashmap" resultType="Question">
+		select * from question
+			<where>
+				question_code LIKE #{question_Code1} 
+				OR question_code LIKE #{question_Code2}
+				OR question_code LIKE #{question_Code3}
+			</where>
+	</select>
+	
+	<select id="listAnswer" parameterType="String" resultType="Answer">
+		select * from answer where question_code= #{question_Code} order by answer_code
+	</select>
+	
+	
+</mapper>
+
+

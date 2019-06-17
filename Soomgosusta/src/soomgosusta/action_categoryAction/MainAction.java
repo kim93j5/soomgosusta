@@ -1,4 +1,4 @@
-package soomgosuta.action_categoryAction;
+package soomgosusta.action_categoryAction;
 
 import java.util.List;
 
@@ -13,10 +13,18 @@ import soomgosusta.service.CategoryService;
 public class MainAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ActionForward forward = new ActionForward();	
+		request.setCharacterEncoding("utf-8");
+		
+		ActionForward forward = new ActionForward();
+		CategoryService service = CategoryService.getInstance();
+		
+		List<Category> listPopular = service.listPopularService(request); //인기서비스
+
+		request.setAttribute("listPopular", listPopular);
+
 		forward.setRedirect(false);
-		forward.setPath("main.jsp");
-		System.out.println(forward);
+		forward.setPath("/main.jsp");
+		
 		return forward;
 	}
 

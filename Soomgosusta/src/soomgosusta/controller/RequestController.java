@@ -9,19 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import soomgosusta.action_categoryAction.MainAction;
-import soomgosusta.action_categoryAction.SearchAction;
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
+import soomgosusta.action_requestAction.RequestAction;
+import soomgosusta.action_requestAction.RequestFormAction;
 
 
-@WebServlet({"/main.do","/search.do"})
-public class CategoryController extends HttpServlet {
-private static final long serialVersionUID = 1L;
-	
-    public CategoryController() {
-        super();   
+@WebServlet({"/requestFormAction.do","/request.do"})
+public class RequestController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+ 
+    public RequestController() {
+        super();
     }
+
     public void doProcess(HttpServletRequest request, HttpServletResponse response)throws SecurityException, IOException, ServletException{
     	String requestURI = request.getRequestURI();
     	String contextPath= request.getContextPath();
@@ -30,8 +32,8 @@ private static final long serialVersionUID = 1L;
     	Action action=null;
     	ActionForward forward = null;
     	
-    	if(command.equals("main.do")){
-    		action = new MainAction();
+    	if(command.equals("requestFormAction.do")){
+    		action = new RequestFormAction();
     		
     		try {
 				forward = action.excute(request, response);
@@ -39,15 +41,17 @@ private static final long serialVersionUID = 1L;
 				e.printStackTrace();
 			}
     	}
-    	else if(command.equals("search.do")){
-    		action = new SearchAction();
+    	
+    	else if(command.equals("request.do")){
+    		action = new RequestAction();
     		
-    		try{
-    			forward = action.excute(request, response);
-    		}catch(Exception e){
-    			e.printStackTrace();
-    		}
+    		try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
     	}
+
     	
     	
     	
@@ -72,5 +76,4 @@ private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
-
 }

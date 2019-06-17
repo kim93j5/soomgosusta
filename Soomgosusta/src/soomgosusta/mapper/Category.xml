@@ -4,17 +4,22 @@
 
 
 
-<mapper namespace="soomgoWorkSpace.mapper.CategoryMapper">
+<mapper namespace="soomgosusta.mapper.CategoryMapper">
 	<cache />
 	
 	<select id = "listPopular" resultType="Category">
 	<!-- 확정아님! -->
-	select c.category_group
-	FROM category c, category_log cl
-	WHERE c.category_code = cl.category_code
-	ORDER BY clog_search
+	select c.category_code, c.category_group, c.category_image
+	from category c, category_log cl
+	where c.category_code = cl.category_code
+	order by cl.clog_search desc
 	</select>
 
-
+<!-- 	<select id = "listCategory" resultType="Category">
+	select * from category
+	</select> -->
 	
+	<update id="updateSearchLog" parameterType="String">
+		update category_log set clog_search = clog_search+1 where category_code = #{searchCode}
+	</update>
 </mapper>

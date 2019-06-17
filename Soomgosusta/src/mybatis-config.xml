@@ -6,7 +6,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="soomgosusta.domain.Member" alias="Member"/>
-		
+		<typeAlias type="soomgosusta.domain.Category" alias="Category"/>
+		<typeAlias type="soomgosusta.domain.Request" alias="Request"/>
+		<typeAlias type="soomgosusta.domain.Question" alias="Question"/>
+		<typeAlias type="soomgosusta.domain.Answer" alias="Answer"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -20,7 +23,8 @@
 	
 	<mappers>
 		<mapper resource="soomgosusta/mapper/Member.xml"/>
-		
+		<mapper resource="soomgosusta/mapper/Category.xml"/>
+		<mapper resource="soomgosusta/mapper/Request.xml"/>
 	</mappers>
 	
 </configuration>

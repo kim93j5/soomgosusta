@@ -6,11 +6,8 @@
 
 <mapper namespace="soomgosusta.mapper.MemberMapper">
 	<cache />
-	
-	<insert id="registerMember" parameterType="Member">
 
-	</insert>
-	
+
 	
 </mapper>
 

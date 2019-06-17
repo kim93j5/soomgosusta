@@ -33,6 +33,7 @@ public class CategoryDao {
 	
 	}
 		
+	//인기 서비스
 	public List<Category> listPopular(){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Category> list = null;
@@ -41,8 +42,48 @@ public class CategoryDao {
 			list = sqlSession.getMapper(CategoryMapper.class).listPopular();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			sqlSession.close();
 		}
 		
 		return list;
+	}
+	
+/*	//전체 분야
+	public List<Category> listCategory(){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Category> list = null;
+		
+		try{
+			list = sqlSession.getMapper(CategoryMapper.class).listCategory();
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return list;
+	}*/
+	
+	//검색량 추가
+	public 	int updateSearchLog(String searchCode){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+
+		try {
+			re = sqlSession.getMapper(CategoryMapper.class).updateSearchLog(searchCode);
+			if(re > 0){
+				sqlSession.commit();
+			}else{
+				sqlSession.rollback();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return re;
 	}
 }

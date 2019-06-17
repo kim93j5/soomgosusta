@@ -1,16 +1,20 @@
 package soomgosusta.domain;
 
-public class Answer {
+import java.io.Serializable;
+
+public class Answer implements Serializable{
+	private static final long serialVersionUID = 1L;
+
 	private String answer_Code;
-	private String answer_Contents;
+	private String answer_Content;
 	private String question_Code;
 	
 	public Answer() {}
 
-	public Answer(String answer_Code, String answer_Contents, String question_Code) {
+	public Answer(String answer_Code, String answer_Content, String question_Code) {
 		super();
 		this.answer_Code = answer_Code;
-		this.answer_Contents = answer_Contents;
+		this.answer_Content = answer_Content;
 		this.question_Code = question_Code;
 	}
 
@@ -22,12 +26,12 @@ public class Answer {
 		this.answer_Code = answer_Code;
 	}
 
-	public String getAnswer_Contents() {
-		return answer_Contents;
+	public String getAnswer_Content() {
+		return answer_Content;
 	}
 
-	public void setAnswer_Contents(String answer_Contents) {
-		this.answer_Contents = answer_Contents;
+	public void setAnswer_Content(String answer_Content) {
+		this.answer_Content = answer_Content;
 	}
 
 	public String getQuestion_Code() {
@@ -37,6 +41,11 @@ public class Answer {
 	public void setQuestion_Code(String question_Code) {
 		this.question_Code = question_Code;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Answer [answer_Code=" + answer_Code + ", answer_Content=" + answer_Content + ", question_Code="
+				+ question_Code + "]";
+	}
 	
 }

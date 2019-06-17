@@ -1,6 +1,9 @@
 package soomgosusta.domain;
 
-public class Question {
+import java.io.Serializable;
+
+public class Question implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String question_Code;
 	private String question_Contents;
 	
@@ -29,6 +32,10 @@ public class Question {
 	public void setQuestion_Contents(String question_Contents) {
 		this.question_Contents = question_Contents;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Question [question_Code=" + question_Code + ", question_Contents=" + question_Contents + "]";
+	}
 	
 }

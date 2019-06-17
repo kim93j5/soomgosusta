@@ -10,14 +10,14 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import soomgosusta.domain.Answer;
-import soomgosusta.domain.Member;
 import soomgosusta.domain.Question;
 import soomgosusta.mapper.MemberMapper;
+import soomgosusta.mapper.RequestMapper;
 
-public class MemberDao {
-	private static MemberDao dao = new MemberDao();
+public class RequestDao {
+private static RequestDao dao = new RequestDao();
 	
-	public static MemberDao getInstance() {
+	public static RequestDao getInstance() {
 		return dao;
 	}
 	
@@ -36,25 +36,34 @@ public class MemberDao {
 	
 	}
 	
-	public int registerMember(Member member) {
-		int re = -1;
+	public List<Question> listQuestion(HashMap<String, String> map) throws Exception{
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Question> list = null;
 		
 		try {
-			re = sqlSession.getMapper(MemberMapper.class).registerMember(member);
-		if(re>0) {
-				sqlSession.commit();
-			}else {
-				sqlSession.rollback();
-			}
+			list = sqlSession.getMapper(RequestMapper.class).listQuestion(map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			sqlSession.close();
 		}
-		return re;
+		
+		return list;
 	}
 	
+	public List<Answer> listAnswer(String question_Code) throws Exception{
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Answer> list = null;
+		
+		try {
+			list = sqlSession.getMapper(RequestMapper.class).listAnswer(question_Code);
 
-}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
 	
+		return list;
+	}
+}
