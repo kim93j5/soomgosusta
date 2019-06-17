@@ -6,11 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.RequestWrapper;
 
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 
-@WebServlet("/member/*")
+@WebServlet("/member")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -34,9 +35,11 @@ public class MemberController extends HttpServlet {
 		doProcess(request, response);
 	}
 
-	
+	@RequestWrapper("/memberLost")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
+		
+		
+		//doProcess(request, response);
 	}
 
 }

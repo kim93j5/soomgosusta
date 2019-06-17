@@ -14,7 +14,6 @@ import soomgosusta.action_interface.ActionForward;
 import soomgosuta.action_categoryAction.MainAction;
 
 
-@WebServlet("*.do")
 public class CategoryController extends HttpServlet {
 private static final long serialVersionUID = 1L;
 	
