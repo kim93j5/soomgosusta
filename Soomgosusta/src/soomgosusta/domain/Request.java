@@ -1,7 +1,13 @@
 package soomgosusta.domain;
 
-public class Request {
-	private String request_Date;
+import java.io.Serializable;
+
+public class Request implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private String member_Id;
+	private String category_Code;
 	private String request_QA_1;
 	private String request_QA_2;
 	private String request_QA_3;
@@ -12,14 +18,16 @@ public class Request {
 	private String request_QA_8;
 	private String request_QA_9;
 	private String request_QA_10;
+	private String request_Date;
 	
 	public Request() {}
 
-	public Request(String request_Date, String request_QA_1, String request_QA_2, String request_QA_3,
-			String request_QA_4, String request_QA_5, String request_QA_6, String request_QA_7, String request_QA_8,
-			String request_QA_9, String request_QA_10) {
+	public Request(String member_Id, String category_Code, String request_QA_1, String request_QA_2,
+			String request_QA_3, String request_QA_4, String request_QA_5, String request_QA_6, String request_QA_7,
+			String request_QA_8, String request_QA_9, String request_QA_10, String request_Date) {
 		super();
-		this.request_Date = request_Date;
+		this.member_Id = member_Id;
+		this.category_Code = category_Code;
 		this.request_QA_1 = request_QA_1;
 		this.request_QA_2 = request_QA_2;
 		this.request_QA_3 = request_QA_3;
@@ -30,14 +38,23 @@ public class Request {
 		this.request_QA_8 = request_QA_8;
 		this.request_QA_9 = request_QA_9;
 		this.request_QA_10 = request_QA_10;
-	}
-
-	public String getRequest_Date() {
-		return request_Date;
-	}
-
-	public void setRequest_Date(String request_Date) {
 		this.request_Date = request_Date;
+	}
+
+	public String getMember_Id() {
+		return member_Id;
+	}
+
+	public void setMember_Id(String member_Id) {
+		this.member_Id = member_Id;
+	}
+
+	public String getCategory_Code() {
+		return category_Code;
+	}
+
+	public void setCategory_Code(String category_Code) {
+		this.category_Code = category_Code;
 	}
 
 	public String getRequest_QA_1() {
@@ -119,6 +136,23 @@ public class Request {
 	public void setRequest_QA_10(String request_QA_10) {
 		this.request_QA_10 = request_QA_10;
 	}
-	
+
+	public String getRequest_Date() {
+		return request_Date;
+	}
+
+	public void setRequest_Date(String request_Date) {
+		this.request_Date = request_Date;
+	}
+
+	@Override
+	public String toString() {
+		return "Request [member_Id=" + member_Id + ", category_Code=" + category_Code + ", request_QA_1=" + request_QA_1
+				+ ", request_QA_2=" + request_QA_2 + ", request_QA_3=" + request_QA_3 + ", request_QA_4=" + request_QA_4
+				+ ", request_QA_5=" + request_QA_5 + ", request_QA_6=" + request_QA_6 + ", request_QA_7=" + request_QA_7
+				+ ", request_QA_8=" + request_QA_8 + ", request_QA_9=" + request_QA_9 + ", request_QA_10="
+				+ request_QA_10 + ", request_Date=" + request_Date + "]";
+	}
+
 	
 }

@@ -11,53 +11,51 @@ import javax.servlet.http.HttpServletResponse;
 
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
-import soomgosusta.action_memberAction.loginAction;
-import soomgosusta.action_memberAction.memberRegisterAction;
-import soomgosusta.action_memberAction.memberRegisterFormAction;
+import soomgosusta.action_requestAction.RequestAction;
+import soomgosusta.action_requestAction.RequestFormAction;
 
-@WebServlet(urlPatterns={"/memberRegisterForm.do","/memberRegisterAction.do" ,"/loginAction.do"})
-public class MemberController extends HttpServlet {
+
+@WebServlet({"/requestFormAction.do","/request.do"})
+public class RequestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-    public MemberController() {
-        super();      
+       
+ 
+    public RequestController() {
+        super();
     }
-    
-    
+
     public void doProcess(HttpServletRequest request, HttpServletResponse response)throws SecurityException, IOException, ServletException{
     	String requestURI = request.getRequestURI();
-    	
-    	
-    	
     	String contextPath= request.getContextPath();
     	String command = requestURI.substring(contextPath.length()+1);
+    	
     	Action action=null;
     	ActionForward forward = null;
     	
-    	if(command.equals("memberRegisterForm.do")) {
+    	if(command.equals("requestFormAction.do")){
+    		action = new RequestFormAction();
     		
-    		System.out.println("�Ϸο;ߵ�?? ");
-    		action = new memberRegisterFormAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}	
-    	}else if(command.equals("memberRegisterAction.do")) {
-    		action = new memberRegisterAction();
-    		try {
-				forward = action.excute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			} 
-    	}else if(command.equals("loginAction.do")) {
-    		action = new loginAction();
-    		try {
-				forward = action.excute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			} 
+			}
     	}
+    	
+    	else if(command.equals("request.do")){
+    		action = new RequestAction();
+    		
+    		try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}
+
+    	
+    	
+    	
+    	
     	
     	if(forward != null){
         	if(forward.isRedirect() == true){
@@ -78,5 +76,4 @@ public class MemberController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
-
 }

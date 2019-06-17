@@ -4,13 +4,22 @@
 
 
 
+
+
 <mapper namespace="soomgosusta.mapper.MemberMapper">
 	<cache />
 	
 	<insert id="registerMember" parameterType="Member">
-
+	insert into member values(#{member_Id}, #{member_Password}, #{member_Name},
+	#{member_Gender}, #{member_Pnum}, #{member_Age}, #{member_Photo}, #{member_Interest})
 	</insert>
-	
+
+		
+	<select id="login" parameterType="String" resultType="Member">
+	select *
+	FROM member
+	where member_id = #{id}
+	</select>
 	
 </mapper>
 

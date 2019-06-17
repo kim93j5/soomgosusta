@@ -9,10 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import soomgosusta.action_categoryAction.MainAction;
+import soomgosusta.action_categoryAction.SearchAction;
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
-import soomgosuta.action_categoryAction.MainAction;
 
+
+
+@WebServlet({"/main.do","/search.do"})
 
 public class CategoryController extends HttpServlet {
 private static final long serialVersionUID = 1L;
@@ -24,12 +28,11 @@ private static final long serialVersionUID = 1L;
     	String requestURI = request.getRequestURI();
     	String contextPath= request.getContextPath();
     	String command = requestURI.substring(contextPath.length()+1);
-    	System.out.println(command);
     	
     	Action action=null;
     	ActionForward forward = null;
     	
-    	if(command.equals("category.do")){
+    	if(command.equals("main.do")){
     		action = new MainAction();
     		
     		try {
@@ -38,8 +41,16 @@ private static final long serialVersionUID = 1L;
 				e.printStackTrace();
 			}
     	}
+    	else if(command.equals("search.do")){
+    		action = new SearchAction();
     		
-    	System.out.println(forward);
+    		try{
+    			forward = action.excute(request, response);
+    		}catch(Exception e){
+    			e.printStackTrace();
+    		}
+    	}
+    	
     	
     	
     	
