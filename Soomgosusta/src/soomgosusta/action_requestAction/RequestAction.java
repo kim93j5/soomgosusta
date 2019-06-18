@@ -10,6 +10,8 @@ import soomgosusta.service.RequestService;
 public class RequestAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		
 		ActionForward forward = new ActionForward();
 		RequestService service = RequestService.getInstance();
 		
