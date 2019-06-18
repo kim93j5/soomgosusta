@@ -1,6 +1,13 @@
 package soomgosusta.domain;
 
-public class Expert {
+import java.io.Serializable;
+
+public class Expert implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String expert_Id;
 	private String expert_Password;
 	private String expert_Name;

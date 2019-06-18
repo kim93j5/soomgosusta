@@ -11,7 +11,7 @@
 <body>
 
 	<ul>
-		<li> ${m_id}님 환영합니다. </li>
+		<li> ${id}님 환영합니다. </li>
 		<li><a href = "logout.do">로그아웃</a>
 	</ul>
 

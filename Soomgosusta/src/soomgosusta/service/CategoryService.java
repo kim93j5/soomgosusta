@@ -27,7 +27,6 @@ public class CategoryService {
       
 
       JSONArray arr = new JSONArray();
-      
       try {
          for(int i=0; i<listPopular.size(); i++){
             JSONObject group = new JSONObject(); //�׷� Json����      

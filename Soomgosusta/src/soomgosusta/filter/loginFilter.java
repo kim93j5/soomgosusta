@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class loginFilter
  */
-@WebFilter("/main.jsp")
+@WebFilter(urlPatterns={""})
 public class loginFilter implements Filter {
 
 
@@ -35,14 +35,22 @@ public class loginFilter implements Filter {
 	
 		HttpSession session = request2.getSession();
 		String m_id= (String)session.getAttribute("m_id");
+		String e_id= (String)session.getAttribute("e_id");
+		String login_state= request.getParameter("login_state");
 		
 	
+				
 		if(m_id==null){
 			response2.sendRedirect("login.jsp");
-			
-		}
-		request.setAttribute("m_id", m_id);
-		chain.doFilter(request, response);
+			request.setAttribute("id", m_id);
+
+					
+			response2.sendRedirect("expertLogin.jsp"); 			
+			request.setAttribute("id", e_id);
+
+		
+	
+		chain.doFilter(request, response);}
 	}
 
 

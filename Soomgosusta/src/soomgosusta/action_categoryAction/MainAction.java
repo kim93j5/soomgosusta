@@ -18,13 +18,13 @@ public class MainAction implements Action {
 		ActionForward forward = new ActionForward();
 		CategoryService service = CategoryService.getInstance();
 		
-		JSONArray listPopular = service.listPopularService(request); //인기서비스
 
+		JSONArray listPopular = service.listPopularService(request); //인기서비스
 		request.setAttribute("listPopular", listPopular);
 	
 		
 		forward.setRedirect(false);
-		forward.setPath("/main.jsp");
+		forward.setPath("main.jsp");
 		
 		return forward;
 	}
