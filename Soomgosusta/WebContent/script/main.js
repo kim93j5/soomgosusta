@@ -1,17 +1,20 @@
-$('document').ready(function(){
+/*$('document').ready(function(){	
 	var cnt_LI=0;
 	var cnt_LS=0;
+	alert("1");
 	$.ajax({
-		url : './script/category.json',
+		url : './main.jsp',
 		type : 'get',
 		dataType : 'json',
 		success : function(data){
 			$.each(data, function(index, item){
+				alert("2");
 				if(index < 3) makePopularService(index, item);
 				if(cnt_LI < 3) makeLI_Service(index, item);
 				if(cnt_LS < 3) makeLS_Service(index, item);
 			});
-		}
+		},
+		
 	});
 	
 	//인기서비스 이미지 출력
@@ -37,4 +40,4 @@ $('document').ready(function(){
 				cnt_LS++;
 			}
 	};
-});
+});*/

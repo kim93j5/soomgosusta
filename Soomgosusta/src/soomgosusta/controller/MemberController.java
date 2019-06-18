@@ -12,10 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 import soomgosusta.action_memberAction.loginAction;
+import soomgosusta.action_memberAction.logoutAction;
 import soomgosusta.action_memberAction.memberRegisterAction;
 import soomgosusta.action_memberAction.memberRegisterFormAction;
 
-@WebServlet(urlPatterns={"/memberRegisterForm.do","/memberRegisterAction.do" ,"/loginAction.do"})
+@WebServlet(urlPatterns={"/memberRegisterForm.do","/memberRegisterAction.do" ,"/loginAction.do", "/logout.do"})
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -36,7 +37,6 @@ public class MemberController extends HttpServlet {
     	
     	if(command.equals("memberRegisterForm.do")) {
     		
-    		System.out.println("�Ϸο;ߵ�?? ");
     		action = new memberRegisterFormAction();
     		try {
 				forward = action.excute(request, response);
@@ -57,7 +57,15 @@ public class MemberController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
+    	}else if(command.equals("logout.do")) {
+    		action = new logoutAction();
+    		try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
     	}
+
     	
     	if(forward != null){
         	if(forward.isRedirect() == true){

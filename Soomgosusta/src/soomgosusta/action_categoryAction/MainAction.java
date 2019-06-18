@@ -1,13 +1,13 @@
 package soomgosusta.action_categoryAction;
 
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
-import soomgosusta.domain.Category;
 import soomgosusta.service.CategoryService;
 
 public class MainAction implements Action {
@@ -18,10 +18,11 @@ public class MainAction implements Action {
 		ActionForward forward = new ActionForward();
 		CategoryService service = CategoryService.getInstance();
 		
-		List<Category> listPopular = service.listPopularService(request); //인기서비스
+		JSONArray listPopular = service.listPopularService(request); //인기서비스
 
 		request.setAttribute("listPopular", listPopular);
-
+	
+		
 		forward.setRedirect(false);
 		forward.setPath("/main.jsp");
 		
