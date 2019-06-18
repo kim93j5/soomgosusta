@@ -10,6 +10,7 @@
 		<typeAlias type="soomgosusta.domain.Request" alias="Request"/>
 		<typeAlias type="soomgosusta.domain.Question" alias="Question"/>
 		<typeAlias type="soomgosusta.domain.Answer" alias="Answer"/>
+		<typeAlias type="soomgosusta.domain.Expert" alias="Expert"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -25,6 +26,7 @@
 		<mapper resource="soomgosusta/mapper/Member.xml"/>
 		<mapper resource="soomgosusta/mapper/Category.xml"/>
 		<mapper resource="soomgosusta/mapper/Request.xml"/>
+		<mapper resource="soomgosusta/mapper/Expert.xml"/>
 	</mappers>
 	
 </configuration>

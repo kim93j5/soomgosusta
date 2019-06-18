@@ -19,9 +19,18 @@
 <body>
 	<!-- ///////////////배너/////////////// -->
 	<ul>
-		<li> ${m_id}님 환영합니다. </li>
-		<li><a href = "#">회원가입</a></li>
-		<li><a href = "#">로그인</a></li>
+		<li> ${id}님 환영합니다. </li>
+		<li><a href = "#">회원가입</a></li>	
+		<li>
+			<div class="select">
+    			<select	name="" id="loginState">
+    				<option value="member">회원</option>
+    				<option value="expert">고수</option>
+    			</select>
+    			<a id="login" href = "#">로그인</a>
+    			<a id="loginteg"></a>
+			</div>
+		</li>		
 	</ul>
 	
 	<!-- ///////////////분야 검색창/////////////// -->

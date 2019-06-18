@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+
+
+<mapper namespace="soomgosusta.mapper.ExpertMapper">
+	<cache />
+	
+	<insert id="registerExpert" parameterType="Expert">
+	insert into expert values(#{expert_Id}, #{expert_Password}, #{expert_Name},
+	#{expert_Gender}, #{expert_Pnum}, #{expert_Age}, #{expert_Photo})
+	</insert>
+
+		
+	<select id="expertLogin" parameterType="String" resultType="Expert">
+	select *
+	FROM expert
+	where expert_id = #{id}
+	</select>
+	
+</mapper>
+
+

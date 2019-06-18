@@ -25,7 +25,7 @@ public class CategoryService {
       request.setCharacterEncoding("utf-8");
       listPopular = dao.listPopular();
       
-      FileWriter file = new FileWriter("/WebContent/script/category.json");
+      FileWriter file = new FileWriter("/Soomgosusta/WebContent/script/category.json");
       JSONObject group = new JSONObject(); //그룹 Json으로      
       
       file.write("[");
