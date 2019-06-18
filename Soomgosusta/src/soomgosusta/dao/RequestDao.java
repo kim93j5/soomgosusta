@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import soomgosusta.domain.Answer;
 import soomgosusta.domain.Question;
+import soomgosusta.domain.Request;
 import soomgosusta.mapper.MemberMapper;
 import soomgosusta.mapper.RequestMapper;
 
@@ -65,5 +66,47 @@ private static RequestDao dao = new RequestDao();
 		}
 	
 		return list;
+	}
+	
+	public int insertRequest(HashMap<String, String> requestMap) throws Exception{
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		
+		try {
+			re = sqlSession.getMapper(RequestMapper.class).insertRequest(requestMap);
+			
+			if(re>0) 
+				sqlSession.commit();
+			else 
+				sqlSession.rollback();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return re; 
+	}
+	
+	public int updateRequest(HashMap<String, String> requestMap) throws Exception{
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		
+		try {
+			re = sqlSession.getMapper(RequestMapper.class).updateRequest(requestMap);
+			
+			if(re>0) 
+				sqlSession.commit();
+			else 
+				sqlSession.rollback();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return re; 
 	}
 }

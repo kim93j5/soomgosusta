@@ -9,14 +9,23 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<ul>
+		<li> ${id}님 환영합니다. </li>
+		<li><a href = "logout.do">로그아웃</a>
+	</ul>
+
 	<c:choose>
-		<c:when test="${searchCode != null}">
+
+ 		<c:when test="${searchCode != 'null'}">
 			<h1>매칭 요청조건 입력 폼</h1>
 			<h3>질문</h3>
 			<form action ="request.do">
 			
 				<c:forEach var="listQuestion" items="${listQuestion}">
+					<input type="hidden" name="m_id" value="${id}">
 					<input type="hidden" name="q_Code" value="${listQuestion.question_Code}">
+					<input type="hidden" name="searchCode" value="${searchCode}">
 					<div id="requestForm">
 						<h3>Q: ${listQuestion.question_Contents }</h3>
 						<ul>
@@ -33,6 +42,10 @@
 						</ul>
 					</div>
 				</c:forEach>
+				
+				<h3>전화번호를 입력하세요</h3>
+				<input type="text" name="phoneNum" size="50">
+				<br><br>
  				<button id="prev">이전</button>
 				<button id="next">다음</button>
 				<input type="submit">

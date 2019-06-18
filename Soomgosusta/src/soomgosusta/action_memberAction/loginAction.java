@@ -39,7 +39,7 @@ public class loginAction implements Action {
 			
 			session.setAttribute("id",m_id);				
 			forward.setRedirect(true);
-			forward.setPath("main.jsp");
+			forward.setPath("main.do");
 		}else {
 			forward.setRedirect(false);
 			forward.setPath("login.jsp");

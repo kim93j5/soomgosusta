@@ -1,10 +1,10 @@
 package soomgosusta.service;
 
-import java.io.FileWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import soomgosusta.dao.CategoryDao;
@@ -20,17 +20,17 @@ public class CategoryService {
       return service;
    }
    
-   //ÀüÃ¼ ºÐ¾ß °Ë»ö·® ±âÁØÀ¸·Î json
-   public List<Category> listPopularService(HttpServletRequest request) throws Exception{
+   //ï¿½ï¿½Ã¼ ï¿½Ð¾ï¿½ ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ json
+   public JSONArray listPopularService(HttpServletRequest request) throws Exception{
       request.setCharacterEncoding("utf-8");
       listPopular = dao.listPopular();
       
-      FileWriter file = new FileWriter("/Soomgosusta/WebContent/script/category.json");
-      JSONObject group = new JSONObject(); //±×·ì JsonÀ¸·Î      
-      
-      file.write("[");
+
+      JSONArray arr = new JSONArray();
       try {
          for(int i=0; i<listPopular.size(); i++){
+            JSONObject group = new JSONObject(); //ï¿½×·ï¿½ Jsonï¿½ï¿½ï¿½ï¿½      
+            
             String str = listPopular.get(i).getCategory_Group();
             String groupArr[] = str.split("/");
             
@@ -39,25 +39,19 @@ public class CategoryService {
             group.put("group2", groupArr[1]);
             group.put("group3", groupArr[2]);
             group.put("image", listPopular.get(i).getCategory_Image());
-   
-            file.write(group.toString());
-            if(i != listPopular.size()-1) file.write(",\n");
-      
+            
+            arr.add(group);
          }
-         file.write("]");
-         file.close();
       } catch (Exception e) {
          e.printStackTrace();
       }
       
-      return listPopular;
+      return arr;
 
    }
       
-   //°Ë»ö·® Ãß°¡
-   public String updateSearchLogService(HttpServletRequest request) throws Exception{
-      request.setCharacterEncoding("utf-8");
-      String searchKey = request.getParameter("searchKey");
+   //ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
+   public String updateSearchLogService(String searchKey) throws Exception{
       String searchCode = null;
       
       for(int i=0; i<listPopular.size(); i++){
@@ -102,7 +96,7 @@ public class CategoryService {
       return service;
    }
    
-   //ÀüÃ¼ ºÐ¾ß °Ë»ö·® ±âÁØÀ¸·Î json
+   //ï¿½ï¿½Ã¼ ï¿½Ð¾ï¿½ ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ json
    public JSONArray listPopularService(HttpServletRequest request) throws Exception{
       request.setCharacterEncoding("utf-8");
       listPopular = dao.listPopular();
@@ -112,7 +106,7 @@ public class CategoryService {
       
       try {
          for(int i=0; i<listPopular.size(); i++){
-            JSONObject group = new JSONObject(); //±×·ì Json°´Ã¼·Î
+            JSONObject group = new JSONObject(); //ï¿½×·ï¿½ Jsonï¿½ï¿½Ã¼ï¿½ï¿½
             
             String str = listPopular.get(i).getCategory_Group();
             String groupArr[] = str.split("/");
@@ -123,7 +117,7 @@ public class CategoryService {
             group.put("group3", groupArr[2]);
             group.put("image", listPopular.get(i).getCategory_Image());
             
-            arr.add(group); //jsonarray¿¡ json°´Ã¼ ´ã±â
+            arr.add(group); //jsonarrayï¿½ï¿½ jsonï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½
          }
 
          
@@ -144,7 +138,7 @@ public class CategoryService {
       return list;
    }
    
-   //°Ë»ö·® Ãß°¡
+   //ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
    public String updateSearchLogService(HttpServletRequest request) throws Exception{
       request.setCharacterEncoding("utf-8");
       String searchKey = request.getParameter("searchKey");

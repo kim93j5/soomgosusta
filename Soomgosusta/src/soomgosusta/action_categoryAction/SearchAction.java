@@ -13,15 +13,14 @@ public class SearchAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		ActionForward forward = new ActionForward();
 		CategoryService service = CategoryService.getInstance();
-		
-		String searchCode = service.updateSearchLogService(request);
-		
+	    
+		String searchKey = request.getParameter("searchKey");  
+		System.out.println(searchKey);
+		String searchCode = service.updateSearchLogService(searchKey);
+
 		if(searchCode != null){
 			request.setAttribute("searchCode", searchCode);
 		}
-		
-//		forward.setRedirect(false);
-//		forward.setPath("/sendRequest.jsp");
 		
 		forward.setRedirect(true);
 		forward.setPath("requestFormAction.do?searchCode="+searchCode);
