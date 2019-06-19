@@ -10,8 +10,8 @@
 	<cache />
 	
 	<insert id="registerMember" parameterType="Member">
-	insert into member values(#{member_Id}, #{member_Password}, #{member_Name},
-	#{member_Gender}, #{member_Pnum}, #{member_Age}, #{member_Photo}, #{member_Interest})
+	insert into member values(#{member_Id}, #{m_Password}, #{m_Name},
+	#{m_Pnum},#{m_Gender}, #{m_Age}, 'member' , #{m_Photo})
 	</insert>
 
 		

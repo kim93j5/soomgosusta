@@ -10,8 +10,8 @@
 	<cache />
 	
 	<insert id="registerExpert" parameterType="Expert">
-	insert into expert values(#{expert_Id}, #{expert_Password}, #{expert_Name},
-	#{expert_Gender}, #{expert_Pnum}, #{expert_Age}, #{expert_Photo})
+	insert into expert values(#{expert_Id}, #{e_Password}, #{e_Name},
+	#{e_Pnum},#{e_Gender} , #{e_Age},'expert', #{e_Photo})
 	</insert>
 
 		

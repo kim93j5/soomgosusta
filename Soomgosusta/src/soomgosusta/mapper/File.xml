@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="soomgosusta.mapper.FileMapper">
+	<cache />
+	
+	<insert id="uploadFile" parameterType="String">
+		insert into  values (#{fileName},#{fileRealName})
+	
+	</insert>
+	
+	<select id = "listPopular" resultType="Category">
+	<!-- 확정아님! -->
+	select c.category_code, c.category_group, c.category_image
+	from category c, category_log cl
+	where c.category_code = cl.category_code
+	order by cl.clog_search desc
+	</select>
+
+</mapper>

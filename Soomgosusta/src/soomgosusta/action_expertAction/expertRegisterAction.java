@@ -16,7 +16,9 @@ public class expertRegisterAction implements Action {
 		
 		forward.setRedirect(true);
 		forward.setPath("expertLogin.do");
+		
 		return forward;
+		
 	}
 
 }

@@ -21,14 +21,14 @@ public class MemberService {
 		
 		Member member = new Member();
 		member.setMember_Id(request.getParameter("member_Id"));
-		member.setMember_Password(request.getParameter("member_Password"));
-		member.setMember_Name(request.getParameter("member_Name"));
-		member.setMember_Gender(request.getParameter("member_Gender"));
-		member.setMember_Pnum(request.getParameter("member_Pnum"));
-		System.out.println("service"+request.getParameter("member_Age"));
-		member.setMember_Age(Integer.parseInt(request.getParameter("member_Age")));
-		member.setMember_Photo(" ");						//È¸¿ø°¡ÀÔ½Ã »çÁø¿¡  °ø¹é °ª ÀúÀå
-		member.setMember_Interest(request.getParameter("member_Interest"));
+		member.setM_Password(request.getParameter("member_Password"));
+		member.setM_Name(request.getParameter("member_Name"));
+		member.setM_Pnum(request.getParameter("member_Pnum"));
+		member.setM_Gender(request.getParameter("member_Gender"));
+		member.setM_Age(Integer.parseInt(request.getParameter("member_Age")));
+		member.setM_Divide(" ");
+		member.setM_Photo(" ");						//
+		
 		
 		System.out.println("test"+member);
 		
@@ -41,15 +41,15 @@ public class MemberService {
 		
 		Member member = new Member();
 		member.setMember_Id(request.getParameter("id"));
-		member.setMember_Password(request.getParameter("password"));
+		member.setM_Password(request.getParameter("password"));
 		
 		String id = (member.getMember_Id());
-		System.out.println("service ´Ü" + id);
-		String password = (member.getMember_Password());
-		System.out.println("service ´Ü" + password);
+		System.out.println("service ï¿½ï¿½" + id);
+		String password = (member.getM_Password());
+		System.out.println("service ï¿½ï¿½" + password);
 		member = dao.login(id);
 		
-		System.out.println("service´Ü member"+member);
+		System.out.println("serviceï¿½ï¿½ member"+member);
 		return member;
 	}
 	
