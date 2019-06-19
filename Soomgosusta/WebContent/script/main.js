@@ -1,5 +1,7 @@
-$('document').ready(function() {
-	$(function() {
+
+$('document').ready(function(){	
+
+	$(function(){
 		$('#loginState').click(function() {
 			var state = $("#loginState option:selected").val();
 
