@@ -36,21 +36,27 @@ public class loginFilter implements Filter {
 		HttpSession session = request2.getSession();
 		String m_id= (String)session.getAttribute("m_id");
 		String e_id= (String)session.getAttribute("e_id");
-		String login_state= request.getParameter("login_state");
+		String login_state= (String)session.getAttribute("login_state");
 		
 	
 				
-		if(m_id==null){
+		if(m_id==null && login_state.equals("member")){
 			response2.sendRedirect("login.jsp");
 			request.setAttribute("id", m_id);
-
+			request.setAttribute("login_state", login_state);
+		}
+			else if(e_id == null && login_state.equals("exeprt")) {		
 			response2.sendRedirect("expertLogin.jsp"); 			
 			request.setAttribute("id", e_id);
+			request.setAttribute("login_state", login_state);
+			}
 
 		
 	
-		chain.doFilter(request, response);}
+		chain.doFilter(request, response);
+		
 	}
+	
 
 
 	public void init(FilterConfig fConfig) throws ServletException {

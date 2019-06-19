@@ -3,7 +3,6 @@ package soomgosusta.service;
 import javax.servlet.http.HttpServletRequest;
 
 import soomgosusta.dao.ExpertDao;
-import soomgosusta.dao.MemberDao;
 import soomgosusta.domain.Expert;
 
 
@@ -23,13 +22,13 @@ public class ExpertService {
 		
 		Expert expert = new Expert();
 		expert.setExpert_Id(request.getParameter("expert_Id"));
-		expert.setExpert_Password(request.getParameter("expert_Password"));
-		expert.setExpert_Name(request.getParameter("expert_Name"));
-		expert.setExpert_Gender(request.getParameter("expert_Gender"));
-		expert.setExpert_Pnum(request.getParameter("expert_Pnum"));
-		System.out.println("service"+request.getParameter("expert_Age"));
-		expert.setExpert_Age(Integer.parseInt(request.getParameter("expert_Age")));
-		expert.setExpert_Photo(" ");						//È¸¿ø°¡ÀÔ½Ã »çÁø¿¡  °ø¹é °ª ÀúÀå
+		expert.setE_Password(request.getParameter("expert_Password"));
+		expert.setE_Name(request.getParameter("expert_Name"));
+		expert.setE_Pnum(request.getParameter("expert_Pnum"));
+		expert.setE_Gender(request.getParameter("expert_Gender"));
+		expert.setE_Age(Integer.parseInt(request.getParameter("expert_Age")));
+		expert.setE_Divide(" ");
+		expert.setE_Photo(" ");						//È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	
 		
 		System.out.println("test"+expert);
@@ -42,16 +41,17 @@ public class ExpertService {
 		request.setCharacterEncoding("utf-8");
 		
 		Expert expert = new Expert();
+		
 		expert.setExpert_Id(request.getParameter("id"));
-		expert.setExpert_Password(request.getParameter("password"));
+		expert.setE_Password(request.getParameter("password"));
 		
 		String id = (expert.getExpert_Id());
-		System.out.println("service ´Ü" + id);
-		String password = (expert.getExpert_Password());
-		System.out.println("service ´Ü" + password);
+		System.out.println("service ï¿½ï¿½" + id);
+		String password = (expert.getE_Password());
+		System.out.println("service ï¿½ï¿½" + password);
 		expert = dao.expertLogin(id);
 		
-		System.out.println("service´Ü expert"+expert);
+		System.out.println("serviceï¿½ï¿½ expert"+expert);
 		return expert;
 	}
 	

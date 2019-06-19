@@ -3,6 +3,7 @@ package soomgosusta.domain;
 import java.io.File;
 
 public class Expert_Profile {
+	private String expert_Id;
 	private File eprofile_Photo;
 	private String eprofile_LineLetter;
 	private String eprofile_DetailLetter;

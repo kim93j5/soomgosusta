@@ -14,6 +14,7 @@
 		성별	<input type="text" name="expert_Gender">		<br>
 		전화번호	<input type="text" name="expert_Pnum">		<br>
 		연령대	<input type="text" name="expert_Age">		<br>
+		<!--회원 분류-->	<input type="hidden" name="expert_Divide">
 		<!--프로필사진 -->	<input type="hidden" name="expert_Photo">		<br>
 			
 			<input type="submit" value="가입">

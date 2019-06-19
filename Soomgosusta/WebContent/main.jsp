@@ -19,9 +19,8 @@
 <body>
 	<ul>
 		<c:if test="${id != null }">
-			<li> ${id}님 환영합니다. </li>		
+			<li> ${id}님 환영합니다. ${login_state} </li>
 		</c:if>
-
 		<li><a href = "memberRegisterForm.do">회원가입</a></li>
 		<li>
 			<div class="select">

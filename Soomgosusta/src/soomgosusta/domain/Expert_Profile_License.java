@@ -1,33 +1,34 @@
 package soomgosusta.domain;
 
-import java.io.File;
+
 
 public class Expert_Profile_License {
-	private String eprofile_LicenseCode;
-	private File eprofile_LicenseRoute;
+	private String epl_Expert_Id;
+	private String epl_Photo;
 	
 	public Expert_Profile_License() {}
-	
-	
-	public Expert_Profile_License(String eprofile_LicenseCode, File eprofile_LicenseRoute) {
+
+	public Expert_Profile_License(String epl_Expert_Id, String epl_Photo) {
 		super();
-		this.eprofile_LicenseCode = eprofile_LicenseCode;
-		this.eprofile_LicenseRoute = eprofile_LicenseRoute;
+		this.epl_Expert_Id = epl_Expert_Id;
+		this.epl_Photo = epl_Photo;
 	}
 
+	public String getEpl_Expert_Id() {
+		return epl_Expert_Id;
+	}
 
-	public String getEprofile_LicenseCode() {
-		return eprofile_LicenseCode;
+	public void setEpl_Expert_Id(String epl_Expert_Id) {
+		this.epl_Expert_Id = epl_Expert_Id;
 	}
-	public void setEprofile_LicenseCode(String eprofile_LicenseCode) {
-		this.eprofile_LicenseCode = eprofile_LicenseCode;
+
+	public String getEpl_Photo() {
+		return epl_Photo;
 	}
-	public File getEprofile_LicenseRoute() {
-		return eprofile_LicenseRoute;
-	}
-	public void setEprofile_LicenseRoute(File eprofile_LicenseRoute) {
-		this.eprofile_LicenseRoute = eprofile_LicenseRoute;
+
+	public void setEpl_Photo(String epl_Photo) {
+		this.epl_Photo = epl_Photo;
 	}
 	
-	
+		
 }

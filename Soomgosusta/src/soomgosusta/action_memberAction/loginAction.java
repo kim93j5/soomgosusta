@@ -27,8 +27,9 @@ public class loginAction implements Action {
 		String m_id=member.getMember_Id();
 		
 		String password = request.getParameter("password");
-		String m_password = member.getMember_Password();
+		String m_password = member.getM_Password();
 		
+		String divide = member.getM_Divide();
 		
 		System.out.println(member);
 		HttpSession session = request.getSession();
@@ -37,7 +38,8 @@ public class loginAction implements Action {
 		if(id.equals(m_id)&& password.equals(m_password)) 
 		{	
 			
-			session.setAttribute("id",m_id);				
+			session.setAttribute("id",m_id);
+			session.setAttribute("login_state",divide);
 			forward.setRedirect(true);
 			forward.setPath("main.do");
 		}else {

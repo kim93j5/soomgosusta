@@ -15,14 +15,16 @@ public class expertLoginAction implements Action {
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
 		ExpertService service = ExpertService.getInstance();
-		Expert expert=null;
+		Expert expert= new Expert();
 		expert = service.expertLoginService(request);
 		
-		String id=request.getParameter("id");
-		String e_id=expert.getExpert_Id();
+		String id = request.getParameter("id");
+		String e_id = expert.getExpert_Id();
+		
+		System.out.println("action"+ e_id);
 		
 		String password = request.getParameter("password");
-		String e_password = expert.getExpert_Password();
+		String e_password = expert.getE_Password();
 		
 		
 		System.out.println(expert);

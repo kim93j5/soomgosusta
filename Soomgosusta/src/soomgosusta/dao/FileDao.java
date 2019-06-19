@@ -7,18 +7,16 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import soomgosusta.domain.Expert;
-import soomgosusta.domain.Member;
 import soomgosusta.mapper.ExpertMapper;
-import soomgosusta.mapper.MemberMapper;
+import soomgosusta.mapper.FileMapper;
 
-public class ExpertDao {
-	private static ExpertDao dao = new ExpertDao();
-	
-	public static ExpertDao getInstance() {
+public class FileDao {
+
+	private static FileDao dao = new FileDao();
+
+	public static FileDao getInstance() {
 		return dao;
 	}
-	
 	public SqlSessionFactory getSqlSessionFactory() {
 		String resource ="mybatis-config.xml";
 		InputStream in = null;
@@ -33,13 +31,12 @@ public class ExpertDao {
 
 	
 	}
-	
-	public int registerExpert(Expert expert ) {
-		int re = -1;
+	public int uploadFile(String fileName, String fileRealName) {
+		int re=-1;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		
 		try {
-			re = sqlSession.getMapper(ExpertMapper.class).registerExpert(expert);
+			re = sqlSession.getMapper(FileMapper.class).uploadFile(fileName,fileRealName);
 			
 		if(re>0) {
 				sqlSession.commit();
@@ -54,24 +51,5 @@ public class ExpertDao {
 		return re;
 	}
 	
-	public Expert expertLogin(String id) {
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		System.out.println("dao "+ id);
-		
-		Expert expert = null;
-		
-		try {
-			expert = sqlSession.getMapper(ExpertMapper.class).expertLogin(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlSession.close();
-		}
-		System.out.println("Dao "+expert);
-		return expert;
-	}
-
-	
 	
 }
-	

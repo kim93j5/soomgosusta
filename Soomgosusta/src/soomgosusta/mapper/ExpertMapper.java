@@ -6,8 +6,6 @@ public interface ExpertMapper {
 
 	int registerExpert(Expert expert);
 
-	
-
 	Expert expertLogin(String id);
 
 }
