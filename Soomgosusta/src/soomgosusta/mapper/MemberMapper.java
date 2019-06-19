@@ -1,7 +1,11 @@
 package soomgosusta.mapper;
 
-import soomgosusta.domain.Member;
+import java.util.List;
+
+import soomgosusta.domain.Category;
+import soomgosusta.domain.Member_Information;
 
 public interface MemberMapper {
-	int registerMember(Member member);
+	int addMemberInterest(Member_Information member_information);
+	List<Category> categoryCode();
 }

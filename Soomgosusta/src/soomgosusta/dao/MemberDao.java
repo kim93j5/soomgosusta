@@ -1,13 +1,16 @@
 package soomgosusta.dao;
 
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import soomgosusta.domain.Category;
 import soomgosusta.domain.Member;
+import soomgosusta.domain.Member_Information;
 import soomgosusta.mapper.MemberMapper;
 
 public class MemberDao {
@@ -32,12 +35,12 @@ public class MemberDao {
 	
 	}
 	
-	public int registerMember(Member member) {
+	public int addMemberInterest(Member_Information member_information){
 		int re = -1;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		
 		try {
-			re = sqlSession.getMapper(MemberMapper.class).registerMember(member);
+			re = sqlSession.getMapper(MemberMapper.class).addMemberInterest(member_information);
 		if(re>0) {
 				sqlSession.commit();
 			}else {
@@ -49,6 +52,23 @@ public class MemberDao {
 			sqlSession.close();
 		}
 		return re;
+	}
+
+	
+	public List<Category> categoryCode(){
+		
+		SqlSession sqlsession = getSqlSessionFactory().openSession();
+		List<Category> categoryList = null;
+		try {
+			categoryList = sqlsession.getMapper(MemberMapper.class).categoryCode();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(sqlsession != null){
+				sqlsession.close();
+			}
+		}
+		return categoryList;
 	}
 	
 }

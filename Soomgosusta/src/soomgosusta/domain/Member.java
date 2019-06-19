@@ -1,6 +1,8 @@
 package soomgosusta.domain;
 
-public class Member {
+import java.io.Serializable;
+
+public class Member implements Serializable{
 	private String member_Id;
 	private String member_Password;
 	private String member_Name;

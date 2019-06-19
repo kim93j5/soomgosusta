@@ -6,12 +6,20 @@
 
 <mapper namespace="soomgosusta.mapper.MemberMapper">
 	<cache />
-	
-	<insert id="registerMember" parameterType="Member">
 
+	<insert id="addMemberInterest" parameterType="Member_Information">
+		insert into member2 values('yena',#{c_Code},#{mi_District})
 	</insert>
 	
-	
+	<select id="categoryCode" resultType="Category">
+		select * from category2
+	</select> 
+	<select id="districtSido" resultType="District">
+		select distinct sido from District
+	</select>
+	<select id="districtList" resultType="District">
+		select sido, sigungu from District where 
+	</select>
 </mapper>
 
 
