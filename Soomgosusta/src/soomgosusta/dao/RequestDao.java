@@ -11,8 +11,6 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import soomgosusta.domain.Answer;
 import soomgosusta.domain.Question;
-import soomgosusta.domain.Request;
-import soomgosusta.mapper.MemberMapper;
 import soomgosusta.mapper.RequestMapper;
 
 public class RequestDao {
@@ -89,24 +87,22 @@ private static RequestDao dao = new RequestDao();
 		return re; 
 	}
 	
-	public int updateRequest(HashMap<String, String> requestMap) throws Exception{
+	public int updateLogRequest(String searchCode) throws Exception{
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1;
 		
 		try {
-			re = sqlSession.getMapper(RequestMapper.class).updateRequest(requestMap);
-			
-			if(re>0) 
+			re=  sqlSession.getMapper(RequestMapper.class).updateLogRequest(searchCode);
+			if(re>0)
 				sqlSession.commit();
-			else 
+			else
 				sqlSession.rollback();
-			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		}finally{
 			sqlSession.close();
 		}
 		
-		return re; 
+		return re;
 	}
 }

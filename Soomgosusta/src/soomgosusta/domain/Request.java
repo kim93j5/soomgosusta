@@ -6,153 +6,223 @@ public class Request implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String member_Id;
-	private String category_Code;
-	private String request_QA_1;
-	private String request_QA_2;
-	private String request_QA_3;
-	private String request_QA_4;
-	private String request_QA_5;
-	private String request_QA_6;
-	private String request_QA_7;
-	private String request_QA_8;
-	private String request_QA_9;
-	private String request_QA_10;
-	private String request_Date;
+	private String request_Member_Id;
+	private String request_c_Code;
+	private String r_Seq;
+	private String r_QA_01;
+	private String r_QA_02;
+	private String r_QA_03;
+	private String r_QA_04;
+	private String r_QA_05;
+	private String r_QA_06;
+	private String r_QA_07;
+	private String r_QA_08;
+	private String r_QA_09;
+	private String r_QA_10;
+	private String r_QA_11;
+	private String r_QA_12;
+	private String r_QA_13;
+	private String r_QA_14;
+	private String r_QA_15;
+	private String r_DateRecord;
+	private String r_Status;
 	
 	public Request() {}
 
-	public Request(String member_Id, String category_Code, String request_QA_1, String request_QA_2,
-			String request_QA_3, String request_QA_4, String request_QA_5, String request_QA_6, String request_QA_7,
-			String request_QA_8, String request_QA_9, String request_QA_10, String request_Date) {
+	public Request(String request_Member_Id, String request_c_Code, String r_Seq, String r_QA_01, String r_QA_02,
+			String r_QA_03, String r_QA_04, String r_QA_05, String r_QA_06, String r_QA_07, String r_QA_08,
+			String r_QA_09, String r_QA_10, String r_QA_11, String r_QA_12, String r_QA_13, String r_QA_14,
+			String r_QA_15, String r_DateRecord, String r_Status) {
 		super();
-		this.member_Id = member_Id;
-		this.category_Code = category_Code;
-		this.request_QA_1 = request_QA_1;
-		this.request_QA_2 = request_QA_2;
-		this.request_QA_3 = request_QA_3;
-		this.request_QA_4 = request_QA_4;
-		this.request_QA_5 = request_QA_5;
-		this.request_QA_6 = request_QA_6;
-		this.request_QA_7 = request_QA_7;
-		this.request_QA_8 = request_QA_8;
-		this.request_QA_9 = request_QA_9;
-		this.request_QA_10 = request_QA_10;
-		this.request_Date = request_Date;
+		this.request_Member_Id = request_Member_Id;
+		this.request_c_Code = request_c_Code;
+		this.r_Seq = r_Seq;
+		this.r_QA_01 = r_QA_01;
+		this.r_QA_02 = r_QA_02;
+		this.r_QA_03 = r_QA_03;
+		this.r_QA_04 = r_QA_04;
+		this.r_QA_05 = r_QA_05;
+		this.r_QA_06 = r_QA_06;
+		this.r_QA_07 = r_QA_07;
+		this.r_QA_08 = r_QA_08;
+		this.r_QA_09 = r_QA_09;
+		this.r_QA_10 = r_QA_10;
+		this.r_QA_11 = r_QA_11;
+		this.r_QA_12 = r_QA_12;
+		this.r_QA_13 = r_QA_13;
+		this.r_QA_14 = r_QA_14;
+		this.r_QA_15 = r_QA_15;
+		this.r_DateRecord = r_DateRecord;
+		this.r_Status = r_Status;
 	}
 
-	public String getMember_Id() {
-		return member_Id;
+	public String getRequest_Member_Id() {
+		return request_Member_Id;
 	}
 
-	public void setMember_Id(String member_Id) {
-		this.member_Id = member_Id;
+	public void setRequest_Member_Id(String request_Member_Id) {
+		this.request_Member_Id = request_Member_Id;
 	}
 
-	public String getCategory_Code() {
-		return category_Code;
+	public String getRequest_c_Code() {
+		return request_c_Code;
 	}
 
-	public void setCategory_Code(String category_Code) {
-		this.category_Code = category_Code;
+	public void setRequest_c_Code(String request_c_Code) {
+		this.request_c_Code = request_c_Code;
 	}
 
-	public String getRequest_QA_1() {
-		return request_QA_1;
+	public String getR_Seq() {
+		return r_Seq;
 	}
 
-	public void setRequest_QA_1(String request_QA_1) {
-		this.request_QA_1 = request_QA_1;
+	public void setR_Seq(String r_Seq) {
+		this.r_Seq = r_Seq;
 	}
 
-	public String getRequest_QA_2() {
-		return request_QA_2;
+	public String getR_QA_01() {
+		return r_QA_01;
 	}
 
-	public void setRequest_QA_2(String request_QA_2) {
-		this.request_QA_2 = request_QA_2;
+	public void setR_QA_01(String r_QA_01) {
+		this.r_QA_01 = r_QA_01;
 	}
 
-	public String getRequest_QA_3() {
-		return request_QA_3;
+	public String getR_QA_02() {
+		return r_QA_02;
 	}
 
-	public void setRequest_QA_3(String request_QA_3) {
-		this.request_QA_3 = request_QA_3;
+	public void setR_QA_02(String r_QA_02) {
+		this.r_QA_02 = r_QA_02;
 	}
 
-	public String getRequest_QA_4() {
-		return request_QA_4;
+	public String getR_QA_03() {
+		return r_QA_03;
 	}
 
-	public void setRequest_QA_4(String request_QA_4) {
-		this.request_QA_4 = request_QA_4;
+	public void setR_QA_03(String r_QA_03) {
+		this.r_QA_03 = r_QA_03;
 	}
 
-	public String getRequest_QA_5() {
-		return request_QA_5;
+	public String getR_QA_04() {
+		return r_QA_04;
 	}
 
-	public void setRequest_QA_5(String request_QA_5) {
-		this.request_QA_5 = request_QA_5;
+	public void setR_QA_04(String r_QA_04) {
+		this.r_QA_04 = r_QA_04;
 	}
 
-	public String getRequest_QA_6() {
-		return request_QA_6;
+	public String getR_QA_05() {
+		return r_QA_05;
 	}
 
-	public void setRequest_QA_6(String request_QA_6) {
-		this.request_QA_6 = request_QA_6;
+	public void setR_QA_05(String r_QA_05) {
+		this.r_QA_05 = r_QA_05;
 	}
 
-	public String getRequest_QA_7() {
-		return request_QA_7;
+	public String getR_QA_06() {
+		return r_QA_06;
 	}
 
-	public void setRequest_QA_7(String request_QA_7) {
-		this.request_QA_7 = request_QA_7;
+	public void setR_QA_06(String r_QA_06) {
+		this.r_QA_06 = r_QA_06;
 	}
 
-	public String getRequest_QA_8() {
-		return request_QA_8;
+	public String getR_QA_07() {
+		return r_QA_07;
 	}
 
-	public void setRequest_QA_8(String request_QA_8) {
-		this.request_QA_8 = request_QA_8;
+	public void setR_QA_07(String r_QA_07) {
+		this.r_QA_07 = r_QA_07;
 	}
 
-	public String getRequest_QA_9() {
-		return request_QA_9;
+	public String getR_QA_08() {
+		return r_QA_08;
 	}
 
-	public void setRequest_QA_9(String request_QA_9) {
-		this.request_QA_9 = request_QA_9;
+	public void setR_QA_08(String r_QA_08) {
+		this.r_QA_08 = r_QA_08;
 	}
 
-	public String getRequest_QA_10() {
-		return request_QA_10;
+	public String getR_QA_09() {
+		return r_QA_09;
 	}
 
-	public void setRequest_QA_10(String request_QA_10) {
-		this.request_QA_10 = request_QA_10;
+	public void setR_QA_09(String r_QA_09) {
+		this.r_QA_09 = r_QA_09;
 	}
 
-	public String getRequest_Date() {
-		return request_Date;
+	public String getR_QA_10() {
+		return r_QA_10;
 	}
 
-	public void setRequest_Date(String request_Date) {
-		this.request_Date = request_Date;
+	public void setR_QA_10(String r_QA_10) {
+		this.r_QA_10 = r_QA_10;
+	}
+
+	public String getR_QA_11() {
+		return r_QA_11;
+	}
+
+	public void setR_QA_11(String r_QA_11) {
+		this.r_QA_11 = r_QA_11;
+	}
+
+	public String getR_QA_12() {
+		return r_QA_12;
+	}
+
+	public void setR_QA_12(String r_QA_12) {
+		this.r_QA_12 = r_QA_12;
+	}
+
+	public String getR_QA_13() {
+		return r_QA_13;
+	}
+
+	public void setR_QA_13(String r_QA_13) {
+		this.r_QA_13 = r_QA_13;
+	}
+
+	public String getR_QA_14() {
+		return r_QA_14;
+	}
+
+	public void setR_QA_14(String r_QA_14) {
+		this.r_QA_14 = r_QA_14;
+	}
+
+	public String getR_QA_15() {
+		return r_QA_15;
+	}
+
+	public void setR_QA_15(String r_QA_15) {
+		this.r_QA_15 = r_QA_15;
+	}
+
+	public String getR_DateRecord() {
+		return r_DateRecord;
+	}
+
+	public void setR_DateRecord(String r_DateRecord) {
+		this.r_DateRecord = r_DateRecord;
+	}
+
+	public String getR_Status() {
+		return r_Status;
+	}
+
+	public void setR_Status(String r_Status) {
+		this.r_Status = r_Status;
 	}
 
 	@Override
 	public String toString() {
-		return "Request [member_Id=" + member_Id + ", category_Code=" + category_Code + ", request_QA_1=" + request_QA_1
-				+ ", request_QA_2=" + request_QA_2 + ", request_QA_3=" + request_QA_3 + ", request_QA_4=" + request_QA_4
-				+ ", request_QA_5=" + request_QA_5 + ", request_QA_6=" + request_QA_6 + ", request_QA_7=" + request_QA_7
-				+ ", request_QA_8=" + request_QA_8 + ", request_QA_9=" + request_QA_9 + ", request_QA_10="
-				+ request_QA_10 + ", request_Date=" + request_Date + "]";
-	}
-
-	
+		return "Request [request_Member_Id=" + request_Member_Id + ", request_c_Code=" + request_c_Code + ", r_Seq="
+				+ r_Seq + ", r_QA_01=" + r_QA_01 + ", r_QA_02=" + r_QA_02 + ", r_QA_03=" + r_QA_03 + ", r_QA_04="
+				+ r_QA_04 + ", r_QA_05=" + r_QA_05 + ", r_QA_06=" + r_QA_06 + ", r_QA_07=" + r_QA_07 + ", r_QA_08="
+				+ r_QA_08 + ", r_QA_09=" + r_QA_09 + ", r_QA_10=" + r_QA_10 + ", r_QA_11=" + r_QA_11 + ", r_QA_12="
+				+ r_QA_12 + ", r_QA_13=" + r_QA_13 + ", r_QA_14=" + r_QA_14 + ", r_QA_15=" + r_QA_15 + ", r_DateRecord="
+				+ r_DateRecord + ", r_Status=" + r_Status + "]";
+	}	
 }

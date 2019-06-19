@@ -10,5 +10,5 @@ public interface RequestMapper {
 	List<Question> listQuestion(HashMap<String, String> map);
 	List<Answer> listAnswer(String question_Code);
 	int insertRequest(HashMap<String, String> requestMap);
-	int updateRequest(HashMap<String, String> requestMap);
+	int updateLogRequest(String searchCode);
 }

@@ -14,7 +14,7 @@ $('document').ready(function() {
 	$("#searchKey").autocomplete({
 		source: key
 	});
-
+});
 	
 	
 	
@@ -63,4 +63,3 @@ $('document').ready(function() {
 			}
 		});
 	});*/
-});

@@ -9,12 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import soomgosusta.dao.RequestDao;
 import soomgosusta.domain.Answer;
 import soomgosusta.domain.Question;
-import soomgosusta.domain.Request;
 
 public class RequestService {
 	private static RequestService service = new RequestService();
 	private static RequestDao dao;
-    HashMap<String, String> requestMap = new HashMap<String, String>();
+    HashMap<String, String> requestMap = null;
 
     
 	public static RequestService getInstance() {
@@ -43,7 +42,7 @@ public class RequestService {
 		List<Answer> answerList = new ArrayList<Answer>();
 		
 		for(int i=0; i<q_List.size(); i++){
-			list = dao.listAnswer(q_List.get(i).getQuestion_Code());
+			list = dao.listAnswer(q_List.get(i).getQ_Code());
 			
 			for(int j=0; j<list.size(); j++){
 				answerList.add(list.get(j));
@@ -55,28 +54,30 @@ public class RequestService {
 	
 	public int insertRequestService(String member_Id, String searchCode, String requestQnA) throws Exception{
         String[] qna = requestQnA.split(",");
+  		requestMap = new HashMap<String, String>();
+        String col = "";
   		
         requestMap.put("member_Id", member_Id);
         requestMap.put("searchCode", searchCode);
-        
-		for(int i=0; i < qna.length; i++){
-			String col = "request_QA_"+ (i+1);
+                
+     	for(int i=0; i < qna.length; i++){
+			col= "r_qa_" + (i+1);
 			qna[i] = qna[i].substring(0, qna[i].length()-1);
-
 			requestMap.put(col, qna[i]);
-/*			
-			System.out.println(qna[i]);*/
 		}
-		for(int i=qna.length+1; i <=10; i++){ //////////15로 바꿔야함!!!
-			String col = "request_QA_"+ i;
-			requestMap.put(col, null);
-		}
-        
+     	
+        if(qna.length < 15){
+        	for(int i=qna.length; i < 15; i++){
+        		col = "r_qa_" + (i+1);
+        		requestMap.put(col, "null");
+        	}
+        }
+        		
 		return dao.insertRequest(requestMap);
 	}
-	
-	public int updateRequestService() throws Exception{
-        
-		return dao.updateRequest(requestMap);
+
+	public int updateLogRequestService(String searchCode) throws Exception{
+		
+		return dao.updateLogRequest(searchCode);
 	}
 }

@@ -44,7 +44,6 @@ public class loginFilter implements Filter {
 			response2.sendRedirect("login.jsp");
 			request.setAttribute("id", m_id);
 
-					
 			response2.sendRedirect("expertLogin.jsp"); 			
 			request.setAttribute("id", e_id);
 

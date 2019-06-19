@@ -7,19 +7,21 @@
 <mapper namespace="soomgosusta.mapper.CategoryMapper">
 	<cache />
 	
-	<select id = "listPopular" resultType="Category">
-	<!-- 확정아님! -->
-	select c.category_code, c.category_group, c.category_image
+ 	<select id = "listSearch" resultType="Category">
+	select c.c_code, c.c_word, c.c_image
 	from category c, category_log cl
-	where c.category_code = cl.category_code
-	order by cl.clog_search desc
+	where c.c_code = cl.log_c_code
+	order by cl.cl_search desc
 	</select>
-
-<!-- 	<select id = "listCategory" resultType="Category">
-	select * from category
-	</select> -->
+  
+ 	<select id = "listCategory" resultType="Category">
+ 	select c.c_code, c.c_word, c.c_image
+	from category c, category_log cl
+	where c.c_code = cl.log_c_code
+	order by c.c_word
+	</select>
 	
 	<update id="updateSearchLog" parameterType="String">
-		update category_log set clog_search = clog_search+1 where category_code = #{searchCode}
+		update category_log set cl_search = cl_search+1 where log_c_code = #{searchCode}
 	</update>
 </mapper>

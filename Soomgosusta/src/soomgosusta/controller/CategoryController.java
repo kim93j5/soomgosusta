@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import soomgosusta.action_categoryAction.CategoryInfoAction;
 import soomgosusta.action_categoryAction.MainAction;
 import soomgosusta.action_categoryAction.SearchAction;
 import soomgosusta.action_interface.Action;
@@ -16,7 +17,7 @@ import soomgosusta.action_interface.ActionForward;
 
 
 
-@WebServlet({"/main.do","/search.do"})
+@WebServlet({"/main.do","/search.do", "/categoryInfo.do"})
 
 public class CategoryController extends HttpServlet {
 private static final long serialVersionUID = 1L;
@@ -50,11 +51,16 @@ private static final long serialVersionUID = 1L;
     			e.printStackTrace();
     		}
     	}
-    	
-    	
-    	
-    	
-    	
+    	else if(command.equals("categoryInfo.do")){
+    		action = new CategoryInfoAction();
+    		
+    		try{
+    			forward = action.excute(request, response);
+    		}catch(Exception e){
+    			e.printStackTrace();
+    		}
+    	}
+        	
     	if(forward != null){
         	if(forward.isRedirect() == true){
         		response.sendRedirect(forward.getPath());
