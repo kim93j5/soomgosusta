@@ -17,38 +17,36 @@ public class RequestAction implements Action {
 		
 		String[] q_Code = request.getParameterValues("q_Code");
 		String[] a_Code = request.getParameterValues("a_Code");
+
 		String requestQnA="";
 		String phoneCode = "TEL";
 		String phoneNum = request.getParameter("phoneNum");
 		String member_Id = request.getParameter("m_id");
 		String searchCode = request.getParameter("searchCode");
-/*		System.out.println("q_Code");
-		for(int i =0; i<q_Code.length;i++){
-			System.out.println(q_Code[i]);
-		}
-		
-		System.out.println("a_Code");
-		for(int i=0; i <a_Code.length; i++){
-			System.out.println(a_Code[i]);
-		}*/
+		String sido = request.getParameter("sido");
+		String gugun = request.getParameter("gugun");
 		
 		for(int i=0; i<q_Code.length;i++){
 			requestQnA += q_Code[i] + "/";
 			
 			for(int j=0; j<a_Code.length; j++){
-				if(q_Code[i].substring(0, 3).equals(a_Code[j].substring(0, 3))){
+				if(q_Code[i].equals(a_Code[j].substring(0, a_Code[j].indexOf('A')-1))){
 					requestQnA += a_Code[j] += "/";
 				}
 			}
-		
 			requestQnA += ",";
 		} //질문, 답 구분
 		
-		requestQnA += phoneCode + "/" + phoneNum + "/";
+		requestQnA += phoneCode + "/" + phoneNum + "/,"; //핸드폰번호
+		requestQnA += sido + "/" + gugun + "/,"; //선호지역
 
 		service.insertRequestService(member_Id, searchCode, requestQnA);
-		service.updateRequestService();
-		return null;
+		service.updateLogRequestService(searchCode);
+		
+		forward.setRedirect(true);
+		forward.setPath("main.do");
+		
+		return forward;
 	}
 
 }

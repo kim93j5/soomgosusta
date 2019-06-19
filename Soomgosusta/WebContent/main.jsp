@@ -17,10 +17,13 @@
 <title>Main Page</title>
 </head>
 <body>
-	<!-- ///////////////배너/////////////// -->
 	<ul>
 
-		<li> ${id}님 환영합니다. ${login_state} </li>
+		<c:if test="${id != null }">
+			<li> ${id}님 환영합니다.  ${login_state} </li>		
+		</c:if>
+
+
 		<li><a href = "memberRegisterForm.do">회원가입</a></li>
 		<li>
 			<div class="select">
@@ -32,8 +35,11 @@
     			<a id="loginteg"></a>
 			</div>
 		</li>		
+		<li><a href = "">고수찾기</a></li>
 		<li><a href = "logout.do">로그아웃</a>
 	</ul>
+	
+	<!-- ///////////////배너/////////////// -->
 	
 	<!-- ///////////////분야 검색창/////////////// -->
 	<div>
@@ -44,18 +50,11 @@
 		</form>
 	</div>
 
- 	<!-- 임의 출력부분 (지워야함) -->
-	<c:forEach var="listPopular" items="${listPopular}">
-		<div>${listPopular.code }
-		${listPopular.group3 }
-		${listPopular.image }</div>
-	</c:forEach>
-	
 	<br>
 	<!-- ///////////////대분류/////////////// -->
 	<div>
-		<a href = "#">레슨</a>
-		<a href = "#">서비스</a>
+		<a id = "lessonList" href = "categoryInfo.do?code=L" target="blank">레슨</a>
+		<a id = "ServiceList" href = "">서비스</a>
 	</div>
 	<br>
 
@@ -99,7 +98,7 @@
 	<div id="superExpert">
 	
 	</div>
-
-
+	
+	<footer></footer>
 </body>
 </html>

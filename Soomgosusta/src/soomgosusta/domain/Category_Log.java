@@ -1,77 +1,82 @@
 package soomgosusta.domain;
 
-public class Category_Log {
-	private String clog_Code;
-	private int clog_Employ;
-	private int clog_Matching;
-	private int clog_Request;
-	private int clog_Search;
-	private int clog_ExpertRegister;
+import java.io.Serializable;
+
+public class Category_Log implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	private String log_c_Code;
+	private int cl_Search;
+	private int cl_Match;
+	private int cl_Request;
+	private int cl_Employment;
+	private int cl_Register;
 	
 	public Category_Log() {}
 
-	
-	
-	public Category_Log(String clog_Code, int clog_Employ, int clog_Matching, int clog_Request, int clog_Search,
-			int clog_ExpertRegister) {
+	public Category_Log(String log_c_Code, int cl_Search, int cl_Match, int cl_Request, int cl_Employment,
+			int cl_Register) {
 		super();
-		this.clog_Code = clog_Code;
-		this.clog_Employ = clog_Employ;
-		this.clog_Matching = clog_Matching;
-		this.clog_Request = clog_Request;
-		this.clog_Search = clog_Search;
-		this.clog_ExpertRegister = clog_ExpertRegister;
+		this.log_c_Code = log_c_Code;
+		this.cl_Search = cl_Search;
+		this.cl_Match = cl_Match;
+		this.cl_Request = cl_Request;
+		this.cl_Employment = cl_Employment;
+		this.cl_Register = cl_Register;
 	}
 
-
-
-	public String getClog_Code() {
-		return clog_Code;
+	public String getLog_c_Code() {
+		return log_c_Code;
 	}
 
-	public void setClog_Code(String clog_Code) {
-		this.clog_Code = clog_Code;
+	public void setLog_c_Code(String log_c_Code) {
+		this.log_c_Code = log_c_Code;
 	}
 
-	public int getClog_Employ() {
-		return clog_Employ;
+	public int getCl_Search() {
+		return cl_Search;
 	}
 
-	public void setClog_Employ(int clog_Employ) {
-		this.clog_Employ = clog_Employ;
+	public void setCl_Search(int cl_Search) {
+		this.cl_Search = cl_Search;
 	}
 
-	public int getClog_Matching() {
-		return clog_Matching;
+	public int getCl_Match() {
+		return cl_Match;
 	}
 
-	public void setClog_Matching(int clog_Matching) {
-		this.clog_Matching = clog_Matching;
+	public void setCl_Match(int cl_Match) {
+		this.cl_Match = cl_Match;
 	}
 
-	public int getClog_Request() {
-		return clog_Request;
+	public int getCl_Request() {
+		return cl_Request;
 	}
 
-	public void setClog_Request(int clog_Request) {
-		this.clog_Request = clog_Request;
+	public void setCl_Request(int cl_Request) {
+		this.cl_Request = cl_Request;
 	}
 
-	public int getClog_Search() {
-		return clog_Search;
+	public int getCl_Employment() {
+		return cl_Employment;
 	}
 
-	public void setClog_Search(int clog_Search) {
-		this.clog_Search = clog_Search;
+	public void setCl_Employment(int cl_Employment) {
+		this.cl_Employment = cl_Employment;
 	}
 
-	public int getClog_ExpertRegister() {
-		return clog_ExpertRegister;
+	public int getCl_Register() {
+		return cl_Register;
 	}
 
-	public void setClog_ExpertRegister(int clog_ExpertRegister) {
-		this.clog_ExpertRegister = clog_ExpertRegister;
+	public void setCl_Register(int cl_Register) {
+		this.cl_Register = cl_Register;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Category_Log [log_c_Code=" + log_c_Code + ", cl_Search=" + cl_Search + ", cl_Match=" + cl_Match
+				+ ", cl_Request=" + cl_Request + ", cl_Employment=" + cl_Employment + ", cl_Register=" + cl_Register
+				+ "]";
 	}
+}

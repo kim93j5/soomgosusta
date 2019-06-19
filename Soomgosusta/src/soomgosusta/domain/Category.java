@@ -4,48 +4,46 @@ import java.io.Serializable;
 
 public class Category implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private String category_Code;
-	private String category_Group;
-	private String category_Image;
+	private String c_Code;
+	private String c_Word;
+	private String c_Image;
 	
-	public Category() {}
-
-	public Category(String category_Code, String category_Group, String category_Image) {
+	public Category(){}
+	
+	public Category(String c_Code, String c_Word, String c_Image) {
 		super();
-		this.category_Code = category_Code;
-		this.category_Group = category_Group;
-		this.category_Image = category_Image;
+		this.c_Code = c_Code;
+		this.c_Word = c_Word;
+		this.c_Image = c_Image;
 	}
 
-	public String getCategory_Code() {
-		return category_Code;
+	public String getC_Code() {
+		return c_Code;
 	}
 
-	public void setCategory_Code(String category_Code) {
-		this.category_Code = category_Code;
+	public void setC_Code(String c_Code) {
+		this.c_Code = c_Code;
 	}
 
-	public String getCategory_Group() {
-		return category_Group;
+	public String getC_Word() {
+		return c_Word;
 	}
 
-	public void setCategory_Group(String category_Group) {
-		this.category_Group = category_Group;
+	public void setC_Word(String c_Word) {
+		this.c_Word = c_Word;
 	}
 
-	public String getCategory_Image() {
-		return category_Image;
+	public String getC_Image() {
+		return c_Image;
 	}
 
-	public void setCategory_Image(String category_Image) {
-		this.category_Image = category_Image;
+	public void setC_Image(String c_Image) {
+		this.c_Image = c_Image;
 	}
 
 	@Override
 	public String toString() {
-		return "Category [category_Code=" + category_Code + ", category_Group=" + category_Group + ", category_Image="
-				+ category_Image + "]";
+		return "Category [c_Code=" + c_Code + ", c_Word=" + c_Word + ", c_Image=" + c_Image + "]";
 	}
-
-	
+		
 }
