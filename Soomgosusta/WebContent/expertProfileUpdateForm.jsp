@@ -12,7 +12,7 @@
 <form>
 	<h5>한 줄 소개</h5>
 
-	<cite>aaaaaaaaaaaaaaa 나랏말쌈이 aaaaaaaaaaaaa</cite>
+	<cite> 나랏말쌈이</cite>
 
 	
 	
