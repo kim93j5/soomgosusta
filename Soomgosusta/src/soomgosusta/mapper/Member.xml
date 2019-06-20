@@ -13,6 +13,10 @@
 	insert into member values(#{member_Id}, #{m_Password}, #{m_Name},
 	#{m_Pnum},#{m_Gender}, #{m_Age}, 'member' , #{m_Photo})
 	</insert>
+	
+	<insert id="addMemberInterest" parameterType="Member_Information">
+		insert into member2 values('yena',#{c_Code},#{mi_District})
+	</insert>
 
 		
 	<select id="login" parameterType="String" resultType="Member">
@@ -21,6 +25,18 @@
 	where member_id = #{id}
 	</select>
 	
+	
+	<select id="categoryCode" resultType="Category">
+		select * from category2
+	</select> 
+	
+	<select id="districtSido" resultType="District">
+		select distinct sido from District
+	</select>
+	
+	<select id="districtList" resultType="District">
+		select sido, sigungu from District where 
+	</select>
 </mapper>
 
 
