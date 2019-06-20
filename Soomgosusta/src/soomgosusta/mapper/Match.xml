@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="soomgosusta.mapper.MatchMapper">
+	<cache />
+	
+	<select id="matchCandidateList" parameterType="String" resultType="Expert_Information">
+		select * from Expert_Information2 where c_Code = #{c_Code}
+	</select>
+	
+	<select id="MemberRequest" resultType="Request">
+		select * from request2 where request_Member_Id ='yena'
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

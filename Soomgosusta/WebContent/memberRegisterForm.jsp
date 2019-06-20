@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 		<form action="memberRegisterAction.do" method="post">
 		아이디	<input type="text" name="member_Id"> <br>
 		비밀번호	<input type="text" name="member_Password">	<br>
@@ -19,5 +20,8 @@
 			
 			<input type="submit" value="가입">
 		</form>
+=======
+
+>>>>>>> branch 'kwon0316' of https://github.com/kim93j5/soomgosusta.git
 </body>
 </html>

@@ -11,6 +11,12 @@
 		<typeAlias type="soomgosusta.domain.Question" alias="Question"/>
 		<typeAlias type="soomgosusta.domain.Answer" alias="Answer"/>
 		<typeAlias type="soomgosusta.domain.Expert" alias="Expert"/>
+		<typeAlias type="soomgosusta.domain.Member_Information" alias="Member_Information"/>
+		<typeAlias type="soomgosusta.domain.Category" alias="Category"/>
+		<typeAlias type="soomgosusta.domain.District" alias="District"/>
+		<typeAlias type="soomgosusta.domain.Expert_Information" alias="Expert_Information"/>
+		<typeAlias type="soomgosusta.domain.Match" alias="Match"/>
+		<typeAlias type="soomgosusta.domain.Request" alias="Request"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -27,6 +33,7 @@
 		<mapper resource="soomgosusta/mapper/Category.xml"/>
 		<mapper resource="soomgosusta/mapper/Request.xml"/>
 		<mapper resource="soomgosusta/mapper/Expert.xml"/>
+		<mapper resource="soomgosusta/mapper/Match.xml"/>
 	</mappers>
 	
 </configuration>
