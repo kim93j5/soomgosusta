@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import soomgosusta.dao.MemberDao;
 import soomgosusta.domain.Member;
 import soomgosusta.domain.Category;
-import soomgosusta.domain.Member;
 import soomgosusta.domain.Member_Information;
 
 public class MemberService {

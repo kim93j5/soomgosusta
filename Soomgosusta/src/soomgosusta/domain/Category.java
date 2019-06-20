@@ -46,5 +46,5 @@ public class Category implements Serializable{
 	public String toString() {
 		return "Category [c_Code=" + c_Code + ", c_Word=" + c_Word + ", c_Image=" + c_Image + "]";
 	}
-		
+
 }

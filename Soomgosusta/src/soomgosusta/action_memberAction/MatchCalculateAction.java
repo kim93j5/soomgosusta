@@ -16,7 +16,7 @@ import soomgosusta.service.MatchService;
 
 public class MatchCalculateAction implements Action {
 
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		MatchService service = MatchService.getInstance();
 		
 		Request requestedMember = service.requestMemberService(request);

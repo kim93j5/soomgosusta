@@ -75,21 +75,21 @@ public class MemberController extends HttpServlet {
     	}else if(command.equals("memberAddInfo.do")){
 			action = new MemeberAddInfoActionForm();
 			try {
-				forward = action.execute(request, response);
+				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("memberAddInfoAction.do")){
 				action = new MemeberAddInfoAction();
 			try {
-				forward = action.execute(request, response);
+				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("matchAction.do")){
 			action = new MatchCalculateAction();
 		try {
-			forward = action.execute(request, response);
+			forward = action.excute(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
