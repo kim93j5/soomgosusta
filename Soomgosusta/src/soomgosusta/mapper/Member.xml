@@ -4,12 +4,22 @@
 
 
 
+
+
 <mapper namespace="soomgosusta.mapper.MemberMapper">
 	<cache />
+<<<<<<< HEAD
 
 	<insert id="addMemberInterest" parameterType="Member_Information">
 		insert into member2 values('yena',#{c_Code},#{mi_District})
+=======
+	
+	<insert id="registerMember" parameterType="Member">
+	insert into member values(#{member_Id}, #{m_Password}, #{m_Name},
+	#{m_Pnum},#{m_Gender}, #{m_Age}, 'member' , #{m_Photo})
+>>>>>>> branch 'master' of https://github.com/kim93j5/soomgosusta.git
 	</insert>
+<<<<<<< HEAD
 	
 	<select id="categoryCode" resultType="Category">
 		select * from category2
@@ -20,6 +30,16 @@
 	<select id="districtList" resultType="District">
 		select sido, sigungu from District where 
 	</select>
+=======
+
+		
+	<select id="login" parameterType="String" resultType="Member">
+	select *
+	FROM member
+	where member_id = #{id}
+	</select>
+	
+>>>>>>> branch 'master' of https://github.com/kim93j5/soomgosusta.git
 </mapper>
 
 

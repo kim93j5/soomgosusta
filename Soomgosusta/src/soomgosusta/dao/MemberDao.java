@@ -40,7 +40,12 @@ public class MemberDao {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		
 		try {
+<<<<<<< HEAD
 			re = sqlSession.getMapper(MemberMapper.class).addMemberInterest(member_information);
+=======
+			re = sqlSession.getMapper(MemberMapper.class).registerMember(member);
+			
+>>>>>>> branch 'master' of https://github.com/kim93j5/soomgosusta.git
 		if(re>0) {
 				sqlSession.commit();
 			}else {
@@ -69,6 +74,24 @@ public class MemberDao {
 			}
 		}
 		return categoryList;
+	}
+	
+	public Member login(String id) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		System.out.println("dao "+ id);
+		
+		
+		Member member = null;
+		
+		try {
+			member = (Member)sqlSession.getMapper(MemberMapper.class).login(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return member;
 	}
 	
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="soomgosusta.mapper.CategoryMapper">
+	<cache />
+	
+ 	<select id = "listSearch" resultType="Category">
+	select c.c_code, c.c_word, c.c_image
+	from category c, category_log cl
+	where c.c_code = cl.log_c_code
+	order by cl.cl_search desc
+	</select>
+  
+ 	<select id = "listCategory" resultType="Category">
+ 	select c.c_code, c.c_word, c.c_image
+	from category c, category_log cl
+	where c.c_code = cl.log_c_code
+	order by c.c_word
+	</select>
+	
+	<update id="updateSearchLog" parameterType="String">
+		update category_log set cl_search = cl_search+1 where log_c_code = #{searchCode}
+	</update>
+</mapper>
