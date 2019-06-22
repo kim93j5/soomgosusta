@@ -36,6 +36,12 @@
 		AND request_c_code = #{c_Code}
 		AND r_status = 'ing'
 	</select>
-</mapper>
 
+	
+	<select id="sendRequestInfo" resultType="Request">		
+		 select * from request where request_member_id = 'kyungmi' 
+	</select>
+	
+	
+</mapper>
 

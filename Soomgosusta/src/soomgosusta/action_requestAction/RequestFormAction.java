@@ -14,6 +14,8 @@ import soomgosusta.service.RequestService;
 
 public class RequestFormAction implements Action {
 
+		
+
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		

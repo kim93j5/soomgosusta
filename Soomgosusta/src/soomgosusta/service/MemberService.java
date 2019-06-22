@@ -1,19 +1,29 @@
 package soomgosusta.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import soomgosusta.dao.MemberDao;
+import soomgosusta.domain.Category;
 import soomgosusta.domain.Member;
-
+import soomgosusta.dao.MemberMainDao;
+import soomgosusta.domain.Member_Information;
 
 public class MemberService {
 	private static MemberService service = new MemberService();
-	private static MemberDao dao;
+	private static MemberMainDao dao;
 	
 	public static MemberService getInstance() {
-		dao= MemberDao.getInstance();
+		dao= MemberMainDao.getInstance();
 		return service;
 	}
+	
+	public Member_Information recommendInfoService(HttpServletRequest request)throws Exception{
+		  request.setCharacterEncoding("utf-8");
+		    
+	return dao.recommendInfo();
+	  }	
 	
 	public int memberRegisterService(HttpServletRequest request)throws Exception{
 		
@@ -30,7 +40,6 @@ public class MemberService {
 		member.setM_Photo(" ");						//
 		
 		
-		System.out.println("test"+member);
 		
 		return dao.registerMember(member);
 	}
@@ -52,6 +61,38 @@ public class MemberService {
 		System.out.println("service�� member"+member);
 		return member;
 	}
+	public List<Category> categoryListService(HttpServletRequest request) throws Exception{
+		
+		return dao.categoryCode();
+	}
+	public Member memberMyPageService(HttpServletRequest request) throws Exception{
+		return dao.memberMypage(null);
+	}
+	public int memberImageUpdate(Member member) throws Exception{
+		return dao.memberImageUpdate(member);
+	}
+
+	public void memberPwUpdate(Member memberMyInfo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/*
+	 * public void memberPwUpdate(Member memberMyInfo) { int
+	 * memberImageUpdate(Member member) throws Exception{ return
+	 * dao.memberImageUpdate(member); } public int memberNameUpdate(Member member)
+	 * throws Exception{ return dao.memberNameUpdate(member); } public int
+	 * memberPwUpdate(Member member) throws Exception{ return
+	 * dao.memberPwUpdate(member); } public int memberPnumUpdate(Member member)
+	 * throws Exception{ return dao.memberPnumUpdate(member); } }
+	 */
+
+
+
+
+     public int addMemberInterestService(Member_Information member_information) throws Exception{
 	
+    	 return dao.addMemberInterest(member_information);
 	
+     }
 }

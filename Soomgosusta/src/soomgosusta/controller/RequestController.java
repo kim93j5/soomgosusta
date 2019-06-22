@@ -13,9 +13,10 @@ import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 import soomgosusta.action_requestAction.RequestAction;
 import soomgosusta.action_requestAction.RequestFormAction;
+import soomgosusta.action_requestAction.SendRequestAction;
 
 
-@WebServlet({"/requestForm.do","/request.do"})
+@WebServlet({"/requestForm.do","/request.do", "/requestInfoForm.do"})
 public class RequestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -51,6 +52,14 @@ public class RequestController extends HttpServlet {
 				e.printStackTrace();
 			}
     	}
+    	else if (command.equals("requestInfoForm.do")) {
+             action = new SendRequestAction();
+             try {
+                forward = action.excute(request, response);
+             } catch (Exception e) {
+                e.printStackTrace();
+             }   
+          }
 
     	
     	

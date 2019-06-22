@@ -17,25 +17,8 @@
 <title>Main Page</title>
 </head>
 <body>
-	<%-- 	<ul>
-		<c:if test="${id != null }">
-			<li> ${id}님 환영합니다. ${login_state} </li>
-		</c:if>
-		<li><a href = "memberRegisterForm.do">회원가입</a></li>
-		<li>
-			<div class="select">
-    			<select	name="" id="loginState">
-    				<option value="member">회원</option>
-    				<option value="expert">고수</option>
-    			</select>
-    			<a id="login" href = "loginAction.do">로그인</a>
-    			<a id="loginteg"></a>
-			</div>
-		</li>		
-		<li><a href = "findExpertForm.do">고수찾기</a></li>
-		<li><a href = "logout.do">로그아웃</a>
-	</ul>
- --%>
+	<c:set var='expert' value="${expert}" scope="request"/>
+	<c:set var='member' value="${member}" scope="request"/>
 
 	<!-- ///////////////배너/////////////// -->
 	<nav>
@@ -61,6 +44,11 @@
 						<li><span>${id} 고객님</span></li>
 						<li><a href = "logout.do"><span>로그아웃</span></a>
 					</ul>
+				<form action="expertProfile.do?expert_Id=${expert.expert_Id}" method="get">
+					<input type="hidden" name="expert_Id" value="${expert.expert_Id}"/>
+					<input type="submit" value="프로필수정"/>
+				</form>	
+					
 				</div>
 			</c:when>
 			<c:when test="${id != null && login_state == 'expert' }">
@@ -96,11 +84,17 @@
 				</div>
 				<div class="right_">
 					<ul>
-						<li><a href="memberRegisterForm.do"> <span>회원가입</span>
-						</a></li>
-						<li><a href="login.jsp"> <span>회원 로그인</span>
-						</a> <a href="expertLogin.jsp"> <span>고수 로그인</span>
-						</a></li>
+						<li><a href = "memberRegisterForm.do">회원가입</a></li>
+						<li>
+							<div class="select">
+    						<select	name="" id="loginState">
+    							<option value="member">회원</option>
+    							<option value="expert">고수</option>
+    						</select>
+    						<a id="login" href = "loginAction.do">로그인</a>
+    						<a id="loginteg"></a>
+							</div>
+						</li>		
 					</ul>
 				</div>
 			</c:otherwise>
@@ -162,6 +156,10 @@
 	</div>
 
 	<h3>슈퍼고수</h3>
+	<div id="superExpert">
+	
+	</div>
+		<footer></footer>
 	<div id="superExpert"></div>
 </body>
 </html>

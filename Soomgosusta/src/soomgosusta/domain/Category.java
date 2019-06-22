@@ -2,6 +2,7 @@ package soomgosusta.domain;
 
 import java.io.Serializable;
 
+
 public class Category implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String c_Code;
@@ -45,5 +46,5 @@ public class Category implements Serializable{
 	public String toString() {
 		return "Category [c_Code=" + c_Code + ", c_Word=" + c_Word + ", c_Image=" + c_Image + "]";
 	}
-		
+
 }

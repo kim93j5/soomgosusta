@@ -12,5 +12,6 @@ public interface RequestMapper {
 	List<Answer> listAnswer(String question_Code);
 	int insertRequest(HashMap<String, String> requestMap);
 	int updateLogRequest(String searchCode);
-	List<Request> listAlreadySend(HashMap<String, String> map);
+	List<Request> listAlreadySend(HashMap<String, String> map);   
+	Request sendRequestInfo();
 }

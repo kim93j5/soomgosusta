@@ -16,7 +16,7 @@ public class Expert implements Serializable {
 	private int e_Age;
 	private String e_Divide;
 	private String e_Photo;
-	
+	private Expert_Profile profile;
 	public Expert() {}
 
 	
@@ -31,6 +31,16 @@ public class Expert implements Serializable {
 		this.e_Age = e_Age;
 		this.e_Divide = e_Divide;
 		this.e_Photo = e_Photo;
+	}
+
+
+	public Expert_Profile getProfile() {
+		return profile;
+	}
+
+
+	public void setProfile(Expert_Profile profile) {
+		this.profile = profile;
 	}
 
 

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 		<form action="memberRegisterAction.do" method="post">
 		아이디	<input type="text" name="member_Id"> <br>
 		비밀번호	<input type="text" name="member_Password">	<br>
@@ -19,5 +20,7 @@
 			
 			<input type="submit" value="가입">
 		</form>
+
+
 </body>
 </html>
