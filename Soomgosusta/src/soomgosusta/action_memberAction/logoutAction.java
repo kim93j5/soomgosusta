@@ -3,7 +3,6 @@ package soomgosusta.action_memberAction;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;

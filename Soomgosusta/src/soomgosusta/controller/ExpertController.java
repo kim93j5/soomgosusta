@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import soomgosusta.action_expertAction.expertDetailProfileAction;
 import soomgosusta.action_expertAction.expertLoginAction;
-import soomgosusta.action_expertAction.expertProfileAction;
 import soomgosusta.action_expertAction.expertRegisterAction;
 import soomgosusta.action_expertAction.expertRegisterFormAction;
 import soomgosusta.action_interface.Action;
