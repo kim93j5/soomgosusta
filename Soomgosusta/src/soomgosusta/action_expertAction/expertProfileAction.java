@@ -14,11 +14,7 @@ public class expertProfileAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
-		ExpertService service = ExpertService.getInstance();
-		Expert_Profile profile= service.profileDetailService(request);
 		
-		request.setAttribute("profile",profile);
-		forward.setRedirect(false);
 		forward.setPath("expertProfile.jsp");
 		return forward;
 	}

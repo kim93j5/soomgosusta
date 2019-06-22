@@ -60,14 +60,14 @@ public class ExpertController extends HttpServlet {
 				e.printStackTrace();
 			} 
     	}else if(command.equals("expertProfile.do")) {
-    		action = new expertProfileAction();
+    		action = new expertDetailProfileAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
     	}else if(command.equals("update")) {
-    		action = new expertDetailProfileAction();
+    		
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
