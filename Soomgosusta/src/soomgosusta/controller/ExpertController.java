@@ -8,10 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import soomgosusta.action_expertAction.ExpertDetailProfileAction;
-import soomgosusta.action_expertAction.ExpertLoginAction;
-import soomgosusta.action_expertAction.ExpertRegisterAction;
-import soomgosusta.action_expertAction.ExpertRegisterFormAction;
+
+import soomgosusta.action_expertAction.expertDetailProfileAction;
+import soomgosusta.action_expertAction.expertLoginAction;
+import soomgosusta.action_expertAction.expertRegisterAction;
+import soomgosusta.action_expertAction.expertRegisterFormAction;
 import soomgosusta.action_expertAction.findExpertAcion;
 import soomgosusta.action_expertAction.findExpertFormAcion;
 import soomgosusta.action_expertAction.ExpertAddInfoAction;
@@ -19,7 +20,7 @@ import soomgosusta.action_expertAction.ExpertAddInfoFormAction;
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 
-@WebServlet(urlPatterns={"/expertRegisterActionForm.do","/expertRegisterAction.do","/expertLogin.do",
+@WebServlet(urlPatterns={"/expertRegisterActionForm.do","/expertRegisterAction.do","/expertLogin.do","/expertLoginAction.do",
 		"/expertProfile.do","/expertDetailProfileAction.do", "/findExpertForm.do", "/findExpert.do","/expertAddInfo.do","/expertAddInfoForm.do"})
 
 public class ExpertController extends HttpServlet {
@@ -41,28 +42,28 @@ public class ExpertController extends HttpServlet {
     	ActionForward forward = null;
     	
     	if(command.equals("expertRegisterActionForm.do")) {
-    		action = new ExpertRegisterFormAction();
+    		action = new expertRegisterFormAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
     	}else if(command.equals("expertRegisterAction.do")) {
-    		action = new ExpertRegisterAction();
+    		action = new expertRegisterAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-    	}else if(command.equals("expertLogin.do")) {
-    		action = new ExpertLoginAction();
+    	}else if(command.equals("expertLoginAction.do")) {
+    		action = new expertLoginAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
     	}else if(command.equals("expertProfile.do")) {
-    		action = new ExpertDetailProfileAction();
+    		action = new expertDetailProfileAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {

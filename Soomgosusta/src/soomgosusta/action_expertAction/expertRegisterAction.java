@@ -7,7 +7,7 @@ import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 import soomgosusta.service.ExpertService;
 
-public class ExpertRegisterAction implements Action {
+public class expertRegisterAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();

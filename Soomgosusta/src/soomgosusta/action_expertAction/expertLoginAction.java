@@ -9,7 +9,7 @@ import soomgosusta.action_interface.ActionForward;
 import soomgosusta.domain.Expert;
 import soomgosusta.service.ExpertService;
 
-public class ExpertLoginAction implements Action {
+public class expertLoginAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
@@ -41,7 +41,7 @@ public class ExpertLoginAction implements Action {
 
 		}else {
 			forward.setRedirect(true);
-			forward.setPath("expertLogin.do");
+			forward.setPath("expertLogin.jsp");
 		}
 		
 				

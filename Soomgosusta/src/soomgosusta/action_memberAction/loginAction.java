@@ -12,7 +12,7 @@ import soomgosusta.action_interface.ActionForward;
 import soomgosusta.domain.Member;
 import soomgosusta.service.MemberService;
 
-public class LoginAction implements Action {
+public class loginAction implements Action {
 
 	
 
@@ -40,11 +40,11 @@ public class LoginAction implements Action {
 			request.setAttribute("member", member);
 			session.setAttribute("id",m_id);
 			session.setAttribute("login_state",divide);
-			forward.setRedirect(true);
-			forward.setPath("main.do");
-		}else {
 			forward.setRedirect(false);
-			forward.setPath("login.jsp");
+			forward.setPath("main.jsp");
+		}else {
+			forward.setRedirect(true);
+			forward.setPath("login.do");
 		}
 				
 				

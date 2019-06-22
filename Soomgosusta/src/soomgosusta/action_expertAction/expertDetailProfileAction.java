@@ -8,8 +8,9 @@ import soomgosusta.action_interface.ActionForward;
 import soomgosusta.domain.Expert;
 import soomgosusta.domain.Expert_Profile;
 import soomgosusta.service.ExpertService;
+import soomgosusta.service.MemberService;
 
-public class ExpertDetailProfileAction implements Action {
+public class expertDetailProfileAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
