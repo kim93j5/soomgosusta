@@ -16,5 +16,4 @@ public class MemberPNumUpdateActionForm implements Action {
 		forward.setPath("/pNumUpdate.jsp");
 		return forward;
 	}
-
 }

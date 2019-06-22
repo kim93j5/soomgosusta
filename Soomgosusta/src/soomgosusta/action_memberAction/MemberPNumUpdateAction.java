@@ -19,5 +19,4 @@ public class MemberPNumUpdateAction implements Action {
 		forward.setPath("/memberMyPage.jsp");
 		return forward;
 	}
-
 }

@@ -41,7 +41,6 @@ public class MemberImageUpdateAction implements Action {
 				ImageUtil.resize(src, dest, 200, ImageUtil.RATIO);
 			}
 		}
-		
 		request.setAttribute("memberMyInfo", memberMyInfo);
 	
 		forward.setRedirect(false);

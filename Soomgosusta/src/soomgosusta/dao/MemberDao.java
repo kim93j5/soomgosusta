@@ -31,8 +31,6 @@ public class MemberDao {
 		}
 		
 		return new SqlSessionFactoryBuilder().build(in);
-
-	
 	}
 	
 	public int addMemberInterest(Member_Information member_information){

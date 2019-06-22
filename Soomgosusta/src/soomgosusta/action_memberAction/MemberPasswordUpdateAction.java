@@ -26,7 +26,6 @@ public class MemberPasswordUpdateAction implements Action {
 				service.memberPwUpdate(memberMyInfo);
 			}
 		}
-		
 		forward.setRedirect(true);
 		forward.setPath("memberMyPage.do");
 		return forward;

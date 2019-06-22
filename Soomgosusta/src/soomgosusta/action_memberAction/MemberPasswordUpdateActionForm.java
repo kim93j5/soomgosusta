@@ -18,5 +18,4 @@ public class MemberPasswordUpdateActionForm implements Action {
 		forward.setPath("/pwUpdate.jsp");
 		return forward;
 	}
-
 }

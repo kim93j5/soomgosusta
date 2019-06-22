@@ -134,7 +134,6 @@ public class MatchCalculateAction implements Action {
 			insertMatch.setMatch_R_Seq(requestedMember.getR_Seq());
 			
 			service.matchTableInsertService(insertMatch);
-			
 		}
 		
 		ActionForward forward = new ActionForward();

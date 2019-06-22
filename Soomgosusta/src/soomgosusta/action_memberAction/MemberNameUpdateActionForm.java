@@ -12,5 +12,4 @@ public class MemberNameUpdateActionForm implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

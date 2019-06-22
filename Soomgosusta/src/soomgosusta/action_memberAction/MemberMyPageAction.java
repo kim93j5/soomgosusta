@@ -41,7 +41,6 @@ public class MemberMyPageAction implements Action {
 				ImageUtil.resize(src, dest, 200, ImageUtil.RATIO);
 			}
 		}	
-		
 		forward.setRedirect(false);
 		forward.setPath("/memberMyPage.jsp");
 		return forward;

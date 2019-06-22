@@ -60,7 +60,6 @@ public class MemberService {
 		System.out.println("service�� member"+member);
 		return member;
 	}
-	
 	public List<Category> categoryListService(HttpServletRequest request) throws Exception{
 		
 		return dao.categoryCode();

@@ -64,5 +64,4 @@ import soomgosusta.service.MemberService;
 	         forward.setPath("/memberAddInfoForm.jsp");
 	         return forward;
 	      }
-
 	}

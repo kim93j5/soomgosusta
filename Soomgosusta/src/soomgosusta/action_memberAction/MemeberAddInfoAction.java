@@ -32,7 +32,7 @@ public class MemeberAddInfoAction implements Action{
          }
          }
       }
-      
+
       String[] district_Sido = request.getParameterValues("sido");
       String[] district_Sigungu = request.getParameterValues("gugun");
       String[] district = new String[3];

@@ -25,7 +25,6 @@ public class ImageUtil {
             if (srcIs != null) try { srcIs.close(); } catch(IOException ex) {}
         }
     }
-
     public static void resize(InputStream src, File dest, 
                               int width, int height) throws IOException {
         BufferedImage srcImg = ImageIO.read(src);

@@ -27,5 +27,4 @@ public class MatchService {
 	public int matchTableInsertService(Match match){
 		return dao.matchTableInsert(match);
 	}
-	
 }
