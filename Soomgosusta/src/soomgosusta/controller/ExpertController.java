@@ -8,10 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import soomgosusta.action_expertAction.expertDetailProfileAction;
-import soomgosusta.action_expertAction.expertLoginAction;
-import soomgosusta.action_expertAction.expertRegisterAction;
-import soomgosusta.action_expertAction.expertRegisterFormAction;
+import soomgosusta.action_expertAction.ExpertDetailProfileAction;
+import soomgosusta.action_expertAction.ExpertLoginAction;
+import soomgosusta.action_expertAction.ExpertRegisterAction;
+import soomgosusta.action_expertAction.ExpertRegisterFormAction;
 import soomgosusta.action_expertAction.findExpertAcion;
 import soomgosusta.action_expertAction.findExpertFormAcion;
 import soomgosusta.action_expertAction.ExpertAddInfoAction;
@@ -41,28 +41,28 @@ public class ExpertController extends HttpServlet {
     	ActionForward forward = null;
     	
     	if(command.equals("expertRegisterActionForm.do")) {
-    		action = new expertRegisterFormAction();
+    		action = new ExpertRegisterFormAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
     	}else if(command.equals("expertRegisterAction.do")) {
-    		action = new expertRegisterAction();
+    		action = new ExpertRegisterAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
     	}else if(command.equals("expertLogin.do")) {
-    		action = new expertLoginAction();
+    		action = new ExpertLoginAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
     	}else if(command.equals("expertProfile.do")) {
-    		action = new expertDetailProfileAction();
+    		action = new ExpertDetailProfileAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {

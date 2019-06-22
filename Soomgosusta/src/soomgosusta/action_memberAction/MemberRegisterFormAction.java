@@ -1,4 +1,4 @@
-package soomgosusta.action_expertAction;
+package soomgosusta.action_memberAction;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,12 +6,14 @@ import javax.servlet.http.HttpServletResponse;
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 
-public class expertProfileAction implements Action {
+public class MemberRegisterFormAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ActionForward forward = new ActionForward();
+
+		ActionForward forward = new ActionForward();		
+		forward.setRedirect(false);
+		forward.setPath("/memberRegisterForm.jsp");
 		
-		forward.setPath("expertProfile.jsp");
 		return forward;
 	}
 

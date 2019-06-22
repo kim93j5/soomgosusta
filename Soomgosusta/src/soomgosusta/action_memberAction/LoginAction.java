@@ -12,7 +12,7 @@ import soomgosusta.action_interface.ActionForward;
 import soomgosusta.domain.Member;
 import soomgosusta.service.MemberService;
 
-public class loginAction implements Action {
+public class LoginAction implements Action {
 
 	
 

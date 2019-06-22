@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
-import soomgosusta.action_memberAction.loginAction;
-import soomgosusta.action_memberAction.logoutAction;
-import soomgosusta.action_memberAction.memberRegisterAction;
-import soomgosusta.action_memberAction.memberRegisterFormAction;
+import soomgosusta.action_memberAction.LoginAction;
+import soomgosusta.action_memberAction.LogoutAction;
+import soomgosusta.action_memberAction.MemberRegisterAction;
+import soomgosusta.action_memberAction.MemberRegisterFormAction;
 import soomgosusta.action_memberAction.MatchCalculateAction;
 import soomgosusta.action_memberAction.MemberImageUpdateAction;
 import soomgosusta.action_memberAction.MemberMyPageAction;
@@ -50,28 +50,28 @@ public class MemberController extends HttpServlet {
     	
     	if(command.equals("memberRegisterForm.do")) {
     		
-    		action = new memberRegisterFormAction();
+    		action = new MemberRegisterFormAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
     	}else if(command.equals("memberRegisterAction.do")) {
-    		action = new memberRegisterAction();
+    		action = new MemberRegisterAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
     	}else if(command.equals("loginAction.do")) {
-    		action = new loginAction();
+    		action = new LoginAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
     	}else if(command.equals("logout.do")) {
-    		action = new logoutAction();
+    		action = new LogoutAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {

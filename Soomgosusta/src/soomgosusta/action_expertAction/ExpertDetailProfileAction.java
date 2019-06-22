@@ -9,7 +9,7 @@ import soomgosusta.domain.Expert;
 import soomgosusta.domain.Expert_Profile;
 import soomgosusta.service.ExpertService;
 
-public class expertDetailProfileAction implements Action {
+public class ExpertDetailProfileAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
