@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 
-public class logoutAction implements Action {
+public class LogoutAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();

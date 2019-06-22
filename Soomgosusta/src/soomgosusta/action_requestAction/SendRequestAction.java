@@ -54,7 +54,7 @@ public class SendRequestAction implements Action {
 	      String nowTime = format.format(time).substring(2,12);
 	      //System.out.println(nowTime);
 	      
-	      String pastTime = requestList.getR_DateRecord();
+	      String pastTime = String.valueOf(requestList.getR_DateRecord());
 	      pastTime = pastTime.replaceAll("[^0-9]", "");
 	      String pastTime1 = pastTime.substring(2, 12);
 	      
