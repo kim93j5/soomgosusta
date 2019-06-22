@@ -50,17 +50,13 @@ public class ExpertService {
 		expert.setE_Password(request.getParameter("password"));
 		
 		String id = (expert.getExpert_Id());
-		System.out.println("service ��" + id);
-		String password = (expert.getE_Password());
-		System.out.println("service ��" + password);
+
 		expert = dao.expertLogin(id);
-		
-		System.out.println("service�� expert"+expert);
 		return expert;
 	}
 	
 	public List<Expert_FindInfo> listExpertFindService(HashMap<String, String> map){
 
-		return dao.listExpertFind2(map);
+		return dao.listExpertFind(map);
 	}
 }

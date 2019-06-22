@@ -15,7 +15,7 @@ import soomgosusta.action_requestAction.RequestAction;
 import soomgosusta.action_requestAction.RequestFormAction;
 
 
-@WebServlet({"/requestFormAction.do","/request.do"})
+@WebServlet({"/requestForm.do","/request.do"})
 public class RequestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,7 +32,7 @@ public class RequestController extends HttpServlet {
     	Action action=null;
     	ActionForward forward = null;
     	
-    	if(command.equals("requestFormAction.do")){
+    	if(command.equals("requestForm.do")){
     		action = new RequestFormAction();
     		
     		try {

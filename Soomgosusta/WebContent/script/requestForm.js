@@ -71,12 +71,5 @@ $('document').ready(function() {
 					});
 				}
 			});
-			
-
-			if($('#telForm').val().length != 0){
-				$('#go').removeAttr("disabled");
-			}else{
-				$('#go').attr("disabled", "disabled");
-			}
-			
+						
 });

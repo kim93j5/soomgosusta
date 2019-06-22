@@ -72,7 +72,7 @@ public class ExpertDao {
 		return expert;
 	}
 
-	public List<Expert_FindInfo> listExpertFind2(HashMap<String, String> map){
+	public List<Expert_FindInfo> listExpertFind(HashMap<String, String> map){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Expert_FindInfo> list = null;
 		

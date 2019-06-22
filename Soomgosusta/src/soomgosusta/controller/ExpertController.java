@@ -17,7 +17,7 @@ import soomgosusta.action_expertAction.findExpertFormAcion;
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 
-@WebServlet(urlPatterns={"/expertRegisterActionForm.do","/expertRegisterAction.do","/expertLoginAction.do", "/findExpertForm.do", "/findExpert.do"})
+@WebServlet(urlPatterns={"/expertRegisterActionForm.do","/expertRegisterAction.do","/expertLogin.do", "/findExpertForm.do", "/findExpert.do"})
 public class ExpertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -51,7 +51,7 @@ public class ExpertController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-    	}else if(command.equals("expertLoginAction.do")) {
+    	}else if(command.equals("expertLogin.do")) {
     		action = new expertLoginAction();
     		try {
 				forward = action.excute(request, response);
