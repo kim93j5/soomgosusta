@@ -1,5 +1,7 @@
 package soomgosusta.action_requestAction;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,6 +29,9 @@ public class RequestAction implements Action {
 		String sido = request.getParameter("sido");
 		String gugun = request.getParameter("gugun");
 		
+		System.out.println(member_Id);
+		HashMap<String, String> req_Info = new HashMap<String, String>();		
+		
 		for(int i=0; i<q_Code.length;i++){
 			requestQnA += q_Code[i] + "/";
 			
@@ -40,12 +45,26 @@ public class RequestAction implements Action {
 		
 		requestQnA += phoneCode + "/" + phoneNum + "/,"; //핸드폰번호
 		requestQnA += sido + "/" + gugun + "/,"; //선호지역
-
-		service.insertRequestService(member_Id, searchCode, requestQnA);
-		service.updateLogRequestService(searchCode);
 		
-		forward.setRedirect(true);
-		forward.setPath("main.do");
+		req_Info.put("m_Id", member_Id);
+		req_Info.put("c_Code", searchCode);
+		
+		System.out.println(req_Info.get("m_Id"));
+		System.out.println(req_Info.get("c_Code"));
+		
+		int size = service.listAlreadySendService(req_Info);
+		
+		if(size == 0){
+			request.setAttribute("req", "notyet");
+			service.insertRequestService(member_Id, searchCode, requestQnA);
+			service.updateLogRequestService(searchCode);
+		}else{
+			request.setAttribute("req", "ing");
+		}
+		
+		
+		forward.setRedirect(false);
+		forward.setPath("requestInfo.jsp");
 		
 		return forward;
 	}

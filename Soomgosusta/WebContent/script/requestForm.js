@@ -70,15 +70,13 @@ $('document').ready(function() {
 						$("#gugun").append(html);
 					});
 				}
-			});			
-			
-			
-			$('#telForm').keyup(function() {
-				$('submit').remove();
-
-				var html = '<input id="submit" type="submit" value="매칭요청">';
-
-				$('#submit_btn').append(html);
 			});
+			
+
+			if($('#telForm').val().length != 0){
+				$('#go').removeAttr("disabled");
+			}else{
+				$('#go').attr("disabled", "disabled");
+			}
 			
 });

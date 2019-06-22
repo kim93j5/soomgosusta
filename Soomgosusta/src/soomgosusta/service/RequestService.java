@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import soomgosusta.dao.RequestDao;
 import soomgosusta.domain.Answer;
 import soomgosusta.domain.Question;
+import soomgosusta.domain.Request;
 
 public class RequestService {
 	private static RequestService service = new RequestService();
@@ -79,5 +80,11 @@ public class RequestService {
 	public int updateLogRequestService(String searchCode) throws Exception{
 		
 		return dao.updateLogRequest(searchCode);
+	}
+	
+	public int listAlreadySendService(HashMap<String, String> map){
+		List<Request> list = dao.listAlreadySend(map);
+		
+		return list.size();
 	}
 }

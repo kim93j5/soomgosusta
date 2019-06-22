@@ -9,6 +9,7 @@ import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 import soomgosusta.domain.Answer;
 import soomgosusta.domain.Question;
+import soomgosusta.service.CategoryService;
 import soomgosusta.service.RequestService;
 
 public class RequestFormAction implements Action {
@@ -19,13 +20,18 @@ public class RequestFormAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		
 		ActionForward forward = new ActionForward();
+		CategoryService c_service = CategoryService.getInstance();
 		RequestService service = RequestService.getInstance();
 		
 		List<Question> listQuestion = null;
 		
 		String searchCode = request.getParameter("searchCode");
+		String searchKey = c_service.searchCategoryService(searchCode);
+		String[] keyGroup = searchKey.split("/");
+		
 		request.setAttribute("searchCode", searchCode);
-				
+		request.setAttribute("searchKey", keyGroup[2]);
+		
 		if (!searchCode.equals("null")) {
 
 			listQuestion = service.listQuestionService(request);

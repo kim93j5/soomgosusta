@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import soomgosusta.domain.Answer;
 import soomgosusta.domain.Question;
+import soomgosusta.domain.Request;
 import soomgosusta.mapper.RequestMapper;
 
 public class RequestDao {
@@ -104,5 +105,21 @@ private static RequestDao dao = new RequestDao();
 		}
 		
 		return re;
+	}
+	
+	public List<Request> listAlreadySend(HashMap<String, String> map){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Request> list = null;
+		
+		try {
+			list = sqlSession.getMapper(RequestMapper.class).listAlreadySend(map);
+			System.out.println(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return list;
 	}
 }

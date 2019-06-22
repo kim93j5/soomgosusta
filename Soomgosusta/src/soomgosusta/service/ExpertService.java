@@ -1,5 +1,8 @@
 package soomgosusta.service;
 
+import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
@@ -7,6 +10,7 @@ import javax.websocket.Session;
 import soomgosusta.dao.ExpertDao;
 import soomgosusta.domain.Expert;
 import soomgosusta.domain.Expert_Profile;
+import soomgosusta.domain.Expert_FindInfo;
 
 
 
@@ -81,10 +85,13 @@ public class ExpertService {
 	System.out.println("@@profile_Expert_Id"+request.getParameter("profile_Expert_Id"));
 	profile.setEp_LineLetter(request.getParameter("ep_LineLetter"));
 	profile.setEp_DetailLetter(request.getParameter("ep_DetailLetter"));
-	profile.setEprofile_Identification(false);
+	profile.setEp_Identification("false");
 	
 		return dao.profileUpdate(profile);
 	}
 	
-	
+	public List<Expert_FindInfo> listExpertFindService(HashMap<String, String> map){
+
+		return dao.listExpertFind2(map);
+	}
 }

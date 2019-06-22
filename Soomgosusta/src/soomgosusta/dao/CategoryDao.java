@@ -67,7 +67,7 @@ public class CategoryDao {
 	}
 	
 	//검색량 추가
-	public 	int updateSearchLog(String searchCode){
+	public int updateSearchLog(String searchCode){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1;
 
@@ -86,4 +86,33 @@ public class CategoryDao {
 		}
 		return re;
 	}
+	
+	public String searchCategory(String searchCode){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		String code="";
+		
+		try {
+			code = sqlSession.getMapper(CategoryMapper.class).searchCategory(searchCode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return code;
+	}
+	
+	public List<Category> searchKey(String searchKey){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Category> list = null;
+		
+		try {
+			list = sqlSession.getMapper(CategoryMapper.class).searchKey(searchKey);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return list;
+	}
+	
 }

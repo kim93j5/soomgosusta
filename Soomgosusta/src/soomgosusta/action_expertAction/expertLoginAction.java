@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 import soomgosusta.domain.Expert;
-import soomgosusta.domain.Member;
 import soomgosusta.service.ExpertService;
 
 public class expertLoginAction implements Action {
@@ -23,10 +22,11 @@ public class expertLoginAction implements Action {
 		
 		System.out.println("action"+ e_id);
 		
+		String divide = expert.getE_Divide();
+		
 		String password = request.getParameter("password");
 		String e_password = expert.getE_Password();
 		
-		String divide = expert.getE_Divide();
 		System.out.println(expert);
 		HttpSession session = request.getSession();
 		
@@ -38,6 +38,7 @@ public class expertLoginAction implements Action {
 			session.setAttribute("login_state", divide);
 			forward.setRedirect(false);
 			forward.setPath("main.jsp");
+
 		}else {
 			forward.setRedirect(true);
 			forward.setPath("expertLogin.do");

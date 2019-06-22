@@ -24,4 +24,15 @@
 	<update id="updateSearchLog" parameterType="String">
 		update category_log set cl_search = cl_search+1 where log_c_code = #{searchCode}
 	</update>
+	
+	<select id="searchCategory" parameterType="String" resultType="String">
+		select c_word
+		from category
+		where c_code = #{searchCode}
+	</select>
+	
+	<select id="searchKey" parameterType="String" resultType="Category">
+		select * from category
+		where c_word LIKE #{searchKey}
+	</select>
 </mapper>

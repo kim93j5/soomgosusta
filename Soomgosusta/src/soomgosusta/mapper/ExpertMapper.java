@@ -1,7 +1,11 @@
 package soomgosusta.mapper;
 
+import java.util.HashMap;
+import java.util.List;
+
 import soomgosusta.domain.Expert;
 import soomgosusta.domain.Expert_Profile;
+import soomgosusta.domain.Expert_FindInfo;
 
 public interface ExpertMapper {
 
@@ -10,5 +14,6 @@ public interface ExpertMapper {
 	int profileUpdate(Expert_Profile profile);
 	Expert_Profile profileDetail(String expert_Id);
 	Expert expertDetail(String expert_Id);
-
+	List<Expert_FindInfo> listExpertFind(HashMap<String, String> map);
+	
 }

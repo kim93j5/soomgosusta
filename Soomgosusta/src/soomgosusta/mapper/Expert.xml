@@ -59,6 +59,26 @@
 		<result column="e_Photo" property="e_Photo"/>
 		<collection property="expert_Profile" resultMap="Expert_Profile"/>
 	</resultMap>
+	
+	<resultMap type="Expert_FindInfo" id="Expert_FindInfo">
+		<result column="expert_id" property="ef_Id"/>
+		<result column="ep_lineletter" property="ef_LineLetter"/>
+		<result column="ei_district" property="ef_District"/>
+		<result column="e_photo" property="ef_Photo"/>
+	</resultMap>
+	
+	<select id="listExpertFind" parameterType="hashmap" resultMap="Expert_FindInfo">
+		SELECT e.expert_id, ep.ep_lineletter, ei.ei_district, e.e_photo, c.c_code
+		from expert e JOIN expert_information ei
+		ON e.expert_id = ei.infor_expert_id
+		JOIN expert_profile ep
+		ON e.expert_id = ep.profile_expert_id
+  		JOIN category c
+  		ON ei.c_code = c.c_code	
+		WHERE c.c_word LIKE #{category}
+		AND ei.ei_district LIKE #{district}
+	</select>
+	
 </mapper>
 
 

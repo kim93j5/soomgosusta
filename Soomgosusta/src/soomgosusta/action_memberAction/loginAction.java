@@ -37,7 +37,7 @@ public class loginAction implements Action {
 		
 		if(id.equals(m_id)&& password.equals(m_password)) 
 		{	
-			
+			request.setAttribute("member", member);
 			session.setAttribute("id",m_id);
 			session.setAttribute("login_state",divide);
 			forward.setRedirect(true);

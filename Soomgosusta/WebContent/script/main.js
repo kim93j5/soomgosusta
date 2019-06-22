@@ -1,6 +1,7 @@
 
 $('document').ready(function(){	
-
+	var key = ["가야금", "거문고", "단소", "외국어", "컨설팅", "논술", "편입", "레슨", "악기", "학업"];
+	
 	$(function(){
 		$('#loginState').click(function() {
 			var state = $("#loginState option:selected").val();
@@ -21,4 +22,8 @@ $('document').ready(function(){
 
 		});
 	})
+	
+	$("#searchKey").autocomplete({
+		source: key
+	});
 });

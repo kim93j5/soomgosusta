@@ -13,10 +13,13 @@ import soomgosusta.action_expertAction.expertDetailProfileAction;
 import soomgosusta.action_expertAction.expertLoginAction;
 import soomgosusta.action_expertAction.expertRegisterAction;
 import soomgosusta.action_expertAction.expertRegisterFormAction;
+import soomgosusta.action_expertAction.findExpertAcion;
+import soomgosusta.action_expertAction.findExpertFormAcion;
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 
-@WebServlet(urlPatterns={"/expertRegisterActionForm.do","/expertRegisterAction.do","/expertLoginAction.do","/expertProfile.do","/expertDetailProfileAction.do"})
+@WebServlet(urlPatterns={"/expertRegisterActionForm.do","/expertRegisterAction.do","/expertLoginAction.do",
+		"/expertProfile.do","/expertDetailProfileAction.do", "/findExpertForm.do", "/findExpert.do"})
 public class ExpertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -36,8 +39,6 @@ public class ExpertController extends HttpServlet {
     	ActionForward forward = null;
     	
     	if(command.equals("expertRegisterActionForm.do")) {
-    		
-    		
     		action = new expertRegisterFormAction();
     		try {
 				forward = action.excute(request, response);
@@ -72,6 +73,22 @@ public class ExpertController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
+    	}else if(command.equals("findExpertForm.do")){
+    		action = new findExpertFormAcion();
+    		
+    		try{
+    			forward = action.excute(request, response);
+    		}catch(Exception e){
+    			e.printStackTrace();
+    		}
+    	}else if(command.equals("findExpert.do")){
+    		action = new findExpertAcion();
+    		
+    		try{
+    			forward = action.excute(request, response);
+    		}catch(Exception e){
+    			e.printStackTrace();
+    		}
     	}
     	
     	if(forward != null){

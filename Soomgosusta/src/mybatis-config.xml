@@ -18,6 +18,8 @@
 		<typeAlias type="soomgosusta.domain.Match" alias="Match"/>
 		<typeAlias type="soomgosusta.domain.Request" alias="Request"/>
 		<typeAlias type="soomgosusta.domain.Expert_Profile" alias="Expert_Profile"/>
+		<typeAlias type="soomgosusta.domain.Expert_FindInfo" alias="Expert_FindInfo"/>
+		<typeAlias type="soomgosusta.domain.Review" alias="Review"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -35,6 +37,7 @@
 		<mapper resource="soomgosusta/mapper/Request.xml"/>
 		<mapper resource="soomgosusta/mapper/Expert.xml"/>
 		<mapper resource="soomgosusta/mapper/Match.xml"/>
+		<mapper resource="soomgosusta/mapper/Review.xml"/>
 	</mappers>
 	
 </configuration>
