@@ -1,67 +1,50 @@
 package soomgosusta.domain;
 
-import java.io.File;
+import java.io.Serializable;
 
-public class Expert_Profile {
-	private String expert_Id;
-	private File eprofile_Photo;
-	private String eprofile_LineLetter;
-	private String eprofile_DetailLetter;
-	private Boolean eprofile_Identification;
-	private String identification_Status;
-	
-	public Expert_Profile() {}
+public class Expert_Profile implements Serializable {
 
-	public Expert_Profile(File eprofile_Photo, String eprofile_LineLetter, String eprofile_DetailLetter,
-			Boolean eprofile_Identification, String identification_Status) {
+	private static final long serialVersionUID = 1L;
+
+	private String profile_Expert_Id;
+	private String ep_LineLetter;
+	private String ep_Identification;
+	private String ep_DetailLetter;
+	public Expert_Profile(String profile_Expert_Id, String ep_LineLetter, String ep_Identification,
+			String ep_DetailLetter) {
 		super();
-		this.eprofile_Photo = eprofile_Photo;
-		this.eprofile_LineLetter = eprofile_LineLetter;
-		this.eprofile_DetailLetter = eprofile_DetailLetter;
-		this.eprofile_Identification = eprofile_Identification;
-		this.identification_Status = identification_Status;
+		this.profile_Expert_Id = profile_Expert_Id;
+		this.ep_LineLetter = ep_LineLetter;
+		this.ep_Identification = ep_Identification;
+		this.ep_DetailLetter = ep_DetailLetter;
 	}
-
-	public File getEprofile_Photo() {
-		return eprofile_Photo;
+	public String getProfile_Expert_Id() {
+		return profile_Expert_Id;
 	}
-
-	public void setEprofile_Photo(File eprofile_Photo) {
-		this.eprofile_Photo = eprofile_Photo;
+	public void setProfile_Expert_Id(String profile_Expert_Id) {
+		this.profile_Expert_Id = profile_Expert_Id;
 	}
-
-	public String getEprofile_LineLetter() {
-		return eprofile_LineLetter;
+	public String getEp_LineLetter() {
+		return ep_LineLetter;
 	}
-
-	public void setEprofile_LineLetter(String eprofile_LineLetter) {
-		this.eprofile_LineLetter = eprofile_LineLetter;
+	public void setEp_LineLetter(String ep_LineLetter) {
+		this.ep_LineLetter = ep_LineLetter;
 	}
-
-	public String getEprofile_DetailLetter() {
-		return eprofile_DetailLetter;
+	public String getEp_Identification() {
+		return ep_Identification;
 	}
-
-	public void setEprofile_DetailLetter(String eprofile_DetailLetter) {
-		this.eprofile_DetailLetter = eprofile_DetailLetter;
+	public void setEp_Identification(String ep_Identification) {
+		this.ep_Identification = ep_Identification;
 	}
-
-	public Boolean getEprofile_Identification() {
-		return eprofile_Identification;
+	public String getEp_DetailLetter() {
+		return ep_DetailLetter;
 	}
-
-	public void setEprofile_Identification(Boolean eprofile_Identification) {
-		this.eprofile_Identification = eprofile_Identification;
+	public void setEp_DetailLetter(String ep_DetailLetter) {
+		this.ep_DetailLetter = ep_DetailLetter;
 	}
-
-	public String getIdentification_Status() {
-		return identification_Status;
+	@Override
+	public String toString() {
+		return "Expert_Profile [profile_Expert_Id=" + profile_Expert_Id + ", ep_LineLetter=" + ep_LineLetter
+				+ ", ep_Identification=" + ep_Identification + ", ep_DetailLetter=" + ep_DetailLetter + "]";
 	}
-
-	public void setIdentification_Status(String identification_Status) {
-		this.identification_Status = identification_Status;
-	}
-	
-	
-	
 }

@@ -99,4 +99,37 @@ public class CategoryService {
       
       return searchCode;
    }
+   
+   public String searchCategoryService(String searchCode) throws Exception{
+	  
+	   return dao.searchCategory(searchCode);
+   }
+   
+   public JSONArray searchKeyService(String searchKey) throws Exception{
+	   	  String key = "%" + searchKey + "%";
+	      List<Category> list = dao.searchKey(key);
+
+	      JSONArray arr = new JSONArray();
+	      try {
+	         for(int i=0; i<list.size(); i++){
+	            JSONObject group = new JSONObject(); //�׷� Json����      
+	            
+	            String str = list.get(i).getC_Word();
+	            String groupArr[] = str.split("/");
+	            
+	            group.put("code", list.get(i).getC_Code());
+	            group.put("group1", groupArr[0]);
+	            group.put("group2", groupArr[1]);
+	            group.put("group3", groupArr[2]);
+	            group.put("image", list.get(i).getC_Image());
+	            
+	            arr.add(group);
+	         }
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      
+	      return arr;
+
+   }
 }

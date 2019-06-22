@@ -1,6 +1,8 @@
 package soomgosusta.dao;
 
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -8,9 +10,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import soomgosusta.domain.Expert;
-import soomgosusta.domain.Member;
+import soomgosusta.domain.Expert_FindInfo;
 import soomgosusta.mapper.ExpertMapper;
-import soomgosusta.mapper.MemberMapper;
 
 public class ExpertDao {
 	private static ExpertDao dao = new ExpertDao();
@@ -71,7 +72,22 @@ public class ExpertDao {
 		return expert;
 	}
 
-	
+	public List<Expert_FindInfo> listExpertFind2(HashMap<String, String> map){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Expert_FindInfo> list = null;
+		
+		try {
+			list = sqlSession.getMapper(ExpertMapper.class).listExpertFind(map);
+			System.out.println(list);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return list;
+	}
 	
 }
 	

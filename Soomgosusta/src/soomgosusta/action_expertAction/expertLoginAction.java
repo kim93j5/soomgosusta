@@ -23,6 +23,8 @@ public class expertLoginAction implements Action {
 		
 		System.out.println("action"+ e_id);
 		
+		String divide = expert.getE_Divide();
+		
 		String password = request.getParameter("password");
 		String e_password = expert.getE_Password();
 		
@@ -34,9 +36,10 @@ public class expertLoginAction implements Action {
 		if(id.equals(e_id)&& password.equals(e_password)) 
 		{	
 			
-			session.setAttribute("id",e_id);				
+			session.setAttribute("id",e_id);
+			session.setAttribute("login_state",divide);
 			forward.setRedirect(true);
-			forward.setPath("main.jsp");
+			forward.setPath("main.do");
 		}else {
 			forward.setRedirect(false);
 			forward.setPath("expertLogin.jsp");

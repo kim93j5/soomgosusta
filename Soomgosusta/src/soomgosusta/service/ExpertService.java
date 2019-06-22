@@ -1,9 +1,13 @@
 package soomgosusta.service;
 
+import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import soomgosusta.dao.ExpertDao;
 import soomgosusta.domain.Expert;
+import soomgosusta.domain.Expert_FindInfo;
 
 
 
@@ -55,5 +59,8 @@ public class ExpertService {
 		return expert;
 	}
 	
-	
+	public List<Expert_FindInfo> listExpertFindService(HashMap<String, String> map){
+
+		return dao.listExpertFind2(map);
+	}
 }
