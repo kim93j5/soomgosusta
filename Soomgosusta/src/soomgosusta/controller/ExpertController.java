@@ -54,7 +54,6 @@ public class ExpertController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-
     	}else if(command.equals("expertLogin.do")) {
     		action = new ExpertLoginAction();
     		try {
