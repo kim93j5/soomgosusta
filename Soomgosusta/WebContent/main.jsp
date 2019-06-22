@@ -6,19 +6,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet"	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="./script/search.js" type="text/javascript"></script>
 <script src="./script/main.js" type="text/javascript"></script>
 <script>
-
+	
 </script>
 <title>Main Page</title>
 </head>
 <body>
-	<c:set var='expert' value="${expert}" scope="request"/>
-	<c:set var='member' value="${member}" scope="request"/>
+	<c:set var='expert' value="${expert}" scope="request" />
+	<c:set var='member' value="${member}" scope="request" />
+
+	<form action="expertProfile.do?expert_Id=${expert.expert_Id}"
+		method="get">
+		<input type="hidden" name="expert_Id" value="${expert.expert_Id}" /> <input
+			type="submit" value="프로필수정" />
+	</form>
 
 	<!-- ///////////////배너/////////////// -->
 	<nav>
@@ -42,16 +49,14 @@
 				<div class="right_">
 					<ul>
 						<li><span>${id} 고객님</span></li>
-						<li><a href = "logout.do"><span>로그아웃</span></a>
+						<li><a href="logout.do"><span>로그아웃</span></a>
 					</ul>
-				<form action="expertProfile.do?expert_Id=${expert.expert_Id}" method="get">
-					<input type="hidden" name="expert_Id" value="${expert.expert_Id}"/>
-					<input type="submit" value="프로필수정"/>
-				</form>	
-					
+
+
 				</div>
 			</c:when>
 			<c:when test="${id != null && login_state == 'expert' }">
+
 				<div class="left_">
 					<a href="main.do"> <img
 						src="https://dmmj3ljielax6.cloudfront.net/static/img/home/index_soomgo_logo.svg"
@@ -71,7 +76,7 @@
 				<div class="right_">
 					<ul>
 						<li><span>${id } 고수님</span></li>
-						<li><a href = "logout.do"><span>로그아웃</span></a>
+						<li><a href="logout.do"><span>로그아웃</span></a>
 					</ul>
 				</div>
 			</c:when>
@@ -84,17 +89,15 @@
 				</div>
 				<div class="right_">
 					<ul>
-						<li><a href = "memberRegisterForm.do">회원가입</a></li>
+						<li><a href="memberRegisterForm.do">회원가입</a></li>
 						<li>
 							<div class="select">
-    						<select	name="" id="loginState">
-    							<option value="member">회원</option>
-    							<option value="expert">고수</option>
-    						</select>
-    						<a id="login" href = "loginAction.do">로그인</a>
-    						<a id="loginteg"></a>
+								<select name="" id="loginState">
+									<option value="member">회원</option>
+									<option value="expert">고수</option>
+								</select> <a id="login" href="loginAction.do">로그인</a> <a id="loginteg"></a>
 							</div>
-						</li>		
+						</li>
 					</ul>
 				</div>
 			</c:otherwise>
@@ -114,7 +117,8 @@
 	<br>
 	<!-- ///////////////대분류/////////////// -->
 	<div>
-		<a id="lessonList" href="categoryInfo.do?code=L" onClick="window.open(this.href, '', 'width=400, height=430'); return false;">레슨</a>
+		<a id="lessonList" href="categoryInfo.do?code=L"
+			onClick="window.open(this.href, '', 'width=400, height=430'); return false;">레슨</a>
 		<a id="ServiceList" href="">서비스</a>
 	</div>
 	<br>
@@ -156,10 +160,8 @@
 	</div>
 
 	<h3>슈퍼고수</h3>
-	<div id="superExpert">
-	
-	</div>
-		<footer></footer>
+	<div id="superExpert"></div>
+	<footer></footer>
 	<div id="superExpert"></div>
 </body>
 </html>

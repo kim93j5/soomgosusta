@@ -27,9 +27,8 @@
 					<li> 고용수: </li>
 				</ul>
 
-				<input type="hidden" name="profile_Expert_Id"
-					value="${expert.expert_Id}"> <input type="hidden"
-					name="expert_Id" value="${expert.expert_Id}">
+				<input type="hidden" name="profile_Expert_Id" value="${expert.expert_Id}"> 
+				<input type="hidden" name="expert_Id" value="${expert.expert_Id}">
 
 				<c:set var="profile" value="${profile}" scope="request"></c:set>
 
