@@ -1,11 +1,17 @@
 package soomgosusta.mapper;
 
-import soomgosusta.domain.Expert;
+import java.util.List;
+
+import soomgosusta.domain.Answer;
+import soomgosusta.domain.Category;
+
+import soomgosusta.domain.Expert_Information;
+import soomgosusta.domain.Question;
 
 public interface ExpertMapper {
-
-	int registerExpert(Expert expert);
-
-	Expert expertLogin(String id);
-
+   List<Category> categoryCode();	
+   List<Question> q_Info();
+   List<Answer> a_Info();
+ 
+   int insertExpertSum(Expert_Information expert_Info);
 }

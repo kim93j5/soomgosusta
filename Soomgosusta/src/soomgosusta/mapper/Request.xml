@@ -7,30 +7,11 @@
 <mapper namespace="soomgosusta.mapper.RequestMapper">
 	<cache />
 	
-<!-- select * from question where question_code LIKE '%LI%' OR question_code like 'CQ%' -->	
-	<select id="listQuestion" parameterType="hashmap" resultType="Question">
-		select * from question
-			<where>
-				q_code LIKE #{question_Code1} 
-				OR q_code LIKE #{question_Code2}
-				OR q_code LIKE #{question_Code3}
-			</where>
+	<select id="sendRequestInfo" resultType="Request">		
+		 select * from request where request_member_id = 'kyungmi' 
 	</select>
 	
-	<select id="listAnswer" parameterType="String" resultType="Answer">
-		select * from answer where q_code= #{question_Code} order by a_code
-	</select>
 	
-	<insert id="insertRequest" parameterType="hashmap">
-		<!-- insert into request values(#{member_Id}, #{searchCode}, request_seq.nextval, #{r_qa_1},#{r_qa_2},#{r_qa_3},#{r_qa_4},#{r_qa_5},#{r_qa_6},#{r_qa_7},
-		#{r_qa_8},#{r_qa_9},#{r_qa_10},#{r_qa_11},#{r_qa_12},#{r_qa_13},#{r_qa_14},#{r_qa_15}, sysdate, 'ing') -->
-		insert into request values('admin', #{searchCode}, seq_test.nextval, #{r_qa_1},#{r_qa_2},#{r_qa_3},#{r_qa_4},#{r_qa_5},#{r_qa_6},#{r_qa_7},
-		#{r_qa_8},#{r_qa_9},#{r_qa_10},#{r_qa_11},#{r_qa_12},#{r_qa_13},#{r_qa_14},#{r_qa_15}, sysdate, 'ing')
-	</insert>
-	
-	<update id="updateLogRequest">
-		update category_log set cl_request = cl_request+1 where log_c_code = #{searchCode}
-	</update>
 </mapper>
 
 

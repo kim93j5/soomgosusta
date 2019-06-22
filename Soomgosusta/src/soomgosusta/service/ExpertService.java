@@ -1,59 +1,45 @@
 package soomgosusta.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import soomgosusta.dao.ExpertDao;
-import soomgosusta.domain.Expert;
-
-
+import soomgosusta.domain.Answer;
+import soomgosusta.domain.Category;
+import soomgosusta.domain.Expert_Information;
+import soomgosusta.domain.Question;
 
 public class ExpertService {
 	private static ExpertService service = new ExpertService();
-	private static ExpertDao dao;
-	
+	private static ExpertDao e_dao;
+
 	public static ExpertService getInstance() {
-		dao= ExpertDao.getInstance();
+		e_dao = ExpertDao.getInstance();
+
 		return service;
 	}
-	
-	public int expertRegisterService(HttpServletRequest request)throws Exception{
-		
-		request.setCharacterEncoding("utf-8");
-		
-		Expert expert = new Expert();
-		expert.setExpert_Id(request.getParameter("expert_Id"));
-		expert.setE_Password(request.getParameter("expert_Password"));
-		expert.setE_Name(request.getParameter("expert_Name"));
-		expert.setE_Pnum(request.getParameter("expert_Pnum"));
-		expert.setE_Gender(request.getParameter("expert_Gender"));
-		expert.setE_Age(Integer.parseInt(request.getParameter("expert_Age")));
-		expert.setE_Divide(" ");
-		expert.setE_Photo(" ");						//ȸ�����Խ� ������  ���� �� ����
-	
-		
-		System.out.println("test"+expert);
-		
-		return dao.registerExpert(expert);
+
+	public List<Category> categoryListService(HttpServletRequest request) throws Exception {
+
+		return e_dao.categoryCode();
 	}
-	
-	public Expert expertLoginService(HttpServletRequest request)throws Exception{
-		
+
+	public List<Question> qInfoService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		
-		Expert expert = new Expert();
-		
-		expert.setExpert_Id(request.getParameter("id"));
-		expert.setE_Password(request.getParameter("password"));
-		
-		String id = (expert.getExpert_Id());
-		System.out.println("service ��" + id);
-		String password = (expert.getE_Password());
-		System.out.println("service ��" + password);
-		expert = dao.expertLogin(id);
-		
-		System.out.println("service�� expert"+expert);
-		return expert;
+
+		return e_dao.q_Info();
 	}
-	
-	
+
+	public List<Answer> aInfoService(HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("utf-8");
+
+		return e_dao.a_Info();
+	}
+
+	public int insertExpertSumService(Expert_Information expert_Info) throws Exception {
+
+		return e_dao.insertExpertSum(expert_Info);
+
+	}
 }

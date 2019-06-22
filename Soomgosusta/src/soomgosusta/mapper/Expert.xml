@@ -3,23 +3,28 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-
-
-
 <mapper namespace="soomgosusta.mapper.ExpertMapper">
 	<cache />
 	
-	<insert id="registerExpert" parameterType="Expert">
-	insert into expert values(#{expert_Id}, #{e_Password}, #{e_Name},
-	#{e_Pnum},#{e_Gender} , #{e_Age},'expert', #{e_Photo})
-	</insert>
-
-		
-	<select id="expertLogin" parameterType="String" resultType="Expert">
-	select *
-	FROM expert
-	where expert_id = #{id}
+	<select id="categoryCode" resultType="Category">
+	    select * from category
 	</select>
+	
+	
+   <select id="q_Info" resultType="Question">
+       select * from question where q_code LIKE 'CQ%'  
+   </select> <!-- CQ는 전체공통질문 코드앞자리 -->
+   
+   
+   <select id="a_Info" resultType="Answer">
+       select * from answer where q_code LIKE 'CQ%'  
+   </select> 
+
+   
+   <insert id="insertExpertSum" parameterType="Expert_Information">
+        insert into expert_information values ('dltmddnjs041', #{ei_Day}, #{ei_Time}, #{ei_District}, #{ei_Start}, #{c_Code})
+   </insert>
+	
 	
 </mapper>
 

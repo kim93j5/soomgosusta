@@ -4,39 +4,16 @@
 
 
 
-
-
 <mapper namespace="soomgosusta.mapper.MemberMapper">
 	<cache />
 	
-	<insert id="registerMember" parameterType="Member">
-	insert into member values(#{member_Id}, #{m_Password}, #{m_Name},
-	#{m_Pnum},#{m_Gender}, #{m_Age}, 'member' , #{m_Photo})
-	</insert>
+	<!-- ////////////////추천서비스 ////////////////// -->
 	
-	<insert id="addMemberInterest" parameterType="Member_Information">
-		insert into member2 values('yena',#{c_Code},#{mi_District})
-	</insert>
-
-		
-	<select id="login" parameterType="String" resultType="Member">
-	select *
-	FROM member
-	where member_id = #{id}
+	<select id="recommendInfo" resultType="Member_Information">		
+		 select c_code from member_information where infor_member_id = 'nan5124' 
 	</select>
 	
 	
-	<select id="categoryCode" resultType="Category">
-		select * from category2
-	</select> 
-	
-	<select id="districtSido" resultType="District">
-		select distinct sido from District
-	</select>
-	
-	<select id="districtList" resultType="District">
-		select sido, sigungu from District where 
-	</select>
 </mapper>
 
 

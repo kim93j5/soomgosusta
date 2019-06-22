@@ -1,40 +1,42 @@
 package soomgosusta.dao;
 
 import java.io.InputStream;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import soomgosusta.domain.Request;
-import soomgosusta.mapper.RequestMapper;
+import soomgosusta.domain.Member_Information;
+import soomgosusta.mapper.MemberMapper;
 
-public class RequestDao {
-	private static RequestDao r_dao = new RequestDao();
-
-	public static RequestDao getInstance() {
-		return r_dao;
+public class MemberMainDao {
+	private static MemberMainDao m_dao = new MemberMainDao();
+	
+	public static MemberMainDao getInstance() {
+		return m_dao;
 	}
-
+	
 	public SqlSessionFactory getSqlSessionFactory() {
-		String resource = "mybatis-config.xml";
+		String resource ="mybatis-config.xml";
 		InputStream in = null;
-
+		
 		try {
 			in = Resources.getResourceAsStream(resource);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		return new SqlSessionFactoryBuilder().build(in);
 
+	
 	}
-
-	public Request sendRequestInfo() {
+	
+	public Member_Information recommendInfo() {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		Request request_c_Code = null;
+	    Member_Information member_info = null;
 		try {
-			request_c_Code = sqlSession.getMapper(RequestMapper.class).sendRequestInfo();
+			member_info = sqlSession.getMapper(MemberMapper.class).recommendInfo();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -42,7 +44,10 @@ public class RequestDao {
 			sqlSession.close();
 		}
 
-		return request_c_Code;
-
+		return member_info;
 	}
+	
+
+	
 }
+	
