@@ -66,7 +66,7 @@ public class MemberService {
 		return dao.categoryCode();
 	}
 	public Member memberMyPageService(HttpServletRequest request) throws Exception{
-		return dao.memberMypage();
+		return dao.memberMypage(null);
 	}
 	public int memberImageUpdate(Member member) throws Exception{
 		return dao.memberImageUpdate(member);

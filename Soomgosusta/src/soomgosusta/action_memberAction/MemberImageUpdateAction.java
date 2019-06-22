@@ -10,7 +10,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
-import soomgosusta.dao.ImageUtil;
+import soomgosusta.util.ImageUtil;
 import soomgosusta.domain.Member;
 import soomgosusta.service.MemberService;
 

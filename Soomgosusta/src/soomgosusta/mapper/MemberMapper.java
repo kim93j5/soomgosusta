@@ -15,7 +15,7 @@ public interface MemberMapper {
 
 	int addMemberInterest(Member_Information member_information);
 	List<Category> categoryCode();
-	Member memberMypage(/*String member*/);
+	Member memberMypage(String member_Id);
 	int memberImageUpdate(Member member);
 	int memberNameUpdate(Member member);
 	int memberPwUpdate(Member member);

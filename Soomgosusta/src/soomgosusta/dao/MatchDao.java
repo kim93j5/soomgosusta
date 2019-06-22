@@ -54,7 +54,7 @@ public class MatchDao {
 			SqlSession sqlSession = getSqlSessionFactory().openSession();
 			
 			try {
-				requestedMember = sqlSession.getMapper(MatchMapper.class).memberRequest();
+				requestedMember = sqlSession.getMapper(MatchMapper.class).memberRequest(null);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {

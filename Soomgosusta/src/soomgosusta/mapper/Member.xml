@@ -15,7 +15,7 @@
 	</insert>
 	
 	<insert id="addMemberInterest" parameterType="Member_Information">
-		insert into member values(#{member_User_Id},#{c_Code},#{mi_District})
+		insert into member values(#{member_User_Id},#{mi_District},#{c_Code})
 	</insert>
 
 		
