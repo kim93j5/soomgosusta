@@ -18,6 +18,14 @@ import soomgosusta.action_memberAction.logoutAction;
 import soomgosusta.action_memberAction.memberRegisterAction;
 import soomgosusta.action_memberAction.memberRegisterFormAction;
 import soomgosusta.action_memberAction.MatchCalculateAction;
+import soomgosusta.action_memberAction.MemberImageUpdateAction;
+import soomgosusta.action_memberAction.MemberMyPageAction;
+import soomgosusta.action_memberAction.MemberNameUpdateAction;
+import soomgosusta.action_memberAction.MemberNameUpdateActionForm;
+import soomgosusta.action_memberAction.MemberPNumUpdateAction;
+import soomgosusta.action_memberAction.MemberPNumUpdateActionForm;
+import soomgosusta.action_memberAction.MemberPasswordUpdateAction;
+import soomgosusta.action_memberAction.MemberPasswordUpdateActionForm;
 import soomgosusta.action_memberAction.MemeberAddInfoAction;
 import soomgosusta.action_memberAction.MemeberAddInfoActionForm;
 import soomgosusta.domain.Member;
@@ -25,7 +33,9 @@ import soomgosusta.mapper.MemberMapper;
 import soomgosusta.service.MemberService;
 
 
-@WebServlet(urlPatterns={"/memberRegisterForm.do","/memberRegisterAction.do" ,"/loginAction.do", "/logout.do","/memberAddInfo.do","/memberAddInfoAction.do","/matchAction.do"})
+@WebServlet(urlPatterns={"/memberRegisterForm.do","/memberRegisterAction.do" ,"/loginAction.do", "/logout.do","/memberAddInfo.do","/memberAddInfoAction.do"
+		, "/matchAction.do", "/memberMyPage.do","/imageUpdate.do", "/pwUpdate.do","/nameUpdate.do","/pNumUpdate.do","/pwUpdateForm.do"
+		,"/nameUpdateForm.do","/pNumUpdateForm.do"})
 
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -86,14 +96,70 @@ public class MemberController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("matchAction.do")){
+		}else if (command.equals("matchAction.do")) {
 			action = new MatchCalculateAction();
-		try {
-			forward = action.excute(request, response);
-		} catch (Exception e) {
-			e.printStackTrace();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("memberMyPage.do")) {
+			action = new MemberMyPageAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("imageUpdate.do")) {
+			action = new MemberImageUpdateAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("pwUpdate.do")) {
+			action = new MemberPasswordUpdateAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("nameUpdate.do")) {
+			action = new MemberNameUpdateAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("pNumUpdate.do")) {
+			action = new MemberPNumUpdateAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("pwUpdateForm.do")) {
+			action = new MemberPasswordUpdateActionForm();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("nameUpdateForm.do")) {
+			action = new MemberNameUpdateActionForm();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("pNumUpdateForm.do")) {
+			action = new MemberPNumUpdateActionForm();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-	}
     	
     	if(forward != null){
         	if(forward.isRedirect() == true){

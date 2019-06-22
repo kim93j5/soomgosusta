@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import soomgosusta.domain.Expert_Information;
+import soomgosusta.domain.Match;
 import soomgosusta.domain.Request;
 import soomgosusta.mapper.MatchMapper;
 
@@ -48,12 +49,12 @@ public class MatchDao {
 		}
 		
 		
-		public Request MemberRequest(){
+		public Request memberRequest(){
 			Request requestedMember = null;
 			SqlSession sqlSession = getSqlSessionFactory().openSession();
 			
 			try {
-				requestedMember = sqlSession.getMapper(MatchMapper.class).MemberRequest();
+				requestedMember = sqlSession.getMapper(MatchMapper.class).memberRequest();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
@@ -61,7 +62,26 @@ public class MatchDao {
 			}
 			return requestedMember;
 		}
-		
+		public int matchTableInsert(Match match){
+			SqlSession sqlsession = getSqlSessionFactory().openSession();
+			int re = -1;
+			
+			try {
+				re = sqlsession.getMapper(MatchMapper.class).matchTableInsert(match);
+				if(re >0){
+					sqlsession.commit();
+				}else{
+					sqlsession.rollback();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				if(sqlsession != null){
+					sqlsession.close();
+				}
+			}
+			return re;
+		}
 		
 		
 		

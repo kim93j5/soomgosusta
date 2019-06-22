@@ -15,7 +15,7 @@
 	</insert>
 	
 	<insert id="addMemberInterest" parameterType="Member_Information">
-		insert into member2 values('yena',#{c_Code},#{mi_District})
+		insert into member values(#{member_User_Id},#{c_Code},#{mi_District})
 	</insert>
 
 		
@@ -27,16 +27,23 @@
 	
 	
 	<select id="categoryCode" resultType="Category">
-		select * from category2
+		select * from category
 	</select> 
-	
-	<select id="districtSido" resultType="District">
-		select distinct sido from District
+		<select id="memberMypage" resultType="Member" parameterType="String">
+		select * from member where member_Id = #{member_Id}
 	</select>
-	
-	<select id="districtList" resultType="District">
-		select sido, sigungu from District where 
-	</select>
+	<update id="memberImageUpdate" parameterType="Member" >
+		update member set m_Photo = #{m_Photo} where member_Id = #{member_Id}
+	</update>
+	<update id="memberNameUpdate" parameterType="Member" >
+		update member set m_Name = #{m_Name} where member_Id = #{member_Id}
+	</update>
+	<update id="memberPwUpdate" parameterType="Member" >
+		update member set m_Password = #{m_Password} where member_Id = #{member_Id}
+	</update>
+	<update id="memberPnumUpdate" parameterType="Member" >
+		update member2 set m_Pnum = #{m_Pnum} where member_Id = #{member_Id}
+	</update>
 </mapper>
 
 

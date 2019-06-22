@@ -11,12 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 import soomgosusta.domain.Expert_Information;
+import soomgosusta.domain.Match;
 import soomgosusta.domain.Request;
 import soomgosusta.service.MatchService;
 
 public class MatchCalculateAction implements Action {
 
-	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		MatchService service = MatchService.getInstance();
 		
 		Request requestedMember = service.requestMemberService(request);
@@ -38,65 +39,6 @@ public class MatchCalculateAction implements Action {
 		memberRequest.add(requestedMember.getR_QA_14());
 		memberRequest.add(requestedMember.getR_QA_15());
 		
-		String qDay = "";
-		String qTime = "";
-		String qstart = "";
-		String qdistrict = "";
-		
-		System.out.println(memberRequest.size());
-		for(int i=0;i<15;i++){
-			memberRequest.remove("null");
-		}
-		System.out.println(memberRequest.size());
-		for(int i=0;i<memberRequest.size();i++){
-			System.out.println(memberRequest.get(i));
-		}
-		
-		for(int i =0;i<memberRequest.size();i++){
-			String qCode = memberRequest.get(i);
-			if(qCode.contains("Q_Day")){
-				qDay=qCode;
-			}else if(qCode.contains("Q_Time")){
-				qTime=qCode;
-			}else if(qCode.contains("Q_Start")){
-				qstart=qCode;
-			}else if(qCode.equals("Q_Dist")){
-				qdistrict=qCode;
-			}
-		}
-		System.out.println(qDay);
-		System.out.println(qTime);
-		System.out.println(qstart);
-		
-		/*for(int i=0; i<categoryList.size(); i++){
-            String groupList = categoryList.get(i).getCategory_Group();
-            //i=0일 때, groupList는 레슨/학업/외국어
-            if(groupList.contains("레슨/학업")){
-            	String groupArr2[] = groupList.split("/");
-            	//groupArr2[0]=레슨,groupArr2[1]=학업,groupArr2[2]=외국어
-            	categoryList3_1.add(groupArr2[2]); //외국어만 categoryList3_1에 넣어줌
-            } else if(groupList.contains("레슨/악기")){
-            	String groupArr2[] = groupList.split("/");
-            	categoryList3_2.add(groupArr2[2]);
-            }
-            
-            String groupArr[] = groupList.split("/");
-            list1.add(groupArr[0]);
-        	list2.add(groupArr[1]);
-        	list3.add(groupArr[2]);
-        }
-		*/
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		String request_C_Code = requestedMember.getRequest_C_Code();
 		
 		List<Expert_Information> matchCandidateList = service.matchCandidateListService(request_C_Code);
@@ -104,7 +46,97 @@ public class MatchCalculateAction implements Action {
 		for(int i =0; i<matchCandidateList.size();i++){
 			System.out.println(matchCandidateList.get(i));
 		}
-
+		
+		String qDay = "";
+		String qTime = "";
+		String qstart = "";
+		String qdistrict = "";
+	
+		int match = 100;
+		
+		List<String> compareMember= new ArrayList<String>();
+		
+		for(int i=0;i<15;i++){
+			memberRequest.remove("null");
+		}
+		
+		for(int i =0;i<memberRequest.size();i++){
+			String qCode = memberRequest.get(i);
+			if(qCode.contains("Q_Day")){
+				qDay=qCode;
+				String groupArr2[] = qDay.split("/");
+				for(int j=1;j<groupArr2.length;j++){
+					compareMember.add(groupArr2[j]);
+				}
+			}else if(qCode.contains("Q_Time")){
+				qTime=qCode;
+				String groupArr2[] = qTime.split("/");
+				for(int j=1;j<groupArr2.length;j++){
+					compareMember.add(groupArr2[j]);
+				}
+			}else if(qCode.contains("Q_Start")){
+				qstart=qCode;
+				String groupArr2[] = qstart.split("/");
+				for(int j=1;j<groupArr2.length;j++){
+					compareMember.add(groupArr2[j]);
+				}
+			}else{
+			qdistrict = requestedMember.getR_QA_04();
+			String groupArr2[] = qdistrict.split("/");
+			for(int j=0;j<groupArr2.length;j++){
+				compareMember.add(groupArr2[j]);}
+			}
+		}
+		System.out.println(qDay);
+		System.out.println(qTime);
+		System.out.println(qstart);
+		System.out.println(compareMember);
+		
+		for(int i=0;i<matchCandidateList.size();i++){//5번 돌아감
+			List<String> compareExpert = new ArrayList<String>();
+			int matchScore = 0;
+			String expertDay = matchCandidateList.get(i).getEi_Day(); //0번에 있는 yena2, ei_Day깂인 Q_Day/Q_Day_A3/Q_Day_A5가 들어옴
+			String expertTime = matchCandidateList.get(i).getEi_Time(); //0번에 있는 yena2, ei_Time깂인 Q_Time/Q_Time_A4/Q_Time_A5/Q_Time_A6가 들어옴
+			String expertStart = matchCandidateList.get(i).getEi_Start(); //0번에 있는 yena2, ei_Start깂인 Q_Start/Q_Start_A3가 들어옴
+			String expertDistrict = matchCandidateList.get(i).getEi_District(); //0번에 있는 yena2, ei_District깂인 서울특별시/종로구,서울특별시/중구,서울특별시/성북구3가 들어옴
+			
+			String expertArr[] = expertDay.split("/");
+			for(int j=1;j<expertArr.length;j++){
+				compareExpert.add(expertArr[j]);
+			}
+			String expertArr2[] = expertTime.split("/");
+			for(int j=1;j<expertArr2.length;j++){
+				compareExpert.add(expertArr2[j]);
+			}
+			String expertArr3[] = expertStart.split("/");
+			for(int j=1;j<expertArr3.length;j++){
+				compareExpert.add(expertArr3[j]);
+			}
+			String expertArr4[] = expertDistrict.split("/");
+			for(int j=0;j<expertArr4.length;j++){
+				compareExpert.add(expertArr4[j]);
+			}
+			
+			for(String matchWord : compareMember){
+				if(compareExpert.contains(matchWord)){
+					matchScore+=100;
+				}
+			}
+			
+			System.out.println(compareExpert);
+			System.out.println(matchScore);
+			
+			Match insertMatch = new Match();
+			insertMatch.setM_Percent(matchScore);
+			insertMatch.setMatch_C_Code(request_C_Code);
+			insertMatch.setMatch_Expert_Id(matchCandidateList.get(i).getInfor_Expert_Id());
+			insertMatch.setMatch_Member_Id(requestedMember.getRequest_Member_Id());
+			insertMatch.setMatch_R_Seq(requestedMember.getR_Seq());
+			
+			service.matchTableInsertService(insertMatch);
+			
+		}
+		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/memberAddInfoForm.jsp");

@@ -3,24 +3,27 @@ package soomgosusta.domain;
 import java.io.Serializable;
 
 public class Member_Information implements Serializable {
-	private String member_User_Id;
+	private String Infor_Member_Id;
 	private String c_Code;
 	private String mi_District;
 	
 	public Member_Information(){}
 	
-	public Member_Information(String member_User_Id, String c_Code, String mi_District) {
+	public Member_Information(String Infor_Member_Id, String c_Code, String mi_District) {
 		super();
-		this.member_User_Id = member_User_Id;
+		this.Infor_Member_Id = Infor_Member_Id;
 		this.c_Code = c_Code;
 		this.mi_District = mi_District;
 	}
-	public String getMember_User_Id() {
-		return member_User_Id;
+	
+	public String getInfor_Member_Id() {
+		return Infor_Member_Id;
 	}
-	public void setMember_User_Id(String member_User_Id) {
-		this.member_User_Id = member_User_Id;
+
+	public void setInfor_Member_Id(String infor_Member_Id) {
+		Infor_Member_Id = infor_Member_Id;
 	}
+
 	public String getC_Code() {
 		return c_Code;
 	}

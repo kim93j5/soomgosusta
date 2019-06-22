@@ -1,0 +1,19 @@
+#myPageImage{
+	width: 200px;
+	height: 200px;
+	border-radius: 100px;
+	margin: 50px;
+}
+
+#image{
+	float: left;
+	width : 350px;
+}
+#memberInfo{
+	padding-top: 50px;
+}
+
+
+
+
+
