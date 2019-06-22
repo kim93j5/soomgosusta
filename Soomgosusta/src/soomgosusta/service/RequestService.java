@@ -1,5 +1,12 @@
 package soomgosusta.service;
 
+import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import soomgosusta.dao.RequestDao;
+import soomgosusta.domain.Request;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,17 +18,57 @@ import soomgosusta.domain.Answer;
 import soomgosusta.domain.Question;
 import soomgosusta.domain.Request;
 
+
 public class RequestService {
 	private static RequestService service = new RequestService();
 	private static RequestDao dao;
     HashMap<String, String> requestMap = null;
-
     
 	public static RequestService getInstance() {
-		dao= RequestDao.getInstance();
+		dao = RequestDao.getInstance();
 		return service;
 	}
 	
+	public Request sendRequestService(HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("utf-8");
+
+		return dao.sendRequestInfo();
+	}
+
+	public int updateLogRequestService(String searchCode) throws Exception{
+		
+		return dao.updateLogRequest(searchCode);
+	}
+	
+	public int listAlreadySendService(HashMap<String, String> map)throws Exception{
+		List<Request> list = dao.listAlreadySend(map);
+		
+		return list.size();
+	}
+
+	public int insertRequestService(String member_Id, String searchCode, String requestQnA) throws Exception{
+        String[] qna = requestQnA.split(",");
+  		requestMap = new HashMap<String, String>();
+        String col = "";
+  		
+        requestMap.put("member_Id", member_Id);
+        requestMap.put("searchCode", searchCode);
+                
+     	for(int i=0; i < qna.length; i++){
+			col= "r_qa_" + (i+1);
+			qna[i] = qna[i].substring(0, qna[i].length()-1);
+			requestMap.put(col, qna[i]);
+		}
+     	
+        if(qna.length < 15){
+        	for(int i=qna.length; i < 15; i++){
+        		col = "r_qa_" + (i+1);
+        		requestMap.put(col, "null");
+        	}
+        }
+        		
+		return dao.insertRequest(requestMap);
+	}
 	public List<Question> listQuestionService(HttpServletRequest request) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		List<Question> list = null;
@@ -53,38 +100,12 @@ public class RequestService {
 		return answerList;
 	}
 	
-	public int insertRequestService(String member_Id, String searchCode, String requestQnA) throws Exception{
-        String[] qna = requestQnA.split(",");
-  		requestMap = new HashMap<String, String>();
-        String col = "";
-  		
-        requestMap.put("member_Id", member_Id);
-        requestMap.put("searchCode", searchCode);
-                
-     	for(int i=0; i < qna.length; i++){
-			col= "r_qa_" + (i+1);
-			qna[i] = qna[i].substring(0, qna[i].length()-1);
-			requestMap.put(col, qna[i]);
-		}
-     	
-        if(qna.length < 15){
-        	for(int i=qna.length; i < 15; i++){
-        		col = "r_qa_" + (i+1);
-        		requestMap.put(col, "null");
-        	}
-        }
-        		
-		return dao.insertRequest(requestMap);
-	}
 
-	public int updateLogRequestService(String searchCode) throws Exception{
-		
-		return dao.updateLogRequest(searchCode);
-	}
 	
-	public int listAlreadySendService(HashMap<String, String> map){
-		List<Request> list = dao.listAlreadySend(map);
-		
-		return list.size();
-	}
+	
+	
+
+	
 }
+
+

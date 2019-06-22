@@ -2,60 +2,34 @@ package soomgosusta.service;
 
 import java.util.HashMap;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
-
 import soomgosusta.dao.ExpertDao;
 import soomgosusta.domain.Expert;
 import soomgosusta.domain.Expert_Profile;
 import soomgosusta.domain.Expert_FindInfo;
-
-
+import soomgosusta.domain.Answer;
+import soomgosusta.domain.Category;
+import soomgosusta.domain.Expert_Information;
+import soomgosusta.domain.Question;
 
 public class ExpertService {
 	private static ExpertService service = new ExpertService();
 	private static ExpertDao dao;
-	
+
 	public static ExpertService getInstance() {
-		dao= ExpertDao.getInstance();
+		dao = ExpertDao.getInstance();
+
 		return service;
 	}
-	
-	public int expertRegisterService(HttpServletRequest request)throws Exception{
-		
-		request.setCharacterEncoding("utf-8");
-		
-		Expert expert = new Expert();
-		expert.setExpert_Id(request.getParameter("expert_Id"));
-		expert.setE_Password(request.getParameter("expert_Password"));
-		expert.setE_Name(request.getParameter("expert_Name"));
-		expert.setE_Pnum(request.getParameter("expert_Pnum"));
-		expert.setE_Gender(request.getParameter("expert_Gender"));
-		expert.setE_Age(Integer.parseInt(request.getParameter("expert_Age")));
-		expert.setE_Divide(" ");
-		expert.setE_Photo(" ");						//ȸ�����Խ� ������  ���� �� ����
-	
-		
-		System.out.println("test"+expert);
-		
-		return dao.registerExpert(expert);
+
+	public List<Category> categoryListService(HttpServletRequest request) throws Exception {
+
+		return dao.categoryCode();
 	}
-	
-	public Expert expertLoginService(HttpServletRequest request)throws Exception{
+
+	public List<Question> qInfoService(HttpServletRequest request) throws Exception {
+		return dao.q_Info();
 		
-		request.setCharacterEncoding("utf-8");
-		
-		Expert expert = new Expert();
-		
-		expert.setExpert_Id(request.getParameter("id"));
-		expert.setE_Password(request.getParameter("password"));
-		
-		String id = (expert.getExpert_Id());
-		expert = dao.expertLogin(id);
-		
-		return expert;
 	}
 	public Expert_Profile profileDetailService(HttpServletRequest request)throws Exception {
 		request.setCharacterEncoding("utf-8");
@@ -75,6 +49,9 @@ public class ExpertService {
 		
 		return expert;
 	}
+
+
+
 	
 	public int expertProfileService(HttpServletRequest request)throws Exception {
 		
@@ -93,5 +70,50 @@ public class ExpertService {
 	public List<Expert_FindInfo> listExpertFindService(HashMap<String, String> map){
 
 		return dao.listExpertFind2(map);
+	}
+	
+	public List<Answer> aInfoService(HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("utf-8");
+
+		return dao.a_Info();
+	}
+
+	public int insertExpertSumService(Expert_Information expert_Info) throws Exception {
+
+		return dao.insertExpertSum(expert_Info);
+
+	}
+
+	public Expert expertLoginService(HttpServletRequest request)throws Exception{
+		
+		request.setCharacterEncoding("utf-8");
+		
+		Expert expert = new Expert();
+		
+		expert.setExpert_Id(request.getParameter("id"));
+		expert.setE_Password(request.getParameter("password"));
+		
+		String id = (expert.getExpert_Id());
+		expert = dao.expertLogin(id);
+		
+		return expert;
+	}
+
+	public int expertRegisterService(HttpServletRequest request)throws Exception {
+		request.setCharacterEncoding("utf-8");
+		Expert expert = new Expert();
+		expert.setExpert_Id(request.getParameter("expert_Id"));
+		expert.setE_Password(request.getParameter("expert_Password"));
+		expert.setE_Name(request.getParameter("expert_Name"));
+		expert.setE_Pnum(request.getParameter("expert_Pnum"));
+		expert.setE_Gender(request.getParameter("expert_Gender"));
+		expert.setE_Age(Integer.parseInt(request.getParameter("expert_Age")));
+		expert.setE_Divide(" ");
+		expert.setE_Photo(" ");						//ȸ�����Խ� ������  ���� �� ����
+	
+		
+		System.out.println("test"+expert);
+		
+		return dao.registerExpert(expert);
 	}
 }

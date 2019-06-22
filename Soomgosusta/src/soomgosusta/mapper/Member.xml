@@ -2,13 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
+
 <mapper namespace="soomgosusta.mapper.MemberMapper">
 	<cache />
 	
-	<insert id="registerMember" parameterType="Member">
-	insert into member values(#{member_Id}, #{m_Password}, #{m_Name},
-	#{m_Pnum},#{m_Gender}, #{m_Age}, 'member' , #{m_Photo})
-	</insert>
+	<!-- ////////////////추천서비스 ////////////////// -->
 	
 	<insert id="addMemberInterest" parameterType="Member_Information">
 		insert into member values(#{member_User_Id},#{mi_District},#{c_Code})
@@ -21,25 +20,35 @@
 	where member_id = #{id}
 	</select>
 	
+	<select id="recommendInfo" resultType="Member_Information">		
+		 select c_code from member_information where infor_member_id = 'nan5124' 
+	</select>
+	
 	
 	<select id="categoryCode" resultType="Category">
 		select * from category
 	</select> 
+	
 		<select id="memberMypage" resultType="Member" parameterType="String">
 		select * from member where member_Id = #{member_Id}
 	</select>
+	
 	<update id="memberImageUpdate" parameterType="Member" >
 		update member set m_Photo = #{m_Photo} where member_Id = #{member_Id}
 	</update>
+	
 	<update id="memberNameUpdate" parameterType="Member" >
 		update member set m_Name = #{m_Name} where member_Id = #{member_Id}
 	</update>
+	
 	<update id="memberPwUpdate" parameterType="Member" >
 		update member set m_Password = #{m_Password} where member_Id = #{member_Id}
 	</update>
+	
 	<update id="memberPnumUpdate" parameterType="Member" >
 		update member2 set m_Pnum = #{m_Pnum} where member_Id = #{member_Id}
 	</update>
+	
 </mapper>
 
 

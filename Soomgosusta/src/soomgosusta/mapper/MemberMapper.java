@@ -19,4 +19,6 @@ public interface MemberMapper {
 	int memberNameUpdate(Member member);
 	int memberPwUpdate(Member member);
 	int memberPnumUpdate(Member member);
+	   ////추천서비스////
+	Member_Information recommendInfo();
 }

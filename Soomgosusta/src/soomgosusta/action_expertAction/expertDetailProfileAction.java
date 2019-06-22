@@ -8,7 +8,6 @@ import soomgosusta.action_interface.ActionForward;
 import soomgosusta.domain.Expert;
 import soomgosusta.domain.Expert_Profile;
 import soomgosusta.service.ExpertService;
-import soomgosusta.service.MemberService;
 
 public class expertDetailProfileAction implements Action {
 

@@ -7,22 +7,23 @@ import javax.servlet.http.HttpServletRequest;
 import soomgosusta.dao.MemberDao;
 import soomgosusta.domain.Category;
 import soomgosusta.domain.Member;
+import soomgosusta.dao.MemberMainDao;
 import soomgosusta.domain.Member_Information;
 
 public class MemberService {
 	private static MemberService service = new MemberService();
-	private static MemberDao dao;
+	private static MemberMainDao dao;
 	
 	public static MemberService getInstance() {
-		dao= MemberDao.getInstance();
+		dao= MemberMainDao.getInstance();
 		return service;
 	}
-
-	public int addMemberInterestService(Member_Information member_information) throws Exception{
-		
-	return dao.addMemberInterest(member_information);
 	
-	}
+	public Member_Information recommendInfoService(HttpServletRequest request)throws Exception{
+		  request.setCharacterEncoding("utf-8");
+		    
+	return dao.recommendInfo();
+	  }	
 	
 	public int memberRegisterService(HttpServletRequest request)throws Exception{
 		
@@ -88,5 +89,10 @@ public class MemberService {
 
 
 
+
+     public int addMemberInterestService(Member_Information member_information) throws Exception{
 	
+    	 return dao.addMemberInterest(member_information);
+	
+     }
 }
