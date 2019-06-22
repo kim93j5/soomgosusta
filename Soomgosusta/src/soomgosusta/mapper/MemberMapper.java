@@ -12,8 +12,11 @@ public interface MemberMapper {
 
 	Member login(String id);
 
-
 	int addMemberInterest(Member_Information member_information);
 	List<Category> categoryCode();
-
+	Member memberMypage(String member_Id);
+	int memberImageUpdate(Member member);
+	int memberNameUpdate(Member member);
+	int memberPwUpdate(Member member);
+	int memberPnumUpdate(Member member);
 }

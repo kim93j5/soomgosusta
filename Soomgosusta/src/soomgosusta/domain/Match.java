@@ -3,6 +3,10 @@ package soomgosusta.domain;
 import java.io.Serializable;
 
 public class Match implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String match_Member_Id;
 	private String match_C_Code;
 	private int match_R_Seq;

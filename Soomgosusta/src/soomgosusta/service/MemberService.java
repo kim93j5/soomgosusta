@@ -1,14 +1,12 @@
 package soomgosusta.service;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import soomgosusta.dao.MemberDao;
-import soomgosusta.domain.Member;
 import soomgosusta.domain.Category;
-import soomgosusta.domain.Expert;
+import soomgosusta.domain.Member;
 import soomgosusta.domain.Member_Information;
 
 public class MemberService {
@@ -62,12 +60,33 @@ public class MemberService {
 		System.out.println("service�� member"+member);
 		return member;
 	}
-	
 	public List<Category> categoryListService(HttpServletRequest request) throws Exception{
 		
 		return dao.categoryCode();
 	}
-	
+	public Member memberMyPageService(HttpServletRequest request) throws Exception{
+		return dao.memberMypage(null);
+	}
+	public int memberImageUpdate(Member member) throws Exception{
+		return dao.memberImageUpdate(member);
+	}
+
+	public void memberPwUpdate(Member memberMyInfo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/*
+	 * public void memberPwUpdate(Member memberMyInfo) { int
+	 * memberImageUpdate(Member member) throws Exception{ return
+	 * dao.memberImageUpdate(member); } public int memberNameUpdate(Member member)
+	 * throws Exception{ return dao.memberNameUpdate(member); } public int
+	 * memberPwUpdate(Member member) throws Exception{ return
+	 * dao.memberPwUpdate(member); } public int memberPnumUpdate(Member member)
+	 * throws Exception{ return dao.memberPnumUpdate(member); } }
+	 */
+
+
 
 	
 }

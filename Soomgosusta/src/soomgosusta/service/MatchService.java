@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import soomgosusta.dao.MatchDao;
 import soomgosusta.domain.Expert_Information;
+import soomgosusta.domain.Match;
 import soomgosusta.domain.Request;
 
 public class MatchService {
@@ -21,7 +22,9 @@ public class MatchService {
 		return dao.matchCandidateList(request_C_Code);
 	}
 	public Request requestMemberService(HttpServletRequest request){
-		return dao.MemberRequest();
+		return dao.memberRequest();
 	}
-	
+	public int matchTableInsertService(Match match){
+		return dao.matchTableInsert(match);
+	}
 }

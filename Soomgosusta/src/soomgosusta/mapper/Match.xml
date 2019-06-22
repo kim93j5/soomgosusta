@@ -9,12 +9,15 @@
 		select * from Expert_Information2 where c_Code = #{c_Code}
 	</select>
 	
-	<select id="MemberRequest" resultType="Request">
-		select * from request2 where request_Member_Id ='yena'
+	<select id="memberRequest" resultType="Request" parameterType="String">
+		select * from request2 where request_Member_Id = #{request_Member_Id}
 	</select>
 	
+	<insert id="matchTableInsert" parameterType="Match">
+		insert into match2 values(#{match_Member_Id},#{match_C_Code},#{match_R_Seq},#{match_Expert_Id},#{m_Percent})
+	</insert>
+	
 </mapper>
-
 
 
 
