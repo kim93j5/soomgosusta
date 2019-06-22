@@ -32,7 +32,7 @@ public class SearchAction implements Action {
 			}
 			
 			forward.setRedirect(true);
-			forward.setPath("requestFormAction.do?searchCode="+searchCode);
+			forward.setPath("requestForm.do?searchCode="+searchCode);
 		}
 
 		return forward;

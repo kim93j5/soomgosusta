@@ -32,7 +32,7 @@ public class RequestAction implements Action {
 		System.out.println(member_Id);
 		HashMap<String, String> req_Info = new HashMap<String, String>();		
 		
-		for(int i=0; i<q_Code.length;i++){
+		for(int i=0; i<q_Code.length;i++){                                                                                                                                                                                                                                                                                                                                                                                                                                     
 			requestQnA += q_Code[i] + "/";
 			
 			for(int j=0; j<a_Code.length; j++){

@@ -6,8 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="./script/search.js" type="text/javascript"></script>
@@ -20,35 +19,6 @@
 <body>
 	<c:set var='expert' value="${expert}" scope="request"/>
 	<c:set var='member' value="${member}" scope="request"/>
-
-
-		<c:if test="${id != null }">
-			<li> ${id}님 환영합니다.  ${login_state} </li>
-			
-			
-			<form action="expertProfile.do?expert_Id=${expert.expert_Id}" method="get">
-				<input type="hidden" name="expert_Id" value="${expert.expert_Id}"/>
-				<input type="submit" value="프로필수정"/>
-			</form>	
-		</c:if>
-
-		<ul>
-		<c:if test="${id != null }">
-		</c:if>
-		<li><a href = "memberRegisterForm.do">회원가입</a></li>
-		<li>
-			<div class="select">
-    			<select	name="" id="loginState">
-    				<option value="member">회원</option>
-    				<option value="expert">고수</option>
-    			</select>
-    			<a id="login" href = "loginAction.do">로그인</a>
-    			<a id="loginteg"></a>
-			</div>
-		</li>		
-		<li><a href = "findExpertForm.do">고수찾기</a></li>
-		<li><a href = "logout.do">로그아웃</a>
-	</ul>
 
 	<!-- ///////////////배너/////////////// -->
 	<nav>
@@ -74,6 +44,11 @@
 						<li><span>${id} 고객님</span></li>
 						<li><a href = "logout.do"><span>로그아웃</span></a>
 					</ul>
+				<form action="expertProfile.do?expert_Id=${expert.expert_Id}" method="get">
+					<input type="hidden" name="expert_Id" value="${expert.expert_Id}"/>
+					<input type="submit" value="프로필수정"/>
+				</form>	
+					
 				</div>
 			</c:when>
 			<c:when test="${id != null && login_state == 'expert' }">
@@ -109,11 +84,17 @@
 				</div>
 				<div class="right_">
 					<ul>
-						<li><a href="memberRegisterForm.do"> <span>회원가입</span>
-						</a></li>
-						<li><a href="login.jsp"> <span>회원 로그인</span>
-						</a> <a href="expertLogin.jsp"> <span>고수 로그인</span>
-						</a></li>
+						<li><a href = "memberRegisterForm.do">회원가입</a></li>
+						<li>
+							<div class="select">
+    						<select	name="" id="loginState">
+    							<option value="member">회원</option>
+    							<option value="expert">고수</option>
+    						</select>
+    						<a id="login" href = "loginAction.do">로그인</a>
+    						<a id="loginteg"></a>
+							</div>
+						</li>		
 					</ul>
 				</div>
 			</c:otherwise>
@@ -133,7 +114,7 @@
 	<br>
 	<!-- ///////////////대분류/////////////// -->
 	<div>
-		<a id="lessonList" href="categoryInfo.do?code=L" target="blank">레슨</a>
+		<a id="lessonList" href="categoryInfo.do?code=L" onClick="window.open(this.href, '', 'width=400, height=430'); return false;">레슨</a>
 		<a id="ServiceList" href="">서비스</a>
 	</div>
 	<br>

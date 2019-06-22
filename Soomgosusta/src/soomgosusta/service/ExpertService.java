@@ -67,10 +67,6 @@ public class ExpertService {
 		return dao.profileUpdate(profile);
 	}
 	
-	public List<Expert_FindInfo> listExpertFindService(HashMap<String, String> map){
-
-		return dao.listExpertFind2(map);
-	}
 	
 	public List<Answer> aInfoService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
@@ -94,8 +90,8 @@ public class ExpertService {
 		expert.setE_Password(request.getParameter("password"));
 		
 		String id = (expert.getExpert_Id());
+
 		expert = dao.expertLogin(id);
-		
 		return expert;
 	}
 
@@ -109,11 +105,18 @@ public class ExpertService {
 		expert.setE_Gender(request.getParameter("expert_Gender"));
 		expert.setE_Age(Integer.parseInt(request.getParameter("expert_Age")));
 		expert.setE_Divide(" ");
-		expert.setE_Photo(" ");						//ȸ�����Խ� ������  ���� �� ����
+		expert.setE_Photo(" ");						
 	
 		
 		System.out.println("test"+expert);
 		
 		return dao.registerExpert(expert);
+	}
+	
+
+	
+	public List<Expert_FindInfo> listExpertFindService(HashMap<String, String> map){
+
+		return dao.listExpertFind(map);
 	}
 }

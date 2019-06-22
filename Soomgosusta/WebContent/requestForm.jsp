@@ -109,7 +109,7 @@
 						</div>&nbsp;&nbsp;
 					</c:forEach>
 
-					<div id="district_select">
+					<div id="requestForm">
 						<h3>선호 지역을 선택하세요</h3>
 						<select name="sido" id="sido">
 						</select> 
@@ -121,7 +121,7 @@
 					<div id="requestForm" style="display: inline-block">
 						<h3>전화번호를 입력하세요</h3>
 						<c:if test="${id == null}">
-								(로그인 후 요청 가능합니다.)<br>
+								로그인 후 요청 가능합니다.<br>
 								<input type="text" id="telForm" name="phoneNum" size="50" disabled>
 						</c:if>
 						
