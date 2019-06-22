@@ -1,5 +1,6 @@
 package soomgosusta.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import soomgosusta.dao.MemberDao;
 import soomgosusta.domain.Member;
 import soomgosusta.domain.Category;
+import soomgosusta.domain.Expert;
 import soomgosusta.domain.Member_Information;
 
 public class MemberService {
@@ -65,5 +67,7 @@ public class MemberService {
 		
 		return dao.categoryCode();
 	}
+	
+
 	
 }

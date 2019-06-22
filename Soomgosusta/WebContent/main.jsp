@@ -17,10 +17,17 @@
 <title>Main Page</title>
 </head>
 <body>
+	<c:set var='expert' value="${expert}" scope="request"/>
 	<ul>
 
 		<c:if test="${id != null }">
-			<li> ${id}님 환영합니다.  ${login_state} </li>		
+			<li> ${id}님 환영합니다.  ${login_state} </li>
+			
+			
+			<form action="expertProfile.do?expert_Id=${expert.expert_Id}" method="get">
+				<input type="hidden" name="expert_Id" value="${expert.expert_Id}"/>
+				<input type="submit" value="프로필수정"/>
+			</form>	
 		</c:if>
 
 
@@ -98,7 +105,6 @@
 	<div id="superExpert">
 	
 	</div>
-	
-	<footer></footer>
+		<footer></footer>
 </body>
 </html>

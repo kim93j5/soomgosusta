@@ -15,8 +15,5 @@
 		비밀번호<input type="text" name="password"> <br>
 		<input type="submit" value="로그인">
 	</form>
-
-
-	
 </body>
 </html>

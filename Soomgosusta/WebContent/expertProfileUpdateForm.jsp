@@ -7,15 +7,28 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
+상태: ${login_state}<br>
+아이디:${id} 
+
+<c:set var='login_state' value="${login_state}"/>
+<c:choose>
+<c:when test="${login_state != 'member'}">
 <h1>고수프로필입니당.</h1>
-<form>
-	<h5>한 줄 소개</h5>
+
+<form action="expertProfile.do">
+	
+	<c:set var="expert" value="${expert}" scope="request"></c:set>
+	<input type="hidden" name="profile_Expert_Id" value="${expert.expert_Id}">
+	<c:set var="expert_Profile" value="{profile}" scope="request"></c:set>
+	한줄소개: <input type="text" name="ep_LineLetter">${profille.ep_LineLetter}<br>
+	상세소개: <textarea name="ep_DetailLetter" rows="20" cols="100"></textarea>
+	<input type="submit" value="저장">
+	<h5>${proflie.lineletter}한 줄 소개</h5>
 
 	<cite> 나랏말쌈이</cite>
 
-	
-	
 </form>
 
 
@@ -33,10 +46,6 @@
 </ul>
 </form>
 
-<form>
-	<h5>상세소개</h5>
-	<textarea rows="10" cols="100"></textarea>
-</form>
 <article>
 <h5>자격증</h5>
 <form action="upload.jsp" method="post" encType="multipart/form-data">
@@ -54,8 +63,15 @@
 
 <h5>본인인증 여부</h5>
 </form>
-///////////////
+</c:when>
 
+
+<c:when test="${login_state =='member' && login_state == null}">
+<h1> 회원 or 비회원</h1>
+</c:when>
+</c:choose>
+<c:if test="${login_state != 'member'}">
+</c:if>
 
 
 

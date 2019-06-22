@@ -17,6 +17,7 @@
 		<typeAlias type="soomgosusta.domain.Expert_Information" alias="Expert_Information"/>
 		<typeAlias type="soomgosusta.domain.Match" alias="Match"/>
 		<typeAlias type="soomgosusta.domain.Request" alias="Request"/>
+		<typeAlias type="soomgosusta.domain.Expert_Profile" alias="Expert_Profile"/>
 	</typeAliases>
 	
 	<environments default="development">

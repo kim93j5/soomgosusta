@@ -45,7 +45,7 @@ public class loginFilter implements Filter {
 			request.setAttribute("id", m_id);
 			request.setAttribute("login_state", login_state);
 		}
-			else if(e_id == null && login_state.equals("exeprt")) {		
+			else if(e_id == null && login_state.equals("expert")) {		
 
 			response2.sendRedirect("expertLogin.jsp"); 			
 			request.setAttribute("id", e_id);

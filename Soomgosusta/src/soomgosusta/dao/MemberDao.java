@@ -9,8 +9,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import soomgosusta.domain.Category;
+import soomgosusta.domain.Expert;
 import soomgosusta.domain.Member;
 import soomgosusta.domain.Member_Information;
+import soomgosusta.mapper.ExpertMapper;
 import soomgosusta.mapper.MemberMapper;
 
 public class MemberDao {
@@ -110,6 +112,22 @@ public class MemberDao {
 			sqlSession.close();
 		}
 		return re;
+	}
+
+	public Expert expertDetail(String expert_Id) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		Expert expert = null;
+		System.out.println("DAO"+expert_Id);
+		try {
+			expert = sqlSession.getMapper(ExpertMapper.class).expertDetail(expert_Id);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		System.out.println(expert);
+		return expert;
 	}
 }
 	

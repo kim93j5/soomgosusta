@@ -17,7 +17,7 @@ import soomgosusta.action_interface.ActionForward;
 
 
 
-@WebServlet({"/main.do","/search.do", "/categoryInfo.do"})
+@WebServlet(urlPatterns={"/main.do","/search.do", "/categoryInfo.do"})
 
 public class CategoryController extends HttpServlet {
 private static final long serialVersionUID = 1L;

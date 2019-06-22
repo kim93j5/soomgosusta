@@ -11,7 +11,7 @@
 	
 	<insert id="registerExpert" parameterType="Expert">
 	insert into expert values(#{expert_Id}, #{e_Password}, #{e_Name},
-	#{e_Pnum},#{e_Gender} , #{e_Age},'expert', #{e_Photo})
+	#{e_Gender},#{e_Pnum} , #{e_Age},'expert', #{e_Photo})
 	</insert>
 
 		
@@ -21,6 +21,44 @@
 	where expert_id = #{id}
 	</select>
 	
+	<select id="profileDetail" parameterType="String" resultType="Expert_Profile">
+	select * 
+	From Expert e JOIN Expert_Profile p
+	on e.expert_Id = p.profile_Expert_Id
+	Where profile_Expert_Id=#{expert_Id}  
+	</select>
+	
+	
+	<select id="expertDetail" parameterType="String" resultType="Expert">
+	select * 
+	From Expert
+	Where expert_Id=#{expert_Id}  
+	</select>
+	
+	<update id="profileUpdate" parameterType="Expert_Profile">
+	update expert_Proflie set ep_LineLetter=#{ep_LineLetter}, 
+	ep_DetailLetter=#{ep_DetailLetter}
+	where Profile_Expert_Id=#{profile_Expert_Id}
+	</update>
+	
+	<resultMap type="Expert_Profile" id="Expert_Profile">
+		<result column="profile_Expert_Id" property="profile_Expert_Id"/>
+		<result column="ep_LineLetter" property="ep_LineLetter"/>
+		<result column="ep_DetailLetter" property="ep_DetailLetter"/>
+		<result column="eprofile_Identification" property="eprofile_Identification"/>
+	</resultMap>
+	
+	<resultMap type="Expert" id="Expert">
+		<result column="expert_Id" property="expert_Id"/>
+		<result column="e_Password" property="e_Password"/>
+		<result column="e_Name" property="e_Name"/>
+		<result column="e_Gender" property="e_Gender"/>
+		<result column="e_Pnum" property="e_Pnum"/>
+		<result column="e_Age" property="e_Age"/>
+		<result column="e_Divide" property="e_Divide"/>
+		<result column="e_Photo" property="e_Photo"/>
+		<collection property="expert_Profile" resultMap="Expert_Profile"/>
+	</resultMap>
 </mapper>
 
 
