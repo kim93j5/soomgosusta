@@ -19,7 +19,10 @@
 <body>
 	<c:set var='expert' value="${expert}" scope="request"/>
 	<c:set var='member' value="${member}" scope="request"/>
-
+						<form action="expertProfile.do?expert_Id=${expert.expert_Id}" method="get">
+							<input type="hidden" name="expert_Id" value="${expert.expert_Id}"/>
+							<input type="submit" value="프로필수정"/>
+				</form>	
 	<!-- ///////////////배너/////////////// -->
 	<nav>
 	<div>
@@ -44,10 +47,7 @@
 						<li><span>${id} 고객님</span></li>
 						<li><a href = "logout.do"><span>로그아웃</span></a>
 					</ul>
-				<form action="expertProfile.do?expert_Id=${expert.expert_Id}" method="get">
-					<input type="hidden" name="expert_Id" value="${expert.expert_Id}"/>
-					<input type="submit" value="프로필수정"/>
-				</form>	
+
 					
 				</div>
 			</c:when>
@@ -72,6 +72,7 @@
 					<ul>
 						<li><span>${id } 고수님</span></li>
 						<li><a href = "logout.do"><span>로그아웃</span></a>
+						
 					</ul>
 				</div>
 			</c:when>
