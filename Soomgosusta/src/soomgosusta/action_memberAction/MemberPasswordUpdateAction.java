@@ -15,17 +15,20 @@ public class MemberPasswordUpdateAction implements Action {
 		MemberService service = MemberService.getInstance();
 		Member memberMyInfo = service.memberMyPageService(request);
 		request.setAttribute("memberMyInfo", memberMyInfo);
-		
-		System.out.println(request.getParameter("nowPassword"));
-		
+
 		if(!memberMyInfo.getM_Password().equals(request.getParameter("nowPassword"))){
-			System.out.println("kdkdkdkdkdkdkdkdkkd");
+			System.out.println("기존 비밀번호 불일치");
+		}else{
+			System.out.println("기존 비밀번호 일치");
+			if(request.getParameter("changePassword").equals(request.getParameter("changePasswordcheck"))){
+				System.out.println("변경 비밀번호 확인 완료");
+				memberMyInfo.setM_Password(request.getParameter("changePassword"));
+				service.memberPwUpdate(memberMyInfo);
+			}
 		}
 		
-		
-		
-		forward.setRedirect(false);
-		forward.setPath("/updateForm.jsp");
+		forward.setRedirect(true);
+		forward.setPath("memberMyPage.do");
 		return forward;
 	}
 
