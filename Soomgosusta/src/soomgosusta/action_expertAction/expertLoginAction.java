@@ -36,8 +36,8 @@ public class expertLoginAction implements Action {
 			request.setAttribute("expert", expert);
 			session.setAttribute("id",e_id);
 			session.setAttribute("login_state", divide);
-			forward.setRedirect(false);
-			forward.setPath("main.jsp");
+			forward.setRedirect(true);
+			forward.setPath("main.do");
 
 		}else {
 			forward.setRedirect(true);

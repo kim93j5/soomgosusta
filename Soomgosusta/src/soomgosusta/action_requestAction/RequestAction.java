@@ -26,10 +26,10 @@ public class RequestAction implements Action {
 		String phoneNum = request.getParameter("phoneNum");
 		String member_Id = request.getParameter("m_id");
 		String searchCode = request.getParameter("searchCode");
-		String sido = request.getParameter("sido");
-		String gugun = request.getParameter("gugun");
+		String[] sido = request.getParameterValues("sido");
+		String[] gugun = request.getParameterValues("gugun");
+		String gender = request.getParameter("gen");
 		
-		System.out.println(member_Id);
 		HashMap<String, String> req_Info = new HashMap<String, String>();		
 		
 		for(int i=0; i<q_Code.length;i++){                                                                                                                                                                                                                                                                                                                                                                                                                                     
@@ -44,24 +44,27 @@ public class RequestAction implements Action {
 		} //질문, 답 구분
 		
 		requestQnA += phoneCode + "/" + phoneNum + "/,"; //핸드폰번호
-		requestQnA += sido + "/" + gugun + "/,"; //선호지역
+		requestQnA += "GEN/" + gender+"/,";
+		
+		String dist="DIS/";
+		for(int i=0; i<sido.length;i++){
+			if(!sido[i].equals("시/도 선택")){
+				dist += sido[i]+"/"+gugun[i]+",";
+			}
+		}
 		
 		req_Info.put("m_Id", member_Id);
 		req_Info.put("c_Code", searchCode);
-		
-		System.out.println(req_Info.get("m_Id"));
-		System.out.println(req_Info.get("c_Code"));
-		
+				
 		int size = service.listAlreadySendService(req_Info);
 		
 		if(size == 0){
 			request.setAttribute("req", "notyet");
-			service.insertRequestService(member_Id, searchCode, requestQnA);
+			service.insertRequestService(member_Id, searchCode, requestQnA, dist);
 			service.updateLogRequestService(searchCode);
 		}else{
 			request.setAttribute("req", "ing");
 		}
-		
 		
 		forward.setRedirect(false);
 		forward.setPath("requestInfo.jsp");

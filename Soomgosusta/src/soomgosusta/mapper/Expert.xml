@@ -91,10 +91,12 @@
 
    
    <insert id="insertExpertSum" parameterType="Expert_Information">
-        insert into expert_information values ('dltmddnjs041', #{ei_Day}, #{ei_Time}, #{ei_District}, #{ei_Start}, #{c_Code})
+        insert into expert_information values (#{infor_Expert_Id}, #{ei_Day}, #{ei_Time}, #{ei_District}, #{ei_Start}, #{c_Code})
    </insert>
 	
-	
+	<update id="updateRegisterLog" parameterType="String">
+		update category_log set cl_register = cl_register+1 where log_c_code = #{searchCode}
+	</update>
 </mapper>
 
 

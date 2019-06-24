@@ -13,25 +13,27 @@
 <body>
 <p>어떤 분야를 찾으시나요?</p>
 	<div id="list_Lesson">
+		<ul>
 		<c:forEach var="listCategory" items="${listCategory}">
 			
 	
 		<div id= "list_LI">
 			<c:if test="${listCategory.group2 == '악기'}">
-				<a id="select" href="search.do?searchKey=${listCategory.group3}">
+				<li><a id="select" href="search.do?searchKey=${listCategory.group3}">
 						${listCategory.group3}
-				</a><br>	
+				</a></li>	
 			</c:if>		
 		</div>	
 		
 		<div id="list_LS">
 			<c:if test="${listCategory.group2 == '학업'}">
-				<a id="select" href="search.do?searchKey=${listCategory.group3}">
+				<li><a id="select" href="search.do?searchKey=${listCategory.group3}">
 						${listCategory.group3}
-				</a><br>	
+				</a></li>	
 			</c:if>	
 		</div>	
 		</c:forEach>
+		</ul>
 	</div>
 </body>
 </html>

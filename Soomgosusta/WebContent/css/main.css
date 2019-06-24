@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+
+#listForm{
+	height: 600px;
+	width: 960px;
+	overflow: hidden;
+	position: relative;
+}
+
+.requestList{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}

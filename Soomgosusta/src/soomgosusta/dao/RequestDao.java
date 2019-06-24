@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import soomgosusta.domain.Answer;
 import soomgosusta.domain.Question;
 import soomgosusta.domain.Request;
+import soomgosusta.mapper.CategoryMapper;
 import soomgosusta.mapper.RequestMapper;
 
 public class RequestDao {
@@ -141,6 +142,20 @@ public class RequestDao {
 				}
 				
 				return re; 
+			}
+			
+			public int listEmploymentLog(String searchKey){
+				SqlSession sqlSession = getSqlSessionFactory().openSession();
+				int re = -1;
+				
+				try {
+					re = sqlSession.getMapper(RequestMapper.class).listEmploymentLog(searchKey);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					sqlSession.close();
+				}
+				return re;
 			}
 		}
 

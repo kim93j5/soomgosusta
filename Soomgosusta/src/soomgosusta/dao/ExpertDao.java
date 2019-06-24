@@ -216,4 +216,18 @@ public class ExpertDao {
 		return list;
 	}
 	
+	public int updateRegisterLog(String searchCode){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		
+		try {
+			re = sqlSession.getMapper(ExpertMapper.class).updateRegisterLog(searchCode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return re;
+	}
 }

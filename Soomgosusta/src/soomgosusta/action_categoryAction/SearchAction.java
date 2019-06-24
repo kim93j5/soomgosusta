@@ -24,15 +24,15 @@ public class SearchAction implements Action {
 			
 			forward.setRedirect(false);
 			forward.setPath("listSearchKey.jsp");
-		}else if(listSearchKey.size() <= 1){
+		}else if(listSearchKey.size() == 1 ){
 			String searchCode = service.updateSearchLogService(searchKey); //검색로그+1
-
-			if(searchCode != null){
-				request.setAttribute("searchCode", searchCode);
-			}
+			request.setAttribute("searchCode", searchCode);
 			
 			forward.setRedirect(true);
 			forward.setPath("requestForm.do?searchCode="+searchCode);
+		}else{
+			forward.setRedirect(true);
+			forward.setPath("requestForm.do?searchCode=null");
 		}
 
 		return forward;

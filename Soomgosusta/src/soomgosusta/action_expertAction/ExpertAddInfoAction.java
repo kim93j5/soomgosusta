@@ -28,15 +28,13 @@ public class ExpertAddInfoAction implements Action {
 			for (int j = 0; j < categoryList.size(); j++) {
 				if (categoryList.get(j).getC_Word().contains(expert_Interest3[i])) {
 					str += categoryList.get(j).getC_Code();
+					service.updateRegisterLogService(categoryList.get(j).getC_Code());
+					
 					if (i != expert_Interest3.length - 1) {
 						str += "/";
 					}
 				}
 			}
-		}
-
-		for (int i = 0; i < expert_Interest3.length; i++) {
-			// System.out.println(expert_Interest3[i]);
 		}
 
 		/////////////// 활동범위//////////////////
@@ -83,10 +81,6 @@ public class ExpertAddInfoAction implements Action {
 		String requestQ1_A_sub = requestQ1_A.substring(0, requestQ1_A.length() - 1);
 		String requestQ2_A_sub = requestQ2_A.substring(0, requestQ2_A.length() - 1);
 		String requestQ3_A_sub = requestQ3_A.substring(0, requestQ3_A.length() - 1);
-
-		System.out.println(requestQ1_A_sub);
-		System.out.println(requestQ2_A_sub);
-		System.out.println(requestQ3_A_sub);
 
 		Expert_Information expert_Info = new Expert_Information();
 

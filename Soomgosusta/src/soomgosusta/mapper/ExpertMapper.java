@@ -25,4 +25,5 @@ public interface ExpertMapper {
    List<Answer> a_Info();
  
    int insertExpertSum(Expert_Information expert_Info);
+   int updateRegisterLog(String searchCode);
 }

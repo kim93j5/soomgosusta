@@ -42,6 +42,12 @@
 		 select * from request where request_member_id = 'kyungmi' 
 	</select>
 	
+	<select id = "listEmploymentLog" parameterType="String" resultType="int">
+		select cl.cl_employment
+		from category_log cl join category c
+		on cl.log_c_code = c.c_code
+		where c.c_word like #{searchKey}
+	</select>
 	
 </mapper>
 

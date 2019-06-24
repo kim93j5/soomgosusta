@@ -20,6 +20,11 @@
 	where member_id = #{id}
 	</select>
 	
+	<insert id="registerMember" parameterType="Member">
+   insert into member values(#{member_Id}, #{m_Password}, #{m_Name},
+   #{m_Pnum},#{m_Gender}, #{m_Age}, 'member' , #{m_Photo})
+</insert>
+	
 	<select id="recommendInfo" resultType="Member_Information">		
 		 select c_code from member_information where infor_member_id = 'nan5124' 
 	</select>

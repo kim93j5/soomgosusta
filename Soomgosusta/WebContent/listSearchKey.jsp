@@ -84,8 +84,12 @@ window.opener.close();
 	</nav>
 
 	<h2>다음 서비스를 찾고 있나요?</h2>
+	<ul>
 	<c:forEach var = "list" items="${listSearchKey}">
-		<a href= "search.do?searchKey=${list.group3 }">${list.group3}</a><br>
+		<li>
+		<a href= "search.do?searchKey=${list.group3 }">${list.group3}</a>
+		</li>
 	</c:forEach>
+	</ul>
 </body>
 </html>

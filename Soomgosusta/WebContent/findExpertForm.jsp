@@ -111,7 +111,7 @@
 			<c:forEach var = "listFindInfo" items="${listFindInfo}">
 				<tr>
 				<td><img src="./images/${listFindInfo.ef_Photo}">&nbsp;&nbsp;</td>
-				<td><h4><strong>${listFindInfo.ef_LineLetter }</strong></h4></td>
+				<td><a href="expertProfile.do?expert_Id=${listFindInfo.ef_Id }"><strong>${listFindInfo.ef_LineLetter }</strong></a></td>
 				<td><h5>${listFindInfo.ef_Id }</h5><h6>(${listFindInfo.ef_District })</h6></td>
 				<td><h5>${listFindInfo.ef_Avg_StarPoint }</h5><h6>(총 리뷰 ${listFindInfo.ef_Cnt_Review }개)</h6></td>
 				</tr>

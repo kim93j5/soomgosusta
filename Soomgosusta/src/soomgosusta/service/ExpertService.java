@@ -40,7 +40,6 @@ public class ExpertService {
 		return profile;
 	}
 	public Expert expertDetailService(HttpServletRequest request)throws Exception{
-		System.out.println("아아아앙ㅁ니;ㅓㅁㄴ이허ㅏㅁㄴ아ㅣ");
 		request.setCharacterEncoding("utf-8");
 		Expert expert = new Expert();
 		String expert_Id= request.getParameter("expert_Id");
@@ -118,5 +117,9 @@ public class ExpertService {
 	public List<Expert_FindInfo> listExpertFindService(HashMap<String, String> map){
 
 		return dao.listExpertFind(map);
+	}
+	
+	public int updateRegisterLogService(String searchCode){
+		return dao.updateRegisterLog(searchCode);
 	}
 }

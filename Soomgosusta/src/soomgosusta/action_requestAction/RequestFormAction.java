@@ -27,10 +27,16 @@ public class RequestFormAction implements Action {
 		
 		String searchCode = request.getParameter("searchCode");
 		String searchKey = c_service.searchCategoryService(searchCode);
-		String[] keyGroup = searchKey.split("/");
-		
-		request.setAttribute("searchCode", searchCode);
-		request.setAttribute("searchKey", keyGroup[2]);
+		String[] keyGroup = null;
+		int expertNum =0;
+		if(searchKey != null){
+			keyGroup = searchKey.split("/");
+			request.setAttribute("searchCode", searchCode);
+			request.setAttribute("searchKey", keyGroup[2]);
+			expertNum = service.listEmploymentLog("%"+searchKey+"%");
+		}
+
+		request.setAttribute("expertNum", expertNum);
 		
 		if (!searchCode.equals("null")) {
 
