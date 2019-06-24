@@ -1,8 +1,12 @@
 package soomgosusta.domain;
 
+import java.io.Serializable;
 
-
-public class Expert_Profile_License {
+public class Expert_Profile_License implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String epl_Expert_Id;
 	private String epl_Photo;
 	
@@ -29,6 +33,11 @@ public class Expert_Profile_License {
 	public void setEpl_Photo(String epl_Photo) {
 		this.epl_Photo = epl_Photo;
 	}
+
+	@Override
+	public String toString() {
+		return "Expert_Profile_License [epl_Expert_Id=" + epl_Expert_Id + ", epl_Photo=" + epl_Photo + "]";
+	}
 	
-		
+	
 }

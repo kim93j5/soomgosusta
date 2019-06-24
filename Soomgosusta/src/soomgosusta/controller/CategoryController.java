@@ -21,64 +21,64 @@ import soomgosusta.action_interface.ActionForward;
 
 public class CategoryController extends HttpServlet {
 private static final long serialVersionUID = 1L;
-	
+   
     public CategoryController() {
         super();   
     }
     public void doProcess(HttpServletRequest request, HttpServletResponse response)throws SecurityException, IOException, ServletException{
-    	String requestURI = request.getRequestURI();
-    	String contextPath= request.getContextPath();
-    	String command = requestURI.substring(contextPath.length()+1);
-    	
-    	Action action=null;
-    	ActionForward forward = null;
-    	
-    	if(command.equals("main.do")){
-    		action = new MainAction();
-    		
-    		try {
-				forward = action.excute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-    	}
-    	else if(command.equals("search.do")){
-    		action = new SearchAction();
-    		
-    		try{
-    			forward = action.excute(request, response);
-    		}catch(Exception e){
-    			e.printStackTrace();
-    		}
-    	}
-    	else if(command.equals("categoryInfo.do")){
-    		action = new CategoryInfoAction();
-    		
-    		try{
-    			forward = action.excute(request, response);
-    		}catch(Exception e){
-    			e.printStackTrace();
-    		}
-    	}
-    		
-    	if(forward != null){
-        	if(forward.isRedirect() == true){
-        		response.sendRedirect(forward.getPath());
-        	}else{
-        		RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
-        		dispatcher.forward(request, response);
-        	}
-        }	
+       String requestURI = request.getRequestURI();
+       String contextPath= request.getContextPath();
+       String command = requestURI.substring(contextPath.length()+1);
+       
+       Action action=null;
+       ActionForward forward = null;
+       
+       if(command.equals("main.do")){
+          action = new MainAction();
+          
+          try {
+            forward = action.excute(request, response);
+         } catch (Exception e) {
+            e.printStackTrace();
+         }
+       }
+       else if(command.equals("search.do")){
+          action = new SearchAction();
+          
+          try{
+             forward = action.excute(request, response);
+          }catch(Exception e){
+             e.printStackTrace();
+          }
+       }
+       else if(command.equals("categoryInfo.do")){
+          action = new CategoryInfoAction();
+          
+          try{
+             forward = action.excute(request, response);
+          }catch(Exception e){
+             e.printStackTrace();
+          }
+       }
+          
+       if(forward != null){
+           if(forward.isRedirect() == true){
+              response.sendRedirect(forward.getPath());
+           }else{
+              RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
+              dispatcher.forward(request, response);
+           }
+        }   
     }
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
-	}
+   
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      doProcess(request, response);
+   }
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
-	}
+   
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      doProcess(request, response);
+   }
 
 }

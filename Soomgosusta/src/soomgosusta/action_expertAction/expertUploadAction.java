@@ -5,15 +5,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
+import soomgosusta.service.ExpertService;
 
-public class findExpertFormAcion implements Action {
+public class expertUploadAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("오나요??ㄴ");
 		ActionForward forward = new ActionForward();
+		ExpertService service= ExpertService.getInstance();
+		
+		service.expertImgUploadService(request);
+		
 		
 		forward.setRedirect(false);
-		forward.setPath("findExpertForm.jsp");
-		
+		forward.setPath("expertProfile.do");
 		return forward;
 	}
 

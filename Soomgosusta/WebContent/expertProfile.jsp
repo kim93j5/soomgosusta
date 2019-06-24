@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
+<c:set var="expert" value="${expert}" scope="request"></c:set>
 <head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="./script/jquery.form.js"></script>
+<script src="./script/jquery.js"></script>
 </head>
 <body>
 	상태: ${login_state} (확인용)
@@ -29,9 +34,8 @@
 
 				<input type="hidden" name="profile_Expert_Id" value="${expert.expert_Id}"> 
 				<input type="hidden" name="expert_Id" value="${expert.expert_Id}">
-
 				<c:set var="profile" value="${profile}" scope="request"></c:set>
-
+				
 				<h2>한줄소개</h2>
 				<textarea rows="5" cols="100" name="한줄소개"> ${profile.ep_LineLetter} </textarea>
 				<br>
@@ -39,38 +43,141 @@
 				<textarea rows="10" cols="100">${profile.ep_DetailLetter} </textarea>
 				<br>
 
-
-			</form>
-			<article>
+				<c:set var="epl" value="${epl}" scope="request"/>
+			 </form>
+			
+				<c:set var="expert" value="${expert}" scope="request"></c:set>
 				<h5>자격증</h5>
-				<form action="upload.jsp" method="post"
-					encType="multipart/form-data">
+	<%-- 			<form id = "licenseForm2" action="upload.do" method="post" encType="multipart/form-data">
+				 	<img id="foo" src="${epl.epl_Photo}" /> <br>
+					파일: <input type="file" name="licenseFile" id="license"> 
+					<input type="hidden" name="expert_Id" value="${expert.expert_Id}">
+			
+					<input type="submit" name="uploadlicense" value="저장"><br>
+				</form> --%>
+				<form id = "licenseForm" action="upload.do" method="post" encType="multipart/form-data">
+					파일: <input type="file" name="licenseFile" id="license"> 
+					<input type="hidden" name="expert_Id" value="${expert.expert_Id}">
+					<input type="submit" name="uploadlicense" value="저장"><br>
+					<img src="upload/${head }_small.${pattern}">
+				<c:if test="${epl.epl_Photo != null }">
+						<c:set var="head" value="${fn:substring(epl.epl_Photo,0, fn:length(epl.epl_Photo)-4) }"></c:set>
+						<c:set var="pattern" value="${fn:substring(epl.epl_Photo, fn:length(head) +1, fn:length(epl.epl_Photo)) }"></c:set>
+							
+						<c:choose>
+							<c:when test="${pattern == 'jpg' || pattern == 'gif' }">
+								<img src="upload/${head }_small.${pattern}">
+							</c:when>
+							<c:otherwise>
+								<c:out value="NO IMAGE"></c:out>
 
-					파일: <input type="file" name="file"><br> <input
-						type="submit" name="upload"><br>
+							</c:otherwise>
+						</c:choose>
+					</c:if>
 				</form>
+				
+				/////////////////////////////////////////////////////////////////////////////////////
 				<h5>포토폴리오</h5>
-				<form action="" method="" encType="multipart/form-data">
-
-					<input type="file">
+				<form action="" method="post" encType="multipart/form-data">
+					<img id="poo"src="/images/common/logo_daekyo.png" /> <br>
+					파일: <input type="file" name="portfolioFile" id="portfolio"> 
+					<input type="hidden" name="expert_Id" value="${expert.expert_Id}">
+					<input type="submit" name="uploadPortfolios" value="저장"><br>
 				</form>
-			</article>
+ 		
 			<form>
 
 				<h5>본인인증 여부</h5>
 			</form>
+			
+			<%-- <c:forEach var="reply" items="${list}">  고수 리뷰 보기
+				<div>
+					작성자 ${reply.r_writer}
+					작성일 ${reply.r_regdate}<br>
+		
+					내용 ${reply.r_contents}		
+				</div>
+			</c:forEach> --%>
+			
 		</c:when>
 
 
 		<c:when test="${login_state =='member' && login_state == null}">
 			<h1>회원 or 비회원</h1>
+			
+			
+			<form action="" method="get">
+			<input type="hidden" name="member_Id" value="${member.member_Id}">
+			<input type="hidden" name="review_Date">
+			<input type="text" name="review_Contents">
+			<input type="hidden" name="review_Expert_Id" value="${expert.expert_Id}">
+			</form>
+
+			<%-- <c:forEach var="reply" items="${list}">  고수 리뷰 보기
+				<div>
+					작성자 ${reply.r_writer}
+					작성일 ${reply.r_regdate}<br>
+		
+					내용 ${reply.r_contents}		
+				</div>
+			</c:forEach> --%>
 		</c:when>
-	</c:choose>
-	<c:if test="${login_state != 'member'}">
-	</c:if>
+		</c:choose>
+		<c:if test="${login_state != 'member'}">
+		</c:if>
+
+	
 
 
+	<script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#foo').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
-
+        $("#license").change(function () {
+            readURL(this);
+        });
+        
+        function readPortURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#poo').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        $("#portfolio").change(function () {
+            readPortURL(this);
+        });
+       
+       /*  $(function(){
+        	$("#licenseForm").ajaxForm({
+            	beforeSubmit: function(data,form,option){
+            		
+            		return true;
+            	},
+            	success: funcion(response, status){
+            		
+            		alert("성공")
+            	},
+            	error: function(){
+            		//에러발생
+            	}
+            	
+            	
+            });
+        }); */
+        
+        
+        
+	</script>
 </body>
 </html>

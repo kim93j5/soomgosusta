@@ -36,6 +36,12 @@
 	Where expert_Id=#{expert_Id}  
 	</select>
 	
+	<select id="licenseDetail" parameterType="String" resultType="Expert_Profile_License">
+	select epl_Expert_Id, epl_Photo 
+	From Expert_Profile_License
+	Where epl_Expert_Id= #{epl_Expert_Id} 
+	</select>
+	
 	<update id="profileUpdate" parameterType="Expert_Profile">
 	update expert_Proflie set ep_LineLetter=#{ep_LineLetter}, 
 	ep_DetailLetter=#{ep_DetailLetter}
@@ -97,6 +103,12 @@
 	<update id="updateRegisterLog" parameterType="String">
 		update category_log set cl_register = cl_register+1 where log_c_code = #{searchCode}
 	</update>
+	
+	<update id="updateLicenseImg" parameterType="Expert_Profile_License">
+		update Expert_Profile_License set epl_Photo = #{epl_Photo}
+		where epl_Expert_Id = #{epl_Expert_Id}
+	</update>
+	
 </mapper>
 
 

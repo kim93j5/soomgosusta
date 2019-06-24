@@ -5,20 +5,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
-import soomgosusta.service.ExpertService;
 
-public class expertRegisterAction implements Action {
+public class FindExpertFormAcion implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
-		ExpertService service = ExpertService.getInstance();
-		service.expertRegisterService(request);
 		
-		forward.setRedirect(true);
-		forward.setPath("expertLoginAction.do");
+		forward.setRedirect(false);
+		forward.setPath("findExpertForm.jsp");
 		
 		return forward;
-		
 	}
 
 }

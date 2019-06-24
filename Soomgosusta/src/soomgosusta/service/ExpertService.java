@@ -1,16 +1,24 @@
 package soomgosusta.service;
 
+import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import soomgosusta.dao.ExpertDao;
 import soomgosusta.domain.Expert;
 import soomgosusta.domain.Expert_Profile;
+import soomgosusta.domain.Expert_Profile_License;
 import soomgosusta.domain.Expert_FindInfo;
 import soomgosusta.domain.Answer;
 import soomgosusta.domain.Category;
 import soomgosusta.domain.Expert_Information;
 import soomgosusta.domain.Question;
+import soomgosusta.util.ImageUtil;
 
 public class ExpertService {
 	private static ExpertService service = new ExpertService();
@@ -34,7 +42,7 @@ public class ExpertService {
 	public Expert_Profile profileDetailService(HttpServletRequest request)throws Exception {
 		request.setCharacterEncoding("utf-8");
 		Expert_Profile profile = new Expert_Profile();
-		String expert_Id= request.getParameter("expert_Id");
+		String expert_Id= (String)request.getParameter("expert_Id");
 		System.out.println("@@service expert_Id"+expert_Id);
 		profile=dao.profileDetail(expert_Id);
 		return profile;
@@ -88,7 +96,7 @@ public class ExpertService {
 		expert.setExpert_Id(request.getParameter("id"));
 		expert.setE_Password(request.getParameter("password"));
 		
-		String id = (expert.getExpert_Id());
+		String id = expert.getExpert_Id();
 
 		expert = dao.expertLogin(id);
 		return expert;
@@ -121,5 +129,48 @@ public class ExpertService {
 	
 	public int updateRegisterLogService(String searchCode){
 		return dao.updateRegisterLog(searchCode);
+	}
+	
+	public int expertImgUploadService(HttpServletRequest request)throws Exception {
+		
+		Expert_Profile_License epl = new Expert_Profile_License();
+		int size = 20 * 1024 * 1024; //20MB
+		String uploadPath= request.getRealPath("upload");
+//		String uploadPath="D:\\SPB_Data\\git\\soomgosusta\\Soomgosusta\\WebContent\\upload";
+		MultipartRequest multi = new MultipartRequest(request,uploadPath,size,"utf-8",
+				new DefaultFileRenamePolicy());
+		
+		epl.setEpl_Expert_Id(multi.getParameter("expert_Id"));
+		if(multi.getFilesystemName("licenseFile")!=null) {
+			String licenseFile =(String)multi.getFilesystemName("licenseFile");
+			epl.setEpl_Photo(licenseFile);
+			
+			String pattern = licenseFile.substring(licenseFile.indexOf(".")+1);
+			String head = licenseFile.substring(0,licenseFile.indexOf("."));
+			
+			String imagePath = uploadPath + "\\"+licenseFile;
+			File src = new File(imagePath);
+			
+			String thumPath = uploadPath+"\\"+head+"_small."+pattern;
+			File dest = new File(thumPath);
+			
+			if(pattern.equals("gif")||pattern.equals("jpg")) {
+				ImageUtil.resize(src, dest, 1000, ImageUtil.RATIO);
+			}
+		}
+		
+		return dao.updateLicenseImg(epl);
+	}
+
+	public Expert_Profile_License LicenseDetailService(HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		Expert_Profile_License epl = new Expert_Profile_License();
+		String epl_Expert_Id =(String)request.getParameter("expert_Id");
+		System.out.println("llllllllllllll"+epl_Expert_Id);
+		
+		epl=dao.licenseDetail(epl_Expert_Id);
+		System.out.println("serviceLLLLL"+epl);
+		return epl;
+		
 	}
 }

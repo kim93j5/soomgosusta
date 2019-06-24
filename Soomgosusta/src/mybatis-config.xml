@@ -20,6 +20,7 @@
 		<typeAlias type="soomgosusta.domain.Expert_Profile" alias="Expert_Profile"/>
 		<typeAlias type="soomgosusta.domain.Expert_FindInfo" alias="Expert_FindInfo"/>
 		<typeAlias type="soomgosusta.domain.Review" alias="Review"/>
+		<typeAlias type="soomgosusta.domain.Expert_Profile_License" alias="Expert_Profile_License"/>
 	</typeAliases>
 	
 	<environments default="development">
