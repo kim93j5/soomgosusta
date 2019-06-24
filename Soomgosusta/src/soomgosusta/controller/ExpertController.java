@@ -9,15 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import soomgosusta.action_expertAction.FindExpertAction;
+import soomgosusta.action_expertAction.FindExpertFormAcion;
 import soomgosusta.action_expertAction.expertDetailProfileAction;
 import soomgosusta.action_expertAction.expertLoginAction;
 import soomgosusta.action_expertAction.expertRegisterAction;
 import soomgosusta.action_expertAction.expertRegisterFormAction;
 import soomgosusta.action_expertAction.expertUploadAction;
-import soomgosusta.action_expertAction.findExpertAcion;
-import soomgosusta.action_expertAction.findExpertFormAcion;
-import soomgosusta.action_expertAction.ExpertAddInfoAction;
-import soomgosusta.action_expertAction.ExpertAddInfoFormAction;
+//github.com/kim93j5/soomgosusta.git
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 
@@ -44,6 +43,7 @@ public class ExpertController extends HttpServlet {
     	
     	if(command.equals("expertRegisterActionForm.do")) {
     		action = new expertRegisterFormAction();
+    		
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
@@ -80,38 +80,21 @@ public class ExpertController extends HttpServlet {
 			}
     	
     	}else if(command.equals("findExpertForm.do")){
-    		action = new findExpertFormAcion();
-    		
+    		action = new FindExpertFormAcion();
     		try{
     			forward = action.excute(request, response);
     		}catch(Exception e){
     			e.printStackTrace();
     		}
     	}else if(command.equals("findExpert.do")){
-    		action = new findExpertAcion();
+    		action = new FindExpertAction();
     		
     		try{
     			forward = action.excute(request, response);
     		}catch(Exception e){
     			e.printStackTrace();
     		}
-    	}else if (command.equals("expertAddInfoForm.do")) {
-			action = new ExpertAddInfoFormAction();
-			try {
-				forward = action.excute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		}else if (command.equals("expertAddInfo.do")) {
-			action = new ExpertAddInfoAction();
-			try {
-				forward = action.excute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		}
+    	}
     	
     	if(forward != null){
         	if(forward.isRedirect() == true){
@@ -123,13 +106,13 @@ public class ExpertController extends HttpServlet {
         }	
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
 
