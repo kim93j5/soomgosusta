@@ -7,6 +7,7 @@ import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 import soomgosusta.domain.Expert;
 import soomgosusta.domain.Expert_Profile;
+import soomgosusta.domain.Expert_Profile_License;
 import soomgosusta.service.ExpertService;
 import soomgosusta.service.MemberService;
 
@@ -23,8 +24,13 @@ public class expertDetailProfileAction implements Action {
 		Expert expert;
 		expert = service2.expertDetailService(request);
 		
+		Expert_Profile_License	epl;
+		epl= service.LicenseDetailService(request);
+		
+		
 		request.setAttribute("profile",profile);
 		request.setAttribute("expert",expert);
+		request.setAttribute("epl", epl);
 		
 		forward.setRedirect(false);
 		forward.setPath("expertProfile.jsp");

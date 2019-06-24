@@ -40,8 +40,8 @@ public class loginAction implements Action {
 			request.setAttribute("member", member);
 			session.setAttribute("id",m_id);
 			session.setAttribute("login_state",divide);
-			forward.setRedirect(false);
-			forward.setPath("main.jsp");
+			forward.setRedirect(true);
+			forward.setPath("main.do");
 		}else {
 			forward.setRedirect(true);
 			forward.setPath("login.do");

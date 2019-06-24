@@ -7,15 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import soomgosusta.dao.MemberDao;
 import soomgosusta.domain.Category;
 import soomgosusta.domain.Member;
-import soomgosusta.dao.MemberMainDao;
 import soomgosusta.domain.Member_Information;
 
 public class MemberService {
 	private static MemberService service = new MemberService();
-	private static MemberMainDao dao;
+	private static MemberDao dao;
 	
 	public static MemberService getInstance() {
-		dao= MemberMainDao.getInstance();
+		dao= MemberDao.getInstance();
 		return service;
 	}
 	
@@ -86,7 +85,6 @@ public class MemberService {
 	 * dao.memberPwUpdate(member); } public int memberPnumUpdate(Member member)
 	 * throws Exception{ return dao.memberPnumUpdate(member); } }
 	 */
-
 
 
 

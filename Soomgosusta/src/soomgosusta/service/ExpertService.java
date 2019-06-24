@@ -1,11 +1,17 @@
 package soomgosusta.service;
 
+import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+
+import com.oreilly.servlet.MultipartRequest;
+
 import soomgosusta.dao.ExpertDao;
 import soomgosusta.domain.Expert;
 import soomgosusta.domain.Expert_Profile;
+import soomgosusta.domain.Expert_Profile_License;
 import soomgosusta.domain.Expert_FindInfo;
 import soomgosusta.domain.Answer;
 import soomgosusta.domain.Category;
@@ -118,5 +124,31 @@ public class ExpertService {
 	public List<Expert_FindInfo> listExpertFindService(HashMap<String, String> map){
 
 		return dao.listExpertFind(map);
+	}
+
+	public int expertImgUploadService(HttpServletRequest request)throws Exception {
+		
+		Expert_Profile_License epl = new Expert_Profile_License();
+		int size = 20 * 1024 * 1024; //20MB
+//		String uploadPath= request.getRealPath("upload");
+		String uploadPath="D:\\SPB_Data\\git\\soomgosusta\\Soomgosusta\\WebContent\\upload";
+		MultipartRequest multi = new MultipartRequest(request,uploadPath,size);
+		String licenseFile =(String)multi.getOriginalFileName("licenseFile");
+		String licenseImgPath = uploadPath + "\\"+licenseFile;
+		epl.setEpl_Expert_Id(multi.getParameter("expert_Id"));
+		epl.setEpl_Photo(licenseImgPath);
+		
+		return dao.updateLicenseImg(epl);
+	}
+
+	public Expert_Profile_License LicenseDetailService(HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		Expert_Profile_License epl = new Expert_Profile_License();
+		String epl_Expert_Id = request.getParameter("expert_Id");
+		
+		epl=dao.licenseDetail(epl_Expert_Id);
+		System.out.println("serviceLLLLL"+epl);
+		return epl;
+		
 	}
 }

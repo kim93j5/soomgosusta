@@ -13,6 +13,7 @@ import soomgosusta.action_expertAction.expertDetailProfileAction;
 import soomgosusta.action_expertAction.expertLoginAction;
 import soomgosusta.action_expertAction.expertRegisterAction;
 import soomgosusta.action_expertAction.expertRegisterFormAction;
+import soomgosusta.action_expertAction.expertUploadAction;
 import soomgosusta.action_expertAction.findExpertAcion;
 import soomgosusta.action_expertAction.findExpertFormAcion;
 import soomgosusta.action_expertAction.ExpertAddInfoAction;
@@ -20,7 +21,7 @@ import soomgosusta.action_expertAction.ExpertAddInfoFormAction;
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 
-@WebServlet(urlPatterns={"/expertRegisterActionForm.do","/expertRegisterAction.do","/expertLogin.do","/expertLoginAction.do",
+@WebServlet(urlPatterns={"/expertRegisterActionForm.do","/expertRegisterAction.do","/expertLogin.do","/expertLoginAction.do","/upload.do",
 		"/expertProfile.do","/expertDetailProfileAction.do", "/findExpertForm.do", "/findExpert.do","/expertAddInfo.do","/expertAddInfoForm.do"})
 
 public class ExpertController extends HttpServlet {
@@ -69,13 +70,15 @@ public class ExpertController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-    	}else if(command.equals("update")) {
-    		
+    	}else if(command.equals("upload.do")) {
+    		action = new expertUploadAction();
     		try {
+    			System.out.println("오니요?");
 				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			} 
+			}
+    	
     	}else if(command.equals("findExpertForm.do")){
     		action = new findExpertFormAcion();
     		

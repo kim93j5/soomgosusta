@@ -12,7 +12,11 @@
 	<insert id="addMemberInterest" parameterType="Member_Information">
 		insert into member values(#{member_User_Id},#{mi_District},#{c_Code})
 	</insert>
-
+	
+	<insert id="registerMember" parameterType="Member">
+	insert into member values(#{member_Id}, #{m_Password}, #{m_Name},
+	#{m_Pnum},#{m_Gender}, #{m_Age}, 'member' , #{m_Photo})
+	</insert>
 		
 	<select id="login" parameterType="String" resultType="Member">
 	select *

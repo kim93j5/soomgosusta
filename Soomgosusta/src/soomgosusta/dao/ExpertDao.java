@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import soomgosusta.domain.Expert;
 import soomgosusta.domain.Expert_Profile;
+import soomgosusta.domain.Expert_Profile_License;
 import soomgosusta.domain.Expert_FindInfo;
 import soomgosusta.domain.Answer;
 import soomgosusta.domain.Category;
@@ -214,6 +215,40 @@ public class ExpertDao {
 		}
 		
 		return list;
+	}
+
+	public int updateLicenseImg(Expert_Profile_License epl) {
+		int re = -1;
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			re = sqlSession.getMapper(ExpertMapper.class).updateLicenseImg(epl);
+			
+		if(re>0) {
+				sqlSession.commit();
+			}else {
+				sqlSession.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return re;
+	}
+
+	public Expert_Profile_License licenseDetail(String epl_Expert_Id) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		Expert_Profile_License epl= null;
+		try {
+			epl = sqlSession.getMapper(ExpertMapper.class).licenseDetail(epl_Expert_Id);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return epl;
 	}
 	
 }

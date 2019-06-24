@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import soomgosusta.domain.Expert;
 import soomgosusta.domain.Expert_Profile;
+import soomgosusta.domain.Expert_Profile_License;
 import soomgosusta.domain.Expert_FindInfo;
 import soomgosusta.domain.Answer;
 import soomgosusta.domain.Category;
@@ -25,4 +26,6 @@ public interface ExpertMapper {
    List<Answer> a_Info();
  
    int insertExpertSum(Expert_Information expert_Info);
+   int updateLicenseImg(Expert_Profile_License epl);
+   Expert_Profile_License licenseDetail(String epl_Expert_Id);
 }
