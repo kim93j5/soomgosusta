@@ -214,5 +214,6 @@ public class MemberDao {
 		}
 		return re;
 	}
+	
 }
 	

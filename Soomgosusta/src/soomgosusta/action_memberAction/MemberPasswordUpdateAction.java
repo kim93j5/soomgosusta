@@ -13,7 +13,10 @@ public class MemberPasswordUpdateAction implements Action {
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
 		MemberService service = MemberService.getInstance();
-		Member memberMyInfo = service.memberMyPageService(request);
+		
+		String member_id = request.getParameter("member_Id");
+		
+		Member memberMyInfo = service.memberMyPageService(member_id);
 		request.setAttribute("memberMyInfo", memberMyInfo);
 
 		if(!memberMyInfo.getM_Password().equals(request.getParameter("nowPassword"))){
@@ -26,6 +29,7 @@ public class MemberPasswordUpdateAction implements Action {
 				service.memberPwUpdate(memberMyInfo);
 			}
 		}
+		
 		forward.setRedirect(true);
 		forward.setPath("memberMyPage.do");
 		return forward;

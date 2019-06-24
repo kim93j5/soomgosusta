@@ -16,7 +16,12 @@
 	<insert id="matchTableInsert" parameterType="Match">
 		insert into match2 values(#{match_Member_Id},#{match_C_Code},#{match_R_Seq},#{match_Expert_Id},#{m_Percent})
 	</insert>
-	
+	<update id="matchLogUpdate" parameterType="Category_Log">
+		update category_log2 set cl_Match = cl_Match+1 where log_C_Code = #{log_C_Code}
+	</update>
+	<select id="expertGender" resultType="Expert" parameterType="String">
+		select * from expert where expert_Id = #{expert_Id}
+	</select>
 </mapper>
 
 

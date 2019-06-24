@@ -1,6 +1,7 @@
 package soomgosusta.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Request implements Serializable {
 
@@ -23,7 +24,7 @@ public class Request implements Serializable {
 	private String r_QA_13;
 	private String r_QA_14;
 	private String r_QA_15;
-	private String r_DateRecord;
+	private Date r_DateRecord;
 	private String r_Status;
 
 	public Request() {}
@@ -33,7 +34,7 @@ public class Request implements Serializable {
 	public Request(String request_Member_Id, String request_C_Code, int r_Seq, String r_QA_01, String r_QA_02,
 			String r_QA_03, String r_QA_04, String r_QA_05, String r_QA_06, String r_QA_07, String r_QA_08,
 			String r_QA_09, String r_QA_10, String r_QA_11, String r_QA_12, String r_QA_13, String r_QA_14,
-			String r_QA_15, String r_DateRecord, String r_Status) {
+			String r_QA_15, Date r_DateRecord, String r_Status) {
 		super();
 		this.request_Member_Id = request_Member_Id;
 		this.request_C_Code = request_C_Code;
@@ -203,11 +204,11 @@ public class Request implements Serializable {
 		this.r_QA_15 = r_QA_15;
 	}
 
-	public String getR_DateRecord() {
+	public Date getR_DateRecord() {
 		return r_DateRecord;
 	}
 
-	public void setR_DateRecord(String r_DateRecord) {
+	public void setR_DateRecord(Date r_DateRecord) {
 		this.r_DateRecord = r_DateRecord;
 	}
 

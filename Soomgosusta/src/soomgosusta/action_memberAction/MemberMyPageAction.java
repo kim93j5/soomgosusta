@@ -20,9 +20,11 @@ public class MemberMyPageAction implements Action {
 		MemberService service = MemberService.getInstance();
 		ActionForward forward = new ActionForward();
 		
-		Member memberMyInfo = service.memberMyPageService(request);
+		String member_id = request.getParameter("member_Id");
+		
+		Member memberMyInfo = service.memberMyPageService(member_id);
 		request.setAttribute("memberMyInfo", memberMyInfo);
-
+		
 		String uploadPath = request.getRealPath("upload");
 		int size = 20*1024*1024; //20MB
 		

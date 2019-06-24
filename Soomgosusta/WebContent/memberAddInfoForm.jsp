@@ -5,7 +5,7 @@
 <html>
 <head>
 <script type="text/javascript" src="./script/jquery.js"></script>
-<script type="text/javascript" src="./script/memberAddInfo.js"></script>
+
 <!-- <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
   <link rel="stylesheet" href="./css/NewFile.css" target="text/css">
@@ -65,19 +65,20 @@ $('document').ready(function() {
  });
 
 
+
+
 });
+
 </script> 
 
-	<form id="AddInfoForm" name="AddInfoForm" action="memberAddInfoAction.do" method="post">
-
-
+	<form id="AddInfoForm" name="AddInfoForm" action="memberAddInfoAction.do?member_Id=${memberMyInfo.member_Id }" method="post">
 		<div id = "first_select">
 		<c:forEach var="categoryList1" items="${categoryList1 }">
-        	<input name="category1" type="checkbox" value="${categoryList1 }">${categoryList1 }
+        	<input name="category1" id="category1" type="checkbox" value="${categoryList1 }">${categoryList1 }
             </c:forEach>
             <br>
             <br>
-		<button type="button" id="1_btn" >다음</button>
+		<button type="button" id="1_btn" onclick="firstSelect();">다음</button>
 		</div>
 		<div id = "second_select1">
 		
@@ -86,25 +87,25 @@ $('document').ready(function() {
         </c:forEach>
 		<button type="button" id="2_btn" >다음</button>
 		</div>
-		<div id = "second_select2">
+		<!-- <div id = "second_select2">
 		<input type = "checkbox" name = "category2" id = "category2" value = "청소">청소<br>
 		<input type = "hidden" name = "category2_select" id = "category2_select" value="청소">
 		<input type = "checkbox" name = "category2" id = "category2" value = "서비스22">서비스22<br>
 		<input type = "hidden" name = "category2_select" id = "category2_select" value="서비스22">
 		<button type="button" id="3_btn" >다음</button>
-		</div>
+		</div> -->
 		<div id = "third_select1">
 		<c:forEach var="categoryList3_1" items="${categoryList3_1 }">
 			<input name="category3" type="checkbox" value="${categoryList3_1 }">${categoryList3_1 }<br>
         </c:forEach>
-		<input type = "submit" id="4_btn" value = "회원가입 완료">
+		<button type="button" id="4_btn">다음</button>
 		</div>	
 		<div id = "third_select2">
 		
 		<c:forEach var="categoryList3_2" items="${categoryList3_2 }">
 			<input name="category3" type="checkbox" value="${categoryList3_2 }">${categoryList3_2 }<br>
         </c:forEach>
-		<input type = "submit" value = "회원가입 완료">
+		<button type="button" id="5_btn" >다음</button>
 		</div>
 		
 		<div id="district_select">
@@ -126,7 +127,6 @@ $('document').ready(function() {
 			<select name="gugun" id="gugun"></select>
 			<br>
 		</div>	
-		
 		
 		<input type="button" id="prev4" value="이전"> 
         <input type="submit" value="입력완료" id="hidden">

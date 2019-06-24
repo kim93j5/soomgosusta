@@ -19,7 +19,8 @@ public class MemberImageUpdateAction implements Action {
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		MemberService service = MemberService.getInstance();
 		ActionForward forward = new ActionForward();
-		Member memberMyInfo = service.memberMyPageService(request);
+		String id= request.getParameter("member_Id");
+		Member memberMyInfo = service.memberMyPageService(id);
 		String uploadPath = request.getRealPath("upload");
 		int size = 20*1024*1024; //20MB
 		MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy());

@@ -79,4 +79,5 @@ public class Category_Log implements Serializable{
 				+ ", cl_Request=" + cl_Request + ", cl_Employment=" + cl_Employment + ", cl_Register=" + cl_Register
 				+ "]";
 	}
+
 }

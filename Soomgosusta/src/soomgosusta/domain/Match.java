@@ -11,12 +11,12 @@ public class Match implements Serializable{
 	private String match_C_Code;
 	private int match_R_Seq;
 	private String match_Expert_Id;
-	private String m_Percent;
+	private float m_Percent;
 	
 	public Match() {}
 
 	public Match(String match_Member_Id, String match_C_Code, int match_R_Seq, String match_Expert_Id,
-			String m_Percent) {
+			float m_Percent) {
 		super();
 		this.match_Member_Id = match_Member_Id;
 		this.match_C_Code = match_C_Code;
@@ -57,11 +57,11 @@ public class Match implements Serializable{
 		this.match_Expert_Id = match_Expert_Id;
 	}
 
-	public String getM_Percent() {
+	public float getM_Percent() {
 		return m_Percent;
 	}
 
-	public void setM_Percent(String m_Percent) {
+	public void setM_Percent(float m_Percent) {
 		this.m_Percent = m_Percent;
 	}
 

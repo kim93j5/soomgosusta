@@ -18,8 +18,6 @@ import soomgosusta.action_memberAction.memberRegisterFormAction;
 import soomgosusta.action_memberAction.MatchCalculateAction;
 import soomgosusta.action_memberAction.MemberImageUpdateAction;
 import soomgosusta.action_memberAction.MemberMyPageAction;
-import soomgosusta.action_memberAction.MemberNameUpdateAction;
-import soomgosusta.action_memberAction.MemberNameUpdateActionForm;
 import soomgosusta.action_memberAction.MemberPNumUpdateAction;
 import soomgosusta.action_memberAction.MemberPNumUpdateActionForm;
 import soomgosusta.action_memberAction.MemberPasswordUpdateAction;
@@ -30,8 +28,8 @@ import soomgosusta.action_memberMainAction.RecommendInfoAction;
 
 
 @WebServlet(urlPatterns={"/memberRegisterForm.do","/memberRegisterAction.do" ,"/loginAction.do", "/logout.do","/memberAddInfo.do","/memberAddInfoAction.do"
-		, "/matchAction.do", "/memberMyPage.do","/imageUpdate.do", "/pwUpdate.do","/nameUpdate.do","/pNumUpdate.do","/pwUpdateForm.do"
-		,"/nameUpdateForm.do","/pNumUpdateForm.do","/recommendInfoForm.do"})
+		, "/matchAction.do", "/memberMyPage.do","/imageUpdate.do", "/pwUpdate.do","/pNumUpdate.do","/pwUpdateForm.do"
+		,"/pNumUpdateForm.do","/recommendInfoForm.do"})
 
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -127,13 +125,6 @@ public class MemberController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if (command.equals("nameUpdate.do")) {
-			action = new MemberNameUpdateAction();
-			try {
-				forward = action.excute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		}else if (command.equals("pNumUpdate.do")) {
 			action = new MemberPNumUpdateAction();
 			try {
@@ -143,13 +134,6 @@ public class MemberController extends HttpServlet {
 			}
 		}else if (command.equals("pwUpdateForm.do")) {
 			action = new MemberPasswordUpdateActionForm();
-			try {
-				forward = action.excute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if (command.equals("nameUpdateForm.do")) {
-			action = new MemberNameUpdateActionForm();
 			try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
