@@ -37,6 +37,7 @@ public class ExpertAddInfoAction implements Action {
 			}
 		}
 
+
 		/////////////// 활동범위//////////////////
 
 		String[] district_Sido = request.getParameterValues("sido");
@@ -82,8 +83,14 @@ public class ExpertAddInfoAction implements Action {
 		String requestQ2_A_sub = requestQ2_A.substring(0, requestQ2_A.length() - 1);
 		String requestQ3_A_sub = requestQ3_A.substring(0, requestQ3_A.length() - 1);
 
+		System.out.println(requestQ1_A_sub);
+		System.out.println(requestQ2_A_sub);
+		System.out.println(requestQ3_A_sub);
+
+		
 		Expert_Information expert_Info = new Expert_Information();
 
+		expert_Info.setInfor_Expert_Id(request.getParameter("id"));
 		expert_Info.setEi_Day(requestQ1_A_sub);
 		expert_Info.setEi_Time(requestQ2_A_sub);
 		expert_Info.setEi_Start(requestQ3_A_sub);

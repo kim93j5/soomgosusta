@@ -215,7 +215,7 @@ public class MemberDao {
 		return re;
 	}
 
-	public Member_Information recommendInfo() {
+	public Member_Information recommendInfo(String infor_Member_Id) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 	    Member_Information member_info = null;
 		try {

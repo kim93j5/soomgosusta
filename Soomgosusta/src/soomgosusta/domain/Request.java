@@ -28,8 +28,6 @@ public class Request implements Serializable {
 	private String r_Status;
 
 	public Request() {}
-	
-	
 
 	public Request(String request_Member_Id, String request_C_Code, int r_Seq, String r_QA_01, String r_QA_02,
 			String r_QA_03, String r_QA_04, String r_QA_05, String r_QA_06, String r_QA_07, String r_QA_08,

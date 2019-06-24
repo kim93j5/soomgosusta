@@ -16,10 +16,10 @@ import soomgosusta.mapper.CategoryMapper;
 import soomgosusta.mapper.RequestMapper;
 
 public class RequestDao {
-	private static RequestDao r_dao = new RequestDao();
+	private static RequestDao dao = new RequestDao();
 
 	public static RequestDao getInstance() {
-		return r_dao;
+		return dao;
 	}
 
 	public SqlSessionFactory getSqlSessionFactory() {
@@ -36,11 +36,11 @@ public class RequestDao {
 
 	}
 
-	public Request sendRequestInfo() {
+	public Request sendRequestInfo(String request_Member_Id) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		Request request_c_Code = null;
 		try {
-			request_c_Code = sqlSession.getMapper(RequestMapper.class).sendRequestInfo();
+			request_c_Code = sqlSession.getMapper(RequestMapper.class).sendRequestInfo(request_Member_Id);
 
 		} catch (Exception e) {
 			e.printStackTrace();

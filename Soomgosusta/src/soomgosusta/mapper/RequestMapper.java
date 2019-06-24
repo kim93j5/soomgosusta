@@ -13,6 +13,6 @@ public interface RequestMapper {
 	int insertRequest(HashMap<String, String> requestMap);
 	int updateLogRequest(String searchCode);
 	List<Request> listAlreadySend(HashMap<String, String> map);   
-	Request sendRequestInfo();
 	int listEmploymentLog(String searchKey);
+	Request sendRequestInfo(String request_Member_Id);
 }

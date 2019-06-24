@@ -39,7 +39,7 @@
 					<ul class="nav navbar-nav">
 						<li><a href="main.do"> <img src="https://dmmj3ljielax6.cloudfront.net/static/img/home/index_soomgo_logo.svg" alt="숨고, 숨은고수">
 							</a></li>
-						<li><a href=""> <span>보낸 요청</span>
+						<li><a href="requestInfoForm.do"> <span>보낸 요청</span>
 						</a></li>
 						<li><a href="memberMyPage.do"><span>프로필</span></a>
 						<li><a href="findExpertForm.do"> <span>고수 찾기</span>
