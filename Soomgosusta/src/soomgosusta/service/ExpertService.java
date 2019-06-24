@@ -109,7 +109,7 @@ public class ExpertService {
 		expert.setE_Gender(request.getParameter("expert_Gender"));
 		expert.setE_Age(Integer.parseInt(request.getParameter("expert_Age")));
 		expert.setE_Divide(" ");
-		expert.setE_Photo(" ");						//ȸ�����Խ� ������  ���� �� ����
+		expert.setE_Photo(" ");						
 	
 		
 		System.out.println("test"+expert);

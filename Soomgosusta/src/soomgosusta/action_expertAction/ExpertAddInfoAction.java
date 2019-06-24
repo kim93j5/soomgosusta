@@ -35,9 +35,6 @@ public class ExpertAddInfoAction implements Action {
 			}
 		}
 
-		for (int i = 0; i < expert_Interest3.length; i++) {
-			// System.out.println(expert_Interest3[i]);
-		}
 
 		/////////////// 활동범위//////////////////
 
@@ -88,8 +85,10 @@ public class ExpertAddInfoAction implements Action {
 		System.out.println(requestQ2_A_sub);
 		System.out.println(requestQ3_A_sub);
 
+		
 		Expert_Information expert_Info = new Expert_Information();
 
+		expert_Info.setInfor_Expert_Id(request.getParameter("id"));
 		expert_Info.setEi_Day(requestQ1_A_sub);
 		expert_Info.setEi_Time(requestQ2_A_sub);
 		expert_Info.setEi_Start(requestQ3_A_sub);

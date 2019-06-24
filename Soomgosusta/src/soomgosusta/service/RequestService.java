@@ -32,7 +32,8 @@ public class RequestService {
 	public Request sendRequestService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
 
-		return dao.sendRequestInfo();
+		String request_Member_Id = request.getParameter("m_Id");
+		return dao.sendRequestInfo(request_Member_Id);
 	}
 
 	public int updateLogRequestService(String searchCode) throws Exception{

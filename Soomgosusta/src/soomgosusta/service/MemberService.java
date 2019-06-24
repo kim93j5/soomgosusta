@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import soomgosusta.dao.MemberDao;
 import soomgosusta.domain.Category;
 import soomgosusta.domain.Member;
 import soomgosusta.dao.MemberMainDao;
@@ -21,8 +20,10 @@ public class MemberService {
 	
 	public Member_Information recommendInfoService(HttpServletRequest request)throws Exception{
 		  request.setCharacterEncoding("utf-8");
-		    
-	return dao.recommendInfo();
+		
+		  String Infor_Member_Id = request.getParameter("member_Id");
+	      
+		  return dao.recommendInfo(Infor_Member_Id);
 	  }	
 	
 	public int memberRegisterService(HttpServletRequest request)throws Exception{
@@ -37,7 +38,7 @@ public class MemberService {
 		member.setM_Gender(request.getParameter("member_Gender"));
 		member.setM_Age(Integer.parseInt(request.getParameter("member_Age")));
 		member.setM_Divide(" ");
-		member.setM_Photo(" ");						//
+		member.setM_Photo(" ");						
 		
 		
 		

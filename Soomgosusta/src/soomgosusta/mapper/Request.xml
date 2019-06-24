@@ -38,8 +38,8 @@
 	</select>
 
 	
-	<select id="sendRequestInfo" resultType="Request">		
-		 select * from request where request_member_id = 'kyungmi' 
+	<select id="sendRequestInfo" resultType="Request" parameterType="String">		
+		 select * from request where request_member_id = #{request_Member_Id}
 	</select>
 	
 	

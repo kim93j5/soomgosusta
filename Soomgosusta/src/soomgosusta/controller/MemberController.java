@@ -26,7 +26,6 @@ import soomgosusta.action_memberAction.MemberPasswordUpdateAction;
 import soomgosusta.action_memberAction.MemberPasswordUpdateActionForm;
 import soomgosusta.action_memberAction.MemeberAddInfoAction;
 import soomgosusta.action_memberAction.MemeberAddInfoActionForm;
-import soomgosusta.action_memberMainAction.RecommendInfoAction;
 
 
 @WebServlet(urlPatterns={"/memberRegisterForm.do","/memberRegisterAction.do" ,"/loginAction.do", "/logout.do","/memberAddInfo.do","/memberAddInfoAction.do"
@@ -84,14 +83,6 @@ public class MemberController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-    	}else if (command.equals("recommendInfoForm.do")) {
-    		action = new RecommendInfoAction();
-    		try {
-    			forward = action.excute(request, response);
-    		} catch (Exception e) {
-    			e.printStackTrace();
-    		}
-    		
     	}else if(command.equals("memberAddInfoAction.do")){
 				action = new MemeberAddInfoAction();
 			try {

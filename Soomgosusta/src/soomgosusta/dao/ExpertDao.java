@@ -90,6 +90,7 @@ public class ExpertDao {
 	  public int insertExpertSum(Expert_Information expert_Info ){
 		  int re = -1;
 		  SqlSession sqlSession = getSqlSessionFactory().openSession();
+		  System.out.println(expert_Info.getInfor_Expert_Id());
 		  
 		  try {
 			re = sqlSession.getMapper(ExpertMapper.class).insertExpertSum(expert_Info);

@@ -91,9 +91,10 @@
 
    
    <insert id="insertExpertSum" parameterType="Expert_Information">
-        insert into expert_information values ('dltmddnjs041', #{ei_Day}, #{ei_Time}, #{ei_District}, #{ei_Start}, #{c_Code})
+        insert into expert_information values (#{infor_Expert_Id}, #{ei_Day}, #{ei_Time}, #{ei_District}, #{ei_Start}, #{c_Code})
+        
    </insert>
-	
+
 	
 </mapper>
 

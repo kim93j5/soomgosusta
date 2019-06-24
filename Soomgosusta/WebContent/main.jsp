@@ -21,7 +21,6 @@
 	<c:set var='expert' value="${expert}" scope="request"/>
 	<c:set var='member' value="${member}" scope="request"/>
 
-
 		<c:if test="${id != null }">
 			<li> ${id}님 환영합니다.  ${login_state} </li>
 			
@@ -61,7 +60,7 @@
 						alt="숨고, 숨은고수">
 					</a>
 					<ul>
-						<li><a href=""> <span>보낸 요청</span>
+						<li><a href="requestInfoForm.do"> <span>보낸 요청</span>
 						</a></li>
 						<li><a href="findExpertForm.do"> <span>고수 찾기</span>
 						</a></li>

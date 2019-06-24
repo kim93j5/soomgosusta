@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
-import soomgosusta.action_requestAction.SendRequestAction;
+import soomgosusta.action_requestAction.DetailRequestAction;
+import soomgosusta.action_requestAction.RequestAction;
+import soomgosusta.action_requestAction.RequestFormAction;
 import soomgosusta.action_requestAction.SendRequestAction;
 
-@WebServlet({"/requestInfoForm.do"})
+@WebServlet({"/requestInfoForm.do", "/detailRequest.do", "/requestForm.do","/request.do"})
 public class RequestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -37,7 +39,34 @@ public class RequestController extends HttpServlet {
     		} catch (Exception e) {
     			e.printStackTrace();
     		}	
-    	}
+    	}else if(command.equals("detailRequest.do")){
+			action = new DetailRequestAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("requestForm.do")){
+	          action = new RequestFormAction();
+	          
+	          try {
+	            forward = action.excute(request, response);
+	         } catch (Exception e) {
+	            e.printStackTrace();
+	         }
+	       }
+	       
+	       else if(command.equals("request.do")){
+	          action = new RequestAction();
+	          
+	          try {
+	            forward = action.excute(request, response);
+	         } catch (Exception e) {
+	            e.printStackTrace();
+	         }
+	       }
         
 		if (forward != null) {
 			if (forward.isRedirect()) {
