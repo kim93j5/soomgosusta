@@ -14,4 +14,5 @@ public interface RequestMapper {
 	int updateLogRequest(String searchCode);
 	List<Request> listAlreadySend(HashMap<String, String> map);   
 	Request sendRequestInfo();
+	Request detailRequest(String id);
 }

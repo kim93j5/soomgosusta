@@ -26,6 +26,9 @@ public class Request implements Serializable {
 	private String r_QA_15;
 	private Date r_DateRecord;
 	private String r_Status;
+	
+	private Category category;
+	private Member member;
 
 	public Request() {}
 	
@@ -218,6 +221,18 @@ public class Request implements Serializable {
 
 	public void setR_Status(String r_Status) {
 		this.r_Status = r_Status;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	public Member getMember() {
+		return member;
+	}
+	public void setMember(Member member) {
+		this.member = member;
 	}
 	
 	

@@ -142,6 +142,21 @@ public class RequestDao {
 				
 				return re; 
 			}
+
+			public Request detailRequest(String id) {
+				SqlSession sqlSession = getSqlSessionFactory().openSession();
+				Request re = null;
+				try {
+					re = sqlSession.getMapper(RequestMapper.class).detailRequest(id);
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally{
+					if(sqlSession != null){
+						sqlSession.close();
+					}
+				}
+				return re;
+			}
 		}
 
 

@@ -99,6 +99,17 @@ public class RequestService {
 		
 		return answerList;
 	}
+
+	public Request requestDetailService(HttpServletRequest request) throws Exception{
+		
+		request.setCharacterEncoding("utf-8");
+		
+		String id = request.getParameter("id");
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		String code = request.getParameter("code");
+		
+		return dao.detailRequest(id);
+	}
 	
 
 	

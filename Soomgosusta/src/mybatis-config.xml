@@ -22,6 +22,8 @@
 		<typeAlias type="soomgosusta.domain.Expert_FindInfo" alias="Expert_FindInfo"/>
 		<typeAlias type="soomgosusta.domain.Review" alias="Review"/>
 		<typeAlias type="soomgosusta.domain.Expert_Profile_License" alias="Expert_Profile_License"/>
+		<typeAlias type="soomgosusta.domain.Estimate" alias="Estimate"/>
+		<typeAlias type="soomgosusta.domain.Esend" alias="Esend"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -40,6 +42,7 @@
 		<mapper resource="soomgosusta/mapper/Expert.xml"/>
 		<mapper resource="soomgosusta/mapper/Match.xml"/>
 		<mapper resource="soomgosusta/mapper/Review.xml"/>
+		<mapper resource="soomgosusta/mapper/Estimate.xml"/>
 	</mappers>
 	
 </configuration>

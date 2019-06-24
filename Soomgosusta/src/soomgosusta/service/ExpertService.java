@@ -130,8 +130,8 @@ public class ExpertService {
 		
 		Expert_Profile_License epl = new Expert_Profile_License();
 		int size = 20 * 1024 * 1024; //20MB
-//		String uploadPath= request.getRealPath("upload");
-		String uploadPath="D:\\SPB_Data\\git\\soomgosusta\\Soomgosusta\\WebContent\\upload";
+		String uploadPath= request.getRealPath("upload");
+//		String uploadPath="D:\\SPB_Data\\git\\soomgosusta\\Soomgosusta\\WebContent\\upload";
 		MultipartRequest multi = new MultipartRequest(request,uploadPath,size);
 		String licenseFile =(String)multi.getOriginalFileName("licenseFile");
 		String licenseImgPath = uploadPath + "\\"+licenseFile;

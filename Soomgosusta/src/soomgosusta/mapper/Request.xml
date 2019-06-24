@@ -42,6 +42,70 @@
 		 select * from request where request_member_id = 'kyungmi' 
 	</select>
 	
+	<select id="detailRequest" resultMap="RequestMap" parameterType="String">
+	
+		select 
+		a.request_member_id, a.request_c_code,
+		a.r_qa_01, a.r_qa_02, a.r_qa_03, a.r_qa_04, a.r_qa_05, a.r_qa_06, a.r_qa_07,
+		a.r_qa_08, a.r_qa_09, a.r_qa_10, a.r_qa_11, a.r_qa_12, a.r_qa_13, a.r_qa_14,
+		a.r_qa_15, a.r_daterecord, a.r_status,
+		b.member_id, b.m_name,
+		c.c_code,c.c_word
+		From Request a Join member b
+		ON a.request_member_id = b.member_id
+		JOIN category c
+		ON a.request_c_code = c.c_code
+		where request_member_id = #{id} 
+	</select> 
+	
+	
+	<resultMap type="Member" id="Member">
+		<result column="member_id" property="member_Id"/>
+		<result column="m_password" property="m_Password"/>
+		<result column="m_name" property="m_Name"/>
+		<result column="m_pnum" property="m_Pnum"/>
+		<result column="m_gender" property="m_Gender"/>
+		<result column="m_age" property="m_Age"/>
+		<result column="m_divide" property="m_Divide"/>
+		<result column="m_photo" property="m_Photo"/>
+	</resultMap>
+	
+	<resultMap type="Category" id="Category">
+		<result column="c_code" property="c_Code"/>
+		<result column="c_word" property="c_Word"/>
+		<result column="c_image" property="c_Image"/>
+	</resultMap>
+	
+	
+	
+	
+	
+	<resultMap type="Request" id="RequestMap">
+		<result column="request_member_id" property="request_Member_Id"/>
+		<result column="request_c_code" property="request_C_Code"/>
+		<result column="r_seq" property="r_Seq"/>
+		<result column="r_qa_01" property="r_QA_01"/>
+		<result column="r_qa_02" property="r_QA_02"/>
+		<result column="r_qa_03" property="r_QA_03"/>
+		<result column="r_qa_04" property="r_QA_04"/>
+		<result column="r_qa_05" property="r_QA_05"/>
+		<result column="r_qa_06" property="r_QA_06"/>
+		<result column="r_qa_07" property="r_QA_07"/>
+		<result column="r_qa_08" property="r_QA_08"/>
+		<result column="r_qa_09" property="r_QA_09"/>
+		<result column="r_qa_10" property="r_QA_10"/>
+		<result column="r_qa_11" property="r_QA_11"/>
+		<result column="r_qa_12" property="r_QA_12"/>
+		<result column="r_qa_13" property="r_QA_13"/>
+		<result column="r_qa_14" property="r_QA_14"/>
+		<result column="r_qa_15" property="r_QA_15"/>
+		<result column="r_daterecord" property="r_DateRecord"/>
+		<result column="r_status" property="r_Status"/>
+		<collection property="member" resultMap="Member"></collection>
+		<collection property="category" resultMap="Category"></collection>
+	</resultMap>
+	
+	
 	
 </mapper>
 
