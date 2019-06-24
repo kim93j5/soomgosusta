@@ -18,7 +18,7 @@ public class expertUploadAction implements Action {
 		
 		
 		forward.setRedirect(false);
-		forward.setPath("expertProfile.do?expert_Id="+request.getParameter("expert_Id"));
+		forward.setPath("expertProfile.do");
 		return forward;
 	}
 

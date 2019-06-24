@@ -37,9 +37,9 @@
 	</select>
 	
 	<select id="licenseDetail" parameterType="String" resultType="Expert_Profile_License">
-	select epl_Photo 
+	select epl_Expert_Id, epl_Photo 
 	From Expert_Profile_License
-	Where epl_Expert_Id=#{epl_Expert_Id} 
+	Where epl_Expert_Id= #{epl_Expert_Id} 
 	</select>
 	
 	<update id="profileUpdate" parameterType="Expert_Profile">
@@ -102,7 +102,7 @@
 	
 	<update id="updateLicenseImg" parameterType="Expert_Profile_License">
 		update Expert_Profile_License set epl_Photo = #{epl_Photo}
-		where epl_Expert_Id=#{epl_Expert_Id}
+		where epl_Expert_Id = #{epl_Expert_Id}
 	</update>
 	
 </mapper>

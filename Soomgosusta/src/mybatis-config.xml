@@ -11,7 +11,6 @@
 		<typeAlias type="soomgosusta.domain.Question" alias="Question"/>
 		<typeAlias type="soomgosusta.domain.Answer" alias="Answer"/>
 		<typeAlias type="soomgosusta.domain.Expert" alias="Expert"/>
-		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="soomgosusta.domain.Member_Information" alias="Member_Information"/>
 		<typeAlias type="soomgosusta.domain.Category" alias="Category"/>
 		<typeAlias type="soomgosusta.domain.District" alias="District"/>

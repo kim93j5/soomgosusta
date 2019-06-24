@@ -17,7 +17,7 @@
 		<!--회원 분류-->	<input type="hidden" name="expert_Divide">
 		<!--프로필사진 -->	<input type="hidden" name="expert_Photo">		<br>
 			
-			<input type="submit" value="가입">
+		<input type="submit" value="가입">
 		</form>
 </body>
 </html>

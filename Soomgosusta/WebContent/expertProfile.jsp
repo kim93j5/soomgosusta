@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
-`<html>
-
+<html>
+<c:set var="expert" value="${expert}" scope="request"></c:set>
 <head>
 
 <meta charset="UTF-8">
@@ -43,15 +44,36 @@
 				<br>
 
 				<c:set var="epl" value="${epl}" scope="request"/>
-			</form>
+			 </form>
 			
 				<c:set var="expert" value="${expert}" scope="request"></c:set>
 				<h5>자격증</h5>
+	<%-- 			<form id = "licenseForm2" action="upload.do" method="post" encType="multipart/form-data">
+				 	<img id="foo" src="${epl.epl_Photo}" /> <br>
+					파일: <input type="file" name="licenseFile" id="license"> 
+					<input type="hidden" name="expert_Id" value="${expert.expert_Id}">
+			
+					<input type="submit" name="uploadlicense" value="저장"><br>
+				</form> --%>
 				<form id = "licenseForm" action="upload.do" method="post" encType="multipart/form-data">
-				 <img id="foo" src="${epl.epl_Photo}" /> <br>
 					파일: <input type="file" name="licenseFile" id="license"> 
 					<input type="hidden" name="expert_Id" value="${expert.expert_Id}">
 					<input type="submit" name="uploadlicense" value="저장"><br>
+					<img src="upload/${head }_small.${pattern}">
+				<c:if test="${epl.epl_Photo != null }">
+						<c:set var="head" value="${fn:substring(epl.epl_Photo,0, fn:length(epl.epl_Photo)-4) }"></c:set>
+						<c:set var="pattern" value="${fn:substring(epl.epl_Photo, fn:length(head) +1, fn:length(epl.epl_Photo)) }"></c:set>
+							
+						<c:choose>
+							<c:when test="${pattern == 'jpg' || pattern == 'gif' }">
+								<img src="upload/${head }_small.${pattern}">
+							</c:when>
+							<c:otherwise>
+								<c:out value="NO IMAGE"></c:out>
+
+							</c:otherwise>
+						</c:choose>
+					</c:if>
 				</form>
 				
 				/////////////////////////////////////////////////////////////////////////////////////

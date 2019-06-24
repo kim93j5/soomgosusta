@@ -239,10 +239,11 @@ public class ExpertDao {
 
 	public Expert_Profile_License licenseDetail(String epl_Expert_Id) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		System.out.println("@++++++"+epl_Expert_Id);
 		Expert_Profile_License epl= null;
 		try {
 			epl = sqlSession.getMapper(ExpertMapper.class).licenseDetail(epl_Expert_Id);
-		
+			System.out.println("@@@@@@@"+epl);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

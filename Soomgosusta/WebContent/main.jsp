@@ -85,7 +85,7 @@
 					<a href="main.do"> <img
 						src="https://dmmj3ljielax6.cloudfront.net/static/img/home/index_soomgo_logo.svg"
 						alt="숨고, 숨은고수">
-					</a>
+					</a> 
 				</div>
 				<div class="right_">
 					<ul>
