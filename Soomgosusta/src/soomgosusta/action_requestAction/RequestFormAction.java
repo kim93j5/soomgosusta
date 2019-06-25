@@ -43,7 +43,8 @@ public class RequestFormAction implements Action {
 
 			listQuestion = service.listQuestionService(request);
 			request.setAttribute("listQuestion", listQuestion);
-
+			request.setAttribute("size", listQuestion.size());
+			
 			List<Answer> listAnswer = service.listAnswerService(listQuestion);
 			request.setAttribute("listAnswer", listAnswer);
 

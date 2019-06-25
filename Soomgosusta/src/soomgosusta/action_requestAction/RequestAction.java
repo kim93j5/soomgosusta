@@ -63,7 +63,7 @@ public class RequestAction implements Action {
 			service.insertRequestService(member_Id, searchCode, requestQnA, dist);
 			service.updateLogRequestService(searchCode);
 			forward.setRedirect(true);
-			forward.setPath("matchAction.do?member_Id="+member_Id);
+			forward.setPath("matchAction.do?member_Id="+member_Id+"&code="+searchCode);
 			
 		}else{
 			request.setAttribute("req", "ing");

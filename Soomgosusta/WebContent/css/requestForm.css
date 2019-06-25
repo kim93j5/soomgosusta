@@ -7,7 +7,7 @@
 
 #listForm{
 	
-	width: 450px;
+	width: 460px;
 	float: left;
    	overflow : hidden;
 }
@@ -26,3 +26,8 @@
 .btn{
 	margin-left: 200px;
 }
+
+.requestList ul{
+	list-style: none;
+}
+

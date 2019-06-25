@@ -1,1 +1,42 @@
 @CHARSET "UTF-8";
+
+#cate {
+	margin-right: 25px;
+}
+
+#popularService{
+	margin-top: 100px;
+	margin-left: 300px;
+		
+}
+
+#info{
+	margin-left: 300px;
+}
+
+#categoryLI{
+	width: 1000px;
+	overflow : hidden;
+	margin-left: 300px;
+}
+
+#categoryLS{
+	margin-left: 300px;	
+}
+
+#search{
+
+	margin-left: 500px;
+}
+
+#group{
+	margin-left: 680px;
+}
+
+#group a{
+	font-size: 20px;
+}
+
+#lessonList{
+	margin-right: 20px;
+}

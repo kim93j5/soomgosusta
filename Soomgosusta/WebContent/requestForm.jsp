@@ -17,7 +17,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<header>
+		<jsp:include page="header.jsp"></jsp:include>
+	</header>
+	
 	<c:choose>
 		<c:when test="${searchCode != null}">
 			<div id="container">
@@ -42,11 +45,12 @@
 							</div>
 
 
-							<c:forEach var="listQuestion" items="${listQuestion}">
+							<c:forEach var="listQuestion" items="${listQuestion}" varStatus="status">
 								<input type="hidden" name="q_Code"
 									value="${listQuestion.q_Code}">
 
 								<div class="requestList">
+									${status.count/(size+3)*100 }% complete!
 									<h3>${listQuestion.q_Contents}</h3>
 									<ul>
 										<c:forEach var="listAnswer" items="${listAnswer}">
@@ -64,6 +68,7 @@
 
 							</c:forEach>
 							<div class="requestList">
+								3개 남았습니다!
 								<h3>선호하는 고수 성별이 있나요?</h3>
 								<ul>
 									<li><input type="radio" name="gen" value="남자">남자</li>
@@ -80,6 +85,7 @@
 							</div>
 
 							<div class="requestList">
+								2개 남았습니다!
 								<h3>선호 지역을 선택하세요</h3>
 								<div id="dist1">
 									<select name="sido" id="sido1">
@@ -109,6 +115,7 @@
 							</div>
 
 							<div class="requestList">
+								마지막 질문입니다!
 								<h3>전화번호를 입력하세요</h3>
 								<c:if test="${id == null}">
 								로그인 후 요청 가능합니다.<br>
