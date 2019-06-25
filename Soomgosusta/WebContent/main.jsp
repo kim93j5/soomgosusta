@@ -22,9 +22,12 @@
 </head>
 <body>
 
+
 	<header>
 		<jsp:include page="header.jsp"></jsp:include>
 	</header>
+
+		
 	<!-- ///////////////분야 검색창/////////////// -->
 	<div>
 		<h2>숨고가 딱! 맞는 고수를 소개해 드려요</h2>

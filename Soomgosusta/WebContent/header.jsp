@@ -17,7 +17,6 @@
 		<c:choose>
 			<c:when test="${id != null && login_state == 'member' }">
 				<div class="left_">
-
 					<ul class="nav navbar-nav">
 						<li><a href="main.do"> <img src="https://dmmj3ljielax6.cloudfront.net/static/img/home/index_soomgo_logo.svg" alt="숨고, 숨은고수">
 							</a></li>
@@ -36,8 +35,11 @@
 						<li><a href="logout.do"><span>로그아웃</span></a></li>
 					</ul>
 
-
 				</div>
+				<form action="memberAddInfo.do?member_Id=${id}" method="get">
+						<input type="hidden" name="member_Id" value="${id}"/>
+						<input type="submit" value="이용자 부가 정보 입력"/>
+				</form>	
 			</c:when>
 			<c:when test="${id != null && login_state == 'expert' }">
 

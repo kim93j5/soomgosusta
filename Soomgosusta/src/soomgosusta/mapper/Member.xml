@@ -7,15 +7,12 @@
 <mapper namespace="soomgosusta.mapper.MemberMapper">
 	<cache />
 
-	<insert id="registerMember" parameterType="Member">
-		insert into member values(#{member_Id}, #{m_Password}, #{m_Name},
-		#{m_Pnum},#{m_Gender}, #{m_Age}, 'member' , #{m_Photo})
+	<!-- ////////////////추천서비스 ////////////////// -->
+	
+	<insert id="addMemberInterest" parameterType="Member_Information">
+		insert into Member_Information values(#{Infor_Member_Id},#{mi_District},#{c_Code})
 	</insert>
 
-	<insert id="addMemberInterest" parameterType="Member_Information">
-		insert into member
-		values(#{member_User_Id},#{mi_District},#{c_Code})
-	</insert>
 
 	<select id="login" parameterType="String" resultType="Member">
 		select *
@@ -51,12 +48,14 @@
 		update member
 		set m_Password = #{m_Password} where member_Id = #{member_Id}
 	</update>
-
-	<update id="memberPnumUpdate" parameterType="Member">
-		update
-		member2 set m_Pnum = #{m_Pnum} where member_Id = #{member_Id}
+	
+	<update id="memberPnumUpdate" parameterType="Member" >
+		update member set m_Pnum = #{m_Pnum} where member_Id = #{member_Id}
 	</update>
 
+	<insert id="registerMember" parameterType="Member">
+   		insert into member values(#{member_Id}, #{m_Password}, #{m_Name}, #{m_Pnum},#{m_Gender}, #{m_Age}, 'member' , 'javacan1.gif')
+	</insert>
 </mapper>
 
 

@@ -52,18 +52,20 @@ public class MemeberAddInfoAction implements Action{
       for(int i=0;i<member_Interest3.length;i++){
          System.out.println(member_Interest3[i]);
       }
+      String member_id = request.getParameter("member_Id");
       System.out.println(str);
-      
+      System.out.println(member_id);
+      System.out.println(mi_District);
 
-      
       Member_Information member_information = new Member_Information();
       member_information.setC_Code(str);
       member_information.setMi_District(mi_District);
+      member_information.setInfor_Member_Id(member_id);
       
       service.addMemberInterestService(member_information);
       
-      forward.setRedirect(false);
-      forward.setPath("/memberRegisterForm.jsp");
+      forward.setRedirect(true);
+      forward.setPath("main.do");
       return forward;
    }
 

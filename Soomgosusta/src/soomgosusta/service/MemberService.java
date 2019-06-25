@@ -62,37 +62,29 @@ public class MemberService {
 		System.out.println("service�� member"+member);
 		return member;
 	}
+
+
+	public int addMemberInterestService(Member_Information member_information) throws Exception{
+		return dao.addMemberInterest(member_information);
+	}
 	public List<Category> categoryListService(HttpServletRequest request) throws Exception{
-		
 		return dao.categoryCode();
 	}
-	public Member memberMyPageService(HttpServletRequest request) throws Exception{
-		return dao.memberMypage(null);
+	public Member memberMyPageService(String member_id) throws Exception{
+		return dao.memberMypage(member_id);
 	}
 	public int memberImageUpdate(Member member) throws Exception{
 		return dao.memberImageUpdate(member);
 	}
-
-	public void memberPwUpdate(Member memberMyInfo) {
-		// TODO Auto-generated method stub
-		
+	public int memberNameUpdate(Member member) throws Exception{
+		return dao.memberNameUpdate(member);
 	}
-
-	/*
-	 * public void memberPwUpdate(Member memberMyInfo) { int
-	 * memberImageUpdate(Member member) throws Exception{ return
-	 * dao.memberImageUpdate(member); } public int memberNameUpdate(Member member)
-	 * throws Exception{ return dao.memberNameUpdate(member); } public int
-	 * memberPwUpdate(Member member) throws Exception{ return
-	 * dao.memberPwUpdate(member); } public int memberPnumUpdate(Member member)
-	 * throws Exception{ return dao.memberPnumUpdate(member); } }
-	 */
-
-
-
-     public int addMemberInterestService(Member_Information member_information) throws Exception{
+	public int memberPwUpdate(Member member) throws Exception{
+		return dao.memberPwUpdate(member);
+	}
+	public int memberPnumUpdate(Member member) throws Exception{
+		return dao.memberPnumUpdate(member);
+	}
 	
-    	 return dao.addMemberInterest(member_information);
-	
-     }
+
 }
