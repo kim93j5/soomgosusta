@@ -14,7 +14,7 @@
 	</select>
 	
 	<insert id="matchTableInsert" parameterType="Match">
-		insert into match values(#{match_Member_Id},#{match_C_Code},#{match_R_Seq},#{match_Expert_Id},#{m_Percent})
+		insert into match values(#{match_Member_Id},#{match_C_Code},#{match_R_Seq},#{match_Expert_Id},#{m_Percent},sysdate,'ing')
 	</insert>
 	
 	<select id="matchList" resultMap="MatchMap" parameterType="String">
@@ -76,7 +76,7 @@
 	
 	
 	<update id="matchLogUpdate" parameterType="Category_Log">
-		update category_log2 set cl_Match = cl_Match+1 where log_C_Code = #{log_C_Code}
+		update category_log set cl_Match = cl_Match+1 where log_C_Code = #{log_C_Code}
 	</update>
 	<select id="expertGender" resultType="Expert" parameterType="String">
 		select * from expert where expert_Id = #{expert_Id}

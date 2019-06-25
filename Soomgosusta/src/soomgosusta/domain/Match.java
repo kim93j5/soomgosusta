@@ -3,9 +3,7 @@ package soomgosusta.domain;
 import java.io.Serializable;
 
 public class Match implements Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private String match_Member_Id;
 	private String match_C_Code;
@@ -18,42 +16,6 @@ public class Match implements Serializable{
 	private float m_Percent;
 	
 	public Match() {}
-
-	public Match(String match_Member_Id, String match_C_Code, int match_R_Seq, String match_Expert_Id,
-			float m_Percent) {
-		super();
-		this.match_Member_Id = match_Member_Id;
-		this.match_C_Code = match_C_Code;
-		this.match_R_Seq = match_R_Seq;
-		this.match_Expert_Id = match_Expert_Id;
-		this.m_Percent = m_Percent;
-	}
-
-	
-	
-	public String getM_Daterecord() {
-		return m_Daterecord;
-	}
-
-	public void setM_Daterecord(String m_Daterecord) {
-		this.m_Daterecord = m_Daterecord;
-	}
-
-	public Member getMember() {
-		return member;
-	}
-
-	public void setMember(Member member) {
-		this.member = member;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
 
 	public String getMatch_Member_Id() {
 		return match_Member_Id;
@@ -87,12 +49,12 @@ public class Match implements Serializable{
 		this.match_Expert_Id = match_Expert_Id;
 	}
 
-	public float getM_Percent() {
-		return m_Percent;
+	public String getM_Daterecord() {
+		return m_Daterecord;
 	}
 
-	public void setM_Percent(float m_Percent) {
-		this.m_Percent = m_Percent;
+	public void setM_Daterecord(String m_Daterecord) {
+		this.m_Daterecord = m_Daterecord;
 	}
 
 	public String getM_Status() {
@@ -103,11 +65,35 @@ public class Match implements Serializable{
 		this.m_Status = m_Status;
 	}
 
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public float getM_Percent() {
+		return m_Percent;
+	}
+
+	public void setM_Percent(float m_Percent) {
+		this.m_Percent = m_Percent;
+	}
+
 	@Override
 	public String toString() {
 		return "Match [match_Member_Id=" + match_Member_Id + ", match_C_Code=" + match_C_Code + ", match_R_Seq="
-				+ match_R_Seq + ", match_Expert_Id=" + match_Expert_Id + ", m_Percent=" + m_Percent + "]";
-	}	
-	
-	
+				+ match_R_Seq + ", match_Expert_Id=" + match_Expert_Id + ", m_Daterecord=" + m_Daterecord
+				+ ", m_Status=" + m_Status + ", m_Percent=" + m_Percent + "]";
+	}
+		
 }

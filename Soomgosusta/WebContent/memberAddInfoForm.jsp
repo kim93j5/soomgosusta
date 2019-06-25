@@ -72,9 +72,9 @@
 			$('#second_select1').css('display', 'none');
 			var size = document.getElementsByName('category2').length;
 			if (document.getElementsByName('category2')[0].checked == true && document.getElementsByName('category2')[1].checked == false) {
-				$('#third_select1').css('display', 'block');
-			} else if (document.getElementsByName('category2')[0].checked == false	&& document.getElementsByName('category2')[1].checked == true) {
 				$('#third_select2').css('display', 'block');
+			} else if (document.getElementsByName('category2')[0].checked == false	&& document.getElementsByName('category2')[1].checked == true) {
+				$('#third_select1').css('display', 'block');
 			} else if (document.getElementsByName('category2')[0].checked == true && document.getElementsByName('category2')[1].checked == true) {
 				$('#third_select3').css('display', 'block');
 			}
