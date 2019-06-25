@@ -30,12 +30,13 @@ public class SendRequestAction implements Action {
          MemberService m_service = MemberService.getInstance();
          ActionForward forward = new ActionForward();
          
+         System.out.println("뜰라나");
          request.setCharacterEncoding("utf-8");
          List<Request> requestList = service.sendRequestService(request);
          request.setAttribute("requestList", requestList);
          List<RequestForm> formList = new ArrayList<RequestForm>();
 
-         
+System.out.println(requestList.size());         
          List<Category> categoryList = ex_service.categoryListService(request);
          //System.out.println(categoryList);
            String category_word ="";
@@ -54,7 +55,7 @@ public class SendRequestAction implements Action {
          category_word_last = category_word_split[2]+ "ㅤ"+ category_word_split[0];
           
 
-/*         request.setAttribute("category_word_last", category_word_last);*/
+         request.setAttribute("category_word_last", category_word_last);
          System.out.println(category_word_last);
          form.setCategory(category_word_last);
          /////////////////////////////////요청시간,만료시간//////////////////////////////////
@@ -62,8 +63,8 @@ public class SendRequestAction implements Action {
             Date requestDateStr = requestList.get(a).getR_DateRecord();
             Date nowDate = new Date(); //현재 시간
             
-            //System.out.println(requestDateStr);
-            //System.out.println(nowDate);
+            System.out.println(requestDateStr);
+            System.out.println(nowDate);
             
             String requestTime = null;
             String endTime = null;
@@ -88,12 +89,12 @@ public class SendRequestAction implements Action {
             
             SimpleDateFormat df1 = new SimpleDateFormat("YYYYMMddHHmm", Locale.KOREA);
             long today = (long)Double.parseDouble(df1.format(nowDate));
-            //System.out.println(today);
+            System.out.println(today);
             
             String expireTime_num = endTime.replaceAll("[^0-9]", "");
-            //System.out.println(expireTime);
+            //System.out.println(expireTime_num);
             long expireTime = (long)Double.parseDouble(expireTime_num);
-            //System.out.println(expireTime);
+            System.out.println(expireTime);
             form.setExpire_Time(expireTime);
             request.setAttribute("today", today);
             formList.add(form);
@@ -162,12 +163,12 @@ public class SendRequestAction implements Action {
          }
          
          //카테고리 테이블에서 LI로 시작하는 요소들(위의 개수만큼 추출)       
-         for (int i = 0; i < count_LI; i++) {
+/*         for (int i = 0; i < count_LI; i++) {
             list_LI.get(i).getC_Image();
             
             System.out.println(list_LI);
          }
-
+*/
          //이용자 부가정보에서 랜덤출력한 요소 중 LS개수
          for (int i = 0; i < randomList.length; i++) {
             if (randomList[i].contains("LS")) {
@@ -185,8 +186,8 @@ public class SendRequestAction implements Action {
 
           request.setAttribute("randomList", randomList);
          request.setAttribute("formList", formList);
-         
-          forward.setPath("/sendRequestForm.jsp");
+
+          forward.setPath("sendRequestForm.jsp");
           forward.setRedirect(false);
          
             return forward;

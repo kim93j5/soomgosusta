@@ -47,11 +47,11 @@ public class MemeberAddInfoAction implements Action{
       }
       mi_District = sub_mi_District.substring(0,sub_mi_District.length()-1);
       
-      System.out.println(mi_District);
+      /*System.out.println(mi_District);
       
       for(int i=0;i<member_Interest3.length;i++){
          System.out.println(member_Interest3[i]);
-      }
+      }*/
       String member_id = request.getParameter("member_Id");
       System.out.println(str);
       System.out.println(member_id);

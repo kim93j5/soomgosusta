@@ -51,12 +51,12 @@ public class MatchDao {
 		}
 		
 		
-		public Request memberRequest(String member_Id){
+		public Request memberRequest(String member_Id,String member_Code){
 			Request requestedMember = null;
 			SqlSession sqlSession = getSqlSessionFactory().openSession();
 			
 			try {
-				requestedMember = sqlSession.getMapper(MatchMapper.class).memberRequest(member_Id);
+				requestedMember = sqlSession.getMapper(MatchMapper.class).memberRequest(member_Id,member_Code);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
