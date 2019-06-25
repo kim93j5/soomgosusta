@@ -117,6 +117,25 @@ $('document').ready(function() {
 				event.preventDefault();
 			});
 			
+			$(function(){
+				$('.prev').click(function(event){
+					$('.slide').animate({
+						marginLeft : parseInt($('.slide').css('marginLeft'))  + 500
+					}, 'slow');
+					event.preventDefault();
+				});
+			});
+			
+			$(function(){
+				$('.next').click(function(event){
+					$('.slide').animate({
+						marginLeft : parseInt($('.slide').css('marginLeft'))  - 500
+					}, 'slow');
+					event.preventDefault();
+				});
+			});
+			
+			
 /*		$('#go').click(function(){
 			$.ajax({
 				url: "request.do",

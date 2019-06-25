@@ -144,12 +144,12 @@ public class RequestDao {
 				return re; 
 			}
 			
-			public int listEmploymentLog(String searchKey){
+			public int listRegisterLog(String searchKey){
 				SqlSession sqlSession = getSqlSessionFactory().openSession();
 				int re = -1;
 				
 				try {
-					re = sqlSession.getMapper(RequestMapper.class).listEmploymentLog(searchKey);
+					re = sqlSession.getMapper(RequestMapper.class).listRegisterLog(searchKey);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}finally {

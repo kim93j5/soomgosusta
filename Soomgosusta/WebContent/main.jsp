@@ -24,11 +24,6 @@
 	<c:set var='expert' value="${expert}" scope="request" />
 	<c:set var='member' value="${member}" scope="request" />
 
-	<form action="expertProfile.do?expert_Id=${expert.expert_Id}" method="get">
-		<input type="hidden" name="expert_Id" value="${expert.expert_Id}" /> 
-		<input type="submit" value="프로필수정" />
-	</form>
-
 	<!-- ///////////////배너/////////////// -->
 	<nav class="navbar">
 	<div>
@@ -60,7 +55,7 @@
 			<c:when test="${id != null && login_state == 'expert' }">
 
 				<div class="left_">
-					<ul>
+					<ul class="nav navbar-nav">
 						<li><a href="main.do"> <img src="https://dmmj3ljielax6.cloudfront.net/static/img/home/index_soomgo_logo.svg" alt="숨고, 숨은고수">
 							</a></li>
 						<li><a href=""> <span>받은 요청</span>
@@ -73,8 +68,8 @@
 						</a></li>
 					</ul>
 				</div>
-				<div class="right_">
-					<ul>
+				<div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+					<ul class="nav navbar-nav">
 						<li><span>${id } 고수님</span></li>
 						<li><a href = "logout.do"><span>로그아웃</span></a>
 					</ul>
@@ -87,8 +82,8 @@
 							</a></li>
 					</ul>
 				</div>
-				<div class="right_">
-					<ul>
+				<div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+					<ul class="nav navbar-nav">
 						<li><a href="selectDivide.jsp">회원가입</a></li>
 						<li>
 							<div class="select">

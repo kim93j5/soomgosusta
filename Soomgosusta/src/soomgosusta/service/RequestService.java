@@ -105,9 +105,9 @@ public class RequestService {
 		return answerList;
 	}
 
-	public int listEmploymentLog(String searchKey) {
+	public int listRegisterLogService(String searchKey) {
 
-		return dao.listEmploymentLog(searchKey);
+		return dao.listRegisterLog(searchKey);
 	}
 
 }

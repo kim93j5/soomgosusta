@@ -40,9 +40,8 @@ public class ExpertAddInfoFormAction implements Action {
 			}
 
 			String groupArr[] = groupList.split("/");
-			for (int j = 0; j < groupArr.length; j++) {
-				//System.out.println(groupArr[j]);
-			}
+
+			
 			list1.add(groupArr[0]);
 			list2.add(groupArr[1]);
 			list3.add(groupArr[2]);
@@ -69,7 +68,8 @@ public class ExpertAddInfoFormAction implements Action {
 		request.setAttribute("categoryList3_1", categoryList3_1);
 		request.setAttribute("categoryList3_2", categoryList3_2);
 
-		
+		String id = request.getParameter("id");
+		request.setAttribute("id", id);
 ////////////////////////////////////////////////////////////////////////////////
 		
 		List<Question> questionList = service.qInfoService(request);

@@ -87,12 +87,12 @@
 	</select>
 	
    <select id="q_Info" resultType="Question">
-       select * from question where q_code LIKE 'CQ%'  
+       select * from question where q_code = 'CQ1' OR q_code = 'CQ2' OR q_code = 'CQ5'
    </select> <!-- CQ는 전체공통질문 코드앞자리 -->
    
    
    <select id="a_Info" resultType="Answer">
-       select * from answer where q_code LIKE 'CQ%'  
+       select * from answer where q_code IN ('CQ1', 'CQ2', 'CQ5')  
    </select> 
 
    
