@@ -47,7 +47,7 @@
 					<ul>
 						<li><a href="main.do"> <img src="https://dmmj3ljielax6.cloudfront.net/static/img/home/index_soomgo_logo.svg" alt="숨고, 숨은고수">
 							</a></li>
-						<li><a href=""> <span>받은 요청</span>
+						<li><a href="expertMain.do"> <span>받은 요청</span>
 						</a></li>
 						<li><a href="expertProfile.do?expert_Id=${id}"> <span>프로필</span>
 						</a></li>

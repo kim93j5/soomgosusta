@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import soomgosusta.dao.EstimateDao;
+import soomgosusta.domain.Esend;
 import soomgosusta.domain.Estimate;
 
 
@@ -49,5 +50,15 @@ public class EstimateService {
 		List<Estimate> estimateList = dao.estimateList(login_Session);
 		
 		return estimateList;
+	}
+	
+	public Estimate detailService(HttpServletRequest request) {
+		
+		Esend esend = new Esend();
+		esend.setE_id(request.getParameter("member_id"));
+		esend.setM_id(request.getParameter("expert_id"));
+		
+		Estimate estimateDetail = dao.detailEstimate(esend);
+		return estimateDetail;
 	}
 }
