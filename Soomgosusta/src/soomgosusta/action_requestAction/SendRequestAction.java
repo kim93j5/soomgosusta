@@ -32,9 +32,9 @@ public class SendRequestAction implements Action {
          
          request.setCharacterEncoding("utf-8");
          List<Request> requestList = service.sendRequestService(request);
-         request.setAttribute("requestList", requestList);
+         //request.setAttribute("requestList", requestList);
          List<RequestForm> formList = new ArrayList<RequestForm>();
-
+         request.setAttribute("size", formList.size());
          
          List<Category> categoryList = ex_service.categoryListService(request);
          //System.out.println(categoryList);
@@ -55,7 +55,7 @@ public class SendRequestAction implements Action {
           
 
 /*         request.setAttribute("category_word_last", category_word_last);*/
-         System.out.println(category_word_last);
+         //System.out.println(category_word_last);
          form.setCategory(category_word_last);
          /////////////////////////////////요청시간,만료시간//////////////////////////////////
       
@@ -98,6 +98,7 @@ public class SendRequestAction implements Action {
             request.setAttribute("today", today);
             formList.add(form);
 //            request.setAttribute("expireTime", expireTime);
+           
       }
    
    ///////////////////////////////////////////////////////////////////////////////////////        
@@ -135,17 +136,8 @@ public class SendRequestAction implements Action {
             randomList[i] = recommendList[(int) (Math.random() * recommendList.length)];
             /*System.out.println(randomList[i]);*/
 
-            for (int j = i - 1; j >= 0; j--) {
-               if (randomList[i] == randomList[j]) {
-                  i--;
-                  break;
-               }
-
-            }
          }
          
-
-
          for (String recommend : randomList) {
             tmp = recommend.substring(0, 2);
             // System.out.println(tmp);
@@ -184,7 +176,7 @@ public class SendRequestAction implements Action {
          }
 
           request.setAttribute("randomList", randomList);
-         request.setAttribute("formList", formList);
+          request.setAttribute("formList", formList);
          
           forward.setPath("/sendRequestForm.jsp");
           forward.setRedirect(false);
