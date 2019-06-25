@@ -25,8 +25,9 @@ public class MatchService {
 	public List<Expert_Information> matchCandidateListService (String request_C_Code){
 		return dao.matchCandidateList(request_C_Code);
 	}
-	public Request requestMemberService(HttpServletRequest request){
-		return dao.memberRequest();
+	public Request requestMemberService(String member_Id){
+	
+		return dao.memberRequest(member_Id);
 	}
 	public int matchTableInsertService(Match match){
 		return dao.matchTableInsert(match);

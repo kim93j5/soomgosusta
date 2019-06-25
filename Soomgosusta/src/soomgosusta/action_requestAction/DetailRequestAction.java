@@ -22,13 +22,13 @@ import soomgosusta.service.RequestService;
 public class DetailRequestAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		  RequestService service = RequestService.getInstance();
+/*		  RequestService service = RequestService.getInstance();
 	      ExpertService ex_service = ExpertService.getInstance();
 	      ActionForward forward = new ActionForward();
 	      
 	      request.setCharacterEncoding("utf-8");
 	      
-	      Request requestList = service.sendRequestService(request);
+	      List<Request> requestList = service.sendRequestService(request);
 	      request.setAttribute("requestList", requestList);
 	      System.out.println(requestList);
      
@@ -37,8 +37,9 @@ public class DetailRequestAction implements Action {
 	        String[] category_word_split = new String[20];
 	        String category_word_last = "";
 	   
+	    for(int a=0; a < requestList.size(); a++){
 	      for(int i=0; i < categoryList.size(); i++){
-	        if(categoryList.get(i).getC_Code().equals(requestList.getRequest_C_Code())){
+	        if(categoryList.get(i).getC_Code().equals(requestList.get(a).getRequest_C_Code())){
 	           category_word = categoryList.get(i).getC_Word();
 	        }
 	      }
@@ -47,7 +48,7 @@ public class DetailRequestAction implements Action {
 	      
 	      request.setAttribute("category_word_last", category_word_last);
 	      
-	      Date requestDateStr = requestList.getR_DateRecord();
+	      Date requestDateStr = requestList.get(a).getR_DateRecord();
 	      Date nowDate = new Date(); //현재 시간
 	         
 	      //System.out.println(requestDateStr);
@@ -88,7 +89,7 @@ public class DetailRequestAction implements Action {
   
 	      request.setAttribute("today", today);
 	      request.setAttribute("expireTime", expireTime);
-	      
+	    }
 	      /////////////////////////////////////////////////////////////////////////////////////////   
 	      /////////////////////////////질문답 리스트 뽑아내기//////////////////////////////////////////////
 	      /////////////////////////////////////////////////////////////////////////////////////////
@@ -96,7 +97,7 @@ public class DetailRequestAction implements Action {
 	      
 	      List<Question> questionList = ex_service.qInfoService(request);  
 	      
-	      String[] Q1= requestList.getR_QA_01().split("/");
+	      String[] Q1= requestList.ggetR_QA_01().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q1[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q1_contents = questionList.get(i).getQ_Contents();
@@ -425,7 +426,8 @@ public class DetailRequestAction implements Action {
 
 		    forward.setPath("/detailRequestForm.jsp");
 		    forward.setRedirect(false);	      
-	        return forward;
-	}
+	        return forward;*/
+		return null;
+		}
 
 }

@@ -36,9 +36,9 @@ public class RequestDao {
 
 	}
 
-	public Request sendRequestInfo(String request_Member_Id) {
+	public List<Request> sendRequestInfo(String request_Member_Id) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		Request request_c_Code = null;
+		List<Request> request_c_Code = null;
 		try {
 			request_c_Code = sqlSession.getMapper(RequestMapper.class).sendRequestInfo(request_Member_Id);
 

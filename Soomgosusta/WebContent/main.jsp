@@ -6,19 +6,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="./bootstrap-3.3.2-dist/css/bootstrap.min.css">
+<title>Main Page</title>
+<link rel="stylesheet" href="./bootstrap-3.3.2-dist/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="./plugIn/slick-master/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="./plugIn/slick-master/slick/slick-theme.css"/>
+<script type="text/javascript" src="./script/jquery.js"></script>
+<script type="text/javascript" src="./script/main.js"></script>
 <script src="./bootstrap-3.3.2-dist/js/jquery-3.2.1.js"></script>
 <script src="./bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<script src="./script/search.js" type="text/javascript"></script>
-<script src="./script/main.js" type="text/javascript"></script>
-<script>
-	
-</script>
-<title>Main Page</title>
+<script type="text/javascript" src="./plugIn/slick-master/slick/slick.min.js"></script>
+
 </head>
 <body>
 
@@ -46,11 +43,11 @@
 
 	<!-- ///////////////인기서비스/////////////// -->
 	<h3>인기서비스</h3>
-	<div id="popularService">
+	<div id="popularService" class="slider popularService">
 		<c:forEach var="listPopular" items="${listPopular}" begin="1" end="5">
-			<a href="search.do?searchKey=${listPopular.group3}"> <img
+			<div><a href="search.do?searchKey=${listPopular.group3}"> <img
 				src="./images/${listPopular.image}">
-			</a>	&nbsp;&nbsp;			
+			</a></div>			
 		</c:forEach>
 
 	</div>

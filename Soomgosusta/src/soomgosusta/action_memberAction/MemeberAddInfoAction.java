@@ -65,7 +65,7 @@ public class MemeberAddInfoAction implements Action{
       service.addMemberInterestService(member_information);
       
       forward.setRedirect(true);
-      forward.setPath("main.do");
+      forward.setPath("requestInfoForm.do?member_Id="+member_id);
       return forward;
    }
 
