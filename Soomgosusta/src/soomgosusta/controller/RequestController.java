@@ -60,6 +60,7 @@ public class RequestController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("requestInfoForm.do")) {
+			System.out.println("dsdsds");
 			action = new SendRequestAction();
 			try {
 				forward = action.excute(request, response);

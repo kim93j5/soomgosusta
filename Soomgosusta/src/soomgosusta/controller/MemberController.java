@@ -86,7 +86,9 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}
     	}else if(command.equals("memberAddInfoAction.do")){
-				action = new MemeberAddInfoAction();
+			System.out.println("sjsjjsjjsj");	
+    		action = new MemeberAddInfoAction();
+				
 			try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {

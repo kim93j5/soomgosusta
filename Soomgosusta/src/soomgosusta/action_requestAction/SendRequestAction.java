@@ -154,12 +154,12 @@ public class SendRequestAction implements Action {
          }
          
          //카테고리 테이블에서 LI로 시작하는 요소들(위의 개수만큼 추출)       
-         for (int i = 0; i < count_LI; i++) {
+/*         for (int i = 0; i < count_LI; i++) {
             list_LI.get(i).getC_Image();
             
             System.out.println(list_LI);
          }
-
+*/
          //이용자 부가정보에서 랜덤출력한 요소 중 LS개수
          for (int i = 0; i < randomList.length; i++) {
             if (randomList[i].contains("LS")) {

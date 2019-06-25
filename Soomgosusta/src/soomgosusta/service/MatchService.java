@@ -25,9 +25,10 @@ public class MatchService {
 	public List<Expert_Information> matchCandidateListService (String request_C_Code){
 		return dao.matchCandidateList(request_C_Code);
 	}
-	public Request requestMemberService(String member_Id){
-
-		return dao.memberRequest(member_Id);
+	public Request requestMemberService(String member_Id,String member_Code){
+		System.out.println(member_Id+"dfsdfsdfd");
+		System.out.println(member_Code+"SDfsdfsdf");
+		return dao.memberRequest(member_Id,member_Code);
 	}
 	public int matchTableInsertService(Match match){
 		return dao.matchTableInsert(match);

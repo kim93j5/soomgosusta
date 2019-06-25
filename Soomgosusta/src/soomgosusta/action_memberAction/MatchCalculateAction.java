@@ -21,8 +21,11 @@ public class MatchCalculateAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		MatchService service = MatchService.getInstance();
+		ActionForward forward = new ActionForward();
 		String member_Id = request.getParameter("member_Id");
-		Request requestedMember = service.requestMemberService(member_Id);
+		String request_C_Code = request.getParameter("code");
+		Request requestedMember = service.requestMemberService(member_Id,request_C_Code);
+		/*String request_C_Code = requestedMember.getRequest_C_Code();*/
 		System.out.println(requestedMember);
 		List<String> memberRequest = new ArrayList<String>();
 		memberRequest.add(requestedMember.getR_QA_01()); // Q_Day/Q_Day_A3/Q_Day_A5
@@ -41,11 +44,9 @@ public class MatchCalculateAction implements Action {
 		memberRequest.add(requestedMember.getR_QA_14());
 		memberRequest.add(requestedMember.getR_QA_15());
 
-		String request_C_Code = requestedMember.getRequest_C_Code();
-
 		List<Expert_Information> matchCandidateList = service.matchCandidateListService(request_C_Code);
 		System.out.println(matchCandidateList.size());
-		
+		if(matchCandidateList.size()!=0){
 		for (int i = 0; i < matchCandidateList.size(); i++) {
 			System.out.println(matchCandidateList.get(i));
 		}
@@ -82,13 +83,13 @@ public class MatchCalculateAction implements Action {
 				for (int j = 1; j < groupArr2.length; j++) {
 					compareMember.add(groupArr2[j]);
 				}
-			} else if (qCode.contains("Dis")) {
+			} else if (qCode.contains("DIS")) {
 				qdistrict = qCode;
 				String groupArr2[] = qdistrict.split("/");
 				for (int j = 0; j < groupArr2.length; j++) {
 					compareMember.add(groupArr2[j]);
 				}
-			} else if (qCode.contains("Gen")) {
+			} else if (qCode.contains("GEN")) {
 				String groupArr2[] = qCode.split("/");
 				qGender = groupArr2[1];
 			}
@@ -135,14 +136,14 @@ public class MatchCalculateAction implements Action {
 						matchScore += 100;
 					}
 				}
-
+				System.out.println(compareMemberScore);
 				System.out.println(compareExpert);
 				System.out.println(matchScore);
 
 				float m_Percent = matchScore / compareMemberScore * 100;
-
+				System.out.println(m_Percent);
 				Match insertMatch = new Match();
-				insertMatch.setM_Percent(m_Percent);
+				insertMatch.setM_Percent(matchScore);
 				insertMatch.setMatch_C_Code(request_C_Code);
 				insertMatch.setMatch_Expert_Id(matchCandidateList.get(i).getInfor_Expert_Id());
 				insertMatch.setMatch_Member_Id(requestedMember.getRequest_Member_Id());
@@ -155,10 +156,17 @@ public class MatchCalculateAction implements Action {
 			}
 		}
 
-		ActionForward forward = new ActionForward();
 		request.setAttribute("req", "notyet");
 		forward.setRedirect(false);
-		forward.setPath("requestInfo.jsp");
+		forward.setPath("requestInfo.jsp");		
+		
+		}else{
+
+			forward.setRedirect(true);
+			forward.setPath("main.do?member_Id="+member_Id);
+		}
+		
+
 
 		return forward;
 	}
