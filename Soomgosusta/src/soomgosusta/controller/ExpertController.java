@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import soomgosusta.action_expertAction.ChatListFormAction;
+import soomgosusta.action_expertAction.ChatAction;
+import soomgosusta.action_expertAction.ChatListFormAction;
 import soomgosusta.action_expertAction.ExpertAddInfoAction;
 import soomgosusta.action_expertAction.ExpertAddInfoFormAction;
+import soomgosusta.action_expertAction.ExpertMainAction;
 import soomgosusta.action_expertAction.FindExpertAction;
 import soomgosusta.action_expertAction.FindExpertFormAcion;
 import soomgosusta.action_expertAction.RegisterEstimateAction;
@@ -27,7 +30,8 @@ import soomgosusta.action_interface.ActionForward;
 
 @WebServlet(urlPatterns={"/expertRegisterActionForm.do","/expertRegisterAction.do","/expertLogin.do","/expertLoginAction.do","/upload.do",
 		"/expertProfile.do","/expertDetailProfileAction.do", "/findExpertForm.do", "/findExpert.do","/expertAddInfo.do","/expertAddInfoForm.do",
-		"/expertMain.do","/registerEstimateForm.do","/registerEstimate.do","/chatListFormAction.do"})
+		"/expertMain.do","/registerEstimateForm.do","/registerEstimate.do","/chatListFormAction.do",
+		"/chatAction.do"})
 
 public class ExpertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -127,6 +131,20 @@ public class ExpertController extends HttpServlet {
     		}
     	}else if(command.equals("chatListFormAction.do")){
     		action = new ChatListFormAction();
+    		try{
+    			forward = action.excute(request, response);
+    		}catch (Exception e){
+    			e.printStackTrace();
+    		}
+    	}else if(command.equals("expertMain.do")){
+    		action = new ExpertMainAction();
+    		try{
+    			forward = action.excute(request, response);
+    		}catch (Exception e){
+    			e.printStackTrace();
+    		}
+    	}else if(command.equals("chatAction.do")){
+    		action = new ChatAction();
     		try{
     			forward = action.excute(request, response);
     		}catch (Exception e){

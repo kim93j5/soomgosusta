@@ -14,6 +14,9 @@
 <script src="./script/jquery.js"></script>
 </head>
 <body>
+<header>
+	<jsp:include page="header.jsp"></jsp:include>
+</header>
 	상태: ${login_state} (확인용)
 	<br> 아이디:${id}	(확인용)
 

@@ -21,7 +21,6 @@ public class MatchCalculateAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		MatchService service = MatchService.getInstance();
-
 		String member_Id = request.getParameter("member_Id");
 		Request requestedMember = service.requestMemberService(member_Id);
 		System.out.println(requestedMember);
