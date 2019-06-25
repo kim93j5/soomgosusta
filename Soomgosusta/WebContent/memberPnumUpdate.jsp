@@ -24,7 +24,7 @@ function nameCheck(){
 }
 </script>
 <body>
-	<form name = "pNumForm" action="pNumUpdate.do" method="post">
+	<form name = "pNumForm" action="pNumUpdate.do?member_Id=${memberMyInfo.member_Id }" method="post">
 		이름 : <input type="text" name="memberNameCheck" id = "memberNameCheck"><input type="button" onclick="nameCheck();" value="이름확인"><br>
 		변경할 전화번호 : <input type="text" name="changePnum" id="changePnum">
 		<input type="button" value="전화번호 변경" onclick = "gosubmit();"> 

@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="./script/jquery.js"></script>
-<!-- <script type="text/javascript" src="./script/expertAddInfo.js"></script>   -->
+<!-- <script type="text/javascript" src="./script/expertAddInfo.js"></script> -->
 <title>고수 필수 부가정보 입력</title>
 </head>
-<body>	
-    	    <!-- //////////////////////////////활동가능 범위  ///////////////////////////////////////-->			
+<body>   
+           <!-- //////////////////////////////활동가능 범위  ///////////////////////////////////////-->         
 <script type="text/javascript">
 $('document').ready(function() {
    var area0 = ["시/도 선택","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
@@ -46,113 +46,118 @@ $('document').ready(function() {
  // 시/도 선택시 구/군 설정
 
    $("select[name^=sido]").change(function() {
-	    var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
-	    var $gugun = $(this).next(); // 선택영역 군구 객체
-	    $("option",$gugun).remove(); // 구군 초기화
+       var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
+       var $gugun = $(this).next(); // 선택영역 군구 객체
+       $("option",$gugun).remove(); // 구군 초기화
 
-	    if(area == "area0")
-	     $gugun.append("<option value=''>구/군 선택</option>");
-	    else {
-	     $.each(eval(area), function() {
-	      $gugun.append("<option value='"+this+"'>"+this+"</option>");
-	     });
-	    }
-	   });
-
+       if(area == "area0")
+        $gugun.append("<option value=''>구/군 선택</option>");
+       else {
+        $.each(eval(area), function() {
+         $gugun.append("<option value='"+this+"'>"+this+"</option>");
+        });
+       }
+      });
 
 });
-</script>
-	<form name=form method="post" action="expertAddInfo.do">
-	<input type="hidden" name="id" value="${id }">	
 
-	<!-- ///////////////////////////////대분류 선택 ///////////////////////////////////////-->
-		<div id = "first_select">
-		<h3>분야를 선택해주세요</h3>
-		<c:forEach var="categoryList1" items="${categoryList1 }">
-        	<input name="category1" type="radio" value="${categoryList1 }">
-        	  ${categoryList1 }
+
+
+</script>
+    
+   <form name=form method="post" action="expertAddInfo.do">   
+   <!-- ///////////////////////////////대분류 선택 ///////////////////////////////////////-->
+      <div id = "first_select">
+      <h3>분야를 선택해주세요</h3>
+      <c:forEach var="categoryList1" items="${categoryList1 }">
+           <input name="category1" type="radio" value="${categoryList1 }">
+             ${categoryList1 }
             </c:forEach>
             <br>
             <input name="category1_1" type="radio" value="서비스">서비스
             <br>
             <br>
 
-		<button type="button" id="next0_1" >다음</button>
-		</div>
-		
-		
-		<!-- ///////////////////////////////중분류 선택 ///////////////////////////////////////-->		
-		<div id = "second_select1">
-		
-		<c:forEach var="categoryList2" items="${categoryList2 }">
-			<input name="category2" type="checkbox" value="${categoryList2 }">
-			${categoryList2 }
-			<br>
+   <!--    <button type="button" id="next0_1" >다음</button> -->
+      </div>
+      
+      
+      <!-- ///////////////////////////////중분류 선택 ///////////////////////////////////////-->      
+      <div id = "second_select1">
+      <h3>분야를 선택해주세요</h3>
+      <c:forEach var="categoryList2" items="${categoryList2 }">
+         <input name="category2" type="checkbox" value="${categoryList2 }">
+         ${categoryList2 }
+         <br>
         </c:forEach>
-        <button type="button" id="prev0_2" >이전</button> 
-		<button type="button" id="next0_2" >다음</button>
-		</div>
-		
-		
-		<div id = "second_select2">
-		<input type = "checkbox" name = "category2" id = "category2" value = "청소">청소<br>
-		<input type = "hidden" name = "category2_select" id = "category2_select" value="청소">
-		<input type = "checkbox" name = "category2" id = "category2" value = "줄눈시공">줄눈시공<br>
-		<input type = "hidden" name = "category2_select" id = "category2_select" value="줄눈시공">
-		
-        <button type="button" id="prev0_3" >이전</button> 		
-		<button type="button" id="next0_3" >다음</button>
-		
-		</div>
-		
-		
-		<div id = "third_select1">
-		<c:forEach var="categoryList3_1" items="${categoryList3_1 }">
-			<input name="category3" type="checkbox" value="${categoryList3_1 }">
-			${categoryList3_1 }
-			<br>
+<!--         <button type="button" id="prev0_2" >이전</button> 
+      <button type="button" id="next0_2">다음</button> -->
+      </div>
+      
+      
+      <div id = "second_select2">
+      <input type = "checkbox" name = "category2" id = "category2" value = "청소">청소<br>
+      <input type = "hidden" name = "category2_select" id = "category2_select" value="청소">
+      <input type = "checkbox" name = "category2" id = "category2" value = "줄눈시공">줄눈시공<br>
+      <input type = "hidden" name = "category2_select" id = "category2_select" value="줄눈시공">
+      
+<!--         <button type="button" id="prev0_3" >이전</button>       
+      <button type="button" id="next0_3" >다음</button> -->
+      
+      </div>
+      
+      
+      <div id = "third_select1">
+      <h3>분야를 선택해주세요</h3>
+      <c:forEach var="categoryList3_1" items="${categoryList3_1 }">
+         <input name="category3" type="checkbox" value="${categoryList3_1 }">
+         ${categoryList3_1 }
+         <br>
         </c:forEach>
-		 <button type="button" id="prev0_4" >이전</button> 		
-		 <button type="button" id="next0_4" >다음</button>
-		</div>
-		
-		
-		<div id = "third_select2">
-		
-		<c:forEach var="categoryList3_2" items="${categoryList3_2 }">
-			<input name="category3" type="checkbox" value="${categoryList3_2 }">
-			${categoryList3_2 }
-			<br>
+<!--        <button type="button" id="prev0_4" >이전</button>       
+       <button type="button" id="next0_4" >다음</button> -->
+      </div>
+      
+      
+      <div id = "third_select2">
+      <h3>분야를 선택해주세요</h3>
+      <c:forEach var="categoryList3_2" items="${categoryList3_2 }">
+         <input name="category3" type="checkbox" value="${categoryList3_2 }">
+         ${categoryList3_2 }
+         <br>
         </c:forEach>
-		 <button type="button" id="prev0_5" >이전</button> 		
-		 <button type="button" id="next0_5" >다음</button>
-		</div>
-		
-		
-		
-		<!-- //////////////////////////////요일,시간대,시작날짜///////////////////////////////// -->
-		<div id="select_Question">
-			<c:forEach var="questionList" items="${questionList}">
-				<input type="hidden" name="q_Code" value="${questionList.q_Code}">
+<!--        <button type="button" id="prev0_5" >이전</button>       
+       <button type="button" id="next0_5">다음</button> -->
+      </div>
+      
+      
+      
+      <!-- //////////////////////////////요일,시간대,시작날짜///////////////////////////////// -->
+      <div id="select_Question">
+         <c:forEach var="questionList" items="${questionList}">
+            <input type="hidden" name="q_Code" value="${questionList.q_Code}">
 
-				<div id="select_Answer" style="display: inline-block;">
-					<h3>${questionList.q_Contents }</h3>
-					<ul>
-						<c:forEach var="answerList" items="${answerList }">
-							<c:if test="${answerList.q_Code == questionList.q_Code}">
-								<li class="answer"><input type="checkbox" name="a_Code" value="${ answerList.a_Code}">
-								   ${answerList.a_Contents }
-								</li>
-							</c:if>
-						</c:forEach>
-					</ul>
-				</div>
-			</c:forEach>
-		</div>
-		
-		<!-- ///////////////////////////////지역 선택 /////////////////////////////////////////-->
-	 <h3>활동가능한 지역을 선택해주세요(최대3개)</h3>
-	  <div id="select_District">
+            <div id="select_Answer" style="display: block;">
+               <h3>${questionList.q_Contents }</h3>
+               <ul>
+                  <c:forEach var="answerList" items="${answerList }">
+                     <c:if test="${answerList.q_Code == questionList.q_Code}">
+                        <li class="answer"><input type="checkbox" name="a_Code" value="${ answerList.a_Code}">
+                           ${answerList.a_Contents }
+                        </li>
+                     </c:if>
+                  </c:forEach>
+               </ul>
+            </div>
+            
+         </c:forEach>
+
+      </div>
+      
+      <!-- ///////////////////////////////지역 선택 /////////////////////////////////////////-->
+    
+     <div id="select_District">
+     <h3>활동가능한 지역을 선택해주세요(최대3개)</h3>
          <div id="district_select1">
             <select name="sido" id="sido"></select>
             <select name="sigungu" id="sigungu"></select>
@@ -173,10 +178,10 @@ $('document').ready(function() {
             <br>
          </div>
          
-		    <input type="button" id="prev4" value="이전"> 
-			<input type="submit" value="고수 회원가입완료" id="hidden">
-	  </div>
-	</form>
+          <input type="button" id="prev4" value="이전"> 
+         <input type="submit" value="고수 회원가입완료" id="hidden">
+     </div>
+   </form>
 
 </body>
 </html>

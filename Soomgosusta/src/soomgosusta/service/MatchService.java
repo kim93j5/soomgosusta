@@ -26,7 +26,7 @@ public class MatchService {
 		return dao.matchCandidateList(request_C_Code);
 	}
 	public Request requestMemberService(String member_Id){
-	
+
 		return dao.memberRequest(member_Id);
 	}
 	public int matchTableInsertService(Match match){

@@ -31,7 +31,7 @@ public class MemberPasswordUpdateAction implements Action {
 		}
 		
 		forward.setRedirect(true);
-		forward.setPath("memberMyPage.do");
+		forward.setPath("memberMyPage.do?member_Id="+member_id);
 		return forward;
 	}
 

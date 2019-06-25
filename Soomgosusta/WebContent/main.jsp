@@ -6,6 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- <script src="./script/search.js" type="text/javascript"></script> -->
+<script src="./script/main.js" type="text/javascript"></script>
+
 <title>Main Page</title>
 <link rel="stylesheet" href="./bootstrap-3.3.2-dist/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="./plugIn/slick-master/slick/slick.css"/>

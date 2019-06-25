@@ -21,7 +21,7 @@
 	</select>
 	
 	<insert id="insertRequest" parameterType="hashmap">
-		 insert into request values(#{member_Id}, #{searchCode}, seq_test.nextval, #{r_qa_1},#{r_qa_2},#{r_qa_3},#{r_qa_4},#{r_qa_5},#{r_qa_6},#{r_qa_7},
+		 insert into request values(#{member_Id}, #{searchCode}, request_r_seq.nextval, #{r_qa_1},#{r_qa_2},#{r_qa_3},#{r_qa_4},#{r_qa_5},#{r_qa_6},#{r_qa_7},
 		#{r_qa_8},#{r_qa_9},#{r_qa_10},#{r_qa_11},#{r_qa_12},#{r_qa_13},#{r_qa_14},#{r_qa_15}, sysdate, 'ing')
 
 	</insert>

@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div id = "myPage">
 <form action="imageUpdate.do?member_Id=${memberMyInfo.member_Id }" method="post" enctype="multipart/form-data">
 	<div id="image">
 		<c:if test="${memberMyInfo.m_Photo != null }">
@@ -36,7 +37,7 @@
 	</div>
 	<input type="submit" value="메인페이지로 돌아가기">
 </form>
-
+</div>
 </body>
 </html>
 
