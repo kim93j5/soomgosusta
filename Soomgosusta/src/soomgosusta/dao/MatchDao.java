@@ -8,7 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import soomgosusta.domain.Esend;
 import soomgosusta.domain.Expert_Information;
+
 import soomgosusta.domain.Match;
 import soomgosusta.domain.Request;
 import soomgosusta.mapper.MatchMapper;
@@ -78,6 +80,59 @@ public class MatchDao {
 			}finally {
 				if(sqlsession != null){
 					sqlsession.close();
+				}
+			}
+			return re;
+		}
+		
+		public List<Match> matchList(String login_Session) {
+			SqlSession sqlSession = getSqlSessionFactory().openSession();
+			List<Match> matchList = null;
+			try {
+				matchList = sqlSession.getMapper(MatchMapper.class).matchList(login_Session);
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if(sqlSession != null){
+					sqlSession.close();
+				}
+			}
+			return matchList;
+		}
+
+		public Match detailMatch(String id) {
+			SqlSession sqlSession = getSqlSessionFactory().openSession();
+			Match match = null;
+			try {
+				match = sqlSession.getMapper(MatchMapper.class).detailMatch(id);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally{
+				if(sqlSession != null){
+					sqlSession.close();
+				}
+			}
+			return match;
+		}
+		
+		public int updateMatch(Esend esend) {
+			int re = -1;
+			
+			SqlSession sqlSession = getSqlSessionFactory().openSession();
+			
+			try { 
+				re= sqlSession.getMapper(MatchMapper.class).updateMatch(esend);
+				if(re > 0){
+					sqlSession.commit();
+				}else{
+					sqlSession.rollback();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally{
+				if(sqlSession != null ){
+					sqlSession.close();
 				}
 			}
 			return re;

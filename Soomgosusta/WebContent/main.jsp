@@ -21,90 +21,10 @@
 <title>Main Page</title>
 </head>
 <body>
-	<c:set var='expert' value="${expert}" scope="request" />
-	<c:set var='member' value="${member}" scope="request" />
 
-	<form action="expertProfile.do?expert_Id=${expert.expert_Id}" method="get">
-		<input type="hidden" name="expert_Id" value="${expert.expert_Id}" /> 
-		<input type="submit" value="프로필수정" />
-	</form>
-
-	<!-- ///////////////배너/////////////// -->
-	<nav class="navbar">
-	<div>
-		<c:choose>
-			<c:when test="${id != null && login_state == 'member' }">
-				<div class="left_">
-
-					<ul class="nav navbar-nav">
-						<li><a href="main.do"> <img src="https://dmmj3ljielax6.cloudfront.net/static/img/home/index_soomgo_logo.svg" alt="숨고, 숨은고수">
-							</a></li>
-						<li><a href="requestInfoForm.do"> <span>보낸 요청</span>
-						</a></li>
-						<li><a href="memberMyPage.do"><span>프로필</span></a>
-						<li><a href="findExpertForm.do"> <span>고수 찾기</span>
-						</a></li>
-						<li><a href=""> <span>채팅</span>
-						</a></li>
-					</ul>
-				</div>
-				<div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
-					<ul class="nav navbar-nav">
-						<li><span>${id} 고객님</span></li>
-						<li><a href="logout.do"><span>로그아웃</span></a></li>
-					</ul>
-
-
-				</div>
-			</c:when>
-			<c:when test="${id != null && login_state == 'expert' }">
-
-				<div class="left_">
-					<ul>
-						<li><a href="main.do"> <img src="https://dmmj3ljielax6.cloudfront.net/static/img/home/index_soomgo_logo.svg" alt="숨고, 숨은고수">
-							</a></li>
-						<li><a href=""> <span>받은 요청</span>
-						</a></li>
-						<li><a href="expertProfile.do?expert_Id=${id}"> <span>프로필</span>
-						</a></li>
-						<li><a href=""> <span>일정</span>
-						</a></li>
-						<li><a href=""> <span>채팅</span>
-						</a></li>
-					</ul>
-				</div>
-				<div class="right_">
-					<ul>
-						<li><span>${id } 고수님</span></li>
-						<li><a href = "logout.do"><span>로그아웃</span></a>
-					</ul>
-				</div>
-			</c:when>
-			<c:otherwise>
-				<div class="left_">
-					<ul>
-						<li><a href="main.do"> <img src="https://dmmj3ljielax6.cloudfront.net/static/img/home/index_soomgo_logo.svg" alt="숨고, 숨은고수">
-							</a></li>
-					</ul>
-				</div>
-				<div class="right_">
-					<ul>
-						<li><a href="selectDivide.jsp">회원가입</a></li>
-						<li>
-							<div class="select">
-								<select name="" id="loginState">
-									<option value="member">회원</option>
-									<option value="expert">고수</option>
-								</select> <a id="login" href="loginAction.do">로그인</a> <a id="loginteg"></a>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</c:otherwise>
-		</c:choose>
-	</div>
-	</nav>
-
+	<header>
+		<jsp:include page="header.jsp"></jsp:include>
+	</header>
 	<!-- ///////////////분야 검색창/////////////// -->
 	<div>
 		<h2>숨고가 딱! 맞는 고수를 소개해 드려요</h2>
@@ -182,5 +102,8 @@
 		</div>
 	</div>
 
+	<footer>
+		<jsp:include page="footer.jsp"></jsp:include>
+	</footer>
 </body>
 </html>

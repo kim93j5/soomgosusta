@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="soomgosusta.mapper.EstimateMapper">
+	<cache />
+	
+	<insert id="insertEstimate" parameterType="Estimate">
+		insert into estimate
+		values(#{estimate_Member_Id},#{estimate_C_Code},#{estimate_R_Seq},#{estimate_Expert_Id},#{e_Contents},#{e_Amount},sysdate,#{e_Amountpart})
+	
+	</insert>
+	<select id="estimateList" resultMap="EstimateMap">
+		select 
+		a.estimate_member_id, a.estimate_c_code, a.e_amount,a.estimate_expert_id,
+		a.e_amountpart, a.e_daterecord,a.e_contents,
+		b.member_id, b.m_name,
+		c.c_code, c.c_word
+		FROM estimate a JOIN member b
+		ON a.estimate_member_id = b.member_id
+		JOIN category c
+		ON a.estimate_c_code = c.c_code
+		WHERE a.estimate_expert_id = #{login_Session}
+	</select>
+	
+	<resultMap type="Member" id="Member">
+		<result column="member_id" property="member_Id"/>
+		<result column="m_password" property="m_Password"/>
+		<result column="m_name" property="m_Name"/>
+		<result column="m_pnum" property="m_Pnum"/>
+		<result column="m_gender" property="m_Gender"/>
+		<result column="m_age" property="m_Age"/>
+		<result column="m_divide" property="m_Divide"/>
+		<result column="m_photo" property="m_Photo"/>
+	</resultMap>
+	
+	<resultMap type="Category" id="Category">
+		<result column="c_code" property="c_Code"/>
+		<result column="c_word" property="c_Word"/>
+		<result column="c_image" property="c_Image"/>
+	</resultMap>
+	
+	<resultMap type="Estimate" id="EstimateMap">
+		<result column="estimate_member_id" property="estimate_Member_Id"/>
+		<result column="estimate_c_code" property="estimate_C_Code"/>
+		<result column="estimate_r_seq" property="estimate_R_Seq"/>
+		<result column="estimate_expert_id" property="estimate_Expert_Id"/>
+		<result column="e_contents" property="e_Contents"/>
+		<result column="e_daterecord" property="e_Daterecord"/>
+		<result column="e_amount" property="e_Amount"/>
+		<result column="e_amountpart" property="e_Amountpart"/>
+		<collection property="member" resultMap="Member"></collection>
+		<collection property="category" resultMap="Category"></collection>
+	</resultMap>
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

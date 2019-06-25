@@ -43,7 +43,7 @@ function send() {
 		<form name="check" onsubmit="return send();" action="memberRegisterAction.do" method="post" ">
 		아이디	<input type="email" name="member_Id" id="member_Id"> <br>
 		비밀번호	<input type="password" name="member_Password" id="member_Password">	<br>
-				<input type="password" id="check_Password"> <br>
+		비밀번호확인 <input type="password" id="check_Password"> <br>
 		이름	<input type="text" name="member_Name"> 			<br>
 		전화번호	<input type="text" name="member_Pnum">		<br>
 		성별	<input type="radio" name="member_Gender" value="남자" checked>남자	
