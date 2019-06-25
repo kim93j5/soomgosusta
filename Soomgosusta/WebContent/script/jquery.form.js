@@ -3,13 +3,10 @@
  * version: 4.2.2
  * Requires jQuery v1.7.2 or later
  * Project repository: https://github.com/jquery-form/form
-
  * Copyright 2017 Kevin Morris
  * Copyright 2006 M. Alsup
-
  * Dual licensed under the LGPL-2.1+ or MIT licenses
  * https://github.com/jquery-form/form#license
-
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -57,7 +54,6 @@
 		Do not use both ajaxSubmit and ajaxForm on the same form. These
 		functions are mutually exclusive. Use ajaxSubmit if you want
 		to bind your own submit handler to the form. For example,
-
 		$(document).ready(function() {
 			$('#myForm').on('submit', function(e) {
 				e.preventDefault(); // <-- important
@@ -66,24 +62,19 @@
 				});
 			});
 		});
-
 		Use ajaxForm when you want the plugin to manage all the event binding
 		for you. For example,
-
 		$(document).ready(function() {
 			$('#myForm').ajaxForm({
 				target: '#output'
 			});
 		});
-
 		You can also use ajaxForm with delegation (requires jQuery v1.7+), so the
 		form does not have to exist when you invoke ajaxForm:
-
 		$('#myForm').ajaxForm({
 			delegation: true,
 			target: '#output'
 		});
-
 		When using ajaxForm, the ajaxSubmit function will be invoked for you
 		at the appropriate time.
 	*/
@@ -665,12 +656,12 @@
 								// if using the $.param format that allows for multiple values with the same name
 								if ($.isPlainObject(s.extraData[n]) && s.extraData[n].hasOwnProperty('name') && s.extraData[n].hasOwnProperty('value')) {
 									extraInputs.push(
-									$('<input type="hidden" name="' + s.extraData[n].name + '">', ownerDocument).val(s.extraData[n].value)
-										.appendTo(form)[0]);
+										$('<input type="hidden" name="' + s.extraData[n].name + '">', ownerDocument).val(s.extraData[n].value)
+											.appendTo(form)[0]);
 								} else {
 									extraInputs.push(
-									$('<input type="hidden" name="' + n + '">', ownerDocument).val(s.extraData[n])
-										.appendTo(form)[0]);
+										$('<input type="hidden" name="' + n + '">', ownerDocument).val(s.extraData[n])
+											.appendTo(form)[0]);
 								}
 							}
 						}
@@ -736,7 +727,8 @@
 
 					return;
 
-				} else if (e === SERVER_ABORT && xhr) {
+				}
+				if (e === SERVER_ABORT && xhr) {
 					xhr.abort('server abort');
 					deferred.reject(xhr, 'error', 'server abort');
 
@@ -1405,7 +1397,7 @@
 			switch (tag) {
 			case 'input':
 				this.checked = this.defaultChecked;
-					// fall through
+				// fall through
 
 			case 'textarea':
 				this.value = this.defaultValue;
@@ -1453,8 +1445,8 @@
 				return true;
 
 			case 'form':
-					// guard against an input with the name of 'reset'
-					// note that IE reports the reset function as an 'object'
+				// guard against an input with the name of 'reset'
+				// note that IE reports the reset function as an 'object'
 				if (typeof this.reset === 'function' || (typeof this.reset === 'object' && !this.reset.nodeType)) {
 					this.reset();
 				}

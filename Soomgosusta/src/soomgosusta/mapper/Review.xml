@@ -10,7 +10,17 @@
 	 <select id="detailAvgStarPoint" parameterType="String" resultType="Review">
 		select * from review where review_expert_id = #{searchId}
 	 </select>
- 
+ 	
+ 	 <insert id="insertReview" parameterType="Review">
+ 	 	insert into review values(#{memeber_Id},sysdate,#{review_Contents},
+ 	 	#{review_StarPoint},#{review_Expert_Id})
+ 	 </insert>
+ 	 
+ 	 <select id="reviewList" parameterType="String" resultType="Review">
+ 	 	select *
+ 	 	From review
+ 	 	where review_Expert_Id=#{review_Expert_Id}
+ 	 </select>
 </mapper>
 
 

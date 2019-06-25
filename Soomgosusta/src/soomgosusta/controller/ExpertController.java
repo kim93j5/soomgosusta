@@ -76,7 +76,6 @@ public class ExpertController extends HttpServlet {
     	}else if(command.equals("upload.do")) {
     		action = new expertUploadAction();
     		try {
-    			System.out.println("오니요?");
 				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();

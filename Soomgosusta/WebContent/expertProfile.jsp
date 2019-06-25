@@ -4,8 +4,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
-<c:set var="expert" value="${expert}" scope="request"></c:set>
+
 <head>
+<c:set var="expert" value="${expert}" scope="request"></c:set>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -100,37 +101,44 @@
 				<h5>본인인증 여부</h5>
 			</form>
 			
-			<%-- <c:forEach var="reply" items="${list}">  고수 리뷰 보기
+			<form>
+			<c:forEach var="review" items="${reviewList}">  
 				<div>
-					작성자 ${reply.r_writer}
-					작성일 ${reply.r_regdate}<br>
-		
-					내용 ${reply.r_contents}		
+					작성자 ${review.memeber_Id} 별점${review.review_StarPoint}
+					작성일 ${review.review_Date}<br>
+		 
+					내용 ${review.review_Contents}		
 				</div>
-			</c:forEach> --%>
-			
+			</c:forEach> 
+			</form>
 		</c:when>
 
 
-		<c:when test="${login_state =='member' && login_state == null}">
+		<c:when test="${login_state =='member'}">
 			<h1>회원 or 비회원</h1>
 			
 			
-			<form action="" method="get">
-			<input type="hidden" name="member_Id" value="${member.member_Id}">
-			<input type="hidden" name="review_Date">
-			<input type="text" name="review_Contents">
+			<form action="insertReview.do" method="post">
+			<input type="hidden" name="member_Id" value="${id}">
+			글 내용
+			<textarea rows="5" cols="30" name="review_Contents"></textarea> <br>
+			별점
+			<input type="text" name="review_StarPoint">
 			<input type="hidden" name="review_Expert_Id" value="${expert.expert_Id}">
+			<input type="submit" value="저장">
 			</form>
-
-			<%-- <c:forEach var="reply" items="${list}">  고수 리뷰 보기
-				<div>
-					작성자 ${reply.r_writer}
-					작성일 ${reply.r_regdate}<br>
+				작성자 ${review.memeber_Id} 별점${review.review_StarPoint}
+					작성일 ${review.review_Date}<br>
 		
-					내용 ${reply.r_contents}		
+					내용 ${review.review_Contents}	
+			<c:forEach var="review" items="${reviewList}">  
+				<div>
+					작성자 ${review.memeber_Id} 별점${review.review_StarPoint}
+					작성일 ${review.review_Date}<br>
+		
+					내용 ${review.review_Contents}		
 				</div>
-			</c:forEach> --%>
+			</c:forEach> 
 		</c:when>
 		</c:choose>
 		<c:if test="${login_state != 'member'}">
