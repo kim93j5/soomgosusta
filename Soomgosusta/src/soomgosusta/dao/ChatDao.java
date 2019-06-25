@@ -8,15 +8,17 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import soomgosusta.domain.Chat;
 import soomgosusta.domain.Esend;
-import soomgosusta.domain.Estimate;
-import soomgosusta.mapper.EstimateMapper;
+import soomgosusta.mapper.ChatMapper;
 
-public class EstimateDao {
+
+
+public class ChatDao {
+
+	private static ChatDao dao = new ChatDao();
 	
-private static EstimateDao dao = new EstimateDao();
-	
-	public static EstimateDao getInstance(){
+	public static ChatDao getInstance(){
 		return dao;
 	}
 
@@ -32,14 +34,13 @@ private static EstimateDao dao = new EstimateDao();
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 
-	
-	public int insertEstimate(Estimate estimate) {
+	public int insertChat(Chat chat) {
 		int re = -1;
 		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		
 		try { 
-			re= sqlSession.getMapper(EstimateMapper.class).insertEstimate(estimate);
+			re= sqlSession.getMapper(ChatMapper.class).insertChat(chat);
 			if(re > 0){
 				sqlSession.commit();
 			}else{
@@ -55,11 +56,11 @@ private static EstimateDao dao = new EstimateDao();
 		return re;
 	}
 
-	public List<Estimate> estimateList(String login_Session) {
+	public List<Chat> chatList(Esend esend) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Estimate> estimate = null;
+		List<Chat> chatList = null;
 		try {
-			estimate = sqlSession.getMapper(EstimateMapper.class).estimateList(login_Session);
+			chatList = sqlSession.getMapper(ChatMapper.class).chatList(esend);
 		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,27 +69,8 @@ private static EstimateDao dao = new EstimateDao();
 				sqlSession.close();
 			}
 		}
-		
-		return estimate;
+		return chatList;
 	}
 
-	public Estimate detailEstimate(Esend esend) {
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		Estimate estimateDetail = null;
-		try {
-			estimateDetail = (Estimate) sqlSession.getMapper(EstimateMapper.class).detailEstimate(esend);
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if(sqlSession != null){
-				sqlSession.close();
-			}
-		}
-		
-		return estimateDetail;
-	}
 	
-	
-
 }

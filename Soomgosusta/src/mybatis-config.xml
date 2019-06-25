@@ -23,6 +23,7 @@
 		<typeAlias type="soomgosusta.domain.Expert_Profile_License" alias="Expert_Profile_License"/>
 		<typeAlias type="soomgosusta.domain.Estimate" alias="Estimate"/>
 		<typeAlias type="soomgosusta.domain.Esend" alias="Esend"/>
+		<typeAlias type="soomgosusta.domain.Chat" alias="Chat"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -42,6 +43,7 @@
 		<mapper resource="soomgosusta/mapper/Match.xml"/>
 		<mapper resource="soomgosusta/mapper/Review.xml"/>
 		<mapper resource="soomgosusta/mapper/Estimate.xml"/>
+		<mapper resource="soomgosusta/mapper/Chat.xml"/>
 	</mappers>
 	
 </configuration>

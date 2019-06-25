@@ -55,7 +55,11 @@
 		<collection property="category" resultMap="Category"></collection>
 	</resultMap>
 	
-	
+	<select id="detailEstimate" parameterType="Esend" resultType="Estimate">
+		select * from estimate
+		where estimate_member_id = #{e_id}
+		and estimate_expert_id = #{m_id}
+	</select>
 	
 </mapper>
 
