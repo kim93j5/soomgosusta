@@ -30,7 +30,6 @@ public class SendRequestAction implements Action {
          MemberService m_service = MemberService.getInstance();
          ActionForward forward = new ActionForward();
          
-         System.out.println("뜰라나");
          request.setCharacterEncoding("utf-8");
          List<Request> requestList = service.sendRequestService(request);
          request.setAttribute("requestList", requestList);
@@ -176,8 +175,10 @@ public class SendRequestAction implements Action {
          }
 
           request.setAttribute("randomList", randomList);
-         request.setAttribute("formList", formList);
 
+         request.setAttribute("formList", formList);
+         request.setAttribute("size", formList.size());
+         
           forward.setPath("sendRequestForm.jsp");
           forward.setRedirect(false);
          
