@@ -163,7 +163,7 @@ public class SendRequestAction implements Action {
          
          //카테고리 테이블에서 LI로 시작하는 요소들(위의 개수만큼 추출)       
          for (int i = 0; i < count_LI; i++) {
-            list_LI.get(i).getC_Image();
+            list_LI.get(i).getC_Code();
             
             System.out.println(list_LI);
          }
@@ -178,7 +178,7 @@ public class SendRequestAction implements Action {
          
          //카테고리 테이블에서 LS로 시작하는 요소들(위의 개수만큼 추출)
          for (int i = 0; i < count_LS; i++) {
-            list_LS.get(i).getC_Image();
+            list_LS.get(i).getC_Code();
             
             System.out.println(list_LS);
          }

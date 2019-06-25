@@ -157,7 +157,7 @@ public class MatchCalculateAction implements Action {
 		}
 
 		ActionForward forward = new ActionForward();
-
+		request.setAttribute("req", "notyet");
 		forward.setRedirect(false);
 		forward.setPath("requestInfo.jsp");
 
