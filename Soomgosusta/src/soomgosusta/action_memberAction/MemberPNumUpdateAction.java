@@ -23,7 +23,7 @@ public class MemberPNumUpdateAction implements Action {
 		service.memberPnumUpdate(memberMyInfo);
 		
 		forward.setRedirect(true);
-		forward.setPath("memberMyPage.do");
+		forward.setPath("memberMyPage.do?member_Id="+member_id);
 		return forward;
 	}
 

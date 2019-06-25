@@ -49,7 +49,15 @@
 		update member set m_Pnum = #{m_Pnum} where member_Id = #{member_Id}
 	</update>
 	<insert id="registerMember" parameterType="Member">
-   		insert into member values(#{member_Id}, #{m_Password}, #{m_Name}, #{m_Pnum},#{m_Gender}, #{m_Age}, 'member' , 'javacan1.gif')
+		insert into member
+		<choose>
+			<when test="m_Gender.equals('남자')">
+				values(#{member_Id}, #{m_Password}, #{m_Name}, #{m_Pnum},#{m_Gender}, #{m_Age}, 'member' ,'javacan.gif' )
+			</when>
+		<otherwise>
+			values(#{member_Id}, #{m_Password}, #{m_Name}, #{m_Pnum},#{m_Gender}, #{m_Age}, 'member' , 'Female.png')
+		</otherwise>
+		</choose>
 	</insert>
 </mapper>
 

@@ -25,7 +25,7 @@ function pwCheck(){
 }
 </script>
 <body>
-	<form name="passwordForm" action="pwUpdate.do" method="post">
+	<form name="passwordForm" action="pwUpdate.do?member_Id=${memberMyInfo.member_Id }" method="post">
 		현재 비밀번호 : <input type="text" name="nowPassword" id = "nowPassword"><input type="button" onclick="pwCheck();" value="비밀번호 확인"><br>
 		변경할 비밀번호 : <input type="text" name="changePassword"><br>
 		변경할 비밀번호 확인 : <input type="text" name="changePasswordcheck"><br>
