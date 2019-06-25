@@ -27,7 +27,8 @@ public class ExpertAddInfoFormAction implements Action {
 		List<String> categoryList2 = new ArrayList<String>(); // [학업,악기]
 		List<String> categoryList3_1 = new ArrayList<String>(); // [외국어,논술]
 		List<String> categoryList3_2 = new ArrayList<String>(); // [가야금,거문고]
-
+		
+		
 		for (int i = 0; i < categoryList.size(); i++) {
 			String groupList = categoryList.get(i).getC_Word();
 			if (groupList.contains("레슨/학업")) {
@@ -74,13 +75,16 @@ public class ExpertAddInfoFormAction implements Action {
 		
 		List<Question> questionList = service.qInfoService(request);
 		request.setAttribute("questionList", questionList);
-		System.out.println("질문");
-		System.out.println(questionList);
+		//System.out.println("질문");
+		//System.out.println(questionList);
 
 		List<Answer> answerList = service.aInfoService(request);
 		request.setAttribute("answerList", answerList);
-		System.out.println("답");
-		System.out.println(answerList);
+		//System.out.println("답");
+		//System.out.println(answerList);
+		
+		request.setAttribute("id",request.getParameter("id"));
+		
 		
 		forward.setPath("/ExpertAddInfoForm.jsp");
 		forward.setRedirect(false);

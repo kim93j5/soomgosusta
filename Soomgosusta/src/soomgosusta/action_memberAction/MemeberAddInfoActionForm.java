@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 import soomgosusta.domain.Category;
+import soomgosusta.domain.Member;
 import soomgosusta.service.MemberService;
 
 	public class MemeberAddInfoActionForm implements Action {
@@ -60,6 +61,11 @@ import soomgosusta.service.MemberService;
 	         request.setAttribute("categoryList3_1", categoryList3_1);
 	         request.setAttribute("categoryList3_2", categoryList3_2);
 	         
+	         String member_id = request.getParameter("member_Id");
+	 		
+	 		 Member memberMyInfo = service.memberMyPageService(member_id);
+	 		 request.setAttribute("memberMyInfo", memberMyInfo);
+	 		
 	         forward.setRedirect(false);
 	         forward.setPath("/memberAddInfoForm.jsp");
 	         return forward;

@@ -32,7 +32,7 @@ $('document').ready(function() {
    var area16 = ["서귀포시","제주시","남제주군","북제주군"];
 
  // 시/도 선택 박스 초기화
-
+${id}
    $("select[name^=sido]").each(function() {
      $selsido = $(this);
      $.each(eval(area0), function() {
@@ -63,8 +63,9 @@ $('document').ready(function() {
 });
 </script>
     
-	<form name=form method="post" action="expertAddInfo.do">	
-	<input type="hidden" name="id" value="${id }">
+	<form name=form method="post" action="expertAddInfo.do">
+	<input type="hidden" name="id" value="${id }">	
+
 	<!-- ///////////////////////////////대분류 선택 ///////////////////////////////////////-->
 		<div id = "first_select">
 		<h3>분야를 선택해주세요</h3>

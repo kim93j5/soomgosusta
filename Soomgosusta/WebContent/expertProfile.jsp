@@ -59,14 +59,17 @@
 					파일: <input type="file" name="licenseFile" id="license"> 
 					<input type="hidden" name="expert_Id" value="${expert.expert_Id}">
 					<input type="submit" name="uploadlicense" value="저장"><br>
-					<img src="upload/${head }_small.${pattern}">
-				<c:if test="${epl.epl_Photo != null }">
+					<div>
+					<table border="1">
+					<tr>
+					<td>
+					<c:if test="${epl.epl_Photo != null }">
 						<c:set var="head" value="${fn:substring(epl.epl_Photo,0, fn:length(epl.epl_Photo)-4) }"></c:set>
 						<c:set var="pattern" value="${fn:substring(epl.epl_Photo, fn:length(head) +1, fn:length(epl.epl_Photo)) }"></c:set>
 							
 						<c:choose>
 							<c:when test="${pattern == 'jpg' || pattern == 'gif' }">
-								<img src="upload/${head }_small.${pattern}">
+								 <img src="upload/${head }.${pattern}" width="400" alt="그림">
 							</c:when>
 							<c:otherwise>
 								<c:out value="NO IMAGE"></c:out>
@@ -74,6 +77,13 @@
 							</c:otherwise>
 						</c:choose>
 					</c:if>
+					</td>
+					<td>
+					테이블 테스트
+					</td>
+					</tr>
+					</table>
+					</div>
 				</form>
 				
 				/////////////////////////////////////////////////////////////////////////////////////

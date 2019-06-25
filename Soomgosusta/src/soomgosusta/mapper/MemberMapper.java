@@ -20,5 +20,7 @@ public interface MemberMapper {
 	int memberPwUpdate(Member member);
 	int memberPnumUpdate(Member member);
 	   ////추천서비스////
+	Member_Information recommendInfo(String Infor_Member_Id);
+
 	Member_Information recommendInfo();
 }

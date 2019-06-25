@@ -18,6 +18,7 @@ public class SearchAction implements Action {
 		CategoryService service = CategoryService.getInstance();
 	    
 		String searchKey = request.getParameter("searchKey");
+		System.out.println(searchKey);
 		JSONArray listSearchKey = service.searchKeyService(searchKey);
 		if(listSearchKey.size() > 1){
 			request.setAttribute("listSearchKey", listSearchKey);

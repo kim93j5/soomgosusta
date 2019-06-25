@@ -6,53 +6,56 @@
 
 <mapper namespace="soomgosusta.mapper.MemberMapper">
 	<cache />
-	
+
 	<!-- ////////////////추천서비스 ////////////////// -->
 	
 	<insert id="addMemberInterest" parameterType="Member_Information">
-		insert into member values(#{member_User_Id},#{mi_District},#{c_Code})
+		insert into Member_Information values(#{Infor_Member_Id},#{mi_District},#{c_Code})
 	</insert>
-	
-	<insert id="registerMember" parameterType="Member">
-	insert into member values(#{member_Id}, #{m_Password}, #{m_Name},
-	#{m_Pnum},#{m_Gender}, #{m_Age}, 'member' , #{m_Photo})
-	</insert>
-		
+
+
 	<select id="login" parameterType="String" resultType="Member">
-	select *
-	FROM member
-	where member_id = #{id}
+		select *
+		FROM member
+		where member_id = #{id}
 	</select>
 		
-	<select id="recommendInfo" resultType="Member_Information">		
-		 select c_code from member_information where infor_member_id = 'nan5124' 
+
+	<select id="recommendInfo" resultType="Member_Information" parameterType="String">
+		select c_code from member_information where infor_member_id = #{Infor_Member_Id}
 	</select>
-	
-	
+
+
 	<select id="categoryCode" resultType="Category">
 		select * from category
-	</select> 
-	
-		<select id="memberMypage" resultType="Member" parameterType="String">
+	</select>
+
+	<select id="memberMypage" resultType="Member" parameterType="String">
 		select * from member where member_Id = #{member_Id}
 	</select>
-	
-	<update id="memberImageUpdate" parameterType="Member" >
-		update member set m_Photo = #{m_Photo} where member_Id = #{member_Id}
+
+	<update id="memberImageUpdate" parameterType="Member">
+		update
+		member set m_Photo = #{m_Photo} where member_Id = #{member_Id}
 	</update>
-	
-	<update id="memberNameUpdate" parameterType="Member" >
-		update member set m_Name = #{m_Name} where member_Id = #{member_Id}
+
+	<update id="memberNameUpdate" parameterType="Member">
+		update
+		member set m_Name = #{m_Name} where member_Id = #{member_Id}
 	</update>
-	
-	<update id="memberPwUpdate" parameterType="Member" >
-		update member set m_Password = #{m_Password} where member_Id = #{member_Id}
+
+	<update id="memberPwUpdate" parameterType="Member">
+		update member
+		set m_Password = #{m_Password} where member_Id = #{member_Id}
 	</update>
 	
 	<update id="memberPnumUpdate" parameterType="Member" >
-		update member2 set m_Pnum = #{m_Pnum} where member_Id = #{member_Id}
+		update member set m_Pnum = #{m_Pnum} where member_Id = #{member_Id}
 	</update>
-	
+
+	<insert id="registerMember" parameterType="Member">
+   		insert into member values(#{member_Id}, #{m_Password}, #{m_Name}, #{m_Pnum},#{m_Gender}, #{m_Age}, 'member' , 'javacan1.gif')
+	</insert>
 </mapper>
 
 

@@ -15,4 +15,7 @@ public interface RequestMapper {
 	List<Request> listAlreadySend(HashMap<String, String> map);   
 	Request sendRequestInfo();
 	int listRegisterLog(String searchKey);
+	int listEmploymentLog(String searchKey);
+	Request sendRequestInfo(String request_Member_Id);
+	Request detailRequest(String id);
 }

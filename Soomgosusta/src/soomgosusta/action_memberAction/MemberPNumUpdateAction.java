@@ -13,10 +13,18 @@ public class MemberPNumUpdateAction implements Action {
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
 		MemberService service = MemberService.getInstance();
-		Member memberMyInfo = service.memberMyPageService(request);
+		String member_id = request.getParameter("member_Id");
 		
-		forward.setRedirect(false);
-		forward.setPath("/memberMyPage.jsp");
+		Member memberMyInfo = service.memberMyPageService(member_id);
+		request.setAttribute("memberMyInfo", memberMyInfo);
+
+
+		memberMyInfo.setM_Pnum(request.getParameter("changePnum"));
+		service.memberPnumUpdate(memberMyInfo);
+		
+		forward.setRedirect(true);
+		forward.setPath("memberMyPage.do");
 		return forward;
 	}
+
 }

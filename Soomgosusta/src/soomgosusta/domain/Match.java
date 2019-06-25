@@ -11,18 +11,48 @@ public class Match implements Serializable{
 	private String match_C_Code;
 	private int match_R_Seq;
 	private String match_Expert_Id;
-	private String m_Percent;
+	private String m_Daterecord;
+	private String m_Status;
+	private Member member;
+	private Category category;
+	private float m_Percent;
 	
 	public Match() {}
 
 	public Match(String match_Member_Id, String match_C_Code, int match_R_Seq, String match_Expert_Id,
-			String m_Percent) {
+			float m_Percent) {
 		super();
 		this.match_Member_Id = match_Member_Id;
 		this.match_C_Code = match_C_Code;
 		this.match_R_Seq = match_R_Seq;
 		this.match_Expert_Id = match_Expert_Id;
 		this.m_Percent = m_Percent;
+	}
+
+	
+	
+	public String getM_Daterecord() {
+		return m_Daterecord;
+	}
+
+	public void setM_Daterecord(String m_Daterecord) {
+		this.m_Daterecord = m_Daterecord;
+	}
+
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public String getMatch_Member_Id() {
@@ -57,12 +87,20 @@ public class Match implements Serializable{
 		this.match_Expert_Id = match_Expert_Id;
 	}
 
-	public String getM_Percent() {
+	public float getM_Percent() {
 		return m_Percent;
 	}
 
-	public void setM_Percent(String m_Percent) {
+	public void setM_Percent(float m_Percent) {
 		this.m_Percent = m_Percent;
+	}
+
+	public String getM_Status() {
+		return m_Status;
+	}
+
+	public void setM_Status(String m_Status) {
+		this.m_Status = m_Status;
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package soomgosusta.service;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -139,6 +140,7 @@ public class ExpertService {
 //		String uploadPath="D:\\SPB_Data\\git\\soomgosusta\\Soomgosusta\\WebContent\\upload";
 		MultipartRequest multi = new MultipartRequest(request,uploadPath,size,"utf-8",
 				new DefaultFileRenamePolicy());
+		
 		
 		epl.setEpl_Expert_Id(multi.getParameter("expert_Id"));
 		if(multi.getFilesystemName("licenseFile")!=null) {
