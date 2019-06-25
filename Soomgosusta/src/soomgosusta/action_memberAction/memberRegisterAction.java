@@ -14,8 +14,10 @@ public class memberRegisterAction implements Action {
 		MemberService service = MemberService.getInstance();		
 		service.memberRegisterService(request);	
 		
+		String member_Id = request.getParameter("member_Id");
+		
 		forward.setRedirect(true);
-		forward.setPath("login.jsp");
+		forward.setPath("memberAddInfo.do?member_Id="+member_Id);
 		
 		return forward;
 	}

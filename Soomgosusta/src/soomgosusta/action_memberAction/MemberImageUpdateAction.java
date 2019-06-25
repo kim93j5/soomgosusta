@@ -38,6 +38,7 @@ public class MemberImageUpdateAction implements Action {
 			
 			String thumPath = uploadPath + "\\"+ head + "_small."+pattern;
 			File dest = new File(thumPath);
+
 			if(pattern.equals("gif") || pattern.equals("jpg") || pattern.equals("png")){
 				ImageUtil.resize(src, dest, 200, ImageUtil.RATIO);
 			}

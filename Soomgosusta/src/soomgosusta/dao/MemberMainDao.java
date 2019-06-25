@@ -14,10 +14,10 @@ import soomgosusta.domain.Member_Information;
 import soomgosusta.mapper.MemberMapper;
 
 public class MemberMainDao {
-	private static MemberMainDao m_dao = new MemberMainDao();
+	private static MemberMainDao dao = new MemberMainDao();
 	
 	public static MemberMainDao getInstance() {
-		return m_dao;
+		return dao;
 	}
 	
 	public SqlSessionFactory getSqlSessionFactory() {
@@ -35,11 +35,11 @@ public class MemberMainDao {
 	
 	}
 	
-	public Member_Information recommendInfo() {
+	public Member_Information recommendInfo(String Infor_Member_Id) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 	    Member_Information member_info = null;
 		try {
-			member_info = sqlSession.getMapper(MemberMapper.class).recommendInfo();
+			member_info = sqlSession.getMapper(MemberMapper.class).recommendInfo(Infor_Member_Id);
 
 		} catch (Exception e) {
 			e.printStackTrace();

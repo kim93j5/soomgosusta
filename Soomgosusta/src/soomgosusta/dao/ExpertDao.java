@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import soomgosusta.domain.Expert;
 import soomgosusta.domain.Expert_Profile;
+import soomgosusta.domain.Expert_Profile_License;
 import soomgosusta.domain.Expert_FindInfo;
 import soomgosusta.domain.Answer;
 import soomgosusta.domain.Category;
@@ -90,6 +91,7 @@ public class ExpertDao {
 	  public int insertExpertSum(Expert_Information expert_Info ){
 		  int re = -1;
 		  SqlSession sqlSession = getSqlSessionFactory().openSession();
+		  System.out.println(expert_Info.getInfor_Expert_Id());
 		  
 		  try {
 			re = sqlSession.getMapper(ExpertMapper.class).insertExpertSum(expert_Info);
@@ -107,19 +109,23 @@ public class ExpertDao {
 		return re;
 	}
 	
-	public Expert expertLogin(String id) {
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		Expert expert = null;
-		
-		try {
-			expert = sqlSession.getMapper(ExpertMapper.class).expertLogin(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlSession.close();
+		public Expert expertLogin(String id) {
+			SqlSession sqlSession = getSqlSessionFactory().openSession();
+			System.out.println("dao "+ id);
+			
+			Expert expert = null;
+			
+			try {
+				expert = sqlSession.getMapper(ExpertMapper.class).expertLogin(id);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				sqlSession.close();
+			}
+			System.out.println("Dao "+expert);
+			return expert;
 		}
-		return expert;
-	}
+
 	
 	public Expert_Profile profileDetail(String expert_Id) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
@@ -174,23 +180,6 @@ public class ExpertDao {
 	}
 	
 
-	public List<Expert_FindInfo> listExpertFind2(HashMap<String, String> map){
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<Expert_FindInfo> list = null;
-		
-		try {
-			list = sqlSession.getMapper(ExpertMapper.class).listExpertFind(map);
-			System.out.println(list);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlSession.close();
-		}
-		
-		return list;
-	}
-
 	public int registerExpert(Expert expert ) {
 		int re = -1;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
@@ -211,4 +200,71 @@ public class ExpertDao {
 		return re;
 	}
 	
+
+	public List<Expert_FindInfo> listExpertFind(HashMap<String, String> map){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Expert_FindInfo> list = null;
+		
+		try {
+			list = sqlSession.getMapper(ExpertMapper.class).listExpertFind(map);
+			System.out.println(list);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return list;
+	}
+
+	public int updateLicenseImg(Expert_Profile_License epl) {
+		int re = -1;
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			re = sqlSession.getMapper(ExpertMapper.class).updateLicenseImg(epl);
+			
+		if(re>0) {
+				sqlSession.commit();
+			}else {
+				sqlSession.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return re;
+	}
+
+	public Expert_Profile_License licenseDetail(String epl_Expert_Id) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		System.out.println("@++++++"+epl_Expert_Id);
+		Expert_Profile_License epl= null;
+		try {
+			epl = sqlSession.getMapper(ExpertMapper.class).licenseDetail(epl_Expert_Id);
+			System.out.println("@@@@@@@"+epl);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return epl;
+	}
+	
+	public int updateRegisterLog(String searchCode){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		
+		try {
+			re = sqlSession.getMapper(ExpertMapper.class).updateRegisterLog(searchCode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return re;
+	}
 }

@@ -14,9 +14,11 @@ public class expertRegisterAction implements Action {
 		ExpertService service = ExpertService.getInstance();
 		service.expertRegisterService(request);
 		
-		forward.setRedirect(true);
-		forward.setPath("expertLogin.do");
+		String id = request.getParameter("expert_Id");
 		
+		forward.setRedirect(true);
+		forward.setPath("expertAddInfoForm.do?id="+id);
+
 		return forward;
 		
 	}

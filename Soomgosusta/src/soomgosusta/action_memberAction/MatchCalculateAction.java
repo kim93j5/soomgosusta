@@ -44,7 +44,8 @@ public class MatchCalculateAction implements Action {
 		String request_C_Code = requestedMember.getRequest_C_Code();
 
 		List<Expert_Information> matchCandidateList = service.matchCandidateListService(request_C_Code);
-
+		System.out.println(matchCandidateList.size());
+		
 		for (int i = 0; i < matchCandidateList.size(); i++) {
 			System.out.println(matchCandidateList.get(i));
 		}
@@ -155,8 +156,10 @@ public class MatchCalculateAction implements Action {
 		}
 
 		ActionForward forward = new ActionForward();
+
 		forward.setRedirect(false);
-		forward.setPath("/memberAddInfoForm.jsp");
+		forward.setPath("requestInfo.jsp");
+
 		return forward;
 	}
 }

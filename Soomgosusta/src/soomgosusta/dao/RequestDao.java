@@ -12,13 +12,14 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import soomgosusta.domain.Answer;
 import soomgosusta.domain.Question;
 import soomgosusta.domain.Request;
+import soomgosusta.mapper.CategoryMapper;
 import soomgosusta.mapper.RequestMapper;
 
 public class RequestDao {
-	private static RequestDao r_dao = new RequestDao();
+	private static RequestDao dao = new RequestDao();
 
 	public static RequestDao getInstance() {
-		return r_dao;
+		return dao;
 	}
 
 	public SqlSessionFactory getSqlSessionFactory() {
@@ -35,11 +36,11 @@ public class RequestDao {
 
 	}
 
-	public Request sendRequestInfo() {
+	public List<Request> sendRequestInfo(String request_Member_Id) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		Request request_c_Code = null;
+		List<Request> request_c_Code = null;
 		try {
-			request_c_Code = sqlSession.getMapper(RequestMapper.class).sendRequestInfo();
+			request_c_Code = sqlSession.getMapper(RequestMapper.class).sendRequestInfo(request_Member_Id);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -141,6 +142,35 @@ public class RequestDao {
 				}
 				
 				return re; 
+			}
+			
+			public int listRegisterLog(String searchKey){
+				SqlSession sqlSession = getSqlSessionFactory().openSession();
+				int re = -1;
+				
+				try {
+					re = sqlSession.getMapper(RequestMapper.class).listRegisterLog(searchKey);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					sqlSession.close();
+				}
+				return re;
+			}
+
+			public Request detailRequest(String id) {
+				SqlSession sqlSession = getSqlSessionFactory().openSession();
+				Request re = null;
+				try {
+					re = sqlSession.getMapper(RequestMapper.class).detailRequest(id);
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally{
+					if(sqlSession != null){
+						sqlSession.close();
+					}
+				}
+				return re;
 			}
 		}
 

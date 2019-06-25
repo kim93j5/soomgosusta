@@ -214,6 +214,21 @@ public class MemberDao {
 		}
 		return re;
 	}
+
+	public Member_Information recommendInfo(String infor_Member_Id) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+	    Member_Information member_info = null;
+		try {
+			member_info = sqlSession.getMapper(MemberMapper.class).recommendInfo(infor_Member_Id);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+
+		return member_info;
+	}
 	
 }
 	

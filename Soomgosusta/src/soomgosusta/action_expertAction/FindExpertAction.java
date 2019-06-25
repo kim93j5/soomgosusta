@@ -14,7 +14,7 @@ import soomgosusta.domain.Review;
 import soomgosusta.service.ExpertService;
 import soomgosusta.service.ReviewService;
 
-public class findExpertAcion implements Action {
+public class FindExpertAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();

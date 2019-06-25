@@ -18,21 +18,22 @@ public class SearchAction implements Action {
 		CategoryService service = CategoryService.getInstance();
 	    
 		String searchKey = request.getParameter("searchKey");
+		System.out.println(searchKey);
 		JSONArray listSearchKey = service.searchKeyService(searchKey);
 		if(listSearchKey.size() > 1){
 			request.setAttribute("listSearchKey", listSearchKey);
 			
 			forward.setRedirect(false);
 			forward.setPath("listSearchKey.jsp");
-		}else if(listSearchKey.size() <= 1){
+		}else if(listSearchKey.size() == 1 ){
 			String searchCode = service.updateSearchLogService(searchKey); //검색로그+1
-
-			if(searchCode != null){
-				request.setAttribute("searchCode", searchCode);
-			}
+			request.setAttribute("searchCode", searchCode);
 			
 			forward.setRedirect(true);
-			forward.setPath("requestFormAction.do?searchCode="+searchCode);
+			forward.setPath("requestForm.do?searchCode="+searchCode);
+		}else{
+			forward.setRedirect(true);
+			forward.setPath("requestForm.do?searchCode=null");
 		}
 
 		return forward;

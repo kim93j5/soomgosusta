@@ -36,6 +36,12 @@
 	Where expert_Id=#{expert_Id}  
 	</select>
 	
+	<select id="licenseDetail" parameterType="String" resultType="Expert_Profile_License">
+	select epl_Expert_Id, epl_Photo 
+	From Expert_Profile_License
+	Where epl_Expert_Id= #{epl_Expert_Id} 
+	</select>
+	
 	<update id="profileUpdate" parameterType="Expert_Profile">
 	update expert_Proflie set ep_LineLetter=#{ep_LineLetter}, 
 	ep_DetailLetter=#{ep_DetailLetter}
@@ -81,19 +87,28 @@
 	</select>
 	
    <select id="q_Info" resultType="Question">
-       select * from question where q_code LIKE 'CQ%'  
+       select * from question where q_code = 'CQ1' OR q_code = 'CQ2' OR q_code = 'CQ5'
    </select> <!-- CQ는 전체공통질문 코드앞자리 -->
    
    
    <select id="a_Info" resultType="Answer">
-       select * from answer where q_code LIKE 'CQ%'  
+       select * from answer where q_code IN ('CQ1', 'CQ2', 'CQ5')  
    </select> 
 
    
    <insert id="insertExpertSum" parameterType="Expert_Information">
-        insert into expert_information values ('dltmddnjs041', #{ei_Day}, #{ei_Time}, #{ei_District}, #{ei_Start}, #{c_Code})
+        insert into expert_information values (#{infor_Expert_Id}, #{ei_Day}, #{ei_Time}, #{ei_District}, #{ei_Start}, #{c_Code})
    </insert>
 	
+	<update id="updateRegisterLog" parameterType="String">
+		update category_log set cl_register = cl_register+1 where log_c_code = #{searchCode}
+	</update>
+	
+	<update id="updateLicenseImg" parameterType="Expert_Profile_License">
+		update Expert_Profile_License set epl_Photo = #{epl_Photo}
+		where epl_Expert_Id = #{epl_Expert_Id}
+	</update>
+
 	
 </mapper>
 

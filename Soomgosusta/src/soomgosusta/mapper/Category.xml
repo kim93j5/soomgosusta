@@ -20,7 +20,7 @@
 	where c.c_code = cl.log_c_code
 	order by c.c_word
 	</select>
-	
+		
 	<update id="updateSearchLog" parameterType="String">
 		update category_log set cl_search = cl_search+1 where log_c_code = #{searchCode}
 	</update>

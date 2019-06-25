@@ -8,19 +8,31 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
+import soomgosusta.action_expertAction.ChatListFormAction;
+import soomgosusta.action_expertAction.ChatAction;
+import soomgosusta.action_expertAction.ChatListFormAction;
+import soomgosusta.action_expertAction.ExpertAddInfoAction;
+import soomgosusta.action_expertAction.ExpertAddInfoFormAction;
+import soomgosusta.action_expertAction.ExpertMainAction;
+import soomgosusta.action_expertAction.FindExpertAction;
+import soomgosusta.action_expertAction.FindExpertFormAcion;
+import soomgosusta.action_expertAction.RegisterEstimateAction;
+import soomgosusta.action_expertAction.RegisterEstimateFormAction;
 import soomgosusta.action_expertAction.expertDetailProfileAction;
 import soomgosusta.action_expertAction.expertLoginAction;
 import soomgosusta.action_expertAction.expertRegisterAction;
 import soomgosusta.action_expertAction.expertRegisterFormAction;
-import soomgosusta.action_expertAction.findExpertAcion;
-import soomgosusta.action_expertAction.findExpertFormAcion;
-import soomgosusta.action_expertAction.ExpertAddInfoAction;
-import soomgosusta.action_expertAction.ExpertAddInfoFormAction;
+import soomgosusta.action_expertAction.expertUploadAction;
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
 
-@WebServlet(urlPatterns={"/expertRegisterActionForm.do","/expertRegisterAction.do","/expertLoginAction.do",
-		"/expertProfile.do","/expertDetailProfileAction.do", "/findExpertForm.do", "/findExpert.do","/expertAddInfo.do","/expertAddInfoForm.do"})
+@WebServlet(urlPatterns={"/expertRegisterActionForm.do","/expertRegisterAction.do","/expertLogin.do","/expertLoginAction.do","/upload.do",
+		"/expertProfile.do","/expertDetailProfileAction.do", "/findExpertForm.do", "/findExpert.do","/expertAddInfo.do","/expertAddInfoForm.do",
+		"/expertMain.do","/registerEstimateForm.do","/registerEstimate.do","/chatListFormAction.do",
+		"/chatAction.do"})
+
 public class ExpertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -31,9 +43,6 @@ public class ExpertController extends HttpServlet {
     
     public void doProcess(HttpServletRequest request, HttpServletResponse response)throws SecurityException, IOException, ServletException{
     	String requestURI = request.getRequestURI();
-    	
-    	
-    	
     	String contextPath= request.getContextPath();
     	String command = requestURI.substring(contextPath.length()+1);
     	Action action=null;
@@ -41,6 +50,7 @@ public class ExpertController extends HttpServlet {
     	
     	if(command.equals("expertRegisterActionForm.do")) {
     		action = new expertRegisterFormAction();
+    		
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
@@ -67,23 +77,23 @@ public class ExpertController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-    	}else if(command.equals("update")) {
-    		
+    	}else if(command.equals("upload.do")) {
+    		action = new expertUploadAction();
     		try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			} 
+			}
+    	
     	}else if(command.equals("findExpertForm.do")){
-    		action = new findExpertFormAcion();
-    		
+    		action = new FindExpertFormAcion();
     		try{
     			forward = action.excute(request, response);
     		}catch(Exception e){
     			e.printStackTrace();
     		}
     	}else if(command.equals("findExpert.do")){
-    		action = new findExpertAcion();
+    		action = new FindExpertAction();
     		
     		try{
     			forward = action.excute(request, response);
@@ -91,22 +101,57 @@ public class ExpertController extends HttpServlet {
     			e.printStackTrace();
     		}
     	}else if (command.equals("expertAddInfoForm.do")) {
-			action = new ExpertAddInfoFormAction();
-			try {
-				forward = action.excute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		}else if (command.equals("expertAddInfo.do")) {
-			action = new ExpertAddInfoAction();
-			try {
-				forward = action.excute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		}
+            action = new ExpertAddInfoFormAction();
+            try {
+               forward = action.excute(request, response);
+            } catch (Exception e) {
+               e.printStackTrace();
+            }
+            
+         }else if (command.equals("expertAddInfo.do")) {
+            action = new ExpertAddInfoAction();
+            try {
+               forward = action.excute(request, response);
+            } catch (Exception e) {
+               e.printStackTrace();
+            }
+		}else if (command.equals("registerEstimateForm.do")){
+    		action = new RegisterEstimateFormAction();
+    		try{
+    			forward = action.excute(request, response);
+    		}catch (Exception e){
+    			e.printStackTrace();
+    		}
+    	}else if (command.equals("registerEstimate.do")){
+    		action = new RegisterEstimateAction();
+    		try{
+    			forward = action.excute(request, response);
+    		}catch (Exception e){
+    			e.printStackTrace();
+    		}
+    	}else if(command.equals("chatListFormAction.do")){
+    		action = new ChatListFormAction();
+    		try{
+    			forward = action.excute(request, response);
+    		}catch (Exception e){
+    			e.printStackTrace();
+    		}
+    	}else if(command.equals("expertMain.do")){
+    		action = new ExpertMainAction();
+    		try{
+    			forward = action.excute(request, response);
+    		}catch (Exception e){
+    			e.printStackTrace();
+    		}
+    	}else if(command.equals("chatAction.do")){
+    		action = new ChatAction();
+    		try{
+    			forward = action.excute(request, response);
+    		}catch (Exception e){
+    			e.printStackTrace();
+    		}
+    	}
+    	
     	
     	if(forward != null){
         	if(forward.isRedirect() == true){
@@ -117,14 +162,13 @@ public class ExpertController extends HttpServlet {
         	}
         }	
     }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
 

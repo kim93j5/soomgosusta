@@ -15,6 +15,7 @@ import soomgosusta.action_memberAction.loginAction;
 import soomgosusta.action_memberAction.logoutAction;
 import soomgosusta.action_memberAction.memberRegisterAction;
 import soomgosusta.action_memberAction.memberRegisterFormAction;
+
 import soomgosusta.action_memberAction.MatchCalculateAction;
 import soomgosusta.action_memberAction.MemberImageUpdateAction;
 import soomgosusta.action_memberAction.MemberMyPageAction;
@@ -24,7 +25,6 @@ import soomgosusta.action_memberAction.MemberPasswordUpdateAction;
 import soomgosusta.action_memberAction.MemberPasswordUpdateActionForm;
 import soomgosusta.action_memberAction.MemeberAddInfoAction;
 import soomgosusta.action_memberAction.MemeberAddInfoActionForm;
-import soomgosusta.action_memberMainAction.RecommendInfoAction;
 
 
 @WebServlet(urlPatterns={"/memberRegisterForm.do","/memberRegisterAction.do" ,"/loginAction.do", "/logout.do","/memberAddInfo.do","/memberAddInfoAction.do"
@@ -35,16 +35,19 @@ public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
     public MemberController() {
-        super();
-        
+        super();      
     }
-    public void doProcess(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+    
+    
+    public void doProcess(HttpServletRequest request, HttpServletResponse response)throws SecurityException, IOException, ServletException{
     	String requestURI = request.getRequestURI();
+    	
+    	
+    	
     	String contextPath= request.getContextPath();
     	String command = requestURI.substring(contextPath.length()+1);
-    	
     	Action action=null;
-    	ActionForward forward = null;	
+    	ActionForward forward = null;
     	
     	if(command.equals("memberRegisterForm.do")) {
     		
@@ -82,14 +85,6 @@ public class MemberController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-    	}else if (command.equals("recommendInfoForm.do")) {
-    		action = new RecommendInfoAction();
-    		try {
-    			forward = action.excute(request, response);
-    		} catch (Exception e) {
-    			e.printStackTrace();
-    		}
-    		
     	}else if(command.equals("memberAddInfoAction.do")){
 				action = new MemeberAddInfoAction();
 			try {
@@ -157,11 +152,13 @@ public class MemberController extends HttpServlet {
         	}
         }	
     }
-    
+
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}

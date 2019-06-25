@@ -43,8 +43,8 @@ public class loginAction implements Action {
 			forward.setRedirect(true);
 			forward.setPath("main.do");
 		}else {
-			forward.setRedirect(false);
-			forward.setPath("login.jsp");
+			forward.setRedirect(true);
+			forward.setPath("login.do");
 		}
 				
 				

@@ -5,29 +5,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="./script/categoryInfo.js" type="text/javascript"></script>
 <title>Insert title here</title>
 </head>
 <body>
+<p>어떤 분야를 찾으시나요?</p>
 	<div id="list_Lesson">
+		<ul>
 		<c:forEach var="listCategory" items="${listCategory}">
 			
 	
 		<div id= "list_LI">
 			<c:if test="${listCategory.group2 == '악기'}">
-				<a href="search.do?searchKey=${listCategory.group3}">
+				<li><a id="select" href="search.do?searchKey=${listCategory.group3}">
 						${listCategory.group3}
-				</a><br>	
+				</a></li>	
 			</c:if>		
 		</div>	
 		
 		<div id="list_LS">
 			<c:if test="${listCategory.group2 == '학업'}">
-				<a href="search.do?searchKey=${listCategory.group3}">
+				<li><a id="select" href="search.do?searchKey=${listCategory.group3}">
 						${listCategory.group3}
-				</a><br>	
+				</a></li>	
 			</c:if>	
 		</div>	
-		</c:forEach>		
+		</c:forEach>
+		</ul>
 	</div>
 </body>
 </html>

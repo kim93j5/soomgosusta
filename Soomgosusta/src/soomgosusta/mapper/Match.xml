@@ -16,6 +16,65 @@
 	<insert id="matchTableInsert" parameterType="Match">
 		insert into match values(#{match_Member_Id},#{match_C_Code},#{match_R_Seq},#{match_Expert_Id},#{m_Percent},sysdate,'ing')
 	</insert>
+	
+	<select id="matchList" resultMap="MatchMap" parameterType="String">
+		select 
+		a.match_member_id, a.match_c_code,
+		a.match_r_seq, a.match_expert_id,
+		a.m_percent, a.m_daterecord, a.m_status,
+		b.member_id, b.m_name,
+		c.c_code,c.c_word
+		FROM match a JOIN member b
+		ON a.match_member_id = b.member_id
+		JOIN category c
+		ON a.match_c_code = c.c_code
+		WHERE a.match_expert_id = #{login_Session}	
+	</select>
+	
+	<resultMap type="Member" id="Member">
+		<result column="member_id" property="member_Id"/>
+		<result column="m_password" property="m_Password"/>
+		<result column="m_name" property="m_Name"/>
+		<result column="m_pnum" property="m_Pnum"/>
+		<result column="m_gender" property="m_Gender"/>
+		<result column="m_age" property="m_Age"/>
+		<result column="m_divide" property="m_Divide"/>
+		<result column="m_photo" property="m_Photo"/>
+	</resultMap>
+	
+	<resultMap type="Category" id="Category">
+		<result column="c_code" property="c_Code"/>
+		<result column="c_word" property="c_Word"/>
+		<result column="c_image" property="c_Image"/>
+	</resultMap>
+	
+	<resultMap type="Match" id="MatchMap">
+		<result column="match_member_id" property="match_Member_Id"/>
+		<result column="match_c_code" property="match_C_Code"/>
+		<result column="match_r_seq" property="match_R_Seq"/>
+		<result column="match_expert_id" property="match_Expert_Id"/>
+		<result column="m_percent" property="m_Percent"/>
+		<result column="m_daterecord" property="m_Daterecord"/>
+		<result column="m_status" property="m_Status"/>
+		<collection property="member" resultMap="Member"></collection>
+		<collection property="category" resultMap="Category"></collection>
+	</resultMap>
+	
+	<select id="detailMatch" resultType="Match" parameterType="String">
+		select * from match
+		where match_member_id = #{id} 
+
+	</select> 
+	
+		<update id="updateMatch" parameterType="Esend">
+		update match
+		set m_status= '11'
+		where match_member_id = #{m_id} 
+		and match_expert_id = #{e_id}
+	
+	</update>
+	
+	
 	<update id="matchLogUpdate" parameterType="Category_Log">
 		update category_log set cl_Match = cl_Match+1 where log_C_Code = #{log_C_Code}
 	</update>
