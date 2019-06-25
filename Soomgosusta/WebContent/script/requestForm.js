@@ -37,85 +37,87 @@ $('document').ready(function() {
 				{item:"진해시"}, {item:"창원시"}, {item:"통영시"}, {item:"거창군"}, {item:"고성군"}, {item:"남해군"}, {item:"산청군"}, {item:"의령군"},
 				{item:"창녕군"}, {item:"하동군"}, {item:"함안군"}, {item:"함양군"}, {item:"합천군"} ];
 			var area16 = [ {item:"서귀포시"}, {item:"제주시"}, {item:"남제주군"}, {item:"북제주군"} ];
-
-			// 시/도 선택 박스 초기화
-			$.each(area0, function(index, data){
-				var html= '<option name="sel_sido" value="' + data.item + '" >'+ data.item +' </option>'
-				$("#sido1").append(html);
-				$("#sido2").append(html);
-				$("#sido3").append(html);
-				
-			});
-			
-			$('#sido1').change(function(){
-				var sel_sido = $('#sido1').val();
-				var sel_gugun = $('#gugun1');
-				
-				change_district(sel_sido, sel_gugun);
-			});
-			
-			$('#sido2').change(function(){
-				var sel_sido = $('#sido2').val();
-				var sel_gugun = $('#gugun2');
-				
-				change_district(sel_sido, sel_gugun);
-			});
-
-			$('#sido3').change(function(){
-				var sel_sido = $('#sido3').val();
-				var sel_gugun = $('#gugun3');
-				
-				change_district(sel_sido, sel_gugun);
-			});
-			
-			var change_district = function(sido, gugun){
-				var idx;
-				
+			$(function(){
+				// 시/도 선택 박스 초기화
 				$.each(area0, function(index, data){
-					if(sido == data.item)
-						idx = index;
+					var html= '<option name="sel_sido" value="' + data.item + '" >'+ data.item +' </option>'
+					$("#sido1").append(html);
+					$("#sido2").append(html);
+					$("#sido3").append(html);
+					
 				});
 				
-				var area = "area"+idx;
+				$('#sido1').change(function(){
+					var sel_sido = $('#sido1').val();
+					var sel_gugun = $('#gugun1');
+					
+					change_district(sel_sido, sel_gugun);
+				});
 				
-				if(area == "area0"){
-					gugun.empty();
-					gugun.append("<option>군/구 선택</option>");
-				}else{
-					gugun.empty();
-					gugun.append("<option>군/구 선택</option>");
+				$('#sido2').change(function(){
+					var sel_sido = $('#sido2').val();
+					var sel_gugun = $('#gugun2');
 					
-					$.each(eval(area), function(data){
-						var html= '<option name="sel_gugun" value="' + this.item + '" >'+ this.item +' </option>'
+					change_district(sel_sido, sel_gugun);
+				});
+
+				$('#sido3').change(function(){
+					var sel_sido = $('#sido3').val();
+					var sel_gugun = $('#gugun3');
 					
-						gugun.append(html);
+					change_district(sel_sido, sel_gugun);
+				});
+				
+				var change_district = function(sido, gugun){
+					var idx;
+					
+					$.each(area0, function(index, data){
+						if(sido == data.item)
+							idx = index;
 					});
-				}
-			}
-			
-			$('#plus').click(function(event){
-				if($('#dist2').css("display") == "none"){
-					$('#dist2').show();
-				}else{
-					$('#dist3').show();
-				}
-				
-				event.preventDefault();
-			});
-			
-			$('#minus').click(function(event){
-				if($('#dist3').css("display") != "none"){
-					$('#sido3').empty();
-					$('#gugun3').empty();
-					$('#dist3').hide();
-				}else{
-					$('#sido2').empty();
-					$('#gugun2').empty();
-					$('#dist2').hide();
+					
+					var area = "area"+idx;
+					
+					if(area == "area0"){
+						gugun.empty();
+						gugun.append("<option>군/구 선택</option>");
+					}else{
+						gugun.empty();
+						gugun.append("<option>군/구 선택</option>");
+						
+						$.each(eval(area), function(data){
+							var html= '<option name="sel_gugun" value="' + this.item + '" >'+ this.item +' </option>'
+						
+							gugun.append(html);
+						});
+					}
 				}
 				
-				event.preventDefault();
+				$('#plus').click(function(event){
+					if($('#dist2').css("display") == "none"){
+						$('#dist2').show();
+					}else{
+						$('#dist3').show();
+					}
+					
+					event.preventDefault();
+				});
+				
+				$('#minus').click(function(event){
+					if($('#dist3').css("display") != "none"){
+						$('#sido3').empty();
+						$('#gugun3').empty();
+						$('#dist3').hide();
+					}else{
+						$('#sido2').empty();
+						$('#gugun2').empty();
+						$('#dist2').hide();
+					}
+					
+					event.preventDefault();
+				});
 			});
+
 			
 			$(function(){
 				$('.prev').click(function(event){

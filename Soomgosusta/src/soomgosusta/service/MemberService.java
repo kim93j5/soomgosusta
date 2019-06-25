@@ -22,7 +22,7 @@ public class MemberService {
 		  request.setCharacterEncoding("utf-8");
 		
 		  String Infor_Member_Id = request.getParameter("member_Id");
-	      
+
 		  return dao.recommendInfo(Infor_Member_Id);
 	  }	
 	

@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
+
 <html>
 <head>
+<link rel="stylesheet" href="./bootstrap-3.3.2-dist/css/bootstrap.min.css">
+<script src="./bootstrap-3.3.2-dist/js/jquery-3.2.1.js"></script>
+<script src="./bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="./css/header.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 	
@@ -20,17 +25,18 @@
 					<ul class="nav navbar-nav">
 						<li><a href="main.do"> <img src="https://dmmj3ljielax6.cloudfront.net/static/img/home/index_soomgo_logo.svg" alt="숨고, 숨은고수">
 							</a></li>
-						<li><a href="requestInfoForm.do"> <span>보낸 요청</span>
+						<li><a href="requestInfoForm.do?member_Id=${id }"> <span>보낸 요청</span>
 						</a></li>
-						<li><a href="memberMyPage.do"><span>프로필</span></a>
+						<li><a href="memberMyPage.do?member_Id=${id }"><span>프로필</span></a>
 						<li><a href="findExpertForm.do"> <span>고수 찾기</span>
 						</a></li>
 						<li><a href=""> <span>채팅</span>
 						</a></li>
 					</ul>
+					
 				</div>
-				<div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
-					<ul class="nav navbar-nav">
+ 				<div class="right_">
+					<ul class="nav navbar-nav navbar-right">
 						<li><span>${id} 고객님</span></li>
 						<li><a href="logout.do"><span>로그아웃</span></a></li>
 					</ul>
@@ -47,7 +53,7 @@
 					<ul>
 						<li><a href="main.do"> <img src="https://dmmj3ljielax6.cloudfront.net/static/img/home/index_soomgo_logo.svg" alt="숨고, 숨은고수">
 							</a></li>
-						<li><a href=""> <span>받은 요청</span>
+						<li><a href="expertLoginAction.do"> <span>받은 요청</span>
 						</a></li>
 						<li><a href="expertProfile.do?expert_Id=${id}"> <span>프로필</span>
 						</a></li>

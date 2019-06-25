@@ -22,7 +22,8 @@ public class MatchCalculateAction implements Action {
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		MatchService service = MatchService.getInstance();
 
-		Request requestedMember = service.requestMemberService(request);
+		String member_Id = request.getParameter("member_Id");
+		Request requestedMember = service.requestMemberService(member_Id);
 		System.out.println(requestedMember);
 		List<String> memberRequest = new ArrayList<String>();
 		memberRequest.add(requestedMember.getR_QA_01()); // Q_Day/Q_Day_A3/Q_Day_A5
@@ -44,7 +45,8 @@ public class MatchCalculateAction implements Action {
 		String request_C_Code = requestedMember.getRequest_C_Code();
 
 		List<Expert_Information> matchCandidateList = service.matchCandidateListService(request_C_Code);
-
+		System.out.println(matchCandidateList.size());
+		
 		for (int i = 0; i < matchCandidateList.size(); i++) {
 			System.out.println(matchCandidateList.get(i));
 		}
@@ -155,8 +157,10 @@ public class MatchCalculateAction implements Action {
 		}
 
 		ActionForward forward = new ActionForward();
+
 		forward.setRedirect(false);
-		forward.setPath("/memberAddInfoForm.jsp");
+		forward.setPath("requestInfo.jsp");
+
 		return forward;
 	}
 }

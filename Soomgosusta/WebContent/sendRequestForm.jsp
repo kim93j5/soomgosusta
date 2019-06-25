@@ -10,49 +10,40 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 		<div id="sendRequestForm">
 		<input type="hidden" name="id" value="${id }"> 
-			<div>${category_word_last }</div>
-			<div>요청시간 : < ${requestTime} ></div>
+		<c:forEach var="list" items="${formList }">
+			<div>${list.category }</div>
+			<div>요청시간: < ${list.request_Time } ></div>
+			
 			<div>
 				<c:choose>
-					<c:when test="${today>expireTime }">
-	                                                    만료된 요청서입니다.
+					<c:when test="${today> list.expire_Time }">
+	                                                    만료된 요청서입니다.<br>
+	           			       이 요청서는&nbsp;< ${list.end_Time}&nbsp;>&nbsp;에 만료되었습니다.
 	                </c:when>
 
 				    <c:otherwise>
-	                                                     진행중인 요청서입니다.
+	                                                     진행중인 요청서입니다.<br>
+	                                                     이 요청서는&nbsp;< ${list.end_Time}&nbsp;>&nbsp;에 만료됩니다.
 	                </c:otherwise>
 
 				</c:choose>
 
 			</div>
-
-			<div>
-				<!-- 종료시점(요청시간+48시간) -->
-				<c:choose>
-				  <c:when test="${today>expireTime }">
-				        이 요청서는&nbsp;< ${endTime}&nbsp;>&nbsp;에 만료되었습니다.
-				  </c:when>
-				  <c:otherwise>
-				      이 요청서는&nbsp;< ${endTime}&nbsp;>&nbsp;에 만료됩니다.
-				  </c:otherwise>
-				</c:choose>
-				
-			</div>
 			
-			<c:if test="${today>expireTime }">
-			<input type="button"value="삭제" id="remove">
+ 			<c:if test="${today>list.expire_Time }">
+				<input type="button"value="삭제" id="remove">
 			</c:if>
 			
-			<p>
-			 <input type="button" value="요청서보기" onclick="location.href = 'detailRequest.do'">
+			 <input type="button" value="요청서보기" onclick="location.href = 'detailRequest.do?seq=${list.seq}'">
+			 <p>
+		</c:forEach>
 			 
    <h3>추천서비스</h3>
 	<div id="recommendService">
 		<c:forEach var="randomList" items="${randomList }">
-			<a href="requestForm.do?searchCode=${randomList }" ><img src="./images/${randomList }.jpg">
+			<a href="requestForm.do?searchCode=${randomList }" ><img src="./images/${randomList }">
                   &nbsp;&nbsp;
             </a>      
 		</c:forEach>

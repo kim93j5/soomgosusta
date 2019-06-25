@@ -62,12 +62,17 @@ public class RequestAction implements Action {
 			request.setAttribute("req", "notyet");
 			service.insertRequestService(member_Id, searchCode, requestQnA, dist);
 			service.updateLogRequestService(searchCode);
+			forward.setRedirect(true);
+			forward.setPath("matchAction.do?member_Id="+member_Id);
+			
 		}else{
 			request.setAttribute("req", "ing");
+			forward.setRedirect(false);
+			forward.setPath("requestInfo.jsp");
+
+			
 		}
 		
-		forward.setRedirect(false);
-		forward.setPath("requestInfo.jsp");
 		
 		return forward;
 	}

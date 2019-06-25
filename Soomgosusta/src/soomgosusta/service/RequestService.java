@@ -28,10 +28,11 @@ public class RequestService {
 		return service;
 	}
 
-	public Request sendRequestService(HttpServletRequest request) throws Exception {
+	public List<Request> sendRequestService(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
 
-		String request_Member_Id = request.getParameter("m_Id");
+		String request_Member_Id = request.getParameter("member_Id");
+		System.out.println(request_Member_Id);
 		return dao.sendRequestInfo(request_Member_Id);
 	}
 

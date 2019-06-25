@@ -17,6 +17,7 @@ import soomgosusta.action_interface.ActionForward;
 import soomgosusta.domain.Category;
 import soomgosusta.domain.Member_Information;
 import soomgosusta.domain.Request;
+import soomgosusta.domain.RequestForm;
 import soomgosusta.service.ExpertService;
 import soomgosusta.service.MemberService;
 import soomgosusta.service.RequestService;
@@ -30,11 +31,10 @@ public class SendRequestAction implements Action {
          ActionForward forward = new ActionForward();
          
          request.setCharacterEncoding("utf-8");
-         
-         Request requestList = service.sendRequestService(request);
+         List<Request> requestList = service.sendRequestService(request);
          request.setAttribute("requestList", requestList);
-         //System.out.println(requestList.getRequest_C_Code());
-         
+         List<RequestForm> formList = new ArrayList<RequestForm>();
+
          
          List<Category> categoryList = ex_service.categoryListService(request);
          //System.out.println(categoryList);
@@ -42,19 +42,24 @@ public class SendRequestAction implements Action {
            String[] category_word_split = new String[20];
            String category_word_last = "";
       
+      for(int a=0; a < requestList.size(); a++){     
+          RequestForm form = new RequestForm();
          for(int i=0; i < categoryList.size(); i++){
-           if(categoryList.get(i).getC_Code().equals(requestList.getRequest_C_Code())){
+           if(categoryList.get(i).getC_Code().equals(requestList.get(a).getRequest_C_Code())){
               category_word = categoryList.get(i).getC_Word();
            }
          }
+         
          category_word_split = category_word.split("/");
          category_word_last = category_word_split[2]+ "ㅤ"+ category_word_split[0];
-         
-         request.setAttribute("category_word_last", category_word_last);
-         
+          
+
+/*         request.setAttribute("category_word_last", category_word_last);*/
+         System.out.println(category_word_last);
+         form.setCategory(category_word_last);
          /////////////////////////////////요청시간,만료시간//////////////////////////////////
       
-            Date requestDateStr = requestList.getR_DateRecord();
+            Date requestDateStr = requestList.get(a).getR_DateRecord();
             Date nowDate = new Date(); //현재 시간
             
             //System.out.println(requestDateStr);
@@ -69,18 +74,16 @@ public class SendRequestAction implements Action {
             cal.setTime(requestDateStr);
             cal.add(Calendar.DATE, +2);
             endTime = df.format(cal.getTime());
+            form.setEnd_Time(endTime);
             
             cal2.setTime(requestDateStr);
             cal2.add(Calendar.DATE, 0);
             requestTime = df.format(cal2.getTime());
             
-            //System.out.println("요청시간 :" + requestDateStr);
-            //System.out.println("2일 후 :" + endTime);
+  
+            form.setRequest_Time(requestTime);
 
-            request.setAttribute("requestTime", requestTime);
-            request.setAttribute("endTime", endTime);
-            
-            
+            form.setSeq(requestList.get(a).getR_Seq());
             //만료 시간 지난 요청서 진행상태 ing->done으로 변경
             
             SimpleDateFormat df1 = new SimpleDateFormat("YYYYMMddHHmm", Locale.KOREA);
@@ -91,24 +94,25 @@ public class SendRequestAction implements Action {
             //System.out.println(expireTime);
             long expireTime = (long)Double.parseDouble(expireTime_num);
             //System.out.println(expireTime);
-
+            form.setExpire_Time(expireTime);
             request.setAttribute("today", today);
-            request.setAttribute("expireTime", expireTime);
-            
+            formList.add(form);
+//            request.setAttribute("expireTime", expireTime);
+      }
    
    ///////////////////////////////////////////////////////////////////////////////////////        
    ////////////////////////////////////추천서비스////////////////////////////////////////////
    //////////////////////////////////////////////////////////////////////////////////////
-            
+      
             Member_Information recommendCode = m_service.recommendInfoService(request);
          /////////////////// 카테고리 테이블에서 분야코드, 이미지 가져옴/////////////////
          List<Category> list_LI = new ArrayList<Category>();
          List<Category> list_LS = new ArrayList<Category>();
 
          for (int i = 0; i < categoryList.size(); i++) {
-            if (categoryList.get(i).getC_Image().contains("LI")) {
+            if (categoryList.get(i).getC_Code().contains("LI")) {
                list_LI.add(categoryList.get(i));
-            } else if (categoryList.get(i).getC_Image().contains("LS")) {
+            } else if (categoryList.get(i).getC_Code().contains("LS")) {
                list_LS.add(categoryList.get(i));
                
             }
@@ -120,12 +124,16 @@ public class SendRequestAction implements Action {
          // 이용자 부가정보에서 관심분야코드를 "/"기준으로 쪼개고 코드의 앞에 두글자만 따옴.
          // 이용자의 관심분야코드에서 랜덤으로 세개(추천서비스에 보여지는 개수 :3개로 지정했을 때) 추출
          String[] recommendList = recommendCode.getC_Code().split("/");
+         
+         for(int i=0; i< recommendList.length; i++) System.out.println("추천: "+recommendList[i]);
+         
          String[] randomList = new String[3];
          String tmp;
 
          for (int i = 0; i < 3; i++) {
-            randomList[i] = recommendList[(int) (Math.random() * 4)];
-            // System.out.println(randomList[i]);
+        	 System.out.println((int) (Math.random() * recommendList.length));
+            randomList[i] = recommendList[(int) (Math.random() * recommendList.length)];
+            /*System.out.println(randomList[i]);*/
 
             for (int j = i - 1; j >= 0; j--) {
                if (randomList[i] == randomList[j]) {
@@ -135,7 +143,8 @@ public class SendRequestAction implements Action {
 
             }
          }
-         System.out.println(Arrays.toString(randomList));
+         
+
 
          for (String recommend : randomList) {
             tmp = recommend.substring(0, 2);
@@ -174,10 +183,11 @@ public class SendRequestAction implements Action {
             System.out.println(list_LS);
          }
 
-          request.setAttribute("randomList", randomList); 
+          request.setAttribute("randomList", randomList);
+         request.setAttribute("formList", formList);
          
-            forward.setPath("/sendRequestForm.jsp");
-            forward.setRedirect(false);
+          forward.setPath("/sendRequestForm.jsp");
+          forward.setRedirect(false);
          
             return forward;
       }
