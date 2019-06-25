@@ -41,7 +41,7 @@ public class loginAction implements Action {
 			session.setAttribute("id",m_id);
 			session.setAttribute("login_state",divide);
 			forward.setRedirect(true);
-			forward.setPath("main.do");
+			forward.setPath("requestInfoForm.do?member_Id="+m_id);
 		}else {
 			forward.setRedirect(true);
 			forward.setPath("login.do");

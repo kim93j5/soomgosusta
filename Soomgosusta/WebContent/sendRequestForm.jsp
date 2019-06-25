@@ -11,26 +11,25 @@
 </head>
 <body>
 		<div id="sendRequestForm">
-		<input type="hidden" name="id" value="${id }"> 
+		<input type="hidden" name="id" value="${id }">
+		<c:if test="${size != 0 }"> 
 		<c:forEach var="list" items="${formList }">
 			<div>${list.category }</div>
 			<div>요청시간: < ${list.request_Time } ></div>
-			
-			<div>
-				<c:choose>
-					<c:when test="${today> list.expire_Time }">
-	                                                    만료된 요청서입니다.<br>
-	           			       이 요청서는&nbsp;< ${list.end_Time}&nbsp;>&nbsp;에 만료되었습니다.
-	                </c:when>
+		   <div>
+            <c:choose>
+               <c:when test="${today> list.expire_Time && size!=0}">
+                                                       만료된 요청서입니다.<br>
+                              이 요청서는&nbsp;< ${list.end_Time}&nbsp;>&nbsp;에 만료되었습니다.
+                   </c:when>
 
-				    <c:otherwise>
-	                                                     진행중인 요청서입니다.<br>
-	                                                     이 요청서는&nbsp;< ${list.end_Time}&nbsp;>&nbsp;에 만료됩니다.
-	                </c:otherwise>
+                <c:when test="${today < list.expire_Time && size!=0 }">
+                                                        진행중인 요청서입니다.<br>
+                                                        이 요청서는&nbsp;< ${list.end_Time}&nbsp;>&nbsp;에 만료됩니다.
+                   </c:when>
+            </c:choose>
 
-				</c:choose>
-
-			</div>
+         </div>
 			
  			<c:if test="${today>list.expire_Time }">
 				<input type="button"value="삭제" id="remove">
@@ -39,7 +38,11 @@
 			 <input type="button" value="요청서보기" onclick="location.href = 'detailRequest.do?seq=${list.seq}'">
 			 <p>
 		</c:forEach>
-			 
+		</c:if>	 
+		
+		<c:if test="${size ==0 }">
+                                                         아직 보낸 요청이 없습니다.		
+		</c:if>
    <h3>추천서비스</h3>
 	<div id="recommendService">
 		<c:forEach var="randomList" items="${randomList }">
