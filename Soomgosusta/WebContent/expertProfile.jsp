@@ -198,7 +198,7 @@ $('document').ready(function(){
 			<form>
 				<h5>본인인증 여부</h5>
 			</form>
-			<h5>리뷰</h5>
+			<h3>리뷰</h3>
 			<c:forEach var="review" items="${reviewList}">  
 				<div>
 				
@@ -206,11 +206,11 @@ $('document').ready(function(){
 					별점${review.review_StarPoint}
 					작성일 ${review.review_Date}<br>
 				내용<br>
-				<textarea rows="5" cols="30"> ${review.review_Contents}</textarea><br>	
+				 ${review.review_Contents}<br>	
 				</div>
 			</c:forEach> 
 			
-			<h5>리뷰등록</h5>
+			<h3>리뷰등록</h3>
 			<form action="insertReview.do" method="post">
 			<input type="hidden" name="member_Id" value="${id}">
 			글 내용
@@ -220,19 +220,8 @@ $('document').ready(function(){
 			<input type="hidden" name="review_Expert_Id" value="${expert.expert_Id}">
 			<input type="submit" value="저장">
 			</form>
+		
 			
-				작성자 ${review.member_Id} 별점${review.review_StarPoint}
-					작성일 ${review.review_Date}<br>
-		
-					내용 ${review.review_Contents}	
-			<c:forEach var="review" items="${reviewList}">  
-				<div>
-					작성자 ${review.member_Id} 별점${review.review_StarPoint}
-					작성일 ${review.review_Date}<br>
-		
-					내용 ${review.review_Contents}		
-				</div>
-			</c:forEach> 
 		</c:when>
 		</c:choose>
 
