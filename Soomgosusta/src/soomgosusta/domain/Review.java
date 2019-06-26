@@ -6,7 +6,7 @@ public class Review implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	private String memeber_Id;
+	private String member_Id;
 	private String review_Date;
 	private String review_Contents;
 	private int review_StarPoint;
@@ -14,22 +14,12 @@ public class Review implements Serializable{
 	
 	public Review() {}
 
-	public Review(String memeber_Id, String review_Date, String review_Contents, int review_StarPoint,
-			String review_Expert_Id) {
-		super();
-		this.memeber_Id = memeber_Id;
-		this.review_Date = review_Date;
-		this.review_Contents = review_Contents;
-		this.review_StarPoint = review_StarPoint;
-		this.review_Expert_Id = review_Expert_Id;
+	public String getMember_Id() {
+		return member_Id;
 	}
 
-	public String getMemeber_Id() {
-		return memeber_Id;
-	}
-
-	public void setMemeber_Id(String memeber_Id) {
-		this.memeber_Id = memeber_Id;
+	public void setMember_Id(String member_Id) {
+		this.member_Id = member_Id;
 	}
 
 	public String getReview_Date() {
@@ -66,9 +56,10 @@ public class Review implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Review [memeber_Id=" + memeber_Id + ", review_Date=" + review_Date + ", review_Contents="
+		return "Review [member_Id=" + member_Id + ", review_Date=" + review_Date + ", review_Contents="
 				+ review_Contents + ", review_StarPoint=" + review_StarPoint + ", review_Expert_Id=" + review_Expert_Id
 				+ "]";
 	}
+
 	
 }

@@ -24,7 +24,7 @@ public class ReviewService {
 		request.setCharacterEncoding("utf-8");
 		Review review = new Review();
 
-		review.setMemeber_Id(request.getParameter("member_Id"));
+		review.setMember_Id(request.getParameter("member_Id"));
 		review.setReview_Contents(request.getParameter("review_Contents"));
 		int starPoint = Integer.parseInt(request.getParameter("review_StarPoint"));
 		review.setReview_StarPoint(starPoint);

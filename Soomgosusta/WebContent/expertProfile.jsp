@@ -107,7 +107,7 @@
 			<form>
 			<c:forEach var="review" items="${reviewList}">  
 				<div>
-					작성자 ${review.memeber_Id} 별점${review.review_StarPoint}
+					작성자 ${review.member_Id} 별점${review.review_StarPoint}
 					작성일 ${review.review_Date}<br>
 		 
 					내용 ${review.review_Contents}		
@@ -120,7 +120,71 @@
 		<c:when test="${login_state =='member'}">
 			<h1>회원 or 비회원</h1>
 			
+			<h1>고수프로필입니당.</h1>
+
+			<form action="expertDetailProfileAction.do" method="post">
+
+				<c:set var="expert" value="${expert}" scope="request"></c:set>
+
+				<h5>${expert.e_Name}고수</h5>
+				<ul>
+					<li> 이름: ${expert.e_Name} </li>
+					<li> 지역: </li>
+					<li> 고용수: </li>
+				</ul>
+
+				<input type="hidden" name="profile_Expert_Id" value="${expert.expert_Id}"> 
+				<input type="hidden" name="expert_Id" value="${expert.expert_Id}">
+				<c:set var="profile" value="${profile}" scope="request"></c:set>
+				
+				<h2>한줄소개</h2>
+				<textarea rows="5" cols="100" name="한줄소개"> ${profile.ep_LineLetter} </textarea>
+				<br>
+				<h2>상세소개</h2>
+				<textarea rows="10" cols="100">${profile.ep_DetailLetter} </textarea>
+				<br>
+
+				<c:set var="epl" value="${epl}" scope="request"/>
+			 </form>
 			
+				<c:set var="expert" value="${expert}" scope="request"></c:set>
+				<h5>자격증</h5>
+				<div>
+					<table border="1">
+					<tr>
+					<td>
+					<c:if test="${epl.epl_Photo != null }">
+						<c:set var="head" value="${fn:substring(epl.epl_Photo,0, fn:length(epl.epl_Photo)-4) }"></c:set>
+						<c:set var="pattern" value="${fn:substring(epl.epl_Photo, fn:length(head) +1, fn:length(epl.epl_Photo)) }"></c:set>
+						<img src="upload/${head }.${pattern}" width="400" alt="그림">
+					</c:if>
+					</td>
+					<td> 테이블 테스트 </td>
+					</tr>
+					</table>
+				</div>
+				/////////////////////////////////////////////////////////////////////////////////////
+				<h5>포토폴리오</h5>
+				<form >
+					<img id="poo"src="/images/common/logo_daekyo.png" /> <br>
+				</form>
+ 		
+			<form>
+				<h5>본인인증 여부</h5>
+			</form>
+			<h5>리뷰</h5>
+			<c:forEach var="review" items="${reviewList}">  
+				<div>
+				
+					작성자 ${review.member_Id} <br>
+					별점${review.review_StarPoint}
+					작성일 ${review.review_Date}<br>
+				내용<br>
+				<textarea rows="5" cols="30"> ${review.review_Contents}</textarea><br>	
+				</div>
+			</c:forEach> 
+			
+			<h5>리뷰등록</h5>
 			<form action="insertReview.do" method="post">
 			<input type="hidden" name="member_Id" value="${id}">
 			글 내용
@@ -130,25 +194,10 @@
 			<input type="hidden" name="review_Expert_Id" value="${expert.expert_Id}">
 			<input type="submit" value="저장">
 			</form>
-				작성자 ${review.memeber_Id} 별점${review.review_StarPoint}
-					작성일 ${review.review_Date}<br>
-		
-					내용 ${review.review_Contents}	
-			<c:forEach var="review" items="${reviewList}">  
-				<div>
-					작성자 ${review.memeber_Id} 별점${review.review_StarPoint}
-					작성일 ${review.review_Date}<br>
-		
-					내용 ${review.review_Contents}		
-				</div>
-			</c:forEach> 
+				
+			
 		</c:when>
 		</c:choose>
-		<c:if test="${login_state != 'member'}">
-		</c:if>
-
-	
-
 
 	<script type="text/javascript">
         function readURL(input) {
@@ -193,11 +242,8 @@
             		//에러발생
             	}
             	
-            	
             });
         }); */
-        
-        
         
 	</script>
 </body>

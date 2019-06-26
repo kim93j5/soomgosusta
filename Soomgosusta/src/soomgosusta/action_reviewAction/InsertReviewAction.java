@@ -18,7 +18,7 @@ public class InsertReviewAction implements Action {
 		
 		
 		forward.setRedirect(true);
-		forward.setPath("detailReview.do?expert_Id="+request.getParameter("review_Expert_Id"));
+		forward.setPath("expertProfile.do?expert_Id="+request.getParameter("review_Expert_Id"));
 //		forward.setPath("detailReview.do");
 		return forward;
 	}
