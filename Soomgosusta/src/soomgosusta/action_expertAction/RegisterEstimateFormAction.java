@@ -25,6 +25,7 @@ public class RegisterEstimateFormAction implements Action {
 		
 		
 		request.setAttribute("match", match);
+		System.out.println(match);
 		request.setAttribute("request", re);
 
 		

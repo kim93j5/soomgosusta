@@ -46,11 +46,12 @@ public class MatchService {
 	public Match detailService(HttpServletRequest request) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		
-		String id = request.getParameter("id");
-		int seq = Integer.parseInt(request.getParameter("seq"));
-		String code = request.getParameter("code");
-		
-		return dao.detailMatch(id);
+		Esend esend = new Esend();
+		esend.setE_id(request.getParameter("e_id"));
+		esend.setM_id(request.getParameter("id"));
+		System.out.println(esend.getE_id());
+		System.out.println(esend.getM_id());
+		return dao.detailMatch(esend);
 	}
 	
 	public int matchUpdateService(HttpServletRequest request) throws Exception {

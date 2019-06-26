@@ -20,30 +20,38 @@
 			<li>${match.category.c_Word }</li>
 			<li>${match.m_Daterecord }</li>
 		<c:choose>
-			<c:when test="${match.m_Status != null }">
+			<c:when test="${match.m_Status == '11' }">
 				<li><p>견적서를 작성하고 회원의 응답을 기다리는 중이에요!</p></li>
 			</c:when>
-			<c:otherwise>
+			<c:when test="${match.m_Status == 'ing' }">
 				<li><p>요청서를 확인하고 견적서를 작성해주세요!</p></li>
+			</c:when>
+			<c:otherwise>
+			<li>ㅠㅠ</li>
 			</c:otherwise>
 		</c:choose>
 		</ul>
 		<c:choose>
-			<c:when test="${match.m_Status != null }">
+			<c:when test="${match.m_Status == '11' }">
 				<form action="chatListFormAction.do" method="post">
 					<input type="hidden" name="seq" value="${match.match_R_Seq }">
 					<input type="hidden" name="id" value="${match.match_Member_Id }">
 					<input type="hidden" name="code" value="${match.match_C_Code }">
+					<input type="hidden" name="e_id" value=${match.match_Expert_Id }">
 					<input type="submit" value="견적서 확인">
 				</form>
 			</c:when>
-			<c:otherwise>
+				<c:when test="${match.m_Status == 'ing' }">
 				<form action="registerEstimateForm.do" method="post">
 					<input type="hidden" name="seq" value="${match.match_R_Seq }">
 					<input type="hidden" name="id" value="${match.match_Member_Id }">
 					<input type="hidden" name="code" value="${match.match_C_Code }">
+					<input type="hidden" name="e_id" value="${match.match_Expert_Id }">
 					<input type="submit" value="견적서 작성">
 				</form>
+			</c:when>
+			<c:otherwise>
+			<li>ㅠㅠ</li>
 			</c:otherwise>
 		</c:choose>
 		</div>

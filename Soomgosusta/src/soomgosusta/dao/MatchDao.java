@@ -134,11 +134,11 @@ public class MatchDao {
 			return matchList;
 		}
 
-		public Match detailMatch(String id) {
+		public Match detailMatch(Esend esend) {
 			SqlSession sqlSession = getSqlSessionFactory().openSession();
 			Match match = null;
 			try {
-				match = sqlSession.getMapper(MatchMapper.class).detailMatch(id);
+				match = sqlSession.getMapper(MatchMapper.class).detailMatch(esend);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally{
