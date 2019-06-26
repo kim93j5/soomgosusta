@@ -10,6 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<header>
+		<jsp:include page="header.jsp"></jsp:include>
+	</header>
+
 		<div id="sendRequestForm">
 		<input type="hidden" name="id" value="${id }">
 		<c:if test="${size != 0 }"> 

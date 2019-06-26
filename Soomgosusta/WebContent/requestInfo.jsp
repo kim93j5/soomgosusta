@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	
 	<c:if test="${req == 'ing' }">
 		이미 요청 중입니다. ㅠㅠ
 		<a href="#">마이페이지에서 보낸 요청 확인하기</a>
