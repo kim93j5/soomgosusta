@@ -38,6 +38,23 @@ public class Review implements Serializable{
 		this.review_Contents = review_Contents;
 	}
 
+	@Override
+	public String toString() {
+		return "Review [member_Id=" + member_Id + ", review_Date=" + review_Date + ", review_Contents="
+				+ review_Contents + ", review_StarPoint=" + review_StarPoint + ", review_Expert_Id=" + review_Expert_Id
+				+ "]";
+	}
+
+	public Review(String member_Id, String review_Date, String review_Contents, int review_StarPoint,
+			String review_Expert_Id) {
+		super();
+		this.member_Id = member_Id;
+		this.review_Date = review_Date;
+		this.review_Contents = review_Contents;
+		this.review_StarPoint = review_StarPoint;
+		this.review_Expert_Id = review_Expert_Id;
+	}
+
 	public int getReview_StarPoint() {
 		return review_StarPoint;
 	}
@@ -54,12 +71,7 @@ public class Review implements Serializable{
 		this.review_Expert_Id = review_Expert_Id;
 	}
 
-	@Override
-	public String toString() {
-		return "Review [member_Id=" + member_Id + ", review_Date=" + review_Date + ", review_Contents="
-				+ review_Contents + ", review_StarPoint=" + review_StarPoint + ", review_Expert_Id=" + review_Expert_Id
-				+ "]";
-	}
+	
 
 	
 }

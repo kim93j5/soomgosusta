@@ -22,74 +22,15 @@ import soomgosusta.service.RequestService;
 public class DetailRequestAction implements Action {
 
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-/*		  RequestService service = RequestService.getInstance();
+		  RequestService service = RequestService.getInstance();
 	      ExpertService ex_service = ExpertService.getInstance();
 	      ActionForward forward = new ActionForward();
 	      
 	      request.setCharacterEncoding("utf-8");
+	      Request detailRequest = service.requestDetailService(request);
 	      
-	      List<Request> requestList = service.sendRequestService(request);
-	      request.setAttribute("requestList", requestList);
-	      System.out.println(requestList);
-     
-	      List<Category> categoryList = ex_service.categoryListService(request);
-	        String category_word ="";
-	        String[] category_word_split = new String[20];
-	        String category_word_last = "";
-	   
-	    for(int a=0; a < requestList.size(); a++){
-	      for(int i=0; i < categoryList.size(); i++){
-	        if(categoryList.get(i).getC_Code().equals(requestList.get(a).getRequest_C_Code())){
-	           category_word = categoryList.get(i).getC_Word();
-	        }
-	      }
-	      category_word_split = category_word.split("/");
-	      category_word_last = category_word_split[2]+ "ㅤ"+ category_word_split[0];
 	      
-	      request.setAttribute("category_word_last", category_word_last);
-	      
-	      Date requestDateStr = requestList.get(a).getR_DateRecord();
-	      Date nowDate = new Date(); //현재 시간
-	         
-	      //System.out.println(requestDateStr);
-	      //System.out.println(nowDate);
-	         
-	      String requestTime = null;
-	      String endTime = null;
-	         
-          SimpleDateFormat df = new SimpleDateFormat("YYYY년MM월dd일HH시mm분", Locale.KOREA);
-	      Calendar cal = Calendar.getInstance();
-	      Calendar cal2 = Calendar.getInstance();
-	      cal.setTime(requestDateStr);
-	      cal.add(Calendar.DATE, +2);
-	      endTime = df.format(cal.getTime());
-	         
-	      cal2.setTime(requestDateStr);
-	      cal2.add(Calendar.DATE, 0);
-	      requestTime = df.format(cal2.getTime());
-	         
-	      //System.out.println("요청시간 :" + requestDateStr);
-	      //System.out.println("2일 후 :" + endTime);
-
-	      request.setAttribute("requestTime", requestTime);
-	      request.setAttribute("endTime", endTime);
-	         
-	         
-	      //만료 시간 지난 요청서 진행상태 ing->done으로 변경
-	         
-	      SimpleDateFormat df1 = new SimpleDateFormat("YYYYMMddHHmm", Locale.KOREA);
-	      long today = (long)Double.parseDouble(df1.format(nowDate));
-	      //System.out.println(today);
-	         
-	      String expireTime_num = endTime.replaceAll("[^0-9]", "");
-	      //System.out.println(expireTime);
-	      
-	      long expireTime = (long)Double.parseDouble(expireTime_num);
-	      //System.out.println(expireTime);
-  
-	      request.setAttribute("today", today);
-	      request.setAttribute("expireTime", expireTime);
-	    }
+	     
 	      /////////////////////////////////////////////////////////////////////////////////////////   
 	      /////////////////////////////질문답 리스트 뽑아내기//////////////////////////////////////////////
 	      /////////////////////////////////////////////////////////////////////////////////////////
@@ -97,7 +38,7 @@ public class DetailRequestAction implements Action {
 	      
 	      List<Question> questionList = ex_service.qInfoService(request);  
 	      
-	      String[] Q1= requestList.ggetR_QA_01().split("/");
+	      String[] Q1= detailRequest.getR_QA_01().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q1[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q1_contents = questionList.get(i).getQ_Contents();
@@ -105,7 +46,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }	  
 	 	  
-	      String[] Q2 = requestList.getR_QA_02().split("/");
+	      String[] Q2 = detailRequest.getR_QA_02().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q2[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q2_contents = questionList.get(i).getQ_Contents();
@@ -113,7 +54,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }	
 	 	  
-	      String[] Q3 = requestList.getR_QA_03().split("/");
+	      String[] Q3 = detailRequest.getR_QA_03().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q3[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q3_contents = questionList.get(i).getQ_Contents();
@@ -121,7 +62,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }
 	 	  
-	      String[] Q4 = requestList.getR_QA_04().split("/");
+	      String[] Q4 = detailRequest.getR_QA_04().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q4[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q4_contents = questionList.get(i).getQ_Contents();
@@ -129,7 +70,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }
 	 	  
-	      String[] Q5 = requestList.getR_QA_05().split("/");
+	      String[] Q5 = detailRequest.getR_QA_05().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q5[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q5_contents = questionList.get(i).getQ_Contents();
@@ -137,7 +78,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }	
 	 	  
-	      String[] Q6 = requestList.getR_QA_06().split("/");
+	      String[] Q6 = detailRequest.getR_QA_06().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q6[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q6_contents = questionList.get(i).getQ_Contents();
@@ -145,7 +86,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }	
 	 	  
-	      String[] Q7 = requestList.getR_QA_07().split("/");
+	      String[] Q7 = detailRequest.getR_QA_07().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q7[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q7_contents = questionList.get(i).getQ_Contents();
@@ -154,7 +95,7 @@ public class DetailRequestAction implements Action {
 	 	  }	
 	 	  
 	 	  
-	      String[] Q8 = requestList.getR_QA_08().split("/");
+	      String[] Q8 = detailRequest.getR_QA_08().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q8[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q8_contents = questionList.get(i).getQ_Contents();
@@ -162,7 +103,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }	
 	 	  
-	      String[] Q9 = requestList.getR_QA_09().split("/");
+	      String[] Q9 = detailRequest.getR_QA_09().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q9[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q9_contents = questionList.get(i).getQ_Contents();
@@ -170,7 +111,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }	
 	 	  
-	      String[] Q10 = requestList.getR_QA_10().split("/");
+	      String[] Q10 = detailRequest.getR_QA_10().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q10[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q10_contents = questionList.get(i).getQ_Contents();
@@ -178,7 +119,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }	
 	 	  
-	      String[] Q11 = requestList.getR_QA_11().split("/");
+	      String[] Q11 = detailRequest.getR_QA_11().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q11[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q11_contents = questionList.get(i).getQ_Contents();
@@ -186,7 +127,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }	
 	 	  
-	      String[] Q12 = requestList.getR_QA_12().split("/");
+	      String[] Q12 = detailRequest.getR_QA_12().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q12[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q12_contents = questionList.get(i).getQ_Contents();
@@ -194,7 +135,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }	
 	 	  
-	      String[] Q13 = requestList.getR_QA_13().split("/");
+	      String[] Q13 = detailRequest.getR_QA_13().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q13[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q13_contents = questionList.get(i).getQ_Contents();
@@ -202,7 +143,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }	
 	 	  
-	      String[] Q14 = requestList.getR_QA_14().split("/");
+	      String[] Q14 = detailRequest.getR_QA_14().split("/");
 	 	  for(int i = 0; i < questionList.size(); i++){
 	 		  if( Q14[0].equals(questionList.get(i).getQ_Code())){
 	 			  String Q14_contents = questionList.get(i).getQ_Contents();
@@ -215,7 +156,7 @@ public class DetailRequestAction implements Action {
 	 	  request.setAttribute("answerList", answerList);
 	 	  System.out.println(answerList);
 	 	  
-	 	  String[] A1 = requestList.getR_QA_01().split("/"); //A1[1] = CQ1_A6, A1[2] = CQ1_A7, A1[0]은 질문코드
+	 	  String[] A1 = detailRequest.getR_QA_01().split("/"); //A1[1] = CQ1_A6, A1[2] = CQ1_A7, A1[0]은 질문코드
 	 	  String a1 = "";
 	 	  List<String> list_a1 = new ArrayList<String>();
  
@@ -230,7 +171,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }
 	 	  
-	 	 String[] A2 = requestList.getR_QA_02().split("/"); 
+	 	 String[] A2 = detailRequest.getR_QA_02().split("/"); 
 	 	  String a2 = "";
 	 	  List<String> list_a2 = new ArrayList<String>();
 
@@ -244,7 +185,7 @@ public class DetailRequestAction implements Action {
 	 			  }	
 	 		  }
 	 	  }
-		 	 String[] A3 = requestList.getR_QA_03().split("/");
+		 	 String[] A3 = detailRequest.getR_QA_03().split("/");
 		 	  String a3 = "";
 		 	  List<String> list_a3 = new ArrayList<String>();
 	 	  
@@ -259,7 +200,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }
 	 	  
-		 	 String[] A4 = requestList.getR_QA_04().split("/");
+		 	 String[] A4 = detailRequest.getR_QA_04().split("/");
 		 	  String a4 = "";
 		 	  List<String> list_a4 = new ArrayList<String>();
 	 	  
@@ -274,7 +215,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }
 	 	  
-		 	 String[] A5 = requestList.getR_QA_05().split("/");
+		 	 String[] A5 = detailRequest.getR_QA_05().split("/");
 		 	  String a5 = "";
 		 	  List<String> list_a5 = new ArrayList<String>();
 	 	  
@@ -289,7 +230,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }
 	 	  
-		 	 String[] A6 = requestList.getR_QA_06().split("/");
+		 	 String[] A6 = detailRequest.getR_QA_06().split("/");
 		 	  String a6 = "";
 		 	  List<String> list_a6 = new ArrayList<String>();
 	 	  
@@ -304,7 +245,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }
 	 	  
-		 	 String[] A7 = requestList.getR_QA_07().split("/");
+		 	 String[] A7 = detailRequest.getR_QA_07().split("/");
 		 	  String a7 = "";
 		 	  List<String> list_a7 = new ArrayList<String>();
 	 	  
@@ -319,7 +260,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }
 	 	  
-		 	 String[] A8 = requestList.getR_QA_08().split("/");
+		 	 String[] A8 = detailRequest.getR_QA_08().split("/");
 		 	  String a8 = "";
 		 	  List<String> list_a8 = new ArrayList<String>();
 	 	  
@@ -334,7 +275,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }
 	 	  
-		 	 String[] A9 = requestList.getR_QA_09().split("/");
+		 	 String[] A9 = detailRequest.getR_QA_09().split("/");
 		 	  String a9 = "";
 		 	  List<String> list_a9 = new ArrayList<String>();
 	 	  
@@ -349,7 +290,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }
 	 	  
-		 	 String[] A10 = requestList.getR_QA_10().split("/");
+		 	 String[] A10 = detailRequest.getR_QA_10().split("/");
 		 	  String a10 = "";
 		 	  List<String> list_a10 = new ArrayList<String>();
 	 	  
@@ -364,7 +305,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }
 	 	  
-		 	 String[] A11 = requestList.getR_QA_11().split("/");
+		 	 String[] A11 = detailRequest.getR_QA_11().split("/");
 		 	  String a11 = "";
 		 	  List<String> list_a11 = new ArrayList<String>();
 	 	  
@@ -379,7 +320,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }
 	 	  
-		 	 String[] A12 = requestList.getR_QA_12().split("/");
+		 	 String[] A12 = detailRequest.getR_QA_12().split("/");
 		 	  String a12 = "";
 		 	  List<String> list_a12 = new ArrayList<String>();
 	 	  
@@ -394,7 +335,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }
 	 	  
-		 	 String[] A13 = requestList.getR_QA_13().split("/");
+		 	 String[] A13 = detailRequest.getR_QA_13().split("/");
 		 	  String a13 = "";
 		 	  List<String> list_a13 = new ArrayList<String>();
 	 	  
@@ -409,7 +350,7 @@ public class DetailRequestAction implements Action {
 	 		  }
 	 	  }
 	 	  
-		 	 String[] A14 = requestList.getR_QA_14().split("/");
+		 	 String[] A14 = detailRequest.getR_QA_14().split("/");
 		 	  String a14 = "";
 		 	  List<String> list_a14 = new ArrayList<String>();
 	 	  
@@ -426,8 +367,8 @@ public class DetailRequestAction implements Action {
 
 		    forward.setPath("/detailRequestForm.jsp");
 		    forward.setRedirect(false);	      
-	        return forward;*/
-		return null;
+
+		return forward;
 		}
 
 }

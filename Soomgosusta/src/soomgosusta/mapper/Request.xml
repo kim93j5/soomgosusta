@@ -113,5 +113,10 @@
 		where c.c_word like #{searchKey}
 	</select>
 	
+	
+	<select id="detailRequestInfo" resultType="Request" parameterType="int">
+     select * from request where r_seq =#{r_seq}
+   </select>
+	
 </mapper>
 

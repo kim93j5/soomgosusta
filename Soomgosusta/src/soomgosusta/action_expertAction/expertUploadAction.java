@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import soomgosusta.action_interface.Action;
 import soomgosusta.action_interface.ActionForward;
+import soomgosusta.domain.Expert_Profile_License;
 import soomgosusta.service.ExpertService;
 
 public class expertUploadAction implements Action {
@@ -15,10 +16,9 @@ public class expertUploadAction implements Action {
 		ExpertService service= ExpertService.getInstance();
 		
 		service.expertImgUploadService(request);
-		
-		
-		forward.setRedirect(false);
-		forward.setPath("expertProfile.do");
+		String expert_Id=request.getParameter("expert_Id");
+		forward.setRedirect(true);
+		forward.setPath("expertProfile.do?expert_Id="+expert_Id);
 		return forward;
 	}
 

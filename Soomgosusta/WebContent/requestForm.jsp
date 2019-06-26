@@ -139,7 +139,7 @@
 
 										<c:if test="${login_state == 'member' }">
 											<div id="submit_btn">
-												<input type="submit" id="go" value="매칭요청">
+												<a href="#" class="prev">이전</a>&nbsp;&nbsp;	<input type="submit" id="go" value="매칭요청">
 											</div>
 										</c:if>
 

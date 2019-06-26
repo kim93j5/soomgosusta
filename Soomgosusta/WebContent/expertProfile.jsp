@@ -7,7 +7,34 @@
 
 <head>
 <c:set var="expert" value="${expert}" scope="request"></c:set>
+<script type="text/javascript">
+$('document').ready(function(){	
+	
+	        // 등록할 파일 리스트를 formData로 데이터 입력
+	        var form = $('#licenseForm');
+	        var formData = new FormData();
+	     	formData=formData.append(" "));
+	        $.ajax({
+	            url:"upload.do",
+	            data:formData,
+	            type:'POST',
+	            enctype:'multipart/form-data',
+	            processData:false,
+	            contentType:false,
+	            cache:false,
+	            success:function(result){
+	                location.href = 'expertProfile';
+	            },
+	            error : function(error) {
+	                alert("Error!");
+	            }
+	            
+	        });
 
+	
+});
+
+</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="./script/jquery.form.js"></script>
@@ -61,7 +88,7 @@
 				</form> --%>
 				<form id = "licenseForm" action="upload.do" method="post" encType="multipart/form-data">
 					파일: <input type="file" name="licenseFile" id="license"> 
-					<input type="hidden" name="expert_Id" value="${expert.expert_Id}">
+					<input type="hidden" name="expert_Id" value="${id}">
 					<input type="submit" name="uploadlicense" value="저장"><br>
 					<div>
 					<table border="1">
