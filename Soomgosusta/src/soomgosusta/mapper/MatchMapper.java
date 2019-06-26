@@ -16,7 +16,7 @@ public interface MatchMapper {
 	Request memberRequest(@Param("request_Member_Id") String request_Member_Id,@Param("request_C_Code") String request_C_Code);
 	int matchTableInsert(Match match);
 	List<Match> matchList(String login_Session);
-	Match detailMatch(String id);
+	Match detailMatch(Esend esend);
 	int updateMatch(Esend esend);
 	int matchLogUpdate(Category_Log category_log);
 	Expert expertGender(String expert_Id);

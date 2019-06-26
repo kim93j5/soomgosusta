@@ -13,7 +13,6 @@ $('document').ready(function(){
 	        // 등록할 파일 리스트를 formData로 데이터 입력
 	        var form = $('#licenseForm');
 	        var formData = new FormData();
-	     	formData=formData.append(" "));
 	        $.ajax({
 	            url:"upload.do",
 	            data:formData,
@@ -221,8 +220,19 @@ $('document').ready(function(){
 			<input type="hidden" name="review_Expert_Id" value="${expert.expert_Id}">
 			<input type="submit" value="저장">
 			</form>
-				
 			
+				작성자 ${review.member_Id} 별점${review.review_StarPoint}
+					작성일 ${review.review_Date}<br>
+		
+					내용 ${review.review_Contents}	
+			<c:forEach var="review" items="${reviewList}">  
+				<div>
+					작성자 ${review.member_Id} 별점${review.review_StarPoint}
+					작성일 ${review.review_Date}<br>
+		
+					내용 ${review.review_Contents}		
+				</div>
+			</c:forEach> 
 		</c:when>
 		</c:choose>
 

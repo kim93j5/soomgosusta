@@ -60,9 +60,10 @@
 		<collection property="category" resultMap="Category"></collection>
 	</resultMap>
 	
-	<select id="detailMatch" resultType="Match" parameterType="String">
+	<select id="detailMatch" resultType="Match" parameterType="Esend">
 		select * from match
-		where match_member_id = #{id} 
+		where match_member_id = #{m_id} 
+		and match_expert_id = #{e_id}
 
 	</select> 
 	
