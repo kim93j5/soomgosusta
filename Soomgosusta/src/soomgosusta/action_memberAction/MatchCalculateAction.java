@@ -77,7 +77,7 @@ public class MatchCalculateAction implements Action {
 				for (int j = 1; j < groupArr2.length; j++) {
 					compareMember.add(groupArr2[j]);
 				}
-			} else if (qCode.contains("CQ3")) {
+			} else if (qCode.contains("CQ5")) {
 				qstart = qCode;
 				String groupArr2[] = qstart.split("/");
 				for (int j = 1; j < groupArr2.length; j++) {

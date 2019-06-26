@@ -6,7 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="./script/jquery.js"></script>
-<!-- <script type="text/javascript" src="./script/expertAddInfo.js"></script> -->
+<link rel="stylesheet" href="./css/myPage.css" target="text/css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="./bootstrap-3.3.2-dist/css/bootstrap.min.css">
+<script type="text/javascript" src="./script/expertAddInfo.js"></script>
 <title>고수 필수 부가정보 입력</title>
 </head>
 <body>   
@@ -58,28 +62,61 @@ $('document').ready(function() {
         });
        }
       });
-
+    $('#second_select1').css('display', 'none');
+    $('#second_select2').css('display', 'none');
+	$('#third_select1').css('display', 'none');
+	$('#third_select2').css('display', 'none');
+	$('#select_Question').css('display', 'none');
+	$('#select_District').css('display', 'none');
 });
-
+function firstSelect() {
+	$('#first_select').css('display', 'none');
+	if ((document.getElementById('category1').value) == ("레슨")) {
+		$('#second_select1').css('display', 'block');
+	}else if ((document.getElementById('category1').value) == ("서비스")) {
+		$('#second_select2').css('display', 'block');
+	}
+}
+function secondSelect() {
+	$('#second_select1').css('display', 'none');
+	var size = document.getElementsByName('category2').length;
+	if (document.getElementsByName('category2')[0].checked == true && document.getElementsByName('category2')[1].checked == false) {
+		$('#third_select2').css('display', 'block');
+	} else if (document.getElementsByName('category2')[0].checked == false	&& document.getElementsByName('category2')[1].checked == true) {
+		$('#third_select1').css('display', 'block');
+	} else if (document.getElementsByName('category2')[0].checked == true && document.getElementsByName('category2')[1].checked == true) {
+		$('#third_select3').css('display', 'block');
+	}
+}
+function thirdSelect() {
+	$('#third_select1').css('display', 'none');
+	$('#third_select2').css('display', 'none');
+	$('#third_select3').css('display', 'none');
+	$('#select_Question').css('display', 'block');
+}
+function districtSelect() {
+	$('#select_Question').css('display', 'none');
+	$('#select_District').css('display', 'block');
+}
 
 
 </script>
     
-   <form name=form method="post" action="expertAddInfo.do">   
+   <form name=form id=form method="post" action="expertAddInfo.do">   
    <input type="hidden" name="id" value=${id }>
    <!-- ///////////////////////////////대분류 선택 ///////////////////////////////////////-->
       <div id = "first_select">
       <h3>분야를 선택해주세요</h3>
       <c:forEach var="categoryList1" items="${categoryList1 }">
-           <input name="category1" type="radio" value="${categoryList1 }">
+           <input name="category1" id="category1" type="radio" value="${categoryList1 }">
              ${categoryList1 }
             </c:forEach>
             <br>
-            <input name="category1_1" type="radio" value="서비스">서비스
+            <input name="category1_1" id="category1_1" type="radio" value="서비스">서비스
             <br>
             <br>
 
-   <!--    <button type="button" id="next0_1" >다음</button> -->
+	  <button type="button" id="next0_1" onclick="firstSelect();">다음</button>
       </div>
       
       
@@ -87,23 +124,23 @@ $('document').ready(function() {
       <div id = "second_select1">
       <h3>분야를 선택해주세요</h3>
       <c:forEach var="categoryList2" items="${categoryList2 }">
-         <input name="category2" type="checkbox" value="${categoryList2 }">
+         <input name="category2" id="category2" type="checkbox" value="${categoryList2 }">
          ${categoryList2 }
          <br>
         </c:forEach>
-<!--         <button type="button" id="prev0_2" >이전</button> 
-      <button type="button" id="next0_2">다음</button> -->
+      <button type="button" id="prev0_2" >이전</button> 
+      <button type="button" id="next0_2" onclick="secondSelect();">다음</button>
       </div>
       
       
       <div id = "second_select2">
-      <input type = "checkbox" name = "category2" id = "category2" value = "청소">청소<br>
+      <input type = "checkbox" name = "category2_1" id = "category2_1" value = "청소">청소<br>
       <input type = "hidden" name = "category2_select" id = "category2_select" value="청소">
-      <input type = "checkbox" name = "category2" id = "category2" value = "줄눈시공">줄눈시공<br>
+      <input type = "checkbox" name = "category2_!" id = "category2_1" value = "줄눈시공">줄눈시공<br>
       <input type = "hidden" name = "category2_select" id = "category2_select" value="줄눈시공">
       
-<!--         <button type="button" id="prev0_3" >이전</button>       
-      <button type="button" id="next0_3" >다음</button> -->
+         <button type="button" id="prev0_3" >이전</button>       
+      <button type="button" id="next0_3" >다음</button>
       
       </div>
       
@@ -115,8 +152,8 @@ $('document').ready(function() {
          ${categoryList3_1 }
          <br>
         </c:forEach>
-<!--        <button type="button" id="prev0_4" >이전</button>       
-       <button type="button" id="next0_4" >다음</button> -->
+       <button type="button" id="prev0_4" >이전</button>       
+       <button type="button" id="next0_4" onclick="thirdSelect();">다음</button> 
       </div>
       
       
@@ -127,8 +164,8 @@ $('document').ready(function() {
          ${categoryList3_2 }
          <br>
         </c:forEach>
-<!--        <button type="button" id="prev0_5" >이전</button>       
-       <button type="button" id="next0_5">다음</button> -->
+      <button type="button" id="prev0_5" >이전</button>       
+       <button type="button" id="next0_5" onclick="thirdSelect();">다음</button>
       </div>
       
       
@@ -137,8 +174,8 @@ $('document').ready(function() {
       <div id="select_Question">
          <c:forEach var="questionList" items="${questionList}">
             <input type="hidden" name="q_Code" value="${questionList.q_Code}">
-
-            <div id="select_Answer" style="display: block;">
+			<div class="slide">
+            <div id="select_Answer" ><!-- style="float: left;width: 500px;height: 300px;"> -->
                <h3>${questionList.q_Contents }</h3>
                <ul>
                   <c:forEach var="answerList" items="${answerList }">
@@ -149,10 +186,15 @@ $('document').ready(function() {
                      </c:if>
                   </c:forEach>
                </ul>
+               <!-- <div class="btn">
+					<a href="#" class="next">다음</a>
+			   </div> -->
+               </div>
             </div>
             
          </c:forEach>
-
+ 		<button type="button" id="prev0_6" >이전</button>       
+        <button type="button" id="next0_6" onclick="districtSelect();">다음</button>
       </div>
       
       <!-- ///////////////////////////////지역 선택 /////////////////////////////////////////-->

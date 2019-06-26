@@ -21,4 +21,31 @@
 	margin-top : 150px;
 	margin-left : 430px;
 }
+#form{
+	margin-left: 430px;
+	margin-top : 240px;
+}
 
+/* #select_Question{
+	width: 460px;
+	float: left;
+   	overflow : hidden;
+}
+ #select_Question .slide{
+	width: 3000px;
+	height: 300px;
+	float: left;
+}
+#select_Answer{
+	width: 500px;
+	height: 300px;
+	float: left;
+} 
+ */
+.btn{
+	margin-left: 200px;
+}
+
+#select_Answer ul{
+	list-style: none;
+}
