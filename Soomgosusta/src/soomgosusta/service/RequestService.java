@@ -106,21 +106,20 @@ public class RequestService {
 
 		return answerList;
 	}
-	public Request requestDetailService(HttpServletRequest request) throws Exception{
-		
-		request.setCharacterEncoding("utf-8");
-		
-		String id = request.getParameter("id");
-		int seq = Integer.parseInt(request.getParameter("seq"));
-		String code = request.getParameter("code");
-		
-		return dao.detailRequest(id);
-	}
-	
 
 	public int listRegisterLogService(String searchKey) {
 
 		return dao.listRegisterLog(searchKey);
 	}
 
+	 public Request requestDetailService(HttpServletRequest request) throws Exception{ 
+	      request.setCharacterEncoding("utf-8");
+	      
+	      int r_Seq = Integer.parseInt(request.getParameter("seq"));
+	      
+	      
+	      return dao.detailRequestInfo(r_Seq);
+	   }
+	   
+	
 }

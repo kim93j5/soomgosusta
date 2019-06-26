@@ -18,4 +18,5 @@ public interface RequestMapper {
 	int listEmploymentLog(String searchKey);
 	List<Request> sendRequestInfo(String request_Member_Id);
 	Request detailRequest(String id);
+    Request detailRequestInfo(int r_Seq);
 }

@@ -78,7 +78,7 @@
 					</a>
 				</div>
 				<div class="right_">
-					<ul>
+					<ul class="nav navtab">
 						<li><a href="selectDivide.jsp">회원가입</a></li>
 						<li>
 							<div class="select">

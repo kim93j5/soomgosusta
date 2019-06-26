@@ -157,21 +157,23 @@ public class RequestDao {
 				}
 				return re;
 			}
+			
+			 public Request detailRequestInfo(int r_Seq) {
+		            SqlSession sqlSession = getSqlSessionFactory().openSession();
+		            Request detailRequestList = null;
+		            try {
+		               detailRequestList = sqlSession.getMapper(RequestMapper.class).detailRequestInfo(r_Seq);
+		               System.out.println(detailRequestList);
+		               
+		            } catch (Exception e) {
+		               e.printStackTrace();
+		            } finally {
+		               sqlSession.close();
+		            }
 
-			public Request detailRequest(String id) {
-				SqlSession sqlSession = getSqlSessionFactory().openSession();
-				Request re = null;
-				try {
-					re = sqlSession.getMapper(RequestMapper.class).detailRequest(id);
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally{
-					if(sqlSession != null){
-						sqlSession.close();
-					}
-				}
-				return re;
-			}
+		            return detailRequestList;
+
+		         }
 		}
 
 
