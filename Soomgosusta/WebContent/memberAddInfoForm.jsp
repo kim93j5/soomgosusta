@@ -86,7 +86,10 @@
 			$('#district_select').css('display', 'block');
 		}
 	</script>
-
+	<header>
+		<jsp:include page="header.jsp"></jsp:include>
+	</header>
+	
 	<form id="AddInfoForm" name="AddInfoForm" action="memberAddInfoAction.do?member_Id=${memberMyInfo.member_Id }" method="post">
 		<div id="first_select">
 			<h3>관심있는 분야를 선택해주세요(최대 3개)</h3>
@@ -162,5 +165,9 @@
 			<input type="submit" value="입력완료" id="hidden">
 		</div>
 	</form>
+	
+	<footer>
+		<jsp:include page="footer.jsp"></jsp:include>
+	</footer>
 </body>
 </html>

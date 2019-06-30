@@ -101,6 +101,10 @@ function districtSelect() {
 
 
 </script>
+
+	<header>
+		<jsp:include page="header.jsp"></jsp:include>
+	</header>
     
    <form name=form id=form method="post" action="expertAddInfo.do">   
    <input type="hidden" name="id" value=${id }>
@@ -225,6 +229,10 @@ function districtSelect() {
          <input type="submit" value="고수 회원가입완료" id="hidden">
      </div>
    </form>
+
+	<footer>
+		<jsp:include page="footer.jsp"></jsp:include>
+	</footer>
 
 </body>
 </html>

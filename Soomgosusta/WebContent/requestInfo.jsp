@@ -10,16 +10,20 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<header>
+		<jsp:include page="header.jsp"></jsp:include>
+	</header>
+	
 	
 	<c:if test="${req == 'ing' }">
 		이미 요청 중입니다. ㅠㅠ
-		<a href="#">마이페이지에서 보낸 요청 확인하기</a>
+		<a href="requestInfoForm.do?member_Id=${id }">마이페이지에서 보낸 요청 확인하기</a>
 		<a href="main.do">메인으로</a>
 		
 	</c:if>
 	<c:if test="${req == 'notyet' }">
 		요청이 완료되었습니다. 최대 48시간 동안 매칭을 진행합니다.
-		<a href="#">마이페이지에서 보낸 요청 확인하기</a>
+		<a href="requestInfoForm.do?member_Id=${id }">마이페이지에서 보낸 요청 확인하기</a>
 		<a href="main.do">메인으로</a>
 	</c:if>
 </body>

@@ -8,6 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<header>
+		<jsp:include page="header.jsp"></jsp:include>
+	</header>
+
+
     <div>
              요청날짜:  ${requestTime }<p> 
              요청분야:  ${category_word_last }<p>
